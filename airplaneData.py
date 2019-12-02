@@ -11,3 +11,4 @@ class AirplaneData():
 
 newAirplane = AirplaneData("NABAE146", "F28", "BAE", 82 )
 print(newAirplane)
+intt= 0
