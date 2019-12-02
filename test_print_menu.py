@@ -41,10 +41,6 @@ def print_voyage(list_menu):
         print(line)
 
   
-
-
-
-
 def main():
 
     list_menu = make_menu_list()
