@@ -1,10 +1,10 @@
 
 
 class staffData():
-    def __init__(self, Name, SSD, Address, cellPhone, phoneNumber, Email):
-        self.Name = Name
-        self.SSD = SSD
-        self.Address = Address
-        self.cellPhone = cellPhone
+    def __init__(self, name, ssn, address, cellphone, phoneNumber, email):
+        self.name = name
+        self.ssn = ssn
+        self.address = address
+        self.cellphone = cellphone
         self.phoneNumber = phoneNumber
-        self.Email = Email
+        self.email = email
