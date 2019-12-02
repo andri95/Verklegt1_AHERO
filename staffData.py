@@ -9,8 +9,7 @@ class staffData():
         self.license = license
 
     def __str__(self):
-        return "ssn: {}\nname: {}\nrole: {}\nrank: {}\nlicence: {}".format(self.SSN, self.name, self.role, self.rank,
-                                                                           self.license)
+        return "ssn: {}\nname: {}\nrole: {}\nrank: {}\nlicence: {}".format(self.SSN, self.name, self.role, self.rank, self.license)
 
 
 staff1 = staffData("1611983239", "Rúnar", "Pilot", "Captain")
