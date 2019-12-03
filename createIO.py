@@ -6,6 +6,7 @@ class AirplaneIO():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"
         self.crewPath = "Crew.csv"
+        self.destinationPath = "Destinations.csv"
 
 
     def addNewAirplane(self, newAirplane):
