@@ -1,10 +1,11 @@
 from airplaneData import AirplaneData
-from AirplaneLLmain import AirplaneLL
+from AirplaneLL import AirplaneLL
 
 
-class AirplaneUI:
+class AirplaneUI():
     def __init__(self):
         self.AirplaneLL = AirplaneLL()
+
 
     def addAirplane(self):
         planeId = input("Enter Airplane Id: ")
@@ -13,23 +14,24 @@ class AirplaneUI:
         capacity = input("Enter Airplane Capacity")
         newAirplane = AirplaneData(planeId, type,manufacturer,capacity)
 
-        if AirplaneLL.validate_plane(newAirplane):
+        if self.AirplaneLL.validateAirPlaneData(newAirplane):
             print("PLane stored successfully")
         else:
             print("No success try again")
 
     def showAirplanes(self):
         pass
-
+        # return "Id:{}\nType:{}\nmanufacturer:{}\ncapacity:{}\n".format(planeId, type, manufacturer, self.capacity)
     def showAirplaneStatus(self):
         pass
 
     def addLicenseToAirplane(self):
         pass
 
+new_airplane = AirplaneUI()
+new_airplane.addAirplane()
+#print(new_airplane)
 
-    #def __str__(self):
-        #return "Id:{}\nType:{}\nmanufacturer:{}\ncapacity:{}\n".format(planeId, type, manufacturer, self.capacity)
 
 
 
