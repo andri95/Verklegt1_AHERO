@@ -38,6 +38,7 @@ class AirplaneIO():
 
 
     def addNewFlight(self, newFlight):
+        pass
 
 
 
