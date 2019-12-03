@@ -30,6 +30,7 @@ class AirplaneUI():
 
 new_airplane = AirplaneUI()
 new_airplane.addAirplane()
+
 #print(new_airplane)
 
 
