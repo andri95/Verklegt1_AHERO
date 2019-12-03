@@ -9,17 +9,23 @@ class UpdateIO:
 
     def updateDestIO(self, country, contact, emergencyNumber):
 
-        csv_file = open(self.destPath, 'r')
-        reader = csv.DictReader(csv_file)
-        destinations_list = []
+        with open(self.destPath, 'w+') as destinationsFile:
+            reader = csv.DictReader(destinationsFile)
+            destinations_list = []
 
-        for row in reader:
-            destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+            for row in reader:
+                destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
 
-        for item in destinations_list:
-            if item.getCountry() == country:
-                item.setContact(contact)
-                item.emergencyNumber(emergencyNumber)
+            fieldnames = ['country','flightTime','contact','emergencyNumber']
+            writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
+            for destination in destinations_list:
+                if destination.getCountry() == country:
+                    destination.setContact(contact)
+                    destination.emergencyNumber(emergencyNumber)
+                writer.writerow({'country': destination.getCountry(), 'flightTime': destination.getFlightTime(),
+                                'contact': destination.getContact(), 'emergencyNumber': destination.getEmergencyNumber()})
+
+
             
 
 test = UpdateIO()
