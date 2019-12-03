@@ -1,6 +1,6 @@
 
 
-class staffData():
+class StaffData():
     def __init__(self, SSN, name, address, cellPhone, phoneNumber, email, role, rank, license="N/A"):
         self.SSN = SSN
         self.name = name
