@@ -1,22 +1,24 @@
 class DestinationData:
-    def __init__(self, destName, flightTime, Distance, phoneNumber, contacts):
-        self.destName = destName
+    def __init__(self, country, flightTime, contact, emergencyNumber):
+        self.country = country
         self.flightTime = flightTime
-        self.distance = Distance
-        self.phoneNumber = phoneNumber
-        self.contact = contacts
-        
-    def getDestName(self):
-        return self.destName
+        self.contact = contact
+        self.emergencyNumber = emergencyNumber
 
+    def getCountry(self):
+        return self.country
+        
     def getFlightTime(self):
         return self.flightTime
 
-    def getDistance(self):
-        return self.distance
-
-    def getPhoneNumber(self):
-        return self.phoneNumber
-
     def getContact(self):
         return self.contact
+
+    def getEmergencyNumber(self):
+        return self.emergencyNumber
+
+    def setContact(self, newContact):
+        self.contact = newContact
+
+    def setEmergencyNumber(self, newNumber):
+        self.emergencyNumber = newNumber

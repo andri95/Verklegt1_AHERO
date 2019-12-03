@@ -12,14 +12,20 @@ class staffData():
         self.rank = rank
         self.license = license
 
-    #def __str__(self):
-        #return "ssn: {}\nname: {}\nrole: {}\nrank: {}\nlicence: {}".format(self.SSN, self.name, self.role, self.rank, self.license)
-
     def getSSN(self):
         return self.SSN
 
     def getName(self):
         return self.name
+
+    def getRole(self):
+        return self.role
+
+    def getRank(self):
+        return self.rank
+
+    def getLicence(self):
+        return self.license
 
     def getAddress(self):
         return self.address
@@ -33,11 +39,5 @@ class staffData():
     def getEmail(self):
         return self.email
 
-    def getRole(self):
-        return self.role
-
-    def getRank(self):
-        return self.rank
-
-    def getLicense(self):
-        return self.license
+    def __str__(self):
+        return "ssn: {}\nname: {}\nrole: {}\nrank: {}\nlicence: {}".format(self.SSN, self.name, self.role, self.rank, self.license)
