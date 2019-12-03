@@ -1,4 +1,4 @@
-from moduleLayer.destinationData import DestinationData
+from destinationData import DestinationData
 import csv
 
 class UpdateIO:
