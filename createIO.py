@@ -6,7 +6,9 @@ class AirplaneIO():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"
         self.crewPath = "Crew.csv"
-        self.destinationPath = "Destinations.csv"
+        self.destinationPath = "DestinationData.csv"
+        self.upcomingFlightsPath = "UpcomingFlights.csv"
+
 
 
     def addNewAirplane(self, newAirplane):
@@ -25,6 +27,18 @@ class AirplaneIO():
                              "cellPhone": newEmployee.getCellPhone(), "phoneNumber": newEmployee.getPhoneNumber(),
                              "email": newEmployee.getEmail(), "role": newEmployee.getRole(), "rank": newEmployee.getRank(),
                              "license": newEmployee.getLicense()})
+
+    def addNewDest(self, newDestination):
+        with open(self.destinationPath, "a") as destinationFile:
+            fieldnames = ["destName","flightTime","distance","contact","phoneNumber"]
+            writer = csv.DictWriter(destinationFile, fieldnames=fieldnames)
+            writer.writerow({"destName": newDestination.getDestName(),"flightTime": newDestination.getFlightTime(),
+                             "distance": newDestination.getDistance(),"contact": newDestination.getPhoneNumber(),
+                             "phoneNumber": newDestination.getContact()})
+
+
+    def addNewFlight(self, newFlight):
+
 
 
 
