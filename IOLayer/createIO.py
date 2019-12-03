@@ -1,16 +1,13 @@
 import csv
-from airplaneData import AirplaneData
-from destinationData import DestinationData
-from staffData import StaffData
-from flightData import FlightData
+from moduleLayer.flightData import FlightData
 
 
 class CreateIO():
     def __init__(self):
-        self.aircraftPath = "AircraftType.csv"
-        self.crewPath = "Crew.csv"
-        self.destinationPath = "DestinationData.csv"
-        self.upcomingFlightsPath = "UpcomingFlights.csv"
+        self.aircraftPath = "../AircraftType.csv"
+        self.crewPath = "../Crew.csv"
+        self.destinationPath = "../DestinationData.csv"
+        self.upcomingFlightsPath = "../UpcomingFlights.csv"
 
 
 
@@ -48,7 +45,6 @@ class CreateIO():
                             "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
                              "arrival": newFlight.getArrival()})
 
-    def
 
 
 newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")

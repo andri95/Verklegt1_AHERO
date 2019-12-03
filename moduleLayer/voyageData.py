@@ -1,5 +1,3 @@
-from flightData import FlightData
-
 class VoyageData:
     def __init__(self, flightDep_obj, flightArr_obj, pilot, coPilot, f1, f2):
         self.flightDep_obj = flightDep_obj
