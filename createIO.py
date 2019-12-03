@@ -1,8 +1,11 @@
 import csv
 from airplaneData import AirplaneData
-import airplaneData
+from destinationData import DestinationData
+from staffData import StaffData
+from flightData import FlightData
 
-class AirplaneIO():
+
+class CreateIO():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"
         self.crewPath = "Crew.csv"
@@ -38,7 +41,13 @@ class AirplaneIO():
 
 
     def addNewFlight(self, newFlight):
-        pass
+        with open(self.upcomingFlightsPath, "a") as flightsFile:
+            fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival"]
+            writer = csv.DictWriter(flightsFile, fieldnames=fieldnames)
+            writer.writerow({"flightNumber": newFlight.getFlightNumber(), "departingFrom": newFlight.getDepartingFrom(),
+                            "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
+                             "arrival": newFlight.getArrival() })
+
 
 
 
