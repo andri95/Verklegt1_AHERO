@@ -16,4 +16,4 @@ class VoyageData:
 
         return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
 
-''' ÓKLÁRAÐ, ÞURFUM AÐ GERA READIO FYRST'''
+''' ÓKLÁRAÐ, ÞURFUM AÐ GERA READIO FYRSTt'''
