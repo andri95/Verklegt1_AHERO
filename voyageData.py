@@ -7,3 +7,11 @@ class VoyageData:
 
     def __str__(self):
         return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
+
+    def getFlightDep(self):
+        return self.flightDep_obj   #  Return flight departure object
+
+    def getFlightArr(self):
+        return self.flightArr_obj  #  Return flight array(list) object
+
+    
