@@ -47,17 +47,21 @@ class CreateIO():
                              "arrivingAt": newFlight.getDrrivingAt(), "departure": newFlight.getDeparture(),
                              "arrival": newFlight.getArrival()})
 
-    def addNewVoyage(self, newVoyage):
-        with open(self.upcomingVoyagesPath, "a") as voyageFile:
-            fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival", "aircraftID",
-                          "captain", "copilot", "fa1", "fa2"]
-            writer = csv.DictWriter(voyageFile, fieldnames=fieldnames)
-            writer.writerow(
+    #def addNewVoyage(self, newVoyage):
+        #with open(self.upcomingVoyagesPath, "a") as voyageFile:
+           # fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival", "aircraftID",
+                          #"captain", "copilot", "fa1", "fa2"]
+            #writer = csv.DictWriter(voyageFile, fieldnames=fieldnames)
+            #writer.writerow(
                 #{"flightNumber": newVoyage.getFlightDep_obj().getFlightNumber(), "departingFrom": newVoyage.(),
                 # "arrivingAt": newVoyage.(),
                 # "departure": newVoyage.(), "arrival": newVoyage.(), "aircraftID": newVoyage.(),
                  #"captain": newVoyage.(), "copilot": newVoyage.(), "fa1": newVoyage.(),
                  #"fa2": newVoyage.()})
+
+    def addNewVoyage(self, newVoyage, departingFrom, arrivingAt, departureFromKEF, arrivalToKEF):
+        flight1 = newVoyage.getFlightNumber()
+        flight2 = newVoyage.
 
 
 
