@@ -1,47 +1,53 @@
-#import sys
-#sys.path.append('../Models/destinationData')
+
 from Models.destinationData import DestinationData
-#from .Models.destinationData import DestinationData
-#from .Models.staffData import StaffData
-#from .Models.fileHandler import FileHandler
+from Models.staffData import StaffData
+from Models.fileHandler import FileHandler
 import csv
 
 class UpdateIO:
 
     def __init__(self):
-        self.destPath = '../Data/Destinations.csv'
-        self.licensePath = '../Data/Crew.csv'
+        self.destPath = 'Data/Destinations.csv'
+        self.licensePath = 'Data/Crew.csv'
 
     def updateDestIO(self, country, contact, emergencyNumber):
 
-        #with open(self.destPath, 'r') as destinationsFile:
-            #reader = csv.DictReader(destinationsFile)
-            #destinations_list = []
-
-            #for row in reader:
-                #destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
-
+        # FileHandler DTO instance created
         fileObject = FileHandler(self.destPath)
-        reader = fileObject.readFile()
+
+        # File opened with readFile()
+        destinationsFile = fileObject.readFile()
+        reader = csv.DictReader(destinationsFile)
         destinations_list = []
         for row in reader:
             destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
 
+        # File closed
+        destinationsFile.close()
 
-        with open(self.destPath, 'w') as destinationsFile:
-            fieldnames = ['country','flightTime','contact','emergencyNumber']
-            writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
-            writer.writeheader()
+        # File opened with writeFile()
+        destinationsFile = fileObject.writeFile()
+        fieldnames = ['country','flightTime','contact','emergencyNumber']
+        writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
+        writer.writeheader()
 
-        with open(self.destPath, 'a') as destinationsFile:
-            fieldnames = ['country','flightTime','contact','emergencyNumber']
-            writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
-            for destination in destinations_list:
-                if destination.getCountry() == country:
-                    destination.setContact(contact)
-                    destination.setEmergencyNumber(emergencyNumber)
-                writer.writerow({'country': destination.getCountry(), 'flightTime': destination.getFlightTime(), 
-                                'contact': destination.getContact(), 'emergencyNumber': destination.getEmergencyNumber()})
+        # File closed
+        destinationsFile.close()
+
+        # File opened with appendFile()
+        destinationsFile = fileObject.appendFile()
+        fieldnames = ['country','flightTime','contact','emergencyNumber']
+        writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
+        for destination in destinations_list:
+            if destination.getCountry() == country:
+                destination.setContact(contact)
+                destination.setEmergencyNumber(emergencyNumber)
+            writer.writerow({'country': destination.getCountry(), 'flightTime': destination.getFlightTime(), 
+                            'contact': destination.getContact(), 'emergencyNumber': destination.getEmergencyNumber()})
+        
+        # File closed
+        destinationsFile.close()
+            
 
     def addLicenseIO(self, SSN, newLicense):
 
@@ -73,7 +79,4 @@ class UpdateIO:
 
             
 
-test = UpdateIO()
-
-test.updateDestIO('Thorshavn', 'Darth', '7774444')
 
