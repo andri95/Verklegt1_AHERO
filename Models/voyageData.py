@@ -1,7 +1,9 @@
+from flightData import FlightData
 class VoyageData:
-    def __init__(self, flightDep_obj, flightArr_obj, pilot, coPilot, fa1, fa2, airplane):
-        self.flightDep_obj = flightDep_obj
-        self.flightArr_obj = flightArr_obj
+    def __init__(self, flightDep, flightArr, voyageTime, pilot, coPilot, fa1, fa2, airplane):
+        self.flightDep = flightDep
+        self.flightArr = flightArr
+        self.voyageTime = voyageTime
         self.pilot = pilot
         self.coPilot = coPilot
         self.fa1 = fa1
@@ -9,11 +11,14 @@ class VoyageData:
         self.airplane = airplane
 
 
-    def getFlightDep_obj(self):
-        return self.flightDep_obj
+    def getFlightDep(self):
+        return self.flightDep
 
-    def getFlightArr_obj(self):
-        return self.flightArr_obj
+    def getFlightArr(self):
+        return self.flightArr
+
+    def getVoyagetime(self):
+        return self.voyageTime
 
     def getPilot(self):
         return self.pilot
@@ -46,3 +51,4 @@ class VoyageData:
         return self.flightArr_obj  #  Return flight array(list) object
 
     
+

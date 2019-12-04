@@ -1,5 +1,4 @@
-
-from .Models.destinationData import DestinationData
+from destinationData import DestinationData
 from staffData import StaffData
 import csv
 

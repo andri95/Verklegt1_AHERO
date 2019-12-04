@@ -53,15 +53,15 @@ class CreateIO():
                           "captain", "copilot", "fa1", "fa2"]
             writer = csv.DictWriter(voyageFile, fieldnames=fieldnames)
             writer.writerow(
-                {"flightNumber": newVoyage.getFlightDep_obj().getFlightNumber(), "departingFrom": newVoyage.(),
-                 "arrivingAt": newVoyage.(),
-                 "departure": newVoyage.(), "arrival": newVoyage.(), "aircraftID": newVoyage.(),
-                 "captain": newVoyage.(), "copilot": newVoyage.(), "fa1": newVoyage.(),
-                 "fa2": newVoyage.()})
+                #{"flightNumber": newVoyage.getFlightDep_obj().getFlightNumber(), "departingFrom": newVoyage.(),
+                # "arrivingAt": newVoyage.(),
+                # "departure": newVoyage.(), "arrival": newVoyage.(), "aircraftID": newVoyage.(),
+                 #"captain": newVoyage.(), "copilot": newVoyage.(), "fa1": newVoyage.(),
+                 #"fa2": newVoyage.()})
 
 
 
-newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")
+newFlight = FlightData("NAN911", "NUUK", "KEF", "2019-12-27T12:40:00", "2019-12-27T12:70:00")
 CreateIO().addNewFlight(newFlight)
 
 newAircraft = StaffData("1", "2", "3", "4", "5", "6", "7", "8")
