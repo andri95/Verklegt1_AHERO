@@ -1,1 +1,2 @@
-flightNumber,departingFrom,arrivingAt,departure,arrival,aircraftID,captain,copilot,fa1,fa2
+flightNumber1,flightNumber2,departingFrom,arrivingAt,departureFromKEF,arrivalToKEF,aircraftID,captain,copilot,fa1,fa2
+
