@@ -5,6 +5,7 @@ class VoyageData:
         self.flightDep_obj = flightDep_obj
         self.flightArr_obj = flightArr_obj
 
+
     def __str__(self):
         return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
 

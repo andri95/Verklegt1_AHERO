@@ -10,9 +10,9 @@ class AirplaneUI():
     def addAirplane(self):
         planeId = input("Enter Airplane Id: ")
         type = input("Enter Airplane type: ")
-        manufacturer = input("Enter Airplane manufacturer: ")
+        Model = input("Enter Airplane Model: ")
         capacity = input("Enter Airplane Capacity")
-        newAirplane = AirplaneData(planeId, type,manufacturer,capacity)
+        newAirplane = AirplaneData(planeId, type,Model,capacity)
 
         if self.AirplaneLL.validateAirPlaneData(newAirplane):
             print("PLane stored successfully")
@@ -21,7 +21,7 @@ class AirplaneUI():
 
     def showAirplanes(self):
         pass
-        # return "Id:{}\nType:{}\nmanufacturer:{}\ncapacity:{}\n".format(planeId, type, manufacturer, self.capacity)
+        # return "Id:{}\nType:{}\nModel:{}\ncapacity:{}\n".format(planeId, type, Model, self.capacity)
     def showAirplaneStatus(self):
         pass
 

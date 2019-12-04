@@ -1,4 +1,4 @@
-from AirplaneIO import AirplaneIO
+from createIO import AirplaneIO
 
 class AirplaneLL():
     def __init__(self):
@@ -10,7 +10,7 @@ class AirplaneLL():
         print(type(new_airplane))
         flag = True
         if flag == True:
-            self.AirplaneIO.writeNewAirplane(new_airplane)
+            self.AirplaneIO.addNewAirplane(new_airplane)
             return True
 
     def getAirplanes(self):
