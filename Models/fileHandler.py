@@ -1,4 +1,4 @@
-
+import csv
 class FileHandler:
 
     def __init__(self, path):
@@ -15,6 +15,16 @@ class FileHandler:
     def appendFile(self):
         returnFile = open(self.path, 'a')
         return returnFile
+
+    def findFieldNames(self):
+        fileStream = open(self.path, 'r')
+        reader = csv.reader(fileStream)
+        self.fieldnames = next(reader)
+        return self.fieldnames
+
+
+
+
 
 
     
