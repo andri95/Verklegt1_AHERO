@@ -14,7 +14,7 @@ class FlightData:
     def getDepartingFrom(self):
         return self.departingFrom
 
-    def getDrrivingAt(self):
+    def getArrivingAt(self):
         return self.arrivingAt
 
     def getDeparture(self):
