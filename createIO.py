@@ -1,17 +1,14 @@
 import csv
-from airplaneData import AirplaneData
-from destinationData import DestinationData
-from staffData import StaffData
-from flightData import FlightData
-
+from moduleLayer.flightData import FlightData
+from moduleLayer.staffData import StaffData
 
 
 class CreateIO():
     def __init__(self):
-        self.aircraftPath = "AircraftType.csv"
-        self.crewPath = "Crew.csv"
-        self.destinationPath = "DestinationData.csv"
-        self.upcomingFlightsPath = "UpcomingFlights.csv"
+        self.aircraftPath = "../csvFiles/AircraftType.csv"
+        self.crewPath = "../csvFiles/Crew.csv"
+        self.destinationPath = "../csvFiles/DestinationData.csv"
+        self.upcomingFlightsPath = "../csvFiles/UpcomingFlights.csv"
 
 
 
@@ -30,7 +27,7 @@ class CreateIO():
             writer.writerow({"ssn": newEmployee.getSSN(), "name": newEmployee.getName(), "address": newEmployee.getAddress(),
                              "cellPhone": newEmployee.getCellPhone(), "phoneNumber": newEmployee.getPhoneNumber(),
                              "email": newEmployee.getEmail(), "role": newEmployee.getRole(), "rank": newEmployee.getRank(),
-                             "license": newEmployee.getLicense()})
+                             "license": newEmployee.getLicence()})
 
     def addNewDest(self, newDestination):
         with open(self.destinationPath, "a") as destinationFile:
@@ -51,10 +48,11 @@ class CreateIO():
 
 
 
-
 newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")
-
 CreateIO().addNewFlight(newFlight)
+
+newAircraft = StaffData("1", "2", "3", "4", "5", "6", "7", "8")
+CreateIO().addNewStaff(newAircraft)
 
 
 
