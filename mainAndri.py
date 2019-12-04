@@ -2,4 +2,4 @@ from IO.updateIO import UpdateIO
 
 
 iotest = UpdateIO()
-iotest.updateDestIO('Thorshavn', 'Darth', '6666666')
+iotest.addLicenseIO('2209955782', 'BOING')
