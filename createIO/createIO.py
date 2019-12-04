@@ -46,10 +46,14 @@ class CreateIO():
             writer = csv.DictWriter(flightsFile, fieldnames=fieldnames)
             writer.writerow({"flightNumber": newFlight.getFlightNumber(), "departingFrom": newFlight.getDepartingFrom(),
                             "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
-                             "arrival": newFlight.getArrival() })
+                             "arrival": newFlight.getArrival()})
+
+    def
 
 
+newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")
 
+CreateIO().addNewFlight(newFlight)
 
 
 
