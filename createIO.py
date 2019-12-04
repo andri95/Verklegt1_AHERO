@@ -1,14 +1,15 @@
 import csv
-from moduleLayer.flightData import FlightData
-from moduleLayer.staffData import StaffData
+from flightData import FlightData
+from staffData import StaffData
 
 
 class CreateIO():
     def __init__(self):
-        self.aircraftPath = "../csvFiles/AircraftType.csv"
-        self.crewPath = "../csvFiles/Crew.csv"
-        self.destinationPath = "../csvFiles/DestinationData.csv"
-        self.upcomingFlightsPath = "../csvFiles/UpcomingFlights.csv"
+        self.aircraftPath = "AircraftType.csv"
+        self.crewPath = "Crew.csv"
+        self.destinationPath = "DestinationData.csv"
+        self.upcomingFlightsPath = "UpcomingFlights.csv"
+        self.upcomingVoyagesPath = "UpcomingVoyages.csv"
 
 
 
@@ -43,8 +44,20 @@ class CreateIO():
             fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival"]
             writer = csv.DictWriter(flightsFile, fieldnames=fieldnames)
             writer.writerow({"flightNumber": newFlight.getFlightNumber(), "departingFrom": newFlight.getDepartingFrom(),
-                            "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
+                             "arrivingAt": newFlight.getDrrivingAt(), "departure": newFlight.getDeparture(),
                              "arrival": newFlight.getArrival()})
+
+    def addNewVoyage(self, newVoyage):
+        with open(self.upcomingVoyagesPath, "a") as voyageFile:
+            fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival", "aircraftID",
+                          "captain", "copilot", "fa1", "fa2"]
+            writer = csv.DictWriter(voyageFile, fieldnames=fieldnames)
+            writer.writerow(
+                {"flightNumber": newVoyage.getFlightDep_obj().getFlightNumber(), "departingFrom": newVoyage.(),
+                 "arrivingAt": newVoyage.(),
+                 "departure": newVoyage.(), "arrival": newVoyage.(), "aircraftID": newVoyage.(),
+                 "captain": newVoyage.(), "copilot": newVoyage.(), "fa1": newVoyage.(),
+                 "fa2": newVoyage.()})
 
 
 
