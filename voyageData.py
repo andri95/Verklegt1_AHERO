@@ -9,7 +9,6 @@ class VoyageData:
         self.airplane = airplane
 
 
-
     def getFlightDep_obj(self):
         return self.flightDep_obj
 
@@ -18,6 +17,18 @@ class VoyageData:
 
     def getPilot(self):
         return self.pilot
+
+    def getCoPilot(self):
+        return self.coPilot
+
+    def getFa1(self):
+        return self.fa1
+
+    def getFa2(self):
+        return self.fa2
+
+    def getAirplane(self):
+        return self.airplane
 
 
 

@@ -1,9 +1,6 @@
 import csv
-from airplaneData import AirplaneData
-from destinationData import DestinationData
-from staffData import StaffData
 from flightData import FlightData
-
+from staffData import StaffData
 
 
 class CreateIO():
@@ -12,6 +9,7 @@ class CreateIO():
         self.crewPath = "Crew.csv"
         self.destinationPath = "DestinationData.csv"
         self.upcomingFlightsPath = "UpcomingFlights.csv"
+        self.upcomingVoyagesPath = "UpcomingVoyages.csv"
 
 
 
@@ -30,7 +28,7 @@ class CreateIO():
             writer.writerow({"ssn": newEmployee.getSSN(), "name": newEmployee.getName(), "address": newEmployee.getAddress(),
                              "cellPhone": newEmployee.getCellPhone(), "phoneNumber": newEmployee.getPhoneNumber(),
                              "email": newEmployee.getEmail(), "role": newEmployee.getRole(), "rank": newEmployee.getRank(),
-                             "license": newEmployee.getLicense()})
+                             "license": newEmployee.getLicence()})
 
     def addNewDest(self, newDestination):
         with open(self.destinationPath, "a") as destinationFile:
@@ -46,15 +44,28 @@ class CreateIO():
             fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival"]
             writer = csv.DictWriter(flightsFile, fieldnames=fieldnames)
             writer.writerow({"flightNumber": newFlight.getFlightNumber(), "departingFrom": newFlight.getDepartingFrom(),
-                            "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
+                             "arrivingAt": newFlight.getDrrivingAt(), "departure": newFlight.getDeparture(),
                              "arrival": newFlight.getArrival()})
 
+    def addNewVoyage(self, newVoyage):
+        with open(self.upcomingVoyagesPath, "a") as voyageFile:
+            fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival", "aircraftID",
+                          "captain", "copilot", "fa1", "fa2"]
+            writer = csv.DictWriter(voyageFile, fieldnames=fieldnames)
+            writer.writerow(
+                {"flightNumber": newVoyage.getFlightDep_obj().getFlightNumber(), "departingFrom": newVoyage.(),
+                 "arrivingAt": newVoyage.(),
+                 "departure": newVoyage.(), "arrival": newVoyage.(), "aircraftID": newVoyage.(),
+                 "captain": newVoyage.(), "copilot": newVoyage.(), "fa1": newVoyage.(),
+                 "fa2": newVoyage.()})
 
 
 
 newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")
-
 CreateIO().addNewFlight(newFlight)
+
+newAircraft = StaffData("1", "2", "3", "4", "5", "6", "7", "8")
+CreateIO().addNewStaff(newAircraft)
 
 
 
