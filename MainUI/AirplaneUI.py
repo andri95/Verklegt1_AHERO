@@ -1,23 +1,23 @@
-
-class Airplanemenu:
+import quitUI
+class AirplaneMenu:
     def __init__(self):
         self.MAINMENU = """
 ############################################################
-#		           _|_	                       quit(q)     #		  
-#		    --@--@--(_)--@--@--	 		                   #
+#                           _|_	               quit(q)     #
+#                   --@--@--(_)--@--@--                    #
 #__________________________________________________________#				  					                   
-#			Airplanes			                           #
-#		   					                               #
-#		   					                               #
-#		   					                               #
-#		   1. List Airplanes			                   #
-#		   2. Add Airplane			                       #
-#							                               #
-#						                                   #
-#							                               #
-#							                               #
-#							                               #
-# 0. Back						                           #
+#                                                          #
+#                       Airplanes                          #
+#                                                          #
+#                   1. list Airplanes                      #
+#                   2. Add airplanes                       #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+# 0. Back                                                  #
 ############################################################
 """
         self.start()
@@ -35,7 +35,7 @@ class Airplanemenu:
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                Goodbye()
+                quitUI.Goodbye()
                 break
             elif var == "0":
                 return
