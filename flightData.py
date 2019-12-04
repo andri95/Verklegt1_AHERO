@@ -25,3 +25,5 @@ class FlightData:
 
     #def __str__(self):
         #return 'Destination: {}\nDate: {}\nTime: {}\nPilots: {}\nFlight Attentants: {}\nVoyage ID: {}'.format(self.destination, self.date, self.time, '\n'.join([pilot for pilot in self.pilots]), '\n'.join([fa for fa in self.flightAttentants]), self.flightID)
+
+#'''ÓKLÁRAÐ, ÞURFUM AÐ GERA READIO FYRST'''
