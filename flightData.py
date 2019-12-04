@@ -23,7 +23,7 @@ class FlightData:
     def getArrival(self):
         return self.arrival
 
-    def __str__(self):
-        return 'Destination: {}\nDate: {}\nTime: {}\nPilots: {}\nFlight Attentants: {}\nVoyage ID: {}'.format(self.destination, self.date, self.time, '\n'.join([pilot for pilot in self.pilots]), '\n'.join([fa for fa in self.flightAttentants]), self.flightID)
+    #def __str__(self):
+        #return 'Destination: {}\nDate: {}\nTime: {}\nPilots: {}\nFlight Attentants: {}\nVoyage ID: {}'.format(self.destination, self.date, self.time, '\n'.join([pilot for pilot in self.pilots]), '\n'.join([fa for fa in self.flightAttentants]), self.flightID)
 
-''' ÓKLÁRAÐ, ÞURFUM AÐ GERA READIO FYRST'''
+#'''ÓKLÁRAÐ, ÞURFUM AÐ GERA READIO FYRST'''
