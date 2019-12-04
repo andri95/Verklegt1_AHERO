@@ -1,21 +1,32 @@
-from destinationData import DestinationData
-from staffData import StaffData
+#import sys
+#sys.path.append('../Models/destinationData')
+from Models.destinationData import DestinationData
+#from .Models.destinationData import DestinationData
+#from .Models.staffData import StaffData
+#from .Models.fileHandler import FileHandler
 import csv
 
 class UpdateIO:
 
     def __init__(self):
-        self.destPath = 'Destinations.csv'
-        self.licensePath = 'Crew.csv'
+        self.destPath = '../Data/Destinations.csv'
+        self.licensePath = '../Data/Crew.csv'
 
     def updateDestIO(self, country, contact, emergencyNumber):
 
-        with open(self.destPath, 'r') as destinationsFile:
-            reader = csv.DictReader(destinationsFile)
-            destinations_list = []
+        #with open(self.destPath, 'r') as destinationsFile:
+            #reader = csv.DictReader(destinationsFile)
+            #destinations_list = []
 
-            for row in reader:
-                destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+            #for row in reader:
+                #destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+
+        fileObject = FileHandler(self.destPath)
+        reader = fileObject.readFile()
+        destinations_list = []
+        for row in reader:
+            destinations_list.append(DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+
 
         with open(self.destPath, 'w') as destinationsFile:
             fieldnames = ['country','flightTime','contact','emergencyNumber']
@@ -64,5 +75,5 @@ class UpdateIO:
 
 test = UpdateIO()
 
-test.addLicenseIO('2209955782', 'BOING')
+test.updateDestIO('Thorshavn', 'Darth', '7774444')
 
