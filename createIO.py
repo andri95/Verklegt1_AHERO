@@ -5,6 +5,7 @@ from staffData import StaffData
 from flightData import FlightData
 
 
+
 class CreateIO():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"
@@ -46,10 +47,14 @@ class CreateIO():
             writer = csv.DictWriter(flightsFile, fieldnames=fieldnames)
             writer.writerow({"flightNumber": newFlight.getFlightNumber(), "departingFrom": newFlight.getDepartingFrom(),
                             "arrivingAt": newFlight.getDrrivingAt() , "departure": newFlight.getDeparture(),
-                             "arrival": newFlight.getArrival() })
+                             "arrival": newFlight.getArrival()})
 
 
 
+
+newFlight = FlightData("NAN911", "MARS", "EARTH", "NOW", "NEVER")
+
+CreateIO().addNewFlight(newFlight)
 
 
 
