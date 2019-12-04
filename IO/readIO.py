@@ -1,9 +1,9 @@
 import csv
-from airplaneData import AirplaneData
-from staffData import StaffData
-from destinationData import DestinationData
-from flightData import FlightData
-from voyageData import VoyageData
+from Models.airplaneData import AirplaneData
+from Models.staffData import StaffData
+from Models.destinationData import DestinationData
+from Models.flightData import FlightData
+from Models.voyageData import VoyageData
 class ReadIo():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"

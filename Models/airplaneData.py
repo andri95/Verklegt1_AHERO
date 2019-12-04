@@ -19,3 +19,4 @@ class AirplaneData():
     def getCapacity(self):
         return self.capacity
 
+    fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival"]
