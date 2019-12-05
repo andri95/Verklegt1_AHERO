@@ -15,7 +15,7 @@ class MainIO:
         self.updateObject = UpdateIO()
 
     def addNewAirplaneIO(self):
-        return self.createObject.addNewFlight(self.model)
+        return self.createObject.addNewAirplane(self.model)
 
     def addNewStaffIO(self):
         return self.createObject.addNewStaff(self.model)

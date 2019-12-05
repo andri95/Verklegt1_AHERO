@@ -26,3 +26,8 @@ class MainLL:
 
     def getStaffDataLL(self):
         return self.staffObject.getStaffData(self.dataList)
+
+    def addNewStaffLL(self,newEmployee):
+        print(newEmployee)
+        return self.staffObject.addNewStaff(self.model)
+        
