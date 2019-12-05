@@ -5,13 +5,14 @@ from Models.destinationData import DestinationData
 from Models.flightData import FlightData
 from Models.voyageData import VoyageData
 from Models.fileHandler import FileHandler
-class ReadIo():
+
+class ReadIO:
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
-        self.destinationPath = "Data/DestinationData.csv"
+        self.destinationPath = "Data/Destinations.csv"
         self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
-        self.upcomingVoyagesPath = "Data/UpcomingVoyages"
+        self.upcomingVoyagesPath = "Data/UpcomingVoyages.csv"
 
 
     def getDestinations(self):
@@ -58,10 +59,10 @@ class ReadIo():
         for row in reader:
             airplane_list.append(AirplaneData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
 
-            return airplane_list
+        return airplane_list
 
     def getFlights(self):
-        fileObject = FileHandler(self.aircraftPath)
+        fileObject = FileHandler(self.upcomingFlightsPath)
         fileForRead = fileObject.readFile()
         reader = csv.DictReader(fileForRead)
         field_list = fileObject.findFieldNames()
@@ -69,6 +70,6 @@ class ReadIo():
         for row in reader:
             flights_list.append(
             FlightData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]],
-                               row[field_list[4]]))
+                        row[field_list[4]]))
         return flights_list
 

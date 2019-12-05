@@ -1,8 +1,8 @@
 
 class AirplaneData():
-    def __init__(self, planeId, type, Model, capacity):
+    def __init__(self, planeId, airtype, Model, capacity):
         self.planeId = planeId
-        self.type = type
+        self.type = airtype
         self.Model = Model
         self.capacity = capacity
 

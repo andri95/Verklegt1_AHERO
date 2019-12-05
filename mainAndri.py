@@ -1,5 +1,7 @@
 from IO.updateIO import UpdateIO
+from IO.readIO import ReadIO
+from IO.createIO import CreateIO
 
 
-iotest = UpdateIO()
-iotest.addLicenseIO('2209955782', 'BOING')
+iotest = ReadIO()
+iotest.getFlights()

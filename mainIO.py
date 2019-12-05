@@ -5,11 +5,44 @@ from IO.updateIO import UpdateIO
 
 class MainIO:
 
-    def __init__(self, dataList):
+    def __init__(self, dataList, model, flightFromKEF, flightToKEF):
         self.dataList = dataList
-        #self.createObject = CreateIO()
-        #self.readObject = ReadIO()
+        self.model = model
+        self.flightFromKEF = flightFromKEF
+        self.flightToKEF = flightToKEF
+        self.createObject = CreateIO()
+        self.readObject = ReadIO()
         self.updateObject = UpdateIO()
+
+    def addNewAirplaneIO(self):
+        return self.createObject.addNewFlight(self.model)
+
+    def addNewStaffIO(self):
+        return self.createObject.addNewStaff(self.model)
+
+    def addNewDestIO(self):
+        return self.createObject.addNewDest(self.model)
+
+    def addNewFlightIO(self):
+        return self.createObject.addNewFlight(self.model)
+
+    def addNewVoyageIO(self):
+        return self.createObject.addNewVoyage(self.flightFromKEF, self.flightToKEF, self.model)
+
+    def getDestinationsIO(self):
+        return self.readObject.getDestinations()
+
+    def getVoyagesIO(self):
+        return self.readObject.getVoyages()
+
+    def getStaffIO(self):
+        return self.readObject.getStaff()
+
+    def getAirplanesIO(self):
+        return self.readObject.getAirplanes()
+
+    def getFlightsIO(self):
+        return self.readObject.getFlights()
 
     def updateDestIO(self):
         return self.updateObject.updateDest(self.dataList)
