@@ -1,6 +1,6 @@
 
 from LL.staffLL import StaffLL
-
+from LL.AirplaneLL import AirplaneLL
 class MainLL:
 
     def __init__(self, dataList = None, model = None, flightFromKEF = None, flightToKEF = None):
@@ -14,8 +14,5 @@ class MainLL:
     def getAllStaffLL(self):
         return self.staffObject.getAllStaff()
 
-    def getAllPilotsLL(self):
-        return self.staffObject.getAllPilots()
-
-    def getAllCabinCrewLL(self):
-        return self.staffObject.getAllCabinCrew()
+    def getAllAirplanesLL(self):
+        return self.
