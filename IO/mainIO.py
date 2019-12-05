@@ -49,9 +49,4 @@ class MainIO:
 
     def addLicenseIO(self):
         return self.updateObject.addLicense(self.dataList)
-
-    
-
-    
-
-    
+ 
