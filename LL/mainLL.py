@@ -13,6 +13,9 @@ class MainLL:
 
     def getAllStaffLL(self):
         return self.staffObject.getAllStaff()
+    
+    def getStaffByIDLL(self, ssn):
+        return self.staffObject.getStaffByID(ssn)
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()

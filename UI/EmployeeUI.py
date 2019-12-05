@@ -13,13 +13,13 @@ class EmployeeMenu():
 #                   --@--@--(_)--@--@--                    #
 #__________________________________________________________#
 #                                                          #
-#                      Employees                           #
+#                        Employees                         #
 #                                                          #
-#           1. List employees                              #
-#           2. Register employees                          #
-#           3. Change employees                            #
-#           4. Add staff to voyage                         #
-#           5. Work schedule                               #
+#                 1. List employees                        #
+#                 2. Register employees                    #
+#                 3. Change employees                      #
+#                 4. Add staff to voyage                   #
+#                 5. Work schedule                         #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -34,14 +34,14 @@ class EmployeeMenu():
 #__________________________________________________________#
 #                                                          #
 #                                                          #
-#                  Employees                               #
+#                        Employees                         #
 #                                                          # 
-#              1. All employees                            #
-#              2. Pilots                                   #
-#              3. Flight attendants                        #
-#              4. Airplane managers                        #
-#              5. Human resources managers                 #
-#              6. Trip managers                            #
+#                   1. All employees                       #
+#                   2. Pilots                              #
+#                   3. Flight attendants                   #
+#                   4. Find employee                       #
+#                                                          #
+#                                                          #
 #                                                          #
 #                                                          #
 #  back(b)                                                 #
@@ -59,7 +59,7 @@ class EmployeeMenu():
                 self.listStaff()
 
             elif user_input == "2":
-                self.registerStaff()
+                self.addNewStaffUI()
 
             elif user_input == "q":
                 Goodbye()
@@ -96,6 +96,13 @@ class EmployeeMenu():
                 input("Enter any key to continue.")
                 
 
+            elif user_input == "4":
+                staffObject_list = self.mainObject.getAllStaffLL()
+                for staffMember in staffObject_list:
+                    print('Name: {}, SSN: {}'.format(staffMember.getName(), staffMember.getSSN()))
+                input_ssn = input("Enter social security number: ")
+                self.getStaffByID(input_ssn)   
+
             elif user_input == "q":
                 Goodbye()
 
@@ -105,7 +112,7 @@ class EmployeeMenu():
             else:
                 print("Invalid command")
 
-    def registerStaff(self):
+    def addNewStaffUI(self):
 
         ssn = input('Enter social security number: ')
         name = input('Enter name: ')
@@ -118,5 +125,9 @@ class EmployeeMenu():
         license_str = input('Enter license: ')
         newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
         self.mainObject.addNewStaffLL(newEmployee)
+
+    def getStaffByID(self, ssn):
+        staffMember = self.mainObject.getStaffByIDLL(ssn)
+        print(staffMember)
 
 
