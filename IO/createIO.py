@@ -12,7 +12,7 @@ class CreateIO():
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
-        self.destinationPath = "Data/DestinationData.csv"
+        self.destinationPath = "Data/Destinations.csv"
         self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
         self.upcomingVoyagesPath = "Data/UpcomingVoyages.csv"
 
@@ -50,9 +50,8 @@ class CreateIO():
         destinationFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(destinationFile, fieldnames=field_list)
-        writer.writerow({field_list[0]: newDestination.getDestName(), field_list[1]: newDestination.getFlightTime(),
-                         field_list[2]: newDestination.getDistance(), field_list[3]: newDestination.getPhoneNumber(),
-                         field_list[4]: newDestination.getContact()})
+        writer.writerow({field_list[0]: newDestination.getCountry(), field_list[1]: newDestination.getFlightTime()
+                         ,field_list[2]: newDestination.getContact(),field_list[3]: newDestination.getEmergencyNumber()})
         destinationFile.close()
 
     def addNewFlight(self, newFlight):

@@ -9,6 +9,12 @@ class StaffLL:
     def getAllStaff(self):
         return self.mainObject.getStaffIO()
 
+    def getStaffByID(self, ssn):
+        staffObject_list = self.mainObject.getStaffIO()
+        for staffMember in staffObject_list:
+            if staffMember.getSSN() == ssn:
+                return staffMember
+
     def getAllPilots(self):
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []

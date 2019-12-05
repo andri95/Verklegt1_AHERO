@@ -1,16 +1,21 @@
 
 from LL.staffLL import StaffLL
 from LL.AirplaneLL import AirplaneLL
+from LL.destinationLL import DestinationLL
 
 class MainLL:
 
     def __init__(self):
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
+        self.destinationObject = DestinationLL()
        
 
     def getAllStaffLL(self):
         return self.staffObject.getAllStaff()
+    
+    def getStaffByIDLL(self, ssn):
+        return self.staffObject.getStaffByID(ssn)
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
@@ -30,3 +35,8 @@ class MainLL:
     def addNewStaffLL(self, newEmployee):
         return self.staffObject.addNewStaff(newEmployee)
         
+    def getAllDestinationsLL(self):
+        return self.destinationObject.getDestination()
+
+    def addNewDestinationLL(self, newDestination):
+        return self.destinationObject.addNewDestination(newDestination)
