@@ -18,3 +18,8 @@ class MainLL:
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
+    def getAllPilotsLL(self):
+        return self.staffObject.getAllPilots()
+
+    def getAllCabinCrewLL(self):
+        return self.staffObject.getAllCabinCrew()

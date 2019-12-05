@@ -5,7 +5,6 @@ from LL.mainLL import MainLL
 
 
 iotest = MainLL()
-var = iotest.getAllStaffLL()
 
-for x in iotest.getAllStaffLL():
+for x in iotest.getAllCabinCrewLL():
     print(x.getName())
