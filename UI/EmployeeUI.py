@@ -1,6 +1,11 @@
-import quitUI
+
+from UI.quitUI import Goodbye
+from LL.mainLL import MainLL
+
 class EmployeeMenu():
     def __init__(self):
+        self.mainObject = MainLL()
+
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -51,24 +56,29 @@ class EmployeeMenu():
             elif var =="1":
                 self.Listemployees()
             elif var == "q":
-                quitUI.Goodbye()
+                Goodbye()
 
 
     def Listemployees(self):
-        print(self.SUBMENU1)
 
         while True:
+            print(self.SUBMENU1)
             var = input("Input a command: ")
             if var == "1":
-                print("Not yet implemented")
+                staffObject_list = self.mainObject.getAllStaffLL()
+                for staffMember in staffObject_list:
+                    print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+
             elif var == "2":
-                print("Not yet implemented")
+                cabinCrew_list = self.mainObject.getAllPilotsLL()
+                for staffMember in cabinCrew_list:
+                    print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
             elif var == "3":
                 print("Not yet implemented")
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                quitUI.Goodbye()
+                Goodbye()
             elif var == "0":
                 return
             else:
