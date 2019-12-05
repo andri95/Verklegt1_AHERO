@@ -1,4 +1,4 @@
-import quitUI
+from MainUI.quitUI import Goodbye
 class EmployeeMenu():
     def __init__(self):
         self.MAINMENU = """
