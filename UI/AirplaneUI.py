@@ -2,8 +2,7 @@ from airplaneData import AirplaneData
 from AirplaneLL import AirplaneLL
 from LL.mainLL import MainLL
 
-
-class AirplaneUI():
+class AirplaneMenu:
     def __init__(self):
         self.AirplaneLL = AirplaneLL()
 
@@ -30,7 +29,6 @@ class AirplaneUI():
 new_airplane = AirplaneUI()
 new_airplane.addAirplane()
 
-#print(new_airplane)
 
 
 

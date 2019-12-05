@@ -1,8 +1,9 @@
-from MainUI.AirplaneUI import AirplaneMenu
-from MainUI.DestinationUI import DestinationMenu
-from MainUI.EmployeeUI import EmployeeMenu
-from MainUI.VoyageUI import VoyageMenu
-from MainUI.quitUI import Goodbye
+from UI.AirplaneUI import AirplaneMenu
+from UI.DestinationUI import DestinationMenu
+from UI.EmployeeUI import EmployeeMenu
+from UI.VoyageUI import VoyageMenu
+from UI.quitUI import Goodbye
+
 class MainMenu():
     def __init__(self):
         self.MAINMENU = """

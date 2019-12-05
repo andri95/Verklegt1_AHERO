@@ -23,3 +23,6 @@ class MainLL:
 
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()
+
+    def getStaffDataLL(self):
+        return self.staffObject.getStaffData(self.dataList)

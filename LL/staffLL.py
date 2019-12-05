@@ -25,3 +25,11 @@ class StaffLL:
                 cabinCrewObject_list.append(staffMember)
         return cabinCrewObject_list
 
+    def getStaffData(self, dataList):
+        staffObject_list = self.mainObject.getStaffIO()
+        for staffMember in staffObject_list:
+            if staffMember.getSSN() == dataList[0]:
+                return staffMember
+
+    
+
