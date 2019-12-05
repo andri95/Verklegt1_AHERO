@@ -1,14 +1,19 @@
 from IO.mainIO import MainIO
 
+
+
 class AirplaneLL():
     def __init__(self):
         self.mainObject = MainIO()
 
     def validateAirPlaneData(self, new_airplane):
-        return
+        print(type(new_airplane))
+        flag = True
+        if flag == True:
+            #self.AirplaneIO.addNewAirplane(new_airplane)
+            return True
 
     def getAirplanes(self):
-        print(self.mainObject.getAirplanesIO())
         return self.mainObject.getAirplanesIO()
 
     def getAirplaneStatus(self):
@@ -19,7 +24,7 @@ class AirplaneLL():
 
     def __str__(self):
         return
-
+        #return"{}".format(self.AirplaneIO)
 
 
 
