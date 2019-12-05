@@ -1,6 +1,7 @@
 
 from UI.quitUI import Goodbye
 from LL.mainLL import MainLL
+from Models.staffData import StaffData
 
 class EmployeeMenu():
     def __init__(self):
@@ -50,36 +51,66 @@ class EmployeeMenu():
     def start(self):
         print(self.MAINMENU)
         while True:
-            var = input("Input a command:")
-            if var == "0":
+            user_input = input("Input a command:")
+            if user_input == "0":
                 return
-            elif var =="1":
-                self.Listemployees()
-            elif var == "q":
+
+            elif user_input == "1":
+                self.listStaff()
+
+            elif user_input == "2":
+                self.registerStaff()
+
+            elif user_input == "q":
                 Goodbye()
 
+            else:
+                print("Invalid command!")
 
-    def Listemployees(self):
+
+    def listStaff(self):
 
         while True:
+
             print(self.SUBMENU1)
-            var = input("Input a command: ")
-            if var == "1":
+            user_input = input("Input a command: ")
+
+            if user_input == "1":
                 staffObject_list = self.mainObject.getAllStaffLL()
                 for staffMember in staffObject_list:
                     print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
 
-            elif var == "2":
-                cabinCrew_list = self.mainObject.getAllPilotsLL()
-                for staffMember in cabinCrew_list:
+            elif user_input == "2":
+                pilotObject_list = self.mainObject.getAllPilotsLL()
+                for staffMember in pilotObject_list:
                     print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
-            elif var == "3":
-                print("Not yet implemented")
-            elif var == "4":
-                print("Not yet implemented")
-            elif var == "q":
+
+            elif user_input == "3":
+                cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
+                for staffMember in cabinCrewObject_list:
+                    print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+
+            elif user_input == "q":
                 Goodbye()
-            elif var == "0":
-                return
+
+            elif user_input == "0":
+                self.start()
+
             else:
                 print("Invalid command")
+
+    def registerStaff(self):
+
+        ssn = input('Enter social security number: ')
+        name = input('Enter name: ')
+        cellPhone = input('Enter cell phone: ')
+        phoneNumber = input('Enter phone number: ')
+        email = input('Enter email: ')
+        role = input('Enter role: ')
+        rank = input('Enter rank: ')
+        license_str = input('Enter license: ')
+        newEmployee = StaffData(ssn, name, cellPhone, phoneNumber, email, role, rank, license_str)
+        mainObject = MainLL(newEmployee)
+        mainObject.addNewStaffLL()
+
+
