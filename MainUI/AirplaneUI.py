@@ -1,4 +1,5 @@
-import quitUI
+from MainUI.quitUI import Goodbye
+
 class AirplaneMenu:
     def __init__(self):
         self.MAINMENU = """
@@ -27,7 +28,9 @@ class AirplaneMenu:
         while True:
             var = input("Input a command: ")
             if var == "1":
-                print("Not yet implemented")
+                airplanes = [str(a) for a in AirplaneLL().getAirplanes()]
+                for types in airplanes:
+                    print(types)
             elif var == "2":
                 print("Not yet implemented")
             elif var == "3":

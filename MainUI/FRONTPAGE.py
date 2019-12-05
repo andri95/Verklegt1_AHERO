@@ -54,4 +54,3 @@ class MainMenu():
 
 
 
-MainMenu()

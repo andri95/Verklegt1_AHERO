@@ -1,10 +1,10 @@
-from staffIO import StaffIO
+
+from IO.mainIO import MainIO
 
 class StaffLL:
 
     def __init__(self):
-        self.StaffIO = StaffIO()
+        self.mainObject = MainIO()       
 
-    def getAllStaffLL(self):
-        staffMembersIO = StaffIO()
-        return staffMembersIO.getAllStaffIO
+    def getAllStaff(self):
+        return self.mainObject.getStaffIO()
