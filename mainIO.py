@@ -5,7 +5,7 @@ from IO.updateIO import UpdateIO
 
 class MainIO:
 
-    def __init__(self, dataList, model, flightFromKEF, flightToKEF):
+    def __init__(self, dataList = None, model = None, flightFromKEF = None, flightToKEF = None):
         self.dataList = dataList
         self.model = model
         self.flightFromKEF = flightFromKEF
