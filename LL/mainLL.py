@@ -2,6 +2,7 @@
 from LL.staffLL import StaffLL
 from LL.AirplaneLL import AirplaneLL
 from LL.destinationLL import DestinationLL
+from LL.VoyageLL import VoyageLL
 
 class MainLL:
 
@@ -9,6 +10,7 @@ class MainLL:
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
         self.destinationObject = DestinationLL()
+        self.voyageObject = VoyageLL()
        
 
     def getAllStaffLL(self):
@@ -19,6 +21,9 @@ class MainLL:
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
+
+    def getVoyageLL(self):
+        return self.voyageObject.listVoyage()
 
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()

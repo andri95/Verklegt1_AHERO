@@ -79,16 +79,22 @@ class EmployeeMenu():
                 staffObject_list = self.mainObject.getAllStaffLL()
                 for staffMember in staffObject_list:
                     print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+                input("Enter any key to continue.")
+                
 
             elif user_input == "2":
                 pilotObject_list = self.mainObject.getAllPilotsLL()
                 for staffMember in pilotObject_list:
                     print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+                input("Enter any key to continue.")
+                
 
             elif user_input == "3":
                 cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
                 for staffMember in cabinCrewObject_list:
                     print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+                input("Enter any key to continue.")
+                
 
             elif user_input == "4":
                 staffObject_list = self.mainObject.getAllStaffLL()

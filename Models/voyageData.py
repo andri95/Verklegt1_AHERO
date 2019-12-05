@@ -10,6 +10,11 @@ class VoyageData:
         self.airplane = airplane
 
 
+    def getFlightOne(self):
+        return self.flightNumber1
+
+    def getFlightTwo(self):
+        return self.flightNumber2
     def getPilot(self):
         return self.pilot
 
@@ -25,11 +30,11 @@ class VoyageData:
     def getAirplane(self):
         return self.airplane
 
+    def __str__(self):
+        return f"Pilot: {self.pilot} Co-pilot. {self.coPilot} Flight attendants: {self.fa1} {self.fa2} Airplane: {self.airplane}"
 
 
-    #def __str__(self):
 
-        #return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
 
     def __str__(self):
         return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
