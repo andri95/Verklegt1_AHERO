@@ -4,7 +4,7 @@ from IO.mainIO import MainIO
 class StaffLL:
 
     def __init__(self):
-        #self.mainObject = MainIO()       
+        self.mainObject = MainIO()       
 
     def getAllStaff(self):
         return self.mainObject.getStaffIO()
@@ -31,8 +31,8 @@ class StaffLL:
             if staffMember.getSSN() == dataList[0]:
                 return staffMember
 
-    def addNewStaff(self, model):
-        return self.mainObject.addNewStaffIO(model)
+    def addNewStaff(self, newEmployee):
+        return self.mainObject.addNewStaffIO(newEmployee)
 
     
 
