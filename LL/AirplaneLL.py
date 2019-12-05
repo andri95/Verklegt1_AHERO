@@ -1,10 +1,10 @@
-from IO.readIO import ReadIO
-from LL.AirplaneLL import AirplaneLL
+from IO.mainIO import MainIO
+
 
 
 class AirplaneLL():
     def __init__(self):
-        self.readIo = ReadIO()
+        self.mainObject = MainIO()
 
     def validateAirPlaneData(self, new_airplane):
         print(type(new_airplane))
@@ -13,8 +13,12 @@ class AirplaneLL():
             #self.AirplaneIO.addNewAirplane(new_airplane)
             return True
 
+    def addAirplane(self):
+        return self.mainObject.addNewAirplaneIO()
+
+
     def getAirplanes(self):
-        return self.readIo.getAirplanes()
+        return self.mainObject.getAirplanesIO()
 
     def getAirplaneStatus(self):
         pass
