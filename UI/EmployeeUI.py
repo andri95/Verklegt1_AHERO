@@ -39,9 +39,9 @@ class EmployeeMenu():
 #              1. All employees                            #
 #              2. Pilots                                   #
 #              3. Flight attendants                        #
-#              4. Airplane managers                        #
-#              5. Human resources managers                 #
-#              6. Trip managers                            #
+#                                                          #
+#                                                          #
+#                                                          #
 #                                                          #
 #                                                          #
 #  back(b)                                                 #
