@@ -1,5 +1,6 @@
 
 from LL.staffLL import StaffLL
+from LL.AirplaneLL import AirplaneLL
 
 class MainLL:
 
@@ -9,7 +10,11 @@ class MainLL:
         self.flightFromKEF = flightFromKEF
         self.flightToKEF = flightToKEF
         self.staffObject = StaffLL()
+        self.airplaneObject = AirplaneLL()
         #self.airplaneObject = AirplaneLL()
 
     def getAllStaffLL(self):
         return self.staffObject.getAllStaff()
+
+    def getAirplanesLL(self):
+        return self.airplaneObject.getAirplanes()
