@@ -31,5 +31,8 @@ class StaffLL:
             if staffMember.getSSN() == dataList[0]:
                 return staffMember
 
+    def addNewStaff(self, newEmployee):
+        return self.mainObject.addNewStaffIO(newEmployee)
+
     
 

@@ -1,9 +1,12 @@
 from UI.quitUI import Goodbye
 from Models.airplaneData import AirplaneData
 from LL.mainLL import MainLL
+from Models.flightData import FlightData
+
 
 class AirplaneMenu:
     def __init__(self):
+
         self.mainObject = MainLL()
         self.MAINMENU = """
 ############################################################
@@ -42,12 +45,12 @@ class AirplaneMenu:
                 types = input("Enter Airplane type: ")
                 model = input("Enter Model name: ")
                 capacity = input("Enter Airplane Capacity")
-                newAirplane = AirplaneData(planeID, types,model,capacity)
-                MainLL().AirplaneLL.addAirplane(newAirplane)
+                newAirplane = AirplaneData(planeID, types, model, capacity)
+                self.mainObject.addAirplaneLL(newAirplane)
                 print("New airplane saved!")
                 input("Press any key to continue.")
                 break
-          
+
             elif var == "q":
                 Goodbye()
                 break
@@ -55,9 +58,3 @@ class AirplaneMenu:
                 return
             else:
                 print("Invalid command")
-
-
-
-
-
-

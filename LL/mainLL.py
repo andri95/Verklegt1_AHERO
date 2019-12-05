@@ -1,16 +1,14 @@
 
 from LL.staffLL import StaffLL
 from LL.AirplaneLL import AirplaneLL
+from LL.VoyageLL import VoyageLL
 
 class MainLL:
 
-    def __init__(self, dataList = None, model = None, flightFromKEF = None, flightToKEF = None):
-        self.dataList = dataList
-        self.model = model
-        self.flightFromKEF = flightFromKEF
-        self.flightToKEF = flightToKEF
+    def __init__(self):
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
+        self.voyageObject = VoyageLL()
        
 
     def getAllStaffLL(self):
@@ -18,11 +16,22 @@ class MainLL:
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
+
+    def getVoyageLL(self):
+        return self.voyageObject.listVoyage()
+
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()
 
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()
 
-    def getStaffDataLL(self):
-        return self.staffObject.getStaffData(self.dataList)
+    def addAirplaneLL(self, newAirplane):
+        return self.airplaneObject.addAirplane(newAirplane)
+
+    def getStaffDataLL(self, dataList):
+        return self.staffObject.getStaffData(dataList)
+
+    def addNewStaffLL(self, newEmployee):
+        return self.staffObject.addNewStaff(newEmployee)
+        

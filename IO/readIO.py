@@ -38,6 +38,8 @@ class ReadIO:
                 VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[6]], row[field_list[7]], row[field_list[8]],
                            row[field_list[9]], row[field_list[10]]))
 
+        return voyages_list
+
     def getStaff(self):
         fileObject = FileHandler(self.crewPath)
         fileForRead = fileObject.readFile()
