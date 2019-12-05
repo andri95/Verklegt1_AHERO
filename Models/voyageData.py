@@ -1,28 +1,14 @@
 
 class VoyageData:
-    def __init__(self, flightDep, flightArr, departureFromKEF, arrivalToKEF, pilot, coPilot, fa1, fa2, airplane):
-        self.flightDep = flightDep
-        self.flightArr = flightArr
-        self.departureFromKEF = departureFromKEF
-        self.arrivalToKEF = arrivalToKEF
+    def __init__(self, flight1, flight2,pilot, coPilot, fa1, fa2, airplane):
+        self.flightNumber1 = flight1
+        self.flightNumber2 = flight2
         self.pilot = pilot
         self.coPilot = coPilot
         self.fa1 = fa1
         self.fa2 = fa2
         self.airplane = airplane
 
-
-    def getFlightDep(self):
-        return self.flightDep
-
-    def getFlightArr(self):
-        return self.flightArr
-
-    def getDepartureFromKEF(self):
-        return self.departureFromKEF
-
-    def getArrivalToKEF(self):
-        return self.arrivalToKEF
 
     def getPilot(self):
         return self.pilot
