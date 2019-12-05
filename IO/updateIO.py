@@ -1,8 +1,7 @@
+import csv
 from Models.destinationData import DestinationData
 from Models.staffData import StaffData
 from Models.fileHandler import FileHandler
-import csv
-
 
 class UpdateIO:
 
@@ -10,7 +9,7 @@ class UpdateIO:
         self.destPath = 'Data/Destinations.csv'
         self.licensePath = 'Data/Crew.csv'
 
-    def updateDestIO(self, country, contact, emergencyNumber):
+    def updateDest(self, dataList):
 
         # FileHandler DTO instance created
         fileObject = FileHandler(self.destPath)
@@ -40,40 +39,50 @@ class UpdateIO:
         fieldnames = ['country', 'flightTime', 'contact', 'emergencyNumber']
         writer = csv.DictWriter(destinationsFile, fieldnames=fieldnames)
         for destination in destinations_list:
-            if destination.getCountry() == country:
-                destination.setContact(contact)
-                destination.setEmergencyNumber(emergencyNumber)
+            if destination.getCountry() == dataList[0]:
+                destination.setContact(dataList[1])
+                destination.setEmergencyNumber(dataList[2])
             writer.writerow({'country': destination.getCountry(), 'flightTime': destination.getFlightTime(),
                              'contact': destination.getContact(), 'emergencyNumber': destination.getEmergencyNumber()})
 
         # File closed
         destinationsFile.close()
 
-    def addLicenseIO(self, SSN, newLicense):
+    def addLicense(self, dataList):
 
-        with open(self.licensePath, 'r') as crewFile:
-            reader = csv.DictReader(crewFile)
-            crew_list = []
-
-            for row in reader:
-                crew_list.append(
-                    StaffData(row['ssn'], row['name'], row['address'], row['cellPhone'], row['phoneNumber'],
-                              row['email'], row['role'], row['rank'], row['licence']))
-
-        with open(self.licensePath, 'w') as crewFile:
-            fieldnames = ['ssn', 'name', 'address', 'cellPhone', 'phoneNumber', 'email', 'role', 'rank', 'licence']
-            writer = csv.DictWriter(crewFile, fieldnames=fieldnames)
-            writer.writeheader()
-
-        with open(self.licensePath, 'a') as crewFile:
-            fieldnames = ['ssn', 'name', 'address', 'cellPhone', 'phoneNumber', 'email', 'role', 'rank', 'licence']
-            writer = csv.DictWriter(crewFile, fieldnames=fieldnames)
-            for employee in crew_list:
-                if employee.getSSN() == SSN:
-                    employee.setLicense(newLicense)
-                writer.writerow({'ssn': employee.getSSN(), 'name': employee.getName(), 'address': employee.getAddress(),
-                                 'cellPhone': employee.getCellPhone(), 'phoneNumber': employee.getPhoneNumber(),
-                                 'email': employee.getEmail(),
-                                 'role': employee.getRole(), 'rank': employee.getRank(),
-                                 'licence': employee.getLicence()})
+        # FileHandler DTO instance created
+        fileObject = FileHandler(self.licensePath)
+ 
+        # File opened with readFile()
+        crewFile = fileObject.readFile()
+        reader = csv.DictReader(crewFile)
+        crew_list = []
+        for row in reader:
+            crew_list.append(StaffData(row['ssn'], row['name'], row['address'], row['cellPhone'], row['phoneNumber'], row['email'], row['role'], row['rank'], row['licence']))
+       
+        # File closed
+        crewFile.close()
+ 
+        # File opened with writeFile()
+        crewFile = fileObject.writeFile()
+        fieldnames = ['ssn','name','address','cellPhone','phoneNumber','email','role','rank','licence']
+        writer = csv.DictWriter(crewFile, fieldnames=fieldnames)
+        writer.writeheader()
+ 
+        # File closed
+        crewFile.close()
+ 
+        # File opened with appendFile()
+        crewFile = fileObject.appendFile()
+        fieldnames = ['ssn','name','address','cellPhone','phoneNumber','email','role','rank','licence']
+        writer = csv.DictWriter(crewFile, fieldnames=fieldnames)
+        for employee in crew_list:
+            if employee.getSSN() == dataList[0]:
+                employee.setLicense(dataList[1])
+            writer.writerow({'ssn': employee.getSSN(),'name': employee.getName(),'address': employee.getAddress(),
+                            'cellPhone': employee.getCellPhone(),'phoneNumber': employee.getPhoneNumber(),'email': employee.getEmail(),
+                            'role': employee.getRole(),'rank': employee.getRank(),'licence': employee.getLicence()})
+ 
+        # File closed
+        crewFile.close()
 

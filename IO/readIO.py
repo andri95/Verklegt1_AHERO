@@ -4,7 +4,9 @@ from Models.staffData import StaffData
 from Models.destinationData import DestinationData
 from Models.flightData import FlightData
 from Models.voyageData import VoyageData
-class ReadIo():
+from Models.fileHandler import FileHandler
+
+class ReadIO():
     def __init__(self):
         self.aircraftPath = "AircraftType.csv"
         self.crewPath = "Crew.csv"
