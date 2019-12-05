@@ -111,6 +111,6 @@ class EmployeeMenu():
         license_str = input('Enter license: ')
         newEmployee = StaffData(ssn, name, cellPhone, phoneNumber, email, role, rank, license_str)
         mainObject = MainLL(newEmployee)
-        mainObject.addNewStaffLL()
+        mainObject.addNewStaffLL(newEmployee)
 
 
