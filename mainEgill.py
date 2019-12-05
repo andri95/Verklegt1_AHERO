@@ -1,8 +1,7 @@
 
-from LL.mainLL import MainLL
+from UI.FRONTPAGE import MainMenu
 
-iotest = MainLL()
+#airplaneLL = AirplaneLL()
 
-var = iotest.get
-print(var)
+MainMenu()
 

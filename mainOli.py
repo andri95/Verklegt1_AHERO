@@ -1,5 +1,5 @@
 
-from MainUI.FRONTPAGE import MainMenu
+from UI.FRONTPAGE import MainMenu
 
 #airplaneLL = AirplaneLL()
 

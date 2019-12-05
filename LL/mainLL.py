@@ -14,11 +14,15 @@ class MainLL:
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
+
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()
 
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()
+
+    def addAirplaneLL(self, newAirplane):
+        return self.airplaneObject.addAirplane(newAirplane)
 
     def getStaffDataLL(self, dataList):
         return self.staffObject.getStaffData(dataList)
