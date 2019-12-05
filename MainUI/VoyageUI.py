@@ -1,23 +1,24 @@
-class voyageMenu():
+import quitUI
+class VoyageMenu():
     def __init__(self):
         self.MAINMENU = """
 ############################################################
-#		           _|_	                       quit(q)     #		  
-#		    --@--@--(_)--@--@--	 		                   #
+#                           _|_	               quit(q)     #
+#                   --@--@--(_)--@--@--                    #
 #__________________________________________________________#
-#							                               #
-#			   Voyage		                               #
-#							                               #
-#			1.List voyages			                       #
-#			2.Add voyage		                           #
-#			3.Edit voyage                                  #
-#			4.                                             #
-#			                                               #
-#							                               #
-#							                               #
-#							                               #
-#							                               #
-#  0.Back 					                               #
+#                                                          #
+#                         Voyage                           #
+#                                                          #
+#                 1.List voyages                           #
+#                 2.Add voyage                             #
+#                 3.Edit voyage                            #
+#                 4.?                                      #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#  0.Back                                                  #
 ############################################################	
 """
         self.start()
@@ -38,7 +39,7 @@ class voyageMenu():
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                Goodbye()
+                quitUI.Goodbye()
             elif var == "0":
                 return
             else:

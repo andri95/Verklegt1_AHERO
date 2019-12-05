@@ -1,7 +1,8 @@
-from MainUI.AirplaneUI import AirplaneUI
-from MainUI.DestinationUI import DestinationUI
-from MainUI.EmployeeUI import EmployeeUI
-from MainUI.VoyageUI import VoyageUI
+import AirplaneUI
+import DestinationUI
+import EmployeeUI
+import VoyageUI
+import quitUI
 class MainMenu():
     def __init__(self):
         self.MAINMENU = """
@@ -34,22 +35,23 @@ class MainMenu():
 
 
     def start(self):
-        print(self.MAINMENU)
 
         while True:
+            print(self.MAINMENU)
             var = input("Input a command: ")
             if var =="1":
-                voyageMenu()
+                VoyageUI.VoyageMenu()
             elif var == "2":
-                employeemenu()
+                EmployeeUI.EmployeeMenu()
             elif var =="3":
-                destinationmenu()
+                DestinationUI.DestinationMenu()
             elif var =="4":
-                Airplanemenu()
+                AirplaneUI.AirplaneMenu()
             elif var =="q":
-                Goodbye()
+                quitUI.Goodbye()
             else:
                 print("Invalid command")
 
 
 
+MainMenu()

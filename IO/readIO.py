@@ -8,10 +8,11 @@ from Models.fileHandler import FileHandler
 
 class ReadIO():
     def __init__(self):
-        self.aircraftPath = "AircraftType.csv"
-        self.crewPath = "Crew.csv"
-        self.destinationPath = "DestinationData.csv"
-        self.upcomingFlightsPath = "UpcomingFlights.csv"
+        self.aircraftPath = "Data/AircraftType.csv"
+        self.crewPath = "Data/Crew.csv"
+        self.destinationPath = "Data/DestinationData.csv"
+        self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
+        self.upcomingVoyagesPath = "Data/UpcomingVoyages"
 
 
     def getDestinations(self):
@@ -25,7 +26,12 @@ class ReadIO():
         return destination_list
 
     def getVoyages(self):
-        pass
+        with open(self.upcomingVoyagesPath, 'r') as upcomingVoyagesFile:
+            reader = csv.DictReader(upcomingVoyagesFile)
+            voyages_list = []
+            for row in reader:
+                voyages_list.append(
+                    VoyageData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
 
     def getStaff(self):
         with open(self.crewPath, 'r') as crewFile:

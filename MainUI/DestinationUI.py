@@ -1,23 +1,24 @@
-class destinationmenu():
+import quitUI
+class DestinationMenu():
     def __init__(self):
         self.MAINMENU = """
 ############################################################
-#		           _|_	                      quit(q)#     #  
-#		    --@--@--(_)--@--@--	 		                   #
+#                           _|_	               quit(q)     #
+#                   --@--@--(_)--@--@--                    #
 #__________________________________________________________#
-#			Destinations			                       #	   			   
-#							                               #
-#							                               #
-#							                               #  
-#		   1. All destinations                             #
-#		   2. Add a new destination                        #             
-#		                                                   #
+#                      Destinations                        #	   			   
 #                                                          #
-#							                               #
 #                                                          #
-#							                               #
-#							                               #	
-#							                               #
+#                                                          #  
+#                  1. All destinations                     #
+#                  2. Add a new destination                #             
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #	
+#                                                          #
 ############################################################
 """
         self.start()
@@ -35,7 +36,7 @@ class destinationmenu():
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                Goodbye()
+                quitUI.Goodbye()
             elif var == "0":
                 return
             else:

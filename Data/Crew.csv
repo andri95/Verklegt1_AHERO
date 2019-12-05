@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ssn,name,address,cellPhone,phoneNumber,email,role,rank,licence
 2209955782,Allen Ley,Marylane85,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NABAE146
 2907675667,Felecia Moye,Marylane86,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NABAE146
@@ -18,3 +19,25 @@ ssn,name,address,cellPhone,phoneNumber,email,role,rank,licence
 1,2,3,4,5,6,7,8,N/A
 1,2,3,4,5,6,7,8,N/A
 1,2,3,4,5,6,7,8,N/A
+=======
+ssn,name,address,cellPhone,phoneNumber,email,role,rank,licence
+2209955782,Allen Ley,Marylane85,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NABAE146/BOING/BOINGggggg
+2907675667,Felecia Moye,Marylane86,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NABAE146
+1309797899,Tyler Anderson,Marylane87,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NAFokkerF28
+2410876598,Nan Gage,Pilot,Marylane88,86940129,2358266,Allenley@nanair.com,Copilot,NAFokkerF100
+2211658134,Charla Johnson,Marylane89,86940129,2358266,Allenley@nanair.com,Pilot,Copilot,NABAE146
+2504939263,Sam Preciado,Marylane90,86940129,2358266,Allenley@nanair.com,Pilot,Copilot,NABAE146
+1405853585,Lula Stefani,Marylane91,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Service Manager,N/A
+0909862878,Richard Sanders,Marylane92,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Service Manager,N/A
+1811931544,John Kline,Marylane93,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Service Manager,N/A
+0409858797,Evelyn Pickhardt,Marylane94,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Service Manager,N/A
+3002688722,Stacey Henrickson,Marylane95,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Attendant,N/A
+3003962187,Delores Whitfield,Marylane96,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Attendant,N/A
+1311772221,Maribel Lucero,Marylan975,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Attendant,N/A
+2509913418,Katherine Wernimont,Marylane98,86940129,2358266,Allenley@nanair.com,Cabincrew,Flight Attendant,N/A
+1,2,3,4,5,6,7,8,N/A
+1,2,3,4,5,6,7,8,N/A
+1,2,3,4,5,6,7,8,N/A
+1,2,3,4,5,6,7,8,N/A
+1,2,3,4,5,6,7,8,N/A
+>>>>>>> fe9095908bc8f66a11b58e272557180a41e15d97
