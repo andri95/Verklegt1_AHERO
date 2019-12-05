@@ -5,8 +5,7 @@ from Models.destinationData import DestinationData
 from Models.flightData import FlightData
 from Models.voyageData import VoyageData
 from Models.fileHandler import FileHandler
-
-class ReadIO():
+class ReadIo():
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
@@ -16,49 +15,60 @@ class ReadIO():
 
 
     def getDestinations(self):
-        with open(self.destinationPath, 'r') as destinationFile:
-            reader = csv.DictReader(destinationFile)
-            destination_list = []
-            for row in reader:
-                destination_list.append(
-                    DestinationData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+        fileObject = FileHandler(self.destinationPath)
+        fileForRead = fileObject.readFile()
+        reader = csv.DictReader(fileForRead)
+        field_list = fileObject.findFieldNames()
+        destination_list = []
+        for row in reader:
+            destination_list.append(
+            DestinationData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
 
         return destination_list
 
     def getVoyages(self):
-        with open(self.upcomingVoyagesPath, 'r') as upcomingVoyagesFile:
-            reader = csv.DictReader(upcomingVoyagesFile)
-            voyages_list = []
-            for row in reader:
-                voyages_list.append(
-                    VoyageData(row['country'], row['flightTime'], row['contact'], row['emergencyNumber']))
+        fileObject = FileHandler(self.upcomingVoyagesPath)
+        fileForRead = fileObject.readFile()
+        reader = csv.DictReader(fileForRead)
+        field_list = fileObject.findFieldNames()
+        voyages_list = []
+        for row in reader:
+            voyages_list.append(
+                VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[6]], row[field_list[7]], row[field_list[8]],
+                           row[field_list[9]], row[field_list[10]]))
 
     def getStaff(self):
-        with open(self.crewPath, 'r') as crewFile:
-            reader = csv.DictReader(crewFile)
-            crew_list = []
-            for row in reader:
-                crew_list.append(StaffData(row['ssn'], row['name'], row['address'], row['cellPhone'],
-                row['phoneNumber'], row['email'], row['role'], row['rank'], row['licence']))
+        fileObject = FileHandler(self.crewPath)
+        fileForRead = fileObject.readFile()
+        reader = csv.DictReader(fileForRead)
+        field_list = fileObject.findFieldNames()
+        crew_list = []
+        for row in reader:
+            crew_list.append(StaffData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]],
+            row[field_list[4]], row[field_list[5]], row[field_list[6]], row[field_list[7]], row[field_list[8]]))
 
         return crew_list
 
     def getAirplanes(self):
-        with open(self.aircraftPath, 'r') as airplaneFile:
-            reader = csv.DictReader(airplaneFile)
-            airplane_list = []
-            for row in reader:
-                airplane_list.append(AirplaneData(row["planeTypeId"], row["planeType"], row["model"], row["capacity"]))
+        fileObject = FileHandler(self.aircraftPath)
+        fileForRead = fileObject.readFile()
+        reader = csv.DictReader(fileForRead)
+        field_list = fileObject.findFieldNames()
+        airplane_list = []
+        for row in reader:
+            airplane_list.append(AirplaneData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
 
             return airplane_list
 
     def getFlights(self):
-        with open(self.upcomingFlightsPath, 'r') as upcomingFlightsFile:
-            reader = csv.DictReader(upcomingFlightsFile)
-            flights_list = []
-            for row in reader:
-                flights_list.append(
-                    FlightData(row['flightNumber'], row['departingFrom'], row['arrivingAt'], row['departure'],
-                               row['arrival']))
+        fileObject = FileHandler(self.aircraftPath)
+        fileForRead = fileObject.readFile()
+        reader = csv.DictReader(fileForRead)
+        field_list = fileObject.findFieldNames()
+        flights_list = []
+        for row in reader:
+            flights_list.append(
+            FlightData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]],
+                               row[field_list[4]]))
         return flights_list
 
