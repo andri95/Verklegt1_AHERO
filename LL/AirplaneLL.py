@@ -6,6 +6,7 @@ class AirplaneLL():
     def __init__(self):
         self.mainObject = MainIO()
 
+
     def validateAirPlaneData(self, new_airplane):
         print(type(new_airplane))
         flag = True
@@ -13,9 +14,8 @@ class AirplaneLL():
             #self.AirplaneIO.addNewAirplane(new_airplane)
             return True
 
-    def addAirplane(self):
-        return self.mainObject.addNewAirplaneIO()
-
+    def addAirplane(self, newAirplane):
+        return self.mainObject.addNewAirplaneIO(newAirplane)
 
     def getAirplanes(self):
         return self.mainObject.getAirplanesIO()

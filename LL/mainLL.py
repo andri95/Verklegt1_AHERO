@@ -24,6 +24,9 @@ class MainLL:
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()
 
+    def addAirplaneLL(self, newAirplane):
+        return self.airplaneObject.addAirplane(newAirplane)
+
     def getStaffDataLL(self, dataList):
         return self.staffObject.getStaffData(dataList)
 
