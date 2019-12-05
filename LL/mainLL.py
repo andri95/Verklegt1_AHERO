@@ -4,11 +4,7 @@ from LL.AirplaneLL import AirplaneLL
 
 class MainLL:
 
-    def __init__(self, dataList = None, model = None, flightFromKEF = None, flightToKEF = None):
-        self.dataList = dataList
-        self.model = model
-        self.flightFromKEF = flightFromKEF
-        self.flightToKEF = flightToKEF
+    def __init__(self):
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
        
@@ -24,10 +20,9 @@ class MainLL:
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()
 
-    def getStaffDataLL(self):
-        return self.staffObject.getStaffData(self.dataList)
+    def getStaffDataLL(self, dataList):
+        return self.staffObject.getStaffData(dataList)
 
-    def addNewStaffLL(self,newEmployee):
-        print(newEmployee)
-        return self.staffObject.addNewStaff(self.model)
+    def addNewStaffLL(self, newEmployee):
+        return self.staffObject.addNewStaff(newEmployee)
         

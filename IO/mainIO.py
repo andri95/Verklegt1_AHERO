@@ -5,29 +5,25 @@ from IO.updateIO import UpdateIO
 
 class MainIO:
 
-    def __init__(self, dataList = None, model = None, flightFromKEF = None, flightToKEF = None):
-        self.dataList = dataList
-        self.model = model
-        self.flightFromKEF = flightFromKEF
-        self.flightToKEF = flightToKEF
+    def __init__(self):
         self.createObject = CreateIO()
         self.readObject = ReadIO()
         self.updateObject = UpdateIO()
 
-    def addNewAirplaneIO(self):
-        return self.createObject.addNewAirplane(self.model)
+    def addNewAirplaneIO(self, newAirplane):
+        return self.createObject.addNewAirplane(newAirplane)
 
-    def addNewStaffIO(self):
-        return self.createObject.addNewStaff(self.model)
+    def addNewStaffIO(self, newEmployee):
+        return self.createObject.addNewStaff(newEmployee)
 
-    def addNewDestIO(self):
-        return self.createObject.addNewDest(self.model)
+    def addNewDestIO(self, newDestination):
+        return self.createObject.addNewDest(newDestination)
 
-    def addNewFlightIO(self):
-        return self.createObject.addNewFlight(self.model)
+    def addNewFlightIO(self, newFlight):
+        return self.createObject.addNewFlight(newFlight)
 
-    def addNewVoyageIO(self):
-        return self.createObject.addNewVoyage(self.flightFromKEF, self.flightToKEF, self.model)
+    def addNewVoyageIO(self, flightFromKEF, flightToKEF, newVoyage):
+        return self.createObject.addNewVoyage(flightFromKEF, flightToKEF, newVoyage)
 
     def getDestinationsIO(self):
         return self.readObject.getDestinations()
@@ -44,9 +40,9 @@ class MainIO:
     def getFlightsIO(self):
         return self.readObject.getFlights()
 
-    def updateDestIO(self):
-        return self.updateObject.updateDest(self.dataList)
+    def updateDestIO(self, dataList):
+        return self.updateObject.updateDest(dataList)
 
-    def addLicenseIO(self):
-        return self.updateObject.addLicense(self.dataList)
+    def addLicenseIO(self, dataList):
+        return self.updateObject.addLicense(dataList)
  

@@ -103,14 +103,14 @@ class EmployeeMenu():
 
         ssn = input('Enter social security number: ')
         name = input('Enter name: ')
+        address = input('Enter address: ')
         cellPhone = input('Enter cell phone: ')
         phoneNumber = input('Enter phone number: ')
         email = input('Enter email: ')
         role = input('Enter role: ')
         rank = input('Enter rank: ')
         license_str = input('Enter license: ')
-        newEmployee = StaffData(ssn, name, cellPhone, phoneNumber, email, role, rank, license_str)
-        mainObject = MainLL(newEmployee)
-        mainObject.addNewStaffLL(newEmployee)
+        newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
+        self.mainObject.addNewStaffLL(newEmployee)
 
 
