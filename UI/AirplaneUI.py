@@ -1,6 +1,7 @@
 from UI.quitUI import Goodbye
 from Models.airplaneData import AirplaneData
 from LL.mainLL import MainLL
+from Models.flightData import FlightData
 
 
 class AirplaneMenu:
