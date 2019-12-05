@@ -11,7 +11,7 @@ class MainLL:
         self.flightToKEF = flightToKEF
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
-        #self.airplaneObject = AirplaneLL()
+       
 
     def getAllStaffLL(self):
         return self.staffObject.getAllStaff()

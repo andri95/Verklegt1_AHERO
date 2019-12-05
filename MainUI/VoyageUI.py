@@ -1,4 +1,5 @@
-import quitUI
+from MainUI.quitUI import Goodbye
+
 class VoyageMenu():
     def __init__(self):
         self.MAINMENU = """
@@ -39,7 +40,7 @@ class VoyageMenu():
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                quitUI.Goodbye()
+                Goodbye()
             elif var == "0":
                 return
             else:

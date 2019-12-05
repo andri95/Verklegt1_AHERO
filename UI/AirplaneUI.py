@@ -1,5 +1,6 @@
 from airplaneData import AirplaneData
 from AirplaneLL import AirplaneLL
+from LL.mainLL import MainLL
 
 
 class AirplaneUI():
@@ -13,11 +14,9 @@ class AirplaneUI():
         Model = input("Enter Airplane Model: ")
         capacity = input("Enter Airplane Capacity")
         newAirplane = AirplaneData(planeId, type,Model,capacity)
-
-        if self.AirplaneLL.validateAirPlaneData(newAirplane):
-            print("PLane stored successfully")
-        else:
-            print("No success try again")
+        self.AirplaneLL.addAirplane(newAirplane)
+        print("PLane stored successfully")
+        
 
     def showAirplanes(self):
         pass

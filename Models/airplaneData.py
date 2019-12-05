@@ -20,6 +20,8 @@ class AirplaneData():
         return self.capacity
     
     def __str__(self):
-        return f"ID: {self.planeId} Type: {self.type}"
+        return f"ID: {self.planeId} Type: {self.type} Model: {self.Model} Capacity: {self.capacity}"
 
     fieldnames = ["flightNumber", "departingFrom", "arrivingAt", "departure", "arrival"]
+
+

@@ -1,7 +1,11 @@
 from MainUI.quitUI import Goodbye
+from Models.airplaneData import AirplaneData
+from LL.mainLL import MainLL
 
 class AirplaneMenu:
     def __init__(self):
+        self.Airplanes = AirplaneData()
+        self.mainObject = MainLL()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -28,17 +32,25 @@ class AirplaneMenu:
         while True:
             var = input("Input a command: ")
             if var == "1":
-                airplanes = [str(a) for a in AirplaneLL().getAirplanes()]
-                for types in airplanes:
-                    print(types)
+                airplanes = [str(a) for a in self.mainObject.getAirplanesLL()]
+                for line in airplanes:
+                    print(line)
+                input("press any key to continue.")
+                break
+
             elif var == "2":
-                print("Not yet implemented")
-            elif var == "3":
-                print("Not yet implemented")
-            elif var == "4":
-                print("Not yet implemented")
+                planeID = input("Enter airplane ID: ")
+                types = input("Enter Airplane type: ")
+                model = input("Enter Model name: ")
+                capacity = input("Enter Airplane Capacity")
+                newAirplane = AirplaneData(planeID, types,model,capacity)
+                AirplaneLL.addAirplane(newAirplane)
+                print("New airplane saved!")
+                input("Press any key to continue.")
+                break
+          
             elif var == "q":
-                quitUI.Goodbye()
+                Goodbye()
                 break
             elif var == "0":
                 return

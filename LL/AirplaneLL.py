@@ -13,6 +13,10 @@ class AirplaneLL():
             #self.AirplaneIO.addNewAirplane(new_airplane)
             return True
 
+    def addAirplane(self):
+        return self.mainObject.addNewAirplaneIO()
+
+
     def getAirplanes(self):
         return self.mainObject.getAirplanesIO()
 
