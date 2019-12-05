@@ -97,7 +97,6 @@ class CreateIO():
     def addNewDest(self, newDestination):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
-
         #  File opend with appendFile()
         destinationFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()

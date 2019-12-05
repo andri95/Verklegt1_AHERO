@@ -1,6 +1,5 @@
-#from IO.updateIO import UpdateIO
-from mainIO import MainIO
+from IO.updateIO import UpdateIO
 
 
-iotest = MainIO(['2209955782','BOING'])
-iotest.addLicense()
+iotest = UpdateIO()
+iotest.addLicenseIO('2209955782', 'BOING')

@@ -7,7 +7,6 @@ class FlightData:
         self.departure = departure
         self.arrival = arrival
 
-
     def getFlightNumber(self):
         return self.flightNumber
 

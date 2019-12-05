@@ -42,5 +42,7 @@ class StaffData():
     def setLicense(self, newLicense):
         self.license += ('/' + newLicense)
 
+
+
     def __str__(self):
         return "ssn: {}\nname: {}\nrole: {}\nrank: {}\nlicence: {}".format(self.SSN, self.name, self.role, self.rank, self.license)
