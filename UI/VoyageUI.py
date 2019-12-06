@@ -34,9 +34,9 @@ class VoyageMenu():
             if var == "1":
                 voyageObject_list = self.mainObject.getVoyageLL()
                 for voyage in voyageObject_list:
-                    print("Pilot: {} Co-Pilot: {} Flight attendants: {}, {} Flight number 1: {} Flight number 2: {}".format(voyage.getPilot(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2(), voyage.getFlightOne().getFlightNumber(),voyage.getFlightTwo().getFlightNumber()))
+                    print("Pilot: {} Co-Pilot: {} Flight attendants: {}, {} Flight Arrival: {} Flight Departure {}".format(voyage.getPilot(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2(),voyage.getFlightArr(),voyage.getFlightDep()))
                 input("Press any key to continue.")
-                break
+                break   
             
             elif var == "2":
                 print("Not yet implemented")

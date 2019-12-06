@@ -1,6 +1,6 @@
 
 class VoyageData:
-    def __init__(self, flight1, flight2,pilot, coPilot, fa1, fa2, airplane):
+    def __init__(self, flight1, flight2,pilot, coPilot, fa1, fa2, airplane,flightarrival,flightdeparture):
         self.flightNumber1 = flight1
         self.flightNumber2 = flight2
         self.pilot = pilot
@@ -8,6 +8,8 @@ class VoyageData:
         self.fa1 = fa1
         self.fa2 = fa2
         self.airplane = airplane
+        #self.flightArr_obj = flightarrival
+        #self.flightDep_obj = flightdeparture
 
 
     def getFlightOne(self):
