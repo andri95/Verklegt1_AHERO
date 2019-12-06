@@ -9,7 +9,7 @@ class VoyageLL():
         return self.MainObject.getVoyagesIO()
 
     def addVoyages(self, newFlight):
-        return self.MainObject.addNewFlightIO(newFlight)
+        return self.MainObject.addNewVoyageIO(newFlight)
 
     def listFlights(self):
         return self.MainObject.getFlightsIO()

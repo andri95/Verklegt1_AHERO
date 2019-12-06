@@ -55,19 +55,18 @@ class VoyageUI():
     def addNewVoyageUI(self):
         print("_____First Flight_____")
         firstFlight = self.inputObject.addNewFlightIH()
-        self.mainObject.addNewFlight(firstFlight)
+        self.mainObject.addNewVoyage(firstFlight)
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
-        self.mainObject.addNewFlight(secondFlight)
+        self.mainObject.addNewVoyage(secondFlight)
         print("New flight saved!")
         print("----------------")
         input("Press any key to continue.")
-        # Addvoyage()
-        # Editvoyage()
+
 
     def completeVoyageUI(self):
         counter = 0
-        flightObject_list = self.mainObject.getFlightsLL()
+        flightObject_list = self.mainObject.getVoyageLL()
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:

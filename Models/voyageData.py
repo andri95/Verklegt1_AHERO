@@ -1,22 +1,37 @@
 
 class VoyageData:
-    def __init__(self, flight1, flight2,pilot, coPilot, fa1, fa2, airplane):
-        self.flightNumber1 = flight1
-        self.flightNumber2 = flight2
-        self.pilot = pilot
+    def __init__(self, flightNumber, departingFrom, arrivingAt, departureTime, arrivalTime, aircraftId, captain=None, coPilot=None, fa1=None, fa2=None):
+        self.flightNumber = flightNumber
+        self.departingFrom = departingFrom
+        self.arrivingAt = arrivingAt
+        self.departureTime = departureTime
+        self.arrivalTime = arrivalTime
+        self.aircraftId = aircraftId
+        self.captain = captain
         self.coPilot = coPilot
         self.fa1 = fa1
         self.fa2 = fa2
-        self.airplane = airplane
 
+    def getFlightNumber(self):
+        return self.flightNumber
 
-    def getFlightOne(self):
-        return self.flightNumber1
+    def getDepartingFrom(self):
+        return self.departingFrom
+    
+    def getArrivingAt(self):
+        return self.arrivingAt
 
-    def getFlightTwo(self):
-        return self.flightNumber2
-    def getPilot(self):
-        return self.pilot
+    def getDepartureTime(self):
+        return self.departureTime
+
+    def getArrivalTime(self):
+        return self.arrivalTime
+
+    def getAircraftId(self):
+        return self.aircraftId
+
+    def getCaptain(self):
+        return self.captain
 
     def getCoPilot(self):
         return self.coPilot
@@ -27,8 +42,8 @@ class VoyageData:
     def getFa2(self):
         return self.fa2
 
-    def getAirplane(self):
-        return self.airplane
+
+
 
     def __str__(self):
         return f"Pilot: {self.pilot} Co-pilot. {self.coPilot} Flight attendants: {self.fa1} {self.fa2} Airplane: {self.airplane}"

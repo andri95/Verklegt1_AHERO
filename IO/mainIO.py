@@ -19,11 +19,11 @@ class MainIO:
     def addNewDestIO(self, newDestination):
         return self.createObject.addNewDest(newDestination)
 
-    def addNewFlightIO(self, newFlight):
-        return self.createObject.addNewFlight(newFlight)
+    #def addNewFlightIO(self, newFlight):
+        #return self.createObject.addNewFlight(newFlight)
 
-    def addNewVoyageIO(self, flightFromKEF, flightToKEF, newVoyage):
-        return self.createObject.addNewVoyage(flightFromKEF, flightToKEF, newVoyage)
+    def addNewVoyageIO(self, newVoyage):
+        return self.createObject.addNewVoyage(newVoyage)
 
     def getDestinationsIO(self):
         return self.readObject.getDestinations()
