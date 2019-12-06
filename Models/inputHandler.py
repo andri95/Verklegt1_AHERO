@@ -22,6 +22,15 @@ class InputHandler:
         newDestination = DestinationData(country, flighttime, contact, emergencynum)
         return newDestination
 
+    def addNewFlightIH(self):
+        flightToDest = input("Enter an ID for the flight ")
+        flightFrom = input("Where will you be flying from: ")
+        flightFromDate = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
+        flightTo = input("Where will you be arriving at: ")
+        flightToArr = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
+        newFlight = FlightData(flightToDest, flightFrom, flightTo, flightFromDate, flightToArr)
+        return newFlight
+
     def addNewStaffIH(self):
         ssn = input('Enter social security number: ')
         name = input('Enter name: ')
