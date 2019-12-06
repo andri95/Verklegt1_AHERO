@@ -1,7 +1,8 @@
-from UI.quitUI import Goodbye
+from UI.quitUI import QuitUI
 from Models.voyageData import VoyageData
 from LL.mainLL import MainLL
-class VoyageMenu():
+
+class VoyageUI():
     def __init__(self):
         self.mainObject = MainLL()
         self.MAINMENU = """
@@ -34,7 +35,7 @@ class VoyageMenu():
             if var == "1":
                 voyageObject_list = self.mainObject.getVoyageLL()
                 for voyage in voyageObject_list:
-                    print("Pilot: {} Co-Pilot: {} Flight attendants: {}, {} Flight number 1: {} Flight number 2: {}".format(voyage.getPilot(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2(), voyage.getFlightOne().getFlightNumber(),voyage.getFlightTwo().getFlightNumber()))
+                    print("Pilot: {} Co-Pilot: {} Flight attendants: {}, {}".format(voyage.getPilot(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
                 input("Press any key to continue.")
                 break
             
@@ -47,7 +48,7 @@ class VoyageMenu():
             elif var == "4":
                 print("Not yet implemented")
             elif var == "q":
-                Goodbye()
+                QuitUI()
             elif var == "0":
                 return
             else:

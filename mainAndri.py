@@ -3,8 +3,8 @@
 #from IO.createIO import CreateIO
 #from LL.mainLL import MainLL
 
-from UI.FRONTPAGE import MainMenu
+from UI.mainUI import MainUI
 
 
-MainMenu()
+MainUI()
 
