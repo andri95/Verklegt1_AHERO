@@ -1,13 +1,13 @@
-from UI.quitUI import Goodbye
-from Models.airplaneData import AirplaneData
+from UI.quitUI import QuitUI
+from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
-from Models.flightData import FlightData
 
 
-class AirplaneMenu:
+class AirplaneUI:
     def __init__(self):
 
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -32,29 +32,26 @@ class AirplaneMenu:
     def start(self):
         print(self.MAINMENU)
         while True:
-            var = input("Input a command: ")
-            if var == "1":
-                airplanes = [str(a) for a in self.mainObject.getAirplanesLL()]
-                for line in airplanes:
-                    print(line)
-                input("press any key to continue.")
-                break
-
-            elif var == "2":
-                planeID = input("Enter airplane ID: ")
-                types = input("Enter Airplane type: ")
-                model = input("Enter Model name: ")
-                capacity = input("Enter Airplane Capacity")
-                newAirplane = AirplaneData(planeID, types, model, capacity)
-                self.mainObject.addAirplaneLL(newAirplane)
-                print("New airplane saved!")
-                input("Press any key to continue.")
-                break
-
-            elif var == "q":
-                Goodbye()
-                break
-            elif var == "0":
-                return
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, 'q': QuitUI}
+            user_input = input("Input a command: ")
+            if user_input != '0':
+                if user_input in mainCommand_dict:
+                    for key in mainCommand_dict:
+                        if user_input == key:
+                            mainCommand_dict[key]()
+                else:
+                    print('Invalid command!')
             else:
-                print("Invalid command")
+                return
+
+    def getAirplanesUI(self):
+        airplanes = [str(a) for a in self.mainObject.getAirplanesLL()]
+        for line in airplanes:
+            print(line)
+        input("press any key to continue.")
+
+    def registerAirplaneUI(self):
+        newAirplane = self.inputObject.addNewAirplaneIH()
+        self.mainObject.addAirplaneLL(newAirplane)
+        print("New airplane saved!")
+        input("Press any key to continue.")

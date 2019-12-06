@@ -1,11 +1,11 @@
-
-from UI.quitUI import Goodbye
+from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
-from Models.staffData import StaffData
+from Models.inputHandler import InputHandler
 
-class EmployeeMenu():
+class StaffUI:
     def __init__(self):
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
 
         self.MAINMENU = """
 ############################################################
@@ -49,52 +49,36 @@ class EmployeeMenu():
         self.start()
 
     def start(self):
-        print(self.MAINMENU)
         while True:
-            user_input = input("Input a command:")
-            if user_input == "0":
-                return
-
-            elif user_input == "1":
-                self.listStaff()
-
-            elif user_input == "2":
-                self.addNewStaffUI()
-
-            elif user_input == "q":
-                Goodbye()
-
+            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, 'q': QuitUI}
+            print(self.MAINMENU)
+            user_input = input("Input a command: ")
+            if user_input != '0':
+                if user_input in mainCommand_dict:
+                    for key in mainCommand_dict:
+                        if user_input == key:
+                            mainCommand_dict[key]()
+                else:
+                    print('Invalid command!')
             else:
-                print("Invalid command!")
-
+                return
 
     def listStaff(self):
 
-        while True:
-
+        while True: 
+            subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI,
+                                 '4': self.getStaffByIdUI, 'q': QuitUI}
             print(self.SUBMENU1)
             user_input = input("Input a command: ")
-
-            if user_input == "1":
-                self.getAllStaffUI()
-
-            elif user_input == "2":
-                self.getAllPilotsUI()
-
-            elif user_input == "3":
-                self.getAllCabinCrewUI()
-
-            elif user_input == "4":
-                self.getStaffByID()   
-
-            elif user_input == "q":
-                Goodbye()
-
-            elif user_input == "0":
-                self.start()
-
+            if user_input != '0':
+                if user_input in subCommand_dict:
+                    for key in subCommand_dict:
+                        if user_input == key:
+                            subCommand_dict[key]()
+                else:
+                    print('Invalid command!')
             else:
-                print("Invalid command")
+                return
 
     def getAllStaffUI(self):
         staffObject_list = self.mainObject.getAllStaffLL()
@@ -113,24 +97,13 @@ class EmployeeMenu():
 
     def addNewStaffUI(self):
 
-        ssn = input('Enter social security number: ')
-        name = input('Enter name: ')
-        address = input('Enter address: ')
-        cellPhone = input('Enter cell phone: ')
-        phoneNumber = input('Enter phone number: ')
-        email = input('Enter email: ')
-        role = input('Enter role: ')
-        rank = input('Enter rank: ')
-        license_str = input('Enter license: ')
-        newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
+        newEmployee = self.inputObject.addNewStaffIH()
         self.mainObject.addNewStaffLL(newEmployee)
 
-    def getStaffByID(self):
+    def getStaffByIdUI(self):
         staffObject_list = self.mainObject.getAllStaffLL()
         for staffMember in staffObject_list:
             print('Name: {}, SSN: {}'.format(staffMember.getName(), staffMember.getSSN()))
         input_ssn = input("Enter social security number: ")
         staffMember = self.mainObject.getStaffByIDLL(input_ssn)
         print(staffMember)
-
-

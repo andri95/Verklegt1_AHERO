@@ -1,10 +1,11 @@
-from UI.quitUI import Goodbye
+from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
-from Models.destinationData import DestinationData
+from Models.inputHandler import InputHandler
 
-class DestinationMenu():
+class DestinationUI():
     def __init__(self):
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
 
         self.MAINMENU = """
 ############################################################
@@ -31,22 +32,17 @@ class DestinationMenu():
     def start(self):
         print(self.MAINMENU)
         while True:
-            var = input("Input a command: ")
-            if var == "1":
-                self.getAllDestiantionUI()
-                
-            elif var == "2":
-                self.addNewDestinationUI()
-
-            elif var == "q":
-                Goodbye()
-
-            elif var == "0":
-                return
-
+            mainCommand_dict = {'1': self.getAllDestiantionUI, '2': self.addNewDestinationUI, 'q': QuitUI}
+            user_input = input("Input a command: ")
+            if user_input != '0':
+                if user_input in mainCommand_dict:
+                    for key in mainCommand_dict:
+                        if user_input == key:
+                            mainCommand_dict[key]()
+                else:
+                    print('Invalid command!')
             else:
-                print("Invalid command")
-
+                return
 
     def getAllDestiantionUI(self):
         destination_list = self.mainObject.getAllDestinationsLL()
@@ -54,9 +50,5 @@ class DestinationMenu():
             print('Country: {} Contact Name: {} Emergency Number {}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber() ))
 
     def addNewDestinationUI(self):
-        country = input('Enter country: ')
-        flighttime = input('Enter flight time: ')
-        contact = input('Enter contact: ')
-        emergencynum = input('Enter emergency number: ')
-        newDestination = DestinationData(country, flighttime, contact, emergencynum)
+        newDestination = self.inputObject.addNewDestinationIH()
         self.mainObject.addNewDestinationLL(newDestination)

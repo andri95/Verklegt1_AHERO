@@ -1,6 +1,7 @@
-class Goodbye():
+
+class QuitUI:
     def __init__(self):
-        self.GOODBYE = """
+        self.goodbye = """
 ############################################################
 #                                                          #
 #         ______                                           #
@@ -22,6 +23,6 @@ class Goodbye():
         self.start()
 
     def start(self):
-        print(self.GOODBYE)
+        print(self.goodbye)
         quit()
 	
