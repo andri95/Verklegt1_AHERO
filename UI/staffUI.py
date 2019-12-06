@@ -1,10 +1,11 @@
 from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
-from Models.staffData import StaffData
+from Models.inputHandler import InputHandler
 
 class StaffUI:
     def __init__(self):
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
 
         self.MAINMENU = """
 ############################################################
@@ -96,16 +97,7 @@ class StaffUI:
 
     def addNewStaffUI(self):
 
-        ssn = input('Enter social security number: ')
-        name = input('Enter name: ')
-        address = input('Enter address: ')
-        cellPhone = input('Enter cell phone: ')
-        phoneNumber = input('Enter phone number: ')
-        email = input('Enter email: ')
-        role = input('Enter role: ')
-        rank = input('Enter rank: ')
-        license_str = input('Enter license: ')
-        newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
+        newEmployee = self.inputObject.addNewStaffIH()
         self.mainObject.addNewStaffLL(newEmployee)
 
     def getStaffByIdUI(self):

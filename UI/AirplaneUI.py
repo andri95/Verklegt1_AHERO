@@ -1,13 +1,13 @@
 from UI.quitUI import QuitUI
-from Models.airplaneData import AirplaneData
+from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
-from Models.flightData import FlightData
 
 
 class AirplaneUI:
     def __init__(self):
 
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -51,11 +51,7 @@ class AirplaneUI:
         input("press any key to continue.")
 
     def registerAirplaneUI(self):
-        planeID = input("Enter airplane ID: ")
-        types = input("Enter Airplane type: ")
-        model = input("Enter Model name: ")
-        capacity = input("Enter Airplane Capacity")
-        newAirplane = AirplaneData(planeID, types, model, capacity)
+        newAirplane = self.inputObject.addNewAirplaneIH()
         self.mainObject.addAirplaneLL(newAirplane)
         print("New airplane saved!")
         input("Press any key to continue.")
