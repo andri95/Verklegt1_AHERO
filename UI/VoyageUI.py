@@ -1,10 +1,12 @@
 from UI.quitUI import QuitUI
-from Models.voyageData import VoyageData
+#from Models.voyageData import VoyageData
+from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
 
 class VoyageUI():
     def __init__(self):
         self.mainObject = MainLL()
+        self.inputObject = InputHandler()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
