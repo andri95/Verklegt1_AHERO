@@ -45,3 +45,9 @@ class MainLL:
 
     def addNewDestinationLL(self, newDestination):
         return self.destinationObject.addNewDestination(newDestination)
+
+    def addNewFlight(self, newFlight):
+        return  self.voyageObject.addVoyages(newFlight)
+
+    def getFlightsLL(self):
+        return self.voyageObject.listFlights()
