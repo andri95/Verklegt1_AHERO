@@ -1,8 +1,8 @@
 
 from LL.staffLL import StaffLL
-from LL.AirplaneLL import AirplaneLL
+from LL.airplaneLL import AirplaneLL
 from LL.destinationLL import DestinationLL
-from LL.VoyageLL import VoyageLL
+from LL.voyageLL import VoyageLL
 
 class MainLL:
 
