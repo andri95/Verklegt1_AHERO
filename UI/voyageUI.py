@@ -59,7 +59,7 @@ class VoyageUI():
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
         self.mainObject.addNewVoyage(secondFlight)
-        print("New flight saved!")
+        print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
 
