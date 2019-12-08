@@ -51,3 +51,6 @@ class MainLL:
 
     def getFlightsLL(self):
         return self.voyageObject.listFlights()
+
+    def updateDestinationLL(self, dataList):
+        return self.destinationObject.updateDestination(dataList)

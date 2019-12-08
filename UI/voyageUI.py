@@ -3,7 +3,7 @@ from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
 
 
-class VoyageUI():
+class VoyageUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()

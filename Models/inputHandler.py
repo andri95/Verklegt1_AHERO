@@ -43,3 +43,10 @@ class InputHandler:
         license_str = input('Enter license: ')
         newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
         return newEmployee
+
+    def updateDestinationIH(self):
+        destToChange = input('Enter country you want to change: ')
+        newContact = input('New contact name: ')
+        newEmergencyNumber = input('New emergency number: ')
+        dataList = [destToChange, newContact, newEmergencyNumber]
+        return dataList

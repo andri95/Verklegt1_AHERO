@@ -17,9 +17,9 @@ class StaffUI:
 #                                                          #
 #                 1. List employees                        #
 #                 2. Register employees                    #
-#                 3. Change employees                      #
-#                 4. Add staff to voyage                   #
-#                 5. Work schedule                         #
+#                 3. Add staff to voyage                   #
+#                 4. Work Schedule                         #
+#                                                          #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -46,11 +46,31 @@ class StaffUI:
 #                                                          #
 #  back(b)                                                 #
 ############################################################"""
+
+        self.SUBMENU2 ="""
+############################################################
+#                           _|_	               quit(q)     #
+#                   --@--@--(_)--@--@--                    #
+#__________________________________________________________#
+#                                                          #
+#                                                          #
+#                      Work schedule                       #
+#                                                          # 
+#               1. Available staff                         #
+#               2. Unavailable staff                       #
+#               3. Work scedule for single employee        #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#                                                          #
+#  back(b)                                                 #
+############################################################"""
         self.start()
 
     def start(self):
         while True:
-            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, , '3': self.workScheduleUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != '0':
@@ -70,6 +90,22 @@ class StaffUI:
                                  '4': self.getStaffByIdUI, 'q': QuitUI}
             print(self.SUBMENU1)
             user_input = input("Input a command: ")
+            if user_input != '0':
+                if user_input in subCommand_dict:
+                    for key in subCommand_dict:
+                        if user_input == key:
+                            subCommand_dict[key]()
+                else:
+                    print('Invalid command!')
+            else:
+                return
+
+    def workScheduleUI(self):
+
+        while True:
+            subCommand_dict = {'1': self.availableStaffUI, '2': self.unavailableStaffUI, '3': self.singleStaffUI, 'q': QuitUI}
+            print(self.SUBMENU2)
+            user_input = input('Input a command: ')
             if user_input != '0':
                 if user_input in subCommand_dict:
                     for key in subCommand_dict:
@@ -107,3 +143,12 @@ class StaffUI:
         input_ssn = input("Enter social security number: ")
         staffMember = self.mainObject.getStaffByIDLL(input_ssn)
         print(staffMember)
+
+    def availableStaffUI(self):
+        pass
+
+    def unavailableStaffUI(self):
+        pass
+
+    def singleStaffUI(self):
+        pass

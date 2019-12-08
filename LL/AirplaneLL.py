@@ -2,7 +2,7 @@ from IO.mainIO import MainIO
 
 
 
-class AirplaneLL():
+class AirplaneLL:
     def __init__(self):
         self.mainObject = MainIO()
 
