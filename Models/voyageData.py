@@ -1,6 +1,7 @@
 
 class VoyageData:
-    def __init__(self, flightNumber, departingFrom, arrivingAt, departureTime, arrivalTime, aircraftId, captain=None, coPilot=None, fa1=None, fa2=None):
+    def __init__(self, flightNumber, departingFrom, arrivingAt, departureTime, arrivalTime, 
+    aircraftId, captain="", coPilot="", fa1="", fa2=""):
         self.flightNumber = flightNumber
         self.departingFrom = departingFrom
         self.arrivingAt = arrivingAt
@@ -31,17 +32,28 @@ class VoyageData:
         return self.aircraftId
 
     def getCaptain(self):
-        return self.captain
+        if self.captain == "":
+            return "No captain yet."
+        else:
+            return self.captain
 
     def getCoPilot(self):
-        return self.coPilot
+        if self.coPilot == "":
+            return "No Co-pilot yet."
+        else:
+            return self.coPilot
 
     def getFa1(self):
-        return self.fa1
+        if self.fa1 == "":
+            return "No flight attendant nr. 1"
+        else:
+            return self.fa1
 
     def getFa2(self):
-        return self.fa2
-
+        if self.fa2 == "":
+            return "No flight attendant nr. 2."
+        else:
+            return self.fa2
 
 
 

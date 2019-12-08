@@ -23,6 +23,6 @@ class QuitUI:
         self.start()
 
     def start(self):
-        print(self.goodbye)
-        quit()
+        print(self.goodbye)     
+        quit()                  
 	
