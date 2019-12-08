@@ -3,7 +3,7 @@ from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
 
 
-class VoyageUI:
+class VoyageUI():
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
@@ -47,12 +47,9 @@ class VoyageUI:
 
 
     def getVoyagesUI(self):
-        voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
+        voyageObject_list = self.mainObject.getVoyageLL()
         for voyage in voyageObject_list:
-            print("Arriving from {} Arriving at {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
-            print("Staff:")
-            print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
-            print("\n")
+            print("Pilot: {} Co-Pilot: {} ".format(voyage.getPilot(), voyage.getCoPilot()))
         input("Press any key to continue.")
     
     def addNewVoyageUI(self):

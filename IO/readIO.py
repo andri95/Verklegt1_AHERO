@@ -2,7 +2,6 @@ import csv
 from Models.airplaneData import AirplaneData
 from Models.staffData import StaffData
 from Models.destinationData import DestinationData
-from Models.flightData import FlightData
 from Models.voyageData import VoyageData
 from Models.fileHandler import FileHandler
 
@@ -35,8 +34,8 @@ class ReadIO:
         voyages_list = []
         for row in reader:
             voyages_list.append(
-                VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[6]], row[field_list[7]], row[field_list[8]],
-                           row[field_list[9]], row[field_list[10]]))
+                VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]], row[field_list[4]],
+                           row[field_list[5]], row[field_list[6]], row[field_list[7]], row[field_list[8]], row[field_list[9]]))
 
         return voyages_list
 
@@ -63,15 +62,5 @@ class ReadIO:
 
         return airplane_list
 
-    def getFlights(self):
-        fileObject = FileHandler(self.upcomingFlightsPath)
-        fileForRead = fileObject.readFile()
-        reader = csv.DictReader(fileForRead)
-        field_list = fileObject.findFieldNames()
-        flights_list = []
-        for row in reader:
-            flights_list.append(
-            FlightData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]],
-                        row[field_list[4]]))
-        return flights_list
+
 

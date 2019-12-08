@@ -1,6 +1,5 @@
 from Models.airplaneData import AirplaneData
 from Models.destinationData import DestinationData
-from Models.flightData import FlightData
 from Models.staffData import StaffData
 from Models.voyageData import VoyageData
 
@@ -23,12 +22,13 @@ class InputHandler:
         return newDestination
 
     def addNewFlightIH(self):
-        flightToDest = input("Enter an ID for the flight ")
-        flightFrom = input("Where will you be flying from: ")
-        flightFromDate = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
-        flightTo = input("Where will you be arriving at: ")
-        flightToArr = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
-        newFlight = FlightData(flightToDest, flightFrom, flightTo, flightFromDate, flightToArr)
+        flightNumber = input("Enter an ID for the flight ")
+        departingFrom = input("Where will you be flying from: ")
+        arrivingAt = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
+        departureTime = input("Where will you be arriving at: ")
+        arrivalTime = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
+        aircraftId = input("Put di aircarft inn: ")
+        newFlight = VoyageData(flightNumber, departingFrom,arrivingAt , departureTime, arrivalTime , aircraftId)
         return newFlight
 
     def addNewStaffIH(self):
@@ -50,3 +50,11 @@ class InputHandler:
         newEmergencyNumber = input('New emergency number: ')
         dataList = [destToChange, newContact, newEmergencyNumber]
         return dataList
+        
+    def updateVoyageIH(self):
+        staff_list = []
+        staff_list.append(input("Enter a Captain"))
+        staff_list.append((input("Enter a Co-Pilot")))
+        staff_list.append(input("Enter a flight attendant: "))
+        staff_list.append(input("Enter a flight attendant: "))
+        return staff_list
