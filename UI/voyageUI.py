@@ -58,10 +58,10 @@ class VoyageUI:
     def addNewVoyageUI(self):
         print("_____First Flight_____")
         firstFlight = self.inputObject.addNewFlightIH()
-        self.mainObject.addNewVoyage(firstFlight)
+        self.mainObject.addNewVoyageLL(firstFlight)
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
-        self.mainObject.addNewVoyage(secondFlight)
+        self.mainObject.addNewVoyageLL(secondFlight)
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
@@ -85,7 +85,7 @@ class VoyageUI:
                 for key, val in voyageDict.items():
                     if pickVoyage == key:
                         staffList = self.inputObject.updateVoyageIH()
-                        self.mainObject.updateVoyage(val, staffList)
+                        self.mainObject.updateVoyageLL(val, staffList)
             else:
                 print("Invalid Voyage")
         else:

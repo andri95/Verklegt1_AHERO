@@ -70,7 +70,7 @@ class StaffUI:
 
     def start(self):
         while True:
-            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, , '3': self.workScheduleUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != '0':
