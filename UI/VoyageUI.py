@@ -1,7 +1,10 @@
 from UI.quitUI import QuitUI
 from Models.inputHandler import InputHandler
 from LL.mainLL import MainLL
-
+NOPILOT = "No Pilot yet."
+NOCOPILOT = "No Co-pilot yet."
+NOFA1 = "No flight attendant nr 1 yet."
+NOFA2 = "No flight attendant nr 2 yet."
 
 class VoyageUI():
     def __init__(self):
@@ -52,6 +55,15 @@ class VoyageUI():
         for voyage in voyageObject_list:
             print("Arriving from {} Arriving at {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
             print("Staff:")
+            if voyage.getCaptain() == "":
+                voyage.getCaptain() = NOPILOT
+            if voyage.getCoPilot() == "":
+                voyage.getCopilot() == NOCOPILOT
+            if voyage.getFa1() == "":
+                voyage.getFa1() == NOFA1
+            if voyage.getFa2() == "":
+                voyage.getFa2() == NOFA2
+
             print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
             print("\n")
         input("Press any key to continue.")
