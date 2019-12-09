@@ -72,7 +72,7 @@ class StaffUI:
 
     def start(self):
         while True:
-            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, '4': self.availableStaffUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != '0':
@@ -144,7 +144,11 @@ class StaffUI:
         self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
-        pass
+        input_date = input("Enter a date 'YYYY-MM-DD' : ")
+        voyageObject_list = self.mainObject.getVoyageLL()
+        workScedual = self.mainObject.workScedualLL(input_date)
+        self.outputObject.allUnavilbleStaff(workScedual)
+
 
     def unavailableStaffUI(self):
         pass
