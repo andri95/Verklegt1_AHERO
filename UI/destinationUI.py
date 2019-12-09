@@ -18,7 +18,7 @@ class DestinationUI():
 #                                                          #  
 #                  1. All destinations                     #
 #                  2. Add a new destination                #             
-#                                                          #
+#                  3. Update destination                   #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -32,7 +32,8 @@ class DestinationUI():
     def start(self):
         print(self.MAINMENU)
         while True:
-            mainCommand_dict = {'1': self.getAllDestiantionUI, '2': self.addNewDestinationUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.getAllDestiantionUI, '2': self.addNewDestinationUI,
+                                '3': self.updateDestinationUI, 'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != '0':
                 if user_input in mainCommand_dict:
@@ -47,8 +48,12 @@ class DestinationUI():
     def getAllDestiantionUI(self):
         destination_list = self.mainObject.getAllDestinationsLL()
         for destination in destination_list:
-            print('Country: {} Contact Name: {} Emergency Number {}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber() ))
+            print('Country: {} Contact Name: {} Emergency Number: {}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber() ))
 
     def addNewDestinationUI(self):
         newDestination = self.inputObject.addNewDestinationIH()
         self.mainObject.addNewDestinationLL(newDestination)
+
+    def updateDestinationUI(self):
+        dataList = self.inputObject.updateDestinationIH()
+        self.mainObject.updateDestinationLL(dataList)

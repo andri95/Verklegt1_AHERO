@@ -44,7 +44,7 @@ class VoyageUI():
                     print('Invalid command!')
             else:
                 return
-                
+
 
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()
@@ -59,22 +59,42 @@ class VoyageUI():
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
         self.mainObject.addNewVoyage(secondFlight)
-        print("New flight saved!")
+        print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
 
 
     def completeVoyageUI(self):
         counter = 0
+        voyageDict = {}
         flightObject_list = self.mainObject.getVoyageLL()
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
                     counter += 1
+                    voyageDict[counter] = [flight1, flight2]
                     print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
-                                                                flight1.getArrivingAt(),
-                                                                flight2.getDepartingFrom(),
-                                                                flight2.getArrivingAt()))
+                        flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
-                    # {1: flight1, flight2 2: }
-        print("Pick a voyage to complete")
+        pickVoyage = int(input("Pick a voyage to complete: "))
+        if pickVoyage != 0:
+            if pickVoyage in voyageDict:
+                for key, val in voyageDict.items():
+                    if pickVoyage == key:
+                        staffList = self.inputObject.updateVoyageIH()
+                        self.mainObject.updateVoyage(val, staffList)
+            else:
+                print("Invalid Voyage")
+        else:
+            return
+
+
+
+
+
+
+
+
+
+
+

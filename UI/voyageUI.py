@@ -6,7 +6,7 @@ NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
 NOFA2 = "No flight attendant nr 2 yet."
 
-class VoyageUI():
+class VoyageUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
@@ -35,20 +35,19 @@ class VoyageUI():
     def start(self):
 
         while True:
-            #  A dictionary that handles users input.
             mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != '0':
-                if user_input in mainCommand_dict: #  Checks if the users input is correct.
-                    for key in mainCommand_dict:   
-                        if user_input == key:  
-                            mainCommand_dict[key]() #  Calls the correct command.
+                if user_input in mainCommand_dict:
+                    for key in mainCommand_dict:
+                        if user_input == key:
+                            mainCommand_dict[key]()
                 else:
                     print('Invalid command!')
             else:
-                return      #  If user input is 0, returns to main menu.
-                
+                return
+
 
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
@@ -70,36 +69,47 @@ class VoyageUI():
     
     def addNewVoyageUI(self):
         print("_____First Flight_____")
-        firstFlight = self.inputObject.addNewFlightIH()     #  Calls the item-handler for first flight.
-        self.mainObject.addNewFlight(firstFlight)          
+        firstFlight = self.inputObject.addNewFlightIH()
+        self.mainObject.addNewVoyageLL(firstFlight)
         print("_____Second Flight_____")
-        secondFlight = self.inputObject.addNewFlightIH()    # Calls the item-handler for the second flight   
-        self.mainObject.addNewFlight(secondFlight)
-        print("New flight saved!")
+        secondFlight = self.inputObject.addNewFlightIH()
+        self.mainObject.addNewVoyageLL(secondFlight)
+        print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
-    
+
 
     def completeVoyageUI(self):
         counter = 0
-        flightObject_list = self.mainObject.getFlightsLL()
+        voyageDict = {}
+        flightObject_list = self.mainObject.getVoyageLL()
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
                     counter += 1
+                    voyageDict[counter] = [flight1, flight2]
                     print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
-                                                                flight1.getArrivingAt(),
-                                                                flight2.getDepartingFrom(),
-                                                                flight2.getArrivingAt()))
+                        flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
-                    # {1: flight1, flight2 2: }
-        print("Pick a voyage to complete")
+        pickVoyage = int(input("Pick a voyage to complete: "))
+        if pickVoyage != 0:
+            if pickVoyage in voyageDict:
+                for key, val in voyageDict.items():
+                    if pickVoyage == key:
+                        staffList = self.inputObject.updateVoyageIH()
+                        self.mainObject.updateVoyageLL(val, staffList)
+            else:
+                print("Invalid Voyage")
+        else:
+            return
 
 
 
- 
 
 
 
 
-885
+
+
+
+

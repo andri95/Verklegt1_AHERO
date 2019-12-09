@@ -37,8 +37,8 @@ class MainIO:
     def getAirplanesIO(self):
         return self.readObject.getAirplanes()
 
-    def getFlightsIO(self):
-        return self.readObject.getFlights()
+    def updateVoyageIO(self, dataList, staffList):
+        return self.updateObject.updateVoyage(dataList, staffList)
 
     def updateDestIO(self, dataList):
         return self.updateObject.updateDest(dataList)

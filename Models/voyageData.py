@@ -32,28 +32,40 @@ class VoyageData:
         return self.aircraftId
 
     def getCaptain(self):
-        if self.captain == "":
-            return "No captain yet."
-        else:
-            return self.captain
+        #if self.captain == "":
+            #return "No captain yet."
+        #else:
+        return self.captain
 
     def getCoPilot(self):
-        if self.coPilot == "":
-            return "No Co-pilot yet."
-        else:
-            return self.coPilot
+        #if self.coPilot == "":
+            #return "No Co-pilot yet."
+        #else:
+        return self.coPilot
 
     def getFa1(self):
-        if self.fa1 == "":
-            return "No flight attendant nr. 1"
-        else:
-            return self.fa1
+        #if self.fa1 == "":
+            #return "No flight attendant nr. 1"
+        #else:
+        return self.fa1
 
     def getFa2(self):
-        if self.fa2 == "":
-            return "No flight attendant nr. 2."
-        else:
-            return self.fa2
+        #if self.fa2 == "":
+            #return "No flight attendant nr. 2."
+        #else:
+        return self.fa2
+
+    def setCaptain(self, captain):
+        self.captain = captain
+
+    def setCoPilot(self, coPilot):
+        self.captain = coPilot
+
+    def setFa1(self, fa1):
+        self.fa1 = fa1
+
+    def setFa2(self, fa2):
+        self.fa2 = fa2
 
 
 

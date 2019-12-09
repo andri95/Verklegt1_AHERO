@@ -20,11 +20,5 @@ class DestinationLL():
             if destination.getCountry == country:
                 return destination
         
-
     def updateDestination(self, dataList):
         return self.mainObject.updateDestIO(dataList)
-
-
-
-
-

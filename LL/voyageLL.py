@@ -2,14 +2,13 @@ from IO.mainIO import MainIO
 
 class VoyageLL():
     def __init__(self):
-        self.MainObject = MainIO()
-
-    
+        self.mainObject = MainIO()
+  
     def listVoyage(self):
-        return self.MainObject.getVoyagesIO()
+        return self.mainObject.getVoyagesIO()
 
     def addVoyages(self, newFlight):
-        return self.MainObject.addNewVoyageIO(newFlight)
+        return self.mainObject.addNewVoyageIO(newFlight)
 
-    def listFlights(self):
-        return self.MainObject.getFlightsIO()
+    def updateVoyage(self, dataList, staffList):
+        return self.mainObject.updateVoyageIO(dataList, staffList)
