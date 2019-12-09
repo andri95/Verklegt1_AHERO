@@ -57,5 +57,6 @@ class MainLL:
 
     def addLicenseLL(self, dataList):
         return self.airplaneObject.addLicense(dataList)
+
     def workScheduleLL(self, workDay):
         return self.staffObject.getWorkSchedule(workDay)

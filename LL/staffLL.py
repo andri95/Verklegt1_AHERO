@@ -40,13 +40,14 @@ class StaffLL:
     def addNewStaff(self, newEmployee):
         return self.mainObject.addNewStaffIO(newEmployee)
 
-    def getWorkscedual(self, workDay):
+    def getWorkSchedule(self, workDay):
         workScedualList = []
         voyage_list = self.mainObject.getVoyagesIO()
         for voyage in voyage_list:
             voyageDate = voyage.getDepartureTime().split("T")
             if workDay == voyageDate[0]:
                 workScedualList.append(voyage)
+
         return workScedualList
 
 

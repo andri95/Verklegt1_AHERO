@@ -145,21 +145,23 @@ class StaffUI:
 
     def availableStaffUI(self):
         input_date = input("Enter a date 'YYYY-MM-DD' : ")
-        workScedual = self.mainObject.workScedualLL(input_date)
-        self.outputObject.allUnavilbleStaff(workScedual)
+        workSchedule = self.mainObject.workScheduleLL(input_date)
         staffData = []
-        for voyage in workScedual:
+        voyageThisdayDict = {}
+
+        for voyage in workSchedule:
             if voyage.getCaptain() != "":
-                staffData.append(voyage.getCaptain())
-                staffData.append(voyage.getCoPilot())
-                staffData.append(voyage.getFa1())
-                staffData.append(voyage.getFa2())
-        for i in range(0, len(staffData)):
-            print(staffData[i])
-            staffMember = self.mainObject.getStaffByIDLL(staffData[i]).getName()
-            staffData.append(staffMember)
-        print(workScedual)
-        print(staffData)
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCaptain()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCoPilot()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa1()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa2()))
+
+            if voyage.getArrivingAt() not in voyageThisdayDict.items():
+                if voyage.getArrivingAt() != 'KEF':
+                    voyageThisdayDict[voyage.getArrivingAt()] = staffData
+                    staffData.clear()
+        self.outputObject.workSchedule(voyageThisdayDict)
+
 
     def unavailableStaffUI(self, input_date):
         pass
