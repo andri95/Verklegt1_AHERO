@@ -61,17 +61,6 @@ class VoyageData:
     def setFa2(self, fa2):
         self.fa2 = fa2
 
-
-
-    def __str__(self):
-        return f"Pilot: {self.pilot} Co-pilot. {self.coPilot} Flight attendants: {self.fa1} {self.fa2} Airplane: {self.airplane}"
-
-
-
-
-    def __str__(self):
-        return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
-
     def getFlightDep(self):
         return self.flightDep_obj   #  Return flight departure object
 
