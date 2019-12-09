@@ -144,17 +144,27 @@ class StaffUI:
         self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
-        input_date = input("Enter a date 'YYYY-MM-DD': ")
-        voyageObject_list = self.mainObject.getVoyageLL()
+        input_date = input("Enter a date 'YYYY-MM-DD' : ")
         workSchedule = self.mainObject.workScheduleLL(input_date)
-        self.outputObject.allAvailableStaff(workSchedule)
+        staffData = []
+        voyageThisdayDict = {}
+
+        for voyage in workSchedule:
+            if voyage.getCaptain() != "":
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCaptain()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCoPilot()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa1()))
+                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa2()))
+
+            if voyage.getArrivingAt() not in voyageThisdayDict.items():
+                if voyage.getArrivingAt() != 'KEF':
+                    voyageThisdayDict[voyage.getArrivingAt()] = staffData
+                    staffData.clear()
+        self.outputObject.workSchedule(voyageThisdayDict)
 
 
-    def unavailableStaffUI(self):
-        input_date = input("Enter a date 'YYY-MM-DD': ")
-        voyageObject_list = self.mainObject.getVoyageLL()
-        workSchedule =self.mainObject.workScheduleLL()
-
+    def unavailableStaffUI(self, input_date):
+        pass
 
     def singleStaffUI(self):
         pass

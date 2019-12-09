@@ -12,3 +12,12 @@ class VoyageLL():
 
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
+
+    def generateFlightNumber(self, flight):
+        destination = flight.getArrivingAt()
+        destinationList = self.mainObject.getDestinationsIO()
+        for dest in destinationList:
+            if dest.getCountry() == destination:
+                return dest.getDestId()
+            else:
+                print(destination, "is not a valid destination")
