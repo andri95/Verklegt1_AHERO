@@ -55,16 +55,27 @@ class VoyageUI:
             print("Arriving from {} Arriving at {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
             print("Staff:")
             if voyage.getCaptain() == "":
-                voyage.getCaptain() = NOPILOT
-            if voyage.getCoPilot() == "":
-                voyage.getCopilot() == NOCOPILOT
-            if voyage.getFa1() == "":
-                voyage.getFa1() == NOFA1
-            if voyage.getFa2() == "":
-                voyage.getFa2() == NOFA2
+                print(NOPILOT)
+            else:
+                print("Pilot Id: {}".format(voyage.getCaptain()))
 
-            print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
+            if voyage.getCoPilot() == "":
+                print(NOCOPILOT)
+            else:
+                print("Co-pilot Id: {}".format(voyage.getCoPilot()))
+
+            if voyage.getFa1() == "":
+                print(NOFA1)
+            else:
+                print("Flight attendant 1 Id: {}".format(voyage.getFa1()))
+            if voyage.getFa2() == "":
+                print(NOFA2)
+            else:
+                print("Flight attendant 2 Id {}".format(voyage.getFa2()))
             print("\n")
+
+           # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
+            #print("\n")
         input("Press any key to continue.")
     
     def addNewVoyageUI(self):
