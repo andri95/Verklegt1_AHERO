@@ -1,7 +1,5 @@
 from IO.mainIO import MainIO
 
-
-
 class AirplaneLL:
     def __init__(self):
         self.mainObject = MainIO()
