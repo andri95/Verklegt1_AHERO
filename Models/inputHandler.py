@@ -24,11 +24,11 @@ class InputHandler:
     def addNewFlightIH(self):
         flightNumber = input("Enter an ID for the flight ")
         departingFrom = input("Where will you be flying from: ")
-        arrivingAt = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
+        arrivalTime = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
         departureTime = input("Where will you be arriving at: ")
-        arrivalTime = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
+        arrivingAt = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
         aircraftId = input("Put di aircarft inn: ")
-        newFlight = VoyageData(flightNumber, departingFrom,arrivingAt , departureTime, arrivalTime , aircraftId)
+        newFlight = VoyageData(flightNumber, departingFrom, arrivingAt , departureTime, arrivalTime , aircraftId)
         return newFlight
 
     def addNewStaffIH(self):
@@ -54,7 +54,7 @@ class InputHandler:
     def updateVoyageIH(self):
         staff_list = []
         staff_list.append(input("Enter a Captain"))
-        staff_list.append((input("Enter a Co-Pilot")))
+        staff_list.append(input("Enter a Co-Pilot"))
         staff_list.append(input("Enter a flight attendant: "))
         staff_list.append(input("Enter a flight attendant: "))
         return staff_list

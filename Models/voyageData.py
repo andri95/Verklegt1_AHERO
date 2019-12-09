@@ -59,7 +59,7 @@ class VoyageData:
         self.captain = captain
 
     def setCoPilot(self, coPilot):
-        self.captain = coPilot
+        self.coPilot = coPilot
 
     def setFa1(self, fa1):
         self.fa1 = fa1

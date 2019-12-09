@@ -7,26 +7,7 @@ class VoyageUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
-        self.MAINMENU = """
-############################################################
-#                           _|_	               quit(q)     #
-#                   --@--@--(_)--@--@--                    #
-#__________________________________________________________#
-#                                                          #
-#                         Voyage                           #
-#                                                          #
-#                 1.List voyages                           #
-#                 2.Add voyage                             #
-#                 3.Complete Voyage                        #
-#                                                          #
-#                                                          #
-#                                                          #
-#                                                          #
-#                                                          #
-#                                                          #
-#  0.Back                                                  #
-############################################################	
-"""
+        self.MAINMENU = """Verklegt1_AHERO"""
         self.start()
 
     def start(self):

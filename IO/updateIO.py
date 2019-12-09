@@ -21,39 +21,44 @@ class UpdateIO:
         voyage_list = []
         for row in reader:
             voyage_list.append(VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]], row[field_list[4]], row[field_list[5]], row[field_list[6]], row[field_list[7]], row[field_list[8]], row[field_list[9]]))
-
+        print(voyage_list)
         upcomingVoyageFile.close()
-
         upcomingVoyageFile = fileObject.writeFile()
         fieldnames = field_list
         writer = csv.DictWriter(upcomingVoyageFile, fieldnames=fieldnames)
         writer.writeheader()
         upcomingVoyageFile.close()
-
         upcomingVoyageFile = fileObject.appendFile()
         fieldnames = field_list
         writer = csv.DictWriter(upcomingVoyageFile, fieldnames=fieldnames)
-        #for i in range(0, len(dataList)):
-        for voyage in voyage_list:
-            if voyage.getFlightNumber() == dataList[0].getFlightNumber():
-                voyage.setCaptain(staffList[0])
-                voyage.setCoPilot(staffList[1])
-                voyage.setFa1(staffList[2])
-                voyage.setFa2(staffList[3])
-            writer.writerow({field_list[0]: voyage.getFlightNumber(), field_list[1]: voyage.getDepartingFrom(), field_list[2]: voyage.getArrivingAt(), field_list[3]: voyage.getDepartureTime(),
-                            field_list[4]: voyage.getArrivalTime(), field_list[5]: voyage.getAircraftId(), field_list[6]: voyage.getCaptain(), field_list[7]: voyage.getCoPilot(),
-                            field_list[8]: voyage.getFa1(), field_list[9]: voyage.getFa2()})
-        for voyage in voyage_list:
-            if voyage.getFlightNumber() == dataList[1].getFlightNumber():
-                voyage.setCaptain(staffList[0])
-                voyage.setCoPilot(staffList[1])
-                voyage.setFa1(staffList[2])
-                voyage.setFa2(staffList[3])
-            writer.writerow({field_list[0]: voyage.getFlightNumber(), field_list[1]: voyage.getDepartingFrom(),
-                             field_list[2]: voyage.getArrivingAt(), field_list[3]: voyage.getDepartureTime(),
-                             field_list[4]: voyage.getArrivalTime(), field_list[5]: voyage.getAircraftId(),
-                             field_list[6]: voyage.getCaptain(), field_list[7]: voyage.getCoPilot(),
-                             field_list[8]: voyage.getFa1(), field_list[9]: voyage.getFa2()})
+        print("Stafflist: ", staffList)
+        print("datalist:", dataList)
+        print("Voyagelist: ", voyage_list)
+
+        i = 0
+        while i < len(voyage_list):
+            if dataList[0].getFlightNumber() == voyage_list[i].getFlightNumber():
+                voyage_list[i].setCaptain(staffList[0])
+                voyage_list[i].setCoPilot(staffList[1])
+                voyage_list[i].setFa1(staffList[2])
+                voyage_list[i].setFa2(staffList[3])
+                voyage_list[i+1].setCaptain(staffList[0])
+                voyage_list[i+1].setCoPilot(staffList[1])
+                voyage_list[i+1].setFa1(staffList[2])
+                voyage_list[i+1].setFa2(staffList[3])
+            writer.writerow({field_list[0]: voyage_list[i].getFlightNumber(), field_list[1]: voyage_list[i].getDepartingFrom(),
+                             field_list[2]: voyage_list[i].getArrivingAt(), field_list[3]: voyage_list[i].getDepartureTime(),
+                             field_list[4]: voyage_list[i].getArrivalTime(), field_list[5]: voyage_list[i].getAircraftId(),
+                             field_list[6]: voyage_list[i].getCaptain(), field_list[7]: voyage_list[i].getCoPilot(),
+                             field_list[8]: voyage_list[i].getFa1(), field_list[9]: voyage_list[i].getFa2()})
+            writer.writerow(
+                {field_list[0]: voyage_list[i+1].getFlightNumber(), field_list[1]: voyage_list[i+1].getDepartingFrom(),
+                 field_list[2]: voyage_list[i+1].getArrivingAt(), field_list[3]: voyage_list[i+1].getDepartureTime(),
+                 field_list[4]: voyage_list[i+1].getArrivalTime(), field_list[5]: voyage_list[i+1].getAircraftId(),
+                 field_list[6]: voyage_list[i+1].getCaptain(), field_list[7]: voyage_list[i+1].getCoPilot(),
+                 field_list[8]: voyage_list[i+1].getFa1(), field_list[9]: voyage_list[i+1].getFa2()})
+            i+=2
+
         upcomingVoyageFile.close()
     def updateDest(self, dataList):
 
