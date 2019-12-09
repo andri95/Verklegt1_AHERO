@@ -1,5 +1,6 @@
 from UI.quitUI import QuitUI
 from Models.inputHandler import InputHandler
+from Models.outputHandler import OutputHandler
 from LL.mainLL import MainLL
 
 
@@ -8,6 +9,7 @@ class AirplaneUI:
 
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
+        self.outputObject = OutputHandler()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -46,10 +48,8 @@ class AirplaneUI:
                 return  #  If user input is 0, returns to main menu.
 
     def getAirplanesUI(self):
-        airplanes = [str(a) for a in self.mainObject.getAirplanesLL()]
-        for line in airplanes: 
-            print(line)
-        input("press any key to continue.")
+        airplaneObject_list = self.mainObject.getAirplanesLL()
+        return self.outputObject.allAirplanesOH(airplaneObject_list)
 
     def registerAirplaneUI(self):
         newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes

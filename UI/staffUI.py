@@ -1,11 +1,13 @@
 from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
 from Models.inputHandler import InputHandler
+from Models.outputHandler import OutputHandler
 
 class StaffUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
+        self.outputObject = OutputHandler()
 
         self.MAINMENU = """
 ############################################################
@@ -118,31 +120,28 @@ class StaffUI:
 
     def getAllStaffUI(self):
         staffObject_list = self.mainObject.getAllStaffLL()
-        for staffMember in staffObject_list:
-            print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+        return self.outputObject.allStaffOH(staffObject_list)
+        
 
     def getAllPilotsUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
-        for staffMember in pilotObject_list:
-            print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+        return self.outputObject.allPilotsOH(pilotObject_list)
 
     def getAllCabinCrewUI(self):
         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
-        for staffMember in cabinCrewObject_list:
-            print('Name: {}, Role: {}'.format(staffMember.getName(), staffMember.getRole()))
+        self.outputObject.allCabinCrewOH(cabinCrewObject_list)
 
     def addNewStaffUI(self):
-
         newEmployee = self.inputObject.addNewStaffIH()
         self.mainObject.addNewStaffLL(newEmployee)
 
     def getStaffByIdUI(self):
         staffObject_list = self.mainObject.getAllStaffLL()
-        for staffMember in staffObject_list:
-            print('Name: {}, SSN: {}'.format(staffMember.getName(), staffMember.getSSN()))
+        self.outputObject.singleStaffListOH(staffObject_list)
         input_ssn = input("Enter social security number: ")
         staffMember = self.mainObject.getStaffByIDLL(input_ssn)
-        print(staffMember)
+        self.outputObject.singleStaffHeaderOH()
+        self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
         pass

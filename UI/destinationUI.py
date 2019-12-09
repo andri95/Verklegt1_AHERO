@@ -1,11 +1,13 @@
 from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
 from Models.inputHandler import InputHandler
+from Models.outputHandler import OutputHandler
 
 class DestinationUI():
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
+        self.outputObject = OutputHandler()
 
         self.MAINMENU = """
 ############################################################
@@ -46,9 +48,8 @@ class DestinationUI():
                 return
 
     def getAllDestiantionUI(self):
-        destination_list = self.mainObject.getAllDestinationsLL()
-        for destination in destination_list:
-            print('Country: {} Contact Name: {} Emergency Number: {}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber() ))
+        destinationObject_list = self.mainObject.getAllDestinationsLL()
+        return self.outputObject.allDestinationsOH(destinationObject_list)
 
     def addNewDestinationUI(self):
         newDestination = self.inputObject.addNewDestinationIH()
