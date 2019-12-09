@@ -54,3 +54,6 @@ class MainLL:
 
     def updateDestinationLL(self, dataList):
         return self.destinationObject.updateDestination(dataList)
+
+    def addLicenseLL(self, dataList):
+        return self.airplaneObject.addLicense(dataList)

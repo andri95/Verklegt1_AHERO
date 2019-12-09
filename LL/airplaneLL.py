@@ -21,8 +21,8 @@ class AirplaneLL:
     def getAirplaneStatus(self):
         pass
 
-    def addLicense(self):
-        pass
+    def addLicense(self, dataList):
+        return self.mainObject.addLicenseIO(dataList)
 
     def __str__(self):
         return

@@ -130,7 +130,7 @@ class UpdateIO:
                 employee.setLicense(dataList[1])
             writer.writerow({field_list[0]: employee.getSSN(),field_list[1]: employee.getName(),field_list[2]: employee.getAddress(),
                             field_list[3]: employee.getCellPhone(),field_list[4]: employee.getPhoneNumber(),field_list[5]: employee.getEmail(),
-                            field_list[6]: employee.getRole(),field_list[7]: employee.getRank(),field_list[8]: employee.getLicence()})
+                            field_list[6]: employee.getRole(),field_list[7]: employee.getRank(),field_list[8]: employee.getLicense()})
  
         # File closed
         crewFile.close()

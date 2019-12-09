@@ -58,3 +58,9 @@ class InputHandler:
         staff_list.append(input("Enter a flight attendant: "))
         staff_list.append(input("Enter a flight attendant: "))
         return staff_list
+
+    def addLicenseIH(self):
+        ssn = input('Enter social security number: ')
+        newLicense = input('Enter new airplane type: ')
+        dataList = [ssn, newLicense]
+        return dataList

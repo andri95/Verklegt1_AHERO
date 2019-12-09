@@ -20,7 +20,7 @@ class AirplaneUI:
 #                                                          #
 #                   1. list Airplanes                      #
 #                   2. Add airplanes                       #
-#                                                          #
+#                   3. Add licensed pilot                  #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -36,7 +36,7 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI, 'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != '0':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -57,3 +57,9 @@ class AirplaneUI:
         self.mainObject.addAirplaneLL(newAirplane)
         print("New airplane saved!")
         input("Press any key to continue.")
+
+    def addLicenseUI(self):
+        pilotObject_list = self.mainObject.getAllPilotsLL()
+        self.outputObject.allPilotsLicenseOH(pilotObject_list)
+        dataList = self.inputObject.addLicenseIH()
+        return self.mainObject.addLicenseLL(dataList)
