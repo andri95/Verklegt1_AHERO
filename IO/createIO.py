@@ -41,6 +41,7 @@ class CreateIO():
              field_list[8]: newEmployee.getLicence()})
         crewFile.close()
 
+
     def addNewDest(self, newDestination):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
@@ -48,9 +49,11 @@ class CreateIO():
         destinationFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(destinationFile, fieldnames=field_list)
-        writer.writerow({field_list[0]: newDestination.getCountry(), field_list[1]: newDestination.getFlightTime()
-                         ,field_list[2]: newDestination.getContact(),field_list[3]: newDestination.getEmergencyNumber()})
+        writer.writerow({field_list[0]: newDestination.getCountry(), field_list[1]: newDestination.getFlightTime(),
+                         field_list[2]: newDestination.getContact(),field_list[3]: newDestination.getEmergencyNumber(),
+                         field_list[4]: newDestination.getDestId()})
         destinationFile.close()
+
 
     def addNewVoyage(self, newVoyage):
         #  FileHandler DTO instance created

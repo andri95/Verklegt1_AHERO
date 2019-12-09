@@ -91,7 +91,7 @@ class UpdateIO:
                 destination.setContact(dataList[1])
                 destination.setEmergencyNumber(dataList[2])
             writer.writerow({field_list[0]: destination.getCountry(), field_list[1]: destination.getFlightTime(),
-                            field_list[2]: destination.getContact(), field_list[3]: destination.getEmergencyNumber()})
+                            field_list[2]: destination.getContact(), field_list[3]: destination.getEmergencyNumber(), field_list[4]: destination.getDestId()})
        
         # File closed
         destinationsFile.close()

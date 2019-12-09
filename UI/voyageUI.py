@@ -74,17 +74,26 @@ class VoyageUI:
            # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
             #print("\n")
         input("Press any key to continue.")
+
+
     
     def addNewVoyageUI(self):
         print("_____First Flight_____")
         firstFlight = self.inputObject.addNewFlightIH()
+        firstFlightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight)+"0"
+        firstFlight.setFlightNumber(str(firstFlightId))
         self.mainObject.addNewVoyageLL(firstFlight)
+        print("This flight was given the number", firstFlightId)
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
+        secondflightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight) + "1"
+        secondFlight.setFlightNumber(str(secondflightId))
         self.mainObject.addNewVoyageLL(secondFlight)
+        print("This flight was given the number", secondflightId)
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
+
 
 
     def completeVoyageUI(self):

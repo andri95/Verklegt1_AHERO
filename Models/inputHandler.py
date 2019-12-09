@@ -21,12 +21,14 @@ class InputHandler:
         newDestination = DestinationData(country, flighttime, contact, emergencynum)
         return newDestination
 
+
     def addNewFlightIH(self):
-        flightNumber = input("Enter an ID for the flight ")
+
+        arrivingAt = input("Where will you be arriving at: ")
+        flightNumber = ""
         departingFrom = input("Where will you be flying from: ")
-        arrivalTime = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
-        departureTime = input("Where will you be arriving at: ")
-        arrivingAt = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
+        departureTime = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
+        arrivalTime = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
         aircraftId = input("Put di aircarft inn: ")
         newFlight = VoyageData(flightNumber, departingFrom, arrivingAt , departureTime, arrivalTime , aircraftId)
         return newFlight
@@ -64,3 +66,6 @@ class InputHandler:
         newLicense = input('Enter new airplane type: ')
         dataList = [ssn, newLicense]
         return dataList
+
+
+

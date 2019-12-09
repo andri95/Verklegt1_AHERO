@@ -22,7 +22,7 @@ class ReadIO:
         destination_list = []
         for row in reader:
             destination_list.append(
-            DestinationData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
+            DestinationData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]], row[field_list[4]]))
 
         return destination_list
 
