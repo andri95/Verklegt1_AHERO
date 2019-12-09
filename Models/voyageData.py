@@ -69,20 +69,19 @@ class VoyageData:
 
 
 
-    def __str__(self):
-        return f"Pilot: {self.pilot} Co-pilot. {self.coPilot} Flight attendants: {self.fa1} {self.fa2} Airplane: {self.airplane}"
+    #def __str__(self):
+    #    return f"Pilot: {self.pilot} Co-pilot. {self.coPilot} Flight attendants: {self.fa1} {self.fa2} Airplane: {self.airplane}"
 
 
 
+   # def __str__(self):
+   #     return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
 
-    def __str__(self):
-        return 'First leg:\n{}\nSecond leg:\n{}'.format(self.flightDep_obj, self.flightArr_obj)
+    #def getFlightDep(self):
+     #   return self.flightDep_obj   #  Return flight departure object
 
-    def getFlightDep(self):
-        return self.flightDep_obj   #  Return flight departure object
-
-    def getFlightArr(self):
-        return self.flightArr_obj  #  Return flight array(list) object
+    #def getFlightArr(self):
+      #  return self.flightArr_obj  #  Return flight array(list) object
 
     
 
