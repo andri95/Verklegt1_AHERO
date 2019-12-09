@@ -32,8 +32,9 @@ class DestinationUI():
         self.start()
 
     def start(self):
-        print(self.MAINMENU)
+        
         while True:
+            print(self.MAINMENU)
             mainCommand_dict = {'1': self.getAllDestiantionUI, '2': self.addNewDestinationUI,
                                 '3': self.updateDestinationUI, 'q': QuitUI}
             user_input = input("Input a command: ")

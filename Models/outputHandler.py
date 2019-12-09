@@ -23,6 +23,7 @@ class OutputHandler:
                                                     staffMember.getEmail(), staffMember.getRank()))
         input(ANYKEY)
 
+
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format(PILOTS))
         print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
