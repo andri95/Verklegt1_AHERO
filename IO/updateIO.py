@@ -21,7 +21,6 @@ class UpdateIO:
         voyage_list = []
         for row in reader:
             voyage_list.append(VoyageData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]], row[field_list[4]], row[field_list[5]], row[field_list[6]], row[field_list[7]], row[field_list[8]], row[field_list[9]]))
-        print(voyage_list)
         upcomingVoyageFile.close()
         upcomingVoyageFile = fileObject.writeFile()
         fieldnames = field_list
@@ -31,9 +30,6 @@ class UpdateIO:
         upcomingVoyageFile = fileObject.appendFile()
         fieldnames = field_list
         writer = csv.DictWriter(upcomingVoyageFile, fieldnames=fieldnames)
-        print("Stafflist: ", staffList)
-        print("datalist:", dataList)
-        print("Voyagelist: ", voyage_list)
 
         i = 0
         while i < len(voyage_list):
