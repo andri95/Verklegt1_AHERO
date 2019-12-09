@@ -15,8 +15,10 @@
 #new_staff = StaffData('420420420','voldemort','iamawizard','86940129','2358266','voldemortsexy@nanair.com','Cabincrew','Flight Attendant','N/A')
 #ioTest.addNewStaff(new_staff)
 
-from UI.FRONTPAGE import MainMenu
+from UI.mainUI import MainUI
 
-MainMenu()
+
+MainUI()
+
 
 
