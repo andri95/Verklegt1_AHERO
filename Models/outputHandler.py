@@ -9,6 +9,7 @@ class OutputHandler:
                                                     staffMember.getEmail(), staffMember.getRank()))
         input("Press any key to continue.")
 
+
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format('_______ Pilots _______'))
         print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
@@ -53,3 +54,4 @@ class OutputHandler:
         for destination in destinationObject_list:
             print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber()))
         input("Press any key to continue.")
+      

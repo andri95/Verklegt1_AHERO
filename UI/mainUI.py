@@ -4,12 +4,14 @@ from UI.staffUI import StaffUI
 from UI.voyageUI import VoyageUI
 from UI.quitUI import QuitUI
 from UI.secretUI import SecretUI
+from datetime import date
 
 class MainUI:
     def __init__(self):
+        self.today = date.today()
         self.MAINMENU = """
 ############################################################
-#                            |                             #
+#                            |                 {}  #
 #                            |                             #
 #                          .-'-.                           #
 #                         ' ___ '                          #
@@ -31,7 +33,7 @@ class MainUI:
 #            #               #               #             #
 #            #               #               #             #
 ############################################################
-"""
+""".format(self.today)
         self.start()
 
     def start(self):

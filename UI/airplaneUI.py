@@ -32,8 +32,9 @@ class AirplaneUI:
         self.start()
 
     def start(self):
-        print(self.MAINMENU)
+        
         while True:
+            print(self.MAINMENU)
             #  A dictionary that handles users input.
             mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, 'q': QuitUI}
             user_input = input("Input a command: ")
