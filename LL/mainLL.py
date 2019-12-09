@@ -54,3 +54,6 @@ class MainLL:
 
     def updateDestinationLL(self, dataList):
         return self.destinationObject.updateDestination(dataList)
+
+    def workScheduleLL(self, workDay):
+        return self.staffObject.getWorkSchedule(workDay)

@@ -19,7 +19,7 @@ class AirplaneUI:
 #                       Airplanes                          #
 #                                                          #
 #                   1. list Airplanes                      #
-#                   2. Add airplanes                       #
+#                   2. Add Airplane                        #
 #                                                          #
 #                                                          #
 #                                                          #

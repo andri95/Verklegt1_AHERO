@@ -103,3 +103,5 @@ class OutputHandler:
            # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
             #print("\n")
         input(ANYKEY)
+    def allUnavailablestaffOH(self,voyageObject_list):
+        
