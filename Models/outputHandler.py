@@ -111,3 +111,6 @@ class OutputHandler:
         print('\n{:<20} {:<11} {:<12}\n'.format('Name', 'SSN', 'Current License'))
         for staffMember in pilotObject_list:
             print('{:<20} {:<11} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getLicense()))
+    
+    def allUnavailablestaffOH(self,voyageObject_list):
+        pass

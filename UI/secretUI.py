@@ -1,7 +1,7 @@
 class SecretUI:
     def __init__(self):
 
-        self.CHUCKNORRIS = """             MMMMMMMMMMM
+        self.CHUCKNORRIS = """
                                        MMMMMMMMMMMMMMMMM
                                    NMMMMMMMMMMMMMMMMMMMMMMMM
                                  MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
