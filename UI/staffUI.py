@@ -61,6 +61,7 @@ class StaffUI:
 #               1. Find available staff                    #
 #               2. Work schedule by date                   #
 #               3. Work schedule for single employee       #
+#               4. Find unavailable staff                  #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -88,7 +89,7 @@ class StaffUI:
     def listStaff(self):
 
         while True: 
-            subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI,
+            subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI, 
                                  '4': self.getStaffByIdUI, 'q': QuitUI}
             print(self.SUBMENU1)
             user_input = input("Input a command: ")
@@ -105,7 +106,7 @@ class StaffUI:
     def workScheduleUI(self):
 
         while True:
-            subCommand_dict = {'1': self.availableStaffUI, '2': self.unavailableStaffUI, '3': self.singleStaffUI, 'q': QuitUI}
+            subCommand_dict = {'1': self.availableStaffUI, '2': self.unavailableStaffUI, '3': self.singleStaffUI, '4': self.unavailableStaffUI, 'q': QuitUI}
             print(self.SUBMENU2)
             user_input = input('Input a command: ')
             if user_input != '0':
