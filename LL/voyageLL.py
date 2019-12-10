@@ -21,6 +21,7 @@ class VoyageLL():
                 return dest.getDestId()
             else:
                 result = False
+
         return result
 
     def availableDates(self):
