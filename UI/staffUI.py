@@ -17,10 +17,10 @@ class StaffUI:
 #                                                          #
 #                        Employees                         #
 #                                                          #
-#                 1. List employees                        #
-#                 2. Register employees                    #
-#                 3. Add staff to voyage                   #
-#                 4. Work Schedule                         #
+#                  1. List employees                       #
+#                  2. Register employees                   #
+#                  3. Work Schedule                        #
+#                                                          #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -58,9 +58,9 @@ class StaffUI:
 #                                                          #
 #                      Work schedule                       #
 #                                                          # 
-#               1. Available staff                         #
-#               2. Unavailable staff                       #
-#               3. Work scedule for single employee        #
+#               1. Find available staff                    #
+#               2. Work schedule by date                   #
+#               3. Work schedule for single employee       #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -72,7 +72,7 @@ class StaffUI:
 
     def start(self):
         while True:
-            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, '4': self.availableStaffUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != '0':
@@ -144,27 +144,18 @@ class StaffUI:
         self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
+        availableDates_list = self.mainObject.availableDatesLL()
+        self.outputObject.availableDatesOH(availableDates_list)
         input_date = input("Enter a date 'YYYY-MM-DD' : ")
-        workSchedule = self.mainObject.workScheduleLL(input_date)
-        staffData = []
-        voyageThisdayDict = {}
+        availableStaff = self.mainObject.workScheduleAvailableLL(input_date)
+        self.outputObject.workScheduleAvailableOH(availableStaff)
 
-        for voyage in workSchedule:
-            if voyage.getCaptain() != "":
-                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCaptain()))
-                staffData.append(self.mainObject.getStaffByIDLL(voyage.getCoPilot()))
-                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa1()))
-                staffData.append(self.mainObject.getStaffByIDLL(voyage.getFa2()))
-
-            if voyage.getArrivingAt() not in voyageThisdayDict.items():
-                if voyage.getArrivingAt() != 'KEF':
-                    voyageThisdayDict[voyage.getArrivingAt()] = staffData
-                    staffData.clear()
-        self.outputObject.workSchedule(voyageThisdayDict)
-
-
-    def unavailableStaffUI(self, input_date):
-        pass
+    def unavailableStaffUI(self):
+        availableDates_list = self.mainObject.availableDatesLL()
+        self.outputObject.availableDatesOH(availableDates_list)
+        input_date = input("Enter a date 'YYYY-MM-DD' : ")
+        workSchedule_dict = self.mainObject.workScheduleLL(input_date)
+        self.outputObject.workScheduleOH(workSchedule_dict)
 
     def singleStaffUI(self):
         pass

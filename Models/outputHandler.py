@@ -7,6 +7,7 @@ CABINCREW = '_______ Cabin Crew _______'
 AIRPLANES = '_______ Airplanes _______'
 DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
+AVAILABLE = "_______ Available Staff _______"
 NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
@@ -103,14 +104,36 @@ class OutputHandler:
            # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
             #print("\n")
         input(ANYKEY)
+    
+    def availableDatesOH(self, availableDates_list):
+        print('\n_______ Avaliable Dates _______\n')
+        for date in availableDates_list:
+            print(date)
+        print()
 
-    def workSchedule(self, workDict):
-        for key, val in workDict.items():
-            print("_______ Voyage arriving at {} _______".format(key))
-            for i in val:
-                print("Name: {} SNN: {}".format(i.getName(), i.getSSN()))
+    def workScheduleOH(self, workDict):
+        counter = 0
+        if len(workDict) != 0:
+            for voyage in workDict:
+                if len(workDict[voyage]) != 0:
+                    print("\n\t_______ Voyage arriving at {} _______".format(voyage))
+                    print('\n{:<20} {:<11} {:<21}'.format('Name', 'SSN', 'Rank'))
+                    for staffMember in workDict[voyage]:
+                        print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+                else:
+                    counter += 1
+        else:
+            print('\nNo staff working on this date!')
 
+        if counter == len(workDict):
+            print('\nNo staff working on this date!')
 
+        input(ANYKEY)
 
+    def workScheduleAvailableOH(self, availableStaff):
+        print('\n{:^53}'.format(AVAILABLE))
+        print('\n{:<20} {:<11} {:<21}'.format('Name', 'SSN', 'Rank'))
+        for staffMember in availableStaff:
+            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
 
-
+        input(ANYKEY)

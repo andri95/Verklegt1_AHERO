@@ -21,3 +21,13 @@ class VoyageLL():
                 return dest.getDestId()
             else:
                 print(destination, "is not a valid destination")
+
+    def availableDates(self):
+        availableDates_list = []
+        voyageObject_list = self.mainObject.getVoyagesIO()
+        for voyage in voyageObject_list:
+            departureTime = voyage.getDepartureTime()
+            date = departureTime.split('T')
+            if date[0] not in availableDates_list:
+                availableDates_list.append(date[0])
+        return availableDates_list
