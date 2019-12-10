@@ -61,5 +61,11 @@ class MainLL:
     def workScheduleLL(self, workDay):
         return self.staffObject.getWorkSchedule(workDay)
 
+    def workScheduleAvailableLL(self, workDay):
+        return self.staffObject.getWorkSchedlueAvailable(workDay)
+
     def generateFlightNumberLL(self, flight):
         return self.voyageObject.generateFlightNumber(flight)
+
+    def availableDatesLL(self):
+        return self.voyageObject.availableDates()

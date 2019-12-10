@@ -41,14 +41,41 @@ class StaffLL:
         return self.mainObject.addNewStaffIO(newEmployee)
 
     def getWorkSchedule(self, workDay):
-        workScedualList = []
+        workSchedule_list = []
+        staffData = []
+        voyageThisdayDict = {}
         voyage_list = self.mainObject.getVoyagesIO()
         for voyage in voyage_list:
             voyageDate = voyage.getDepartureTime().split("T")
             if workDay == voyageDate[0]:
-                workScedualList.append(voyage)
+                workSchedule_list.append(voyage)
 
-        return workScedualList
+        for voyage in workSchedule_list:
+            if voyage.getCaptain() != "":
+                staffData.append(self.getStaffByID(voyage.getCaptain()))
+                staffData.append(self.getStaffByID(voyage.getCoPilot()))
+                staffData.append(self.getStaffByID(voyage.getFa1()))
+                staffData.append(self.getStaffByID(voyage.getFa2()))
+            if voyage.getArrivingAt() not in voyageThisdayDict.items():
+                if voyage.getArrivingAt() != 'KEF':
+                    voyageThisdayDict[voyage.getArrivingAt()] = staffData
+                    staffData.clear()
+
+        return voyageThisdayDict
+
+    def getWorkSchedlueAvailable(self, workDay):
+        availableStaff = []
+        unavailableStaff = []
+        voyageThisdayDict = self.getWorkSchedule(workDay)
+        staffObject_list = self.getAllStaff()
+        for voyage in voyageThisdayDict:
+            for workingStaff in voyageThisdayDict[voyage]:
+                unavailableStaff.append(workingStaff.getSSN())
+        for staffMember in staffObject_list:
+            if staffMember.getSSN() not in unavailableStaff:
+                availableStaff.append(staffMember)
+
+        return availableStaff
 
 
 

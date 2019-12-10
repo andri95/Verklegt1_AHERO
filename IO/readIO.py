@@ -63,4 +63,3 @@ class ReadIO:
         return airplane_list
 
 
-
