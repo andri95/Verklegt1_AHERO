@@ -30,7 +30,7 @@ class OutputHandler:
         print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
         for staffMember in pilotObject_list:
             print('{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
-                                                    staffMember.getEmail(), staffMember.getRank(), staffMember.getLicence()))
+                                                    staffMember.getEmail(), staffMember.getRank(), staffMember.getLicense()))
         input(ANYKEY)
 
     def allCabinCrewOH(self, cabinCrewObject_list):
@@ -137,3 +137,7 @@ class OutputHandler:
             print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
 
         input(ANYKEY)
+
+    def testPrint(self, testDict):
+        for key, valu in testDict.items():
+            print(key,valu)

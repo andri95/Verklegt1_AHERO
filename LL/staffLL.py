@@ -1,10 +1,12 @@
 
 from IO.mainIO import MainIO
 
+
 class StaffLL:
 
     def __init__(self):
-        self.mainObject = MainIO()       
+        self.mainObject = MainIO()
+             
 
     def getAllStaff(self):
         return self.mainObject.getStaffIO()
@@ -22,6 +24,7 @@ class StaffLL:
             if staffMember.getRole() == 'Pilot':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
+
 
     def getAllCabinCrew(self):
         staffObject_list = self.mainObject.getStaffIO()
@@ -76,6 +79,9 @@ class StaffLL:
                 availableStaff.append(staffMember)
 
         return availableStaff
+
+    
+
 
 
 

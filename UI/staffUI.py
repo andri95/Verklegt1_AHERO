@@ -2,12 +2,14 @@ from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
 from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
+from operator import methodcaller
 
 class StaffUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
         self.outputObject = OutputHandler()
+        
 
         self.MAINMENU = """
 ############################################################
@@ -125,7 +127,10 @@ class StaffUI:
 
     def getAllPilotsUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
+        #sorted(pilotObject_list, key=methodcaller('StaffData.getLicense')
         return self.outputObject.allPilotsOH(pilotObject_list)
+
+
 
     def getAllCabinCrewUI(self):
         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()

@@ -24,6 +24,30 @@ class AirplaneLL:
     def addLicense(self, dataList):
         return self.mainObject.addLicenseIO(dataList)
 
+
+    def getAllPilots(self):
+        staffObject_list = self.mainObject.getStaffIO()
+        pilotObject_list = []
+        for staffMember in staffObject_list:
+            if staffMember.getRole() == 'Pilot':
+                pilotObject_list.append(staffMember)
+        return pilotObject_list
+
+
+    def getLicenseDict(self):
+        staffObject_list = self.mainObject.getStaffIO()
+        pilotObject_list = []
+        for staffMember in staffObject_list:
+            if staffMember.getRole() == 'Pilot':
+                pilotObject_list.append(staffMember)
+        license_Dict = {}
+        for staffMember in pilotObject_list:
+            if staffMember.getLicense() not in license_Dict:
+                license_Dict[staffMember.getLicense()] = [staffMember.getName()]
+            else:
+                license_Dict[staffMember.getLicense()].append(staffMember.getName())
+        return license_Dict
+
     def __str__(self):
         return
         #return"{}".format(self.AirplaneIO)
