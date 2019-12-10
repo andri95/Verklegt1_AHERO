@@ -20,7 +20,8 @@ class VoyageLL():
             if dest.getCountry() == destination:
                 return dest.getDestId()
             else:
-                print(destination, "is not a valid destination")
+                result = False
+        return result
 
     def availableDates(self):
         availableDates_list = []

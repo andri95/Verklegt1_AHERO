@@ -80,10 +80,14 @@ class VoyageUI:
     def addNewVoyageUI(self):
         print("_____First Flight_____")
         firstFlight = self.inputObject.addNewFlightIH()
-        firstFlightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight)+"0"
-        firstFlight.setFlightNumber(str(firstFlightId))
+        if self.mainObject.generateFlightNumberLL(firstFlight) != False:
+            firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+            firstFlight.setFlightNumber(str(firstFlightId))
+            print("This fight has the Id: ", firstFlight.getFlightNumber())
+        else:
+            print(firstFlight.getArrivingAt(), "is not a valid destination")
         self.mainObject.addNewVoyageLL(firstFlight)
-        print("This flight was given the number", firstFlightId)
+        #print("This flight was given the number", firstFlightId)
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
         secondflightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight) + "1"
@@ -93,7 +97,6 @@ class VoyageUI:
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
-
 
 
     def completeVoyageUI(self):
