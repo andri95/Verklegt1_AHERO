@@ -26,7 +26,7 @@ class AirplaneUI:
 #                                                          #
 #                                                          #
 #                                                          #
-# 0. Back                                                  #
+#  back(b)                                                 #
 ############################################################
 """
         self.start()
@@ -38,7 +38,7 @@ class AirplaneUI:
             #  A dictionary that handles users input.
             mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI ,'q': QuitUI}
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
                     for key in mainCommand_dict:
                         if user_input == key:

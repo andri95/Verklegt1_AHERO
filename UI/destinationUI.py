@@ -21,12 +21,13 @@ class DestinationUI():
 #                  1. All destinations                     #
 #                  2. Add a new destination                #             
 #                  3. Update destination                   #
+#                  4. Most popular destination             #
 #                                                          #
 #                                                          #
 #                                                          #
 #                                                          #
 #                                                          #	
-#                                                          #
+#  back(b)                                                 #
 ############################################################
 """
         self.start()
@@ -38,7 +39,7 @@ class DestinationUI():
             mainCommand_dict = {'1': self.getAllDestiantionUI, '2': self.addNewDestinationUI,
                                 '3': self.updateDestinationUI, 'q': QuitUI}
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
