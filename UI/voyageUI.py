@@ -21,21 +21,22 @@ class VoyageUI:
 #                      1.List voyages                      #
 #                      2.Add voyage                        #
 #                      3.Complete voyage                   #
+#                      4.Most popular voyage               #
 #                                                          #
 #                                                          #
 #                                                          #				
 #                                                          #
-#  0.Back                                                  #
+#  back(b)                                                 #
 ############################################################	"""
         self.start()
 
     def start(self):
 
         while True:
-            mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.PopularVoyageUI,'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -45,7 +46,24 @@ class VoyageUI:
             else:
                 return
 
+    def PopularVoyageUI(self):
+        Popular_dict = {}
+        voyageObject_list = self.mainObject.getVoyageLL()
+        for voyage  in voyageObject_list:
+            MyVoyage = voyage.getArrivingAt().upper()
+            Popular_dict[MyVoyage] = 1
+            if MyVoyage in Popular_dict:
+                Popular_dict[MyVoyage] +=1
 
+    
+        print(Popular_dict)
+    
+     
+
+   
+            
+            
+            
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
         for voyage in voyageObject_list:
