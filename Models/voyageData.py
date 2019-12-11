@@ -18,6 +18,7 @@ class VoyageData:
 
     def getDepartingFrom(self):
         return self.departingFrom
+
     
     def getArrivingAt(self):
         return self.arrivingAt
@@ -30,6 +31,9 @@ class VoyageData:
 
     def getAircraftId(self):
         return self.aircraftId
+
+    def getStaff(self):
+        return [self.captain, self.coPilot, self.fa1, self.fa2]
 
     def getCaptain(self):
         return self.captain
@@ -58,6 +62,22 @@ class VoyageData:
     def setFlightNumber(self, flightNumber):
         self.flightNumber = flightNumber
 
+    def setDepartingFrom(self, departingFrom):
+        self.departingFrom = departingFrom
 
+    def setDestination(self, arrivingAt):
+        self.arrivingAt = arrivingAt
+
+    def setArrivingAt(self, arrivingAt):
+        self.arrivingAt = arrivingAt
+
+    def setArrivalTime(self, arrivalTime):
+        self.arrivalTime = arrivalTime
+
+    def setDepartureTime(self, departureTime):
+        self.departureTime = departureTime
+
+    def setAircraftId(self, aircraftId):
+        self.aircraftId = aircraftId
     
 

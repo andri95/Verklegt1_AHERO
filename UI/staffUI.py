@@ -2,7 +2,7 @@ from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
 from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
-from operator import methodcaller
+import datetime
 
 class StaffUI:
     def __init__(self):
@@ -42,7 +42,7 @@ class StaffUI:
 #                                                          # 
 #                   1. All employees                       #
 #                   2. Pilots                              #
-#                   3. Flight attendants                   #
+#                   3. Cabin Crew                          #
 #                   4. Find employee                       #
 #                                                          #
 #                                                          #
@@ -149,8 +149,6 @@ class StaffUI:
         self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
-        availableDates_list = self.mainObject.availableDatesLL()
-        self.outputObject.availableDatesOH(availableDates_list)
         input_date = input("Enter a date 'YYYY-MM-DD' : ")
         availableStaff = self.mainObject.workScheduleAvailableLL(input_date)
         self.outputObject.workScheduleAvailableOH(availableStaff)
@@ -163,4 +161,18 @@ class StaffUI:
         self.outputObject.workScheduleOH(workSchedule_dict)
 
     def singleStaffUI(self):
-        pass
+        print('Start of work week')
+        dateStart = self.inputObject.workWeekIH()
+        print('End of work week')
+        dateEnd = self.inputObject.workWeekIH()
+        compareDay = dateStart.day + 7
+        compareDate = dateStart.replace(day = compareDay)
+        if dateEnd != compareDate:
+            print('That is not a work week!')
+        else:
+            staffObject_list = self.mainObject.getAllStaffLL()
+            self.outputObject.singleStaffListOH(staffObject_list)
+            input_ssn = input("Enter social security number: ")
+            dataList = [dateStart, dateEnd, input_ssn]
+            workWeekObject_list = self.mainObject.workWeekLL(dataList)
+            self.outputObject.workWeekOH(workWeekObject_list)

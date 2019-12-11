@@ -1,4 +1,4 @@
-#import dateutil.parser
+import dateutil.parser
 
 EMPLOYEES = '_______ Employees _______'
 EMPLOYEE = '_______ Employee _______'
@@ -8,18 +8,26 @@ AIRPLANES = '_______ Airplanes _______'
 DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
+<<<<<<< HEAD
 LICENSE = '_______ Aircraft License _______'
 NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
 NOFA2 = "No flight attendant nr 2 yet."
+=======
+WORKSCHEDULE = '_______ Work Schedule _______'
+NOPILOT = "No Captain yet."
+NOCOPILOT = "No Copilot yet."
+NOFA1 = "No Flight Service Manager yet."
+NOFA2 = "No Flight Attendant yet."
+>>>>>>> e66df3538c2251dff766facdbfdfd92fa19ddf9d
 ANYKEY = 'Press any key to continue.'
 
 class OutputHandler:
 
     def allStaffOH(self, staffObject_list):
         print('\n{:^75}'.format(EMPLOYEES))
-        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
+        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
         for staffMember in staffObject_list:
             print('{:<20} {:<11} {:<9} {:<20} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
                                                     staffMember.getEmail(), staffMember.getRank()))
@@ -28,7 +36,7 @@ class OutputHandler:
 
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format(PILOTS))
-        print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
+        print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
         for staffMember in pilotObject_list:
             print('{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
                                                     staffMember.getEmail(), staffMember.getRank(), staffMember.getLicense()))
@@ -36,7 +44,7 @@ class OutputHandler:
 
     def allCabinCrewOH(self, cabinCrewObject_list):
         print('\n{:^81}'.format(CABINCREW))
-        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
+        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
         for staffMember in cabinCrewObject_list:
             print('{:<20} {:<11} {:<9} {:<20} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
                                                     staffMember.getEmail(), staffMember.getRank()))
@@ -44,13 +52,13 @@ class OutputHandler:
 
     def singleStaffListOH(self, staffObject_list):
         print('\n{:^30}'.format(EMPLOYEES))
-        print('\n{:<20} {:<11}\n'.format('Name', 'SSN'))
+        print('\n{:<20} {:<11}'.format('Name', 'SSN'))
         for staffMember in staffObject_list:
             print('{:<20} {:<11}'.format(staffMember.getName(), staffMember.getSSN()))
 
     def singleStaffHeaderOH(self):
         print('\n{:^75}'.format(EMPLOYEE))
-        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}\n'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
+        print('\n{:<20} {:<11} {:<9} {:<20} {:<21}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
 
     def singleStaffOH(self, staffMember):
         print('{:<20} {:<11} {:<9} {:<20} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
@@ -83,39 +91,48 @@ class OutputHandler:
             print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber()))
         input(ANYKEY)
 
-    def allVoyagesOH(self, voyageObject_list):
-        counter = 0
+    def allVoyagesOH(self, voyageObject_dict):
+        counter = 1
         print('\n{:^32}'.format(VOYAGES))
-        for voyage in voyageObject_list:
+        for voyage in voyageObject_dict:
             departureDateTime = voyage.getDepartureTime()
             parsedDateObject = dateutil.parser.parse(departureDateTime)
-            print("Departing from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
-            print('\n{:<5} {:<5}'.format('Date', 'Time'))
-            print('\n{:<9} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + str(parsedDateObject.year), str(parsedDateObject.hour)))
-            print("Staff:")
-            if voyage.getCaptain() == "":
-                print(NOPILOT)
-            else:
-                print("Pilot Id: {}".format(voyage.getCaptain()))
+            print("\nDeparting from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
+            print('\n{:<11} {:<9}'.format('Date', 'Time'))
+            print('{:<11} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + '-' + str(parsedDateObject.year),
+                                         str(parsedDateObject.hour) + ':' + str(parsedDateObject.minute)))
 
-            if voyage.getCoPilot() == "":
-                print(NOCOPILOT)
-            else:
-                print("Co-pilot Id: {}".format(voyage.getCoPilot()))
+            if counter % 2 == 0:
+                print("\nStaff:")
+                if voyage.getCaptain() == "":
+                    print(NOPILOT)
+                else:
+                    print('\n{:<20} {:<11} {:<21}'.format('Name', 'SSN', 'Rank'))
+                    for staffMember in voyageObject_dict[voyage]:
+                        if staffMember.getSSN() == voyage.getCaptain():
+                            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
 
-            if voyage.getFa1() == "":
-                print(NOFA1)
-            else:
-                print("Flight attendant 1 Id: {}".format(voyage.getFa1()))
-            if voyage.getFa2() == "":
-                print(NOFA2)
-            else:
-                print("Flight attendant 2 Id {}".format(voyage.getFa2()))
-            
+                if voyage.getCoPilot() == "":
+                    print(NOCOPILOT)
+                else:
+                    for staffMember in voyageObject_dict[voyage]:
+                        if staffMember.getSSN() == voyage.getCoPilot():
+                            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+
+                if voyage.getFa1() == "":
+                    print(NOFA1)
+                else:
+                    for staffMember in voyageObject_dict[voyage]:
+                        if staffMember.getSSN() == voyage.getFa1():
+                            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+                if voyage.getFa2() == "":
+                    print(NOFA2)
+                else:
+                    for staffMember in voyageObject_dict[voyage]:
+                        if staffMember.getSSN() == voyage.getFa2():
+                            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+                print('__________________________')
             counter += 1
-
-           # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
-            #print("\n")
         input(ANYKEY)
     
     def availableDatesOH(self, availableDates_list):
@@ -146,18 +163,44 @@ class OutputHandler:
     def workScheduleAvailableOH(self, availableStaff):
         print('\n{:^53}'.format(AVAILABLE))
         print('\n{:<20} {:<11} {:<21}'.format('Name', 'SSN', 'Rank'))
-        for staffMember in availableStaff:
-            print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+        if len(availableStaff) != 0:
+            for staffMember in availableStaff:
+                print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
+        else:
+            print('No staff available on this date!')
 
+        input(ANYKEY)
+
+
+    def workWeekOH(self, workList):
+        counter = 1
+        if len(workList) != 0:
+            print('\n{:^32}'.format(WORKSCHEDULE))
+            for voyage in workList:
+                departureDateTime = voyage.getDepartureTime()
+                parsedDateObject = dateutil.parser.parse(departureDateTime)
+                print("\nDeparting from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
+                print('\n{:<5} {:<5}'.format('Date', 'Time'))
+                print('{:<9} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + '-' + str(parsedDateObject.year),
+                                             str(parsedDateObject.hour) + ':' + str(parsedDateObject.minute)))
+                if counter % 2 == 0:
+                    print('__________________________')
+                counter += 1
+        else:
+            print('Staffmember has no voyages in chosen week!')
         input(ANYKEY)
 
     def testPrint(self, testDict):
         print('\n{:53}'.format(LICENSE))
         print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
         for key, valu in testDict.items():
+<<<<<<< HEAD
             print('{:<20} {:<11}'.format(key, ', '.join(valu)))
 
         input(ANYKEY)
 
 
+=======
+            print(key,valu)
+>>>>>>> e66df3538c2251dff766facdbfdfd92fa19ddf9d
 

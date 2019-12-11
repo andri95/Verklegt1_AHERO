@@ -1,5 +1,6 @@
 from UI.quitUI import QuitUI
 from Models.inputHandler import InputHandler
+from Models.outputHandler import OutputHandler
 from LL.mainLL import MainLL
 NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
@@ -10,6 +11,8 @@ class VoyageUI:
     def __init__(self):
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
+        self.outputObject = OutputHandler()
+
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -47,71 +50,66 @@ class VoyageUI:
                 return
 
     def PopularVoyageUI(self):
-        Popular_dict = {}
         voyageObject_list = self.mainObject.getVoyageLL()
-        for voyage  in voyageObject_list:
-            MyVoyage = voyage.getArrivingAt().upper()
-            Popular_dict[MyVoyage] = 1
-            if MyVoyage in Popular_dict:
-                Popular_dict[MyVoyage] +=1
+        flights_dict = {}
+        for voyage in voyageObject_list:
+            if voyage.getArrivingAt() not in flights_dict:
+                flights_dict[voyage.getArrivingAt().upper()] = 1
+            else:
+                flights_dict[voyage.getArrivingAt().upper()] +=1
+        del flights_dict["KEF"]
+        maximum = max(flights_dict, key=flights_dict.get)
 
-    
-        print(Popular_dict)
-    
-     
-
-   
-            
-            
+        print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
+        input("Press any key to continue: ")   
             
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
-        for voyage in voyageObject_list:
-            print("Arriving from {} Arriving at {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
-            print("Staff:")
-            if voyage.getCaptain() == "":
-                print(NOPILOT)
-            else:
-                print("Pilot Id: {}".format(voyage.getCaptain()))
 
-            if voyage.getCoPilot() == "":
-                print(NOCOPILOT)
-            else:
-                print("Co-pilot Id: {}".format(voyage.getCoPilot()))
-
-            if voyage.getFa1() == "":
-                print(NOFA1)
-            else:
-                print("Flight attendant 1 Id: {}".format(voyage.getFa1()))
-            if voyage.getFa2() == "":
-                print(NOFA2)
-            else:
-                print("Flight attendant 2 Id {}".format(voyage.getFa2()))
-            print("\n")
-
-           # print("Pilot Id: {} Co-pilot Id: {} \nFlight attendants Id: {}, {} ".format(voyage.getCaptain(),voyage.getCoPilot(),voyage.getFa1(),voyage.getFa2()))
-            #print("\n")
-        input("Press any key to continue.")
-
-
+        self.outputObject.allVoyagesOH(voyageObject_list)
     
     def addNewVoyageUI(self):
         print("_____First Flight_____")
+        print("Pick a destination that Nan Air flys to:")
+        dest = self.mainObject.destinationObject.getDestination()
+        for d in dest:
+            print("{}\t".format(d.getCountry()))
+        #self.mainObject.voyageObject.findAvalibleAirplanes()
         firstFlight = self.inputObject.addNewFlightIH()
-        if self.mainObject.generateFlightNumberLL(firstFlight) != False:
-            firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+        arrivalTime = self.mainObject.voyageObject.findArrivalTime(firstFlight)
+        if arrivalTime != False:
+            firstFlight.setArrivalTime(str(arrivalTime))
+        else:
+            print("Sorry we dont fly to ", firstFlight.getArrivingAt())
+            return None
+        assignedAirplane = self.mainObject.voyageObject.findAvalibleAirplanes(firstFlight)
+        if assignedAirplane != False:
+            firstFlight.setAircraftId(str(assignedAirplane))
+        else:
+            print("Sorry, there are no avalible airplanes at this Time :(")
+            return None
+        firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+        if firstFlightId != False:
             firstFlight.setFlightNumber(str(firstFlightId))
-            print("This fight has the Id: ", firstFlight.getFlightNumber())
+            print("The flight {} was assigned the airplane {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
+
         else:
             print(firstFlight.getArrivingAt(), "is not a valid destination")
+            return None
         self.mainObject.addNewVoyageLL(firstFlight)
-        #print("This flight was given the number", firstFlightId)
+
         print("_____Second Flight_____")
+        #departingFrom = firstFlight.getArrivingAt()
+        #arravingAt = firstFlight.departingFrom()
         secondFlight = self.inputObject.addNewFlightIH()
+        arrivalTime2 = self.mainObject.voyageObject.findArrivalTime(secondFlight)
+        print("second", arrivalTime2)
+        secondFlight.setArrivalTime(arrivalTime2)
         secondflightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight) + "1"
         secondFlight.setFlightNumber(str(secondflightId))
         self.mainObject.addNewVoyageLL(secondFlight)
         print("This flight was given the number", secondflightId)
+        print("The flight will arrive at ", arrivalTime2)
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
@@ -124,9 +122,10 @@ class VoyageUI:
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
-                    counter += 1
-                    voyageDict[counter] = [flight1, flight2]
-                    print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
+                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":
+                        counter += 1
+                        voyageDict[counter] = [flight1, flight2]
+                        print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
         pickVoyage = int(input("Pick a voyage to complete: "))

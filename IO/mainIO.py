@@ -31,6 +31,7 @@ class MainIO:
     def getVoyagesIO(self):
         return self.readObject.getVoyages()
 
+
     def getStaffIO(self):
         return self.readObject.getStaff()
 
