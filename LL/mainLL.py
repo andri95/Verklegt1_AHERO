@@ -69,3 +69,6 @@ class MainLL:
 
     def availableDatesLL(self):
         return self.voyageObject.availableDates()
+    
+    def workWeekLL(self, dataList):
+        return self.voyageObject.getWorkWeek(dataList)

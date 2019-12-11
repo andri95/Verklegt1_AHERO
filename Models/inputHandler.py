@@ -2,6 +2,7 @@ from Models.airplaneData import AirplaneData
 from Models.destinationData import DestinationData
 from Models.staffData import StaffData
 from Models.voyageData import VoyageData
+import datetime
 
 class InputHandler:
 
@@ -67,5 +68,10 @@ class InputHandler:
         dataList = [ssn, newLicense]
         return dataList
 
-
+    def workWeekIH(self):
+        date = input("Enter desired date 'YYYY-MM-DD: ")
+        dateSplit = date.split('-')
+        dateObject = datetime.datetime(int(dateSplit[0]), int(dateSplit[1]), int(dateSplit[2]))
+        return dateObject
+        
 

@@ -76,12 +76,3 @@ class StaffLL:
                 availableStaff.append(staffMember)
 
         return availableStaff
-
-
-
-
-
-
-
-    
-

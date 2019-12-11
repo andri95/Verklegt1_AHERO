@@ -1,11 +1,25 @@
 from IO.mainIO import MainIO
+import datetime
+import dateutil.parser
 
 class VoyageLL():
     def __init__(self):
         self.mainObject = MainIO()
   
     def listVoyage(self):
-        return self.mainObject.getVoyagesIO()
+        voyageObject_list = self.mainObject.getVoyagesIO()
+        staffObject_list = self.mainObject.getStaffIO()
+        voyage_dict = {}
+        for voyage in voyageObject_list:
+            if voyage.getStaff() == ['', '', '', '']:
+                voyage_dict[voyage] = voyage.getStaff()
+            for staffMember in staffObject_list:
+                if staffMember.getSSN() in voyage.getStaff():
+                    if voyage in voyage_dict:
+                        voyage_dict[voyage].append(staffMember)
+                    else:
+                        voyage_dict[voyage] = [staffMember]           
+        return voyage_dict
 
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
@@ -31,3 +45,18 @@ class VoyageLL():
             if date[0] not in availableDates_list:
                 availableDates_list.append(date[0])
         return availableDates_list
+
+    
+    def getWorkWeek(self, dataList):
+        workWeekObject_list = []
+        voyabeObject_list = self.mainObject.getVoyagesIO()
+        for voyage in voyabeObject_list:
+            departureDateTime = voyage.getDepartureTime()
+            parsedDateObject = dateutil.parser.parse(departureDateTime)
+            timeCompare = datetime.datetime(parsedDateObject.year, parsedDateObject.month, parsedDateObject.day)
+            if timeCompare >= dataList[0]:
+                if timeCompare <= dataList[1]:
+                    if dataList[2] in voyage.getStaff():
+                        workWeekObject_list.append(voyage)
+        
+        return workWeekObject_list
