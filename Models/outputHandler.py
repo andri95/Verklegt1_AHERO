@@ -1,4 +1,4 @@
-#import dateutil.parser
+import dateutil.parser
 
 EMPLOYEES = '_______ Employees _______'
 EMPLOYEE = '_______ Employee _______'
@@ -151,7 +151,7 @@ class OutputHandler:
 
         input(ANYKEY)
 
-<<<<<<< HEAD
+
     def workWeekOH(self, workList):
         counter = 1
         if len(workList) != 0:
@@ -169,8 +169,8 @@ class OutputHandler:
         else:
             print('Staffmember has no voyages in chosen week!')
         input(ANYKEY)
-=======
+
     def testPrint(self, testDict):
         for key, valu in testDict.items():
             print(key,valu)
->>>>>>> 050c7543bc4ca316d42a38e36007d9f108ba53c5
+

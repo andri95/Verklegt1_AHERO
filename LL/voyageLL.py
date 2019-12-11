@@ -43,25 +43,21 @@ class VoyageLL():
         for dest in allDest:
             if dest.getCountry() == flight.getArrivingAt():
                 flightTime = dest.getFlightTime()
-        if flightTime == "0":
-            for dest in allDest:
-                if dest.getCountry() == flight.getDepartingFrom():
-                    flightTime = dest.getFlightTime()
+        try:
+            if flightTime == "0":
+                for dest in allDest:
+                    if dest.getCountry() == flight.getDepartingFrom():
+                        flightTime = dest.getFlightTime()
+        except UnboundLocalError:
+            return False
 
-        departureTimeTemp = flight.getDepartureTime().split("T")
+        departureTimeTemp = flight.getDepartureTime().split()
         departureTime = " ".join(departureTimeTemp)
         tdelta = datetime.timedelta(hours=int(flightTime))
 
-        datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M')
+        datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         totalTime = datetime_object + tdelta
         return totalTime
-        #print("lendinga tími: ", totalTime)
-
-
-        #print(datetime_object)
-        #print(totalTime)
-        #return totalTime
-
 
 
     def availableDates(self):
@@ -74,8 +70,7 @@ class VoyageLL():
                 availableDates_list.append(date[0])
         return availableDates_list
 
-<<<<<<< HEAD
-    
+
     def getWorkWeek(self, dataList):
         workWeekObject_list = []
         voyabeObject_list = self.mainObject.getVoyagesIO()
@@ -87,15 +82,26 @@ class VoyageLL():
                 if timeCompare <= dataList[1]:
                     if dataList[2] in voyage.getStaff():
                         workWeekObject_list.append(voyage)
-        
         return workWeekObject_list
-=======
-    def findAvalibleAirplanes(self):
+
+    def findAvalibleAirplanes(self, flight):
         allNanPlanes = self.mainObject.getAirplanesIO()
         allVoyages = self.mainObject.getVoyagesIO()
-        avalibleAirplanes = []
+        dateToFind = flight.getDepartureTime().split()
+        allavalibleAirplanes = []
         for plane in allNanPlanes:
-            pass
-        print(avalibleAirplanes)
+            allavalibleAirplanes.append(plane.getPlaneId())
 
->>>>>>> 050c7543bc4ca316d42a38e36007d9f108ba53c5
+        for voyage in allVoyages:
+            uppcomingVoyageDates = voyage.getDepartureTime().split()
+            if uppcomingVoyageDates[0] == dateToFind[0]:
+                busyAirplanes = voyage.getAircraftId()
+                try:
+                    allavalibleAirplanes.remove(busyAirplanes)
+                except ValueError:
+                    pass
+        if allavalibleAirplanes == []:
+            return False
+        else:
+            return allavalibleAirplanes[0]
+
