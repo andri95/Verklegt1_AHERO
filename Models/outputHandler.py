@@ -8,19 +8,11 @@ AIRPLANES = '_______ Airplanes _______'
 DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
-<<<<<<< HEAD
-LICENSE = '_______ Aircraft License _______'
-NOPILOT = "No Pilot yet."
-NOCOPILOT = "No Co-pilot yet."
-NOFA1 = "No flight attendant nr 1 yet."
-NOFA2 = "No flight attendant nr 2 yet."
-=======
 WORKSCHEDULE = '_______ Work Schedule _______'
 NOPILOT = "No Captain yet."
 NOCOPILOT = "No Copilot yet."
 NOFA1 = "No Flight Service Manager yet."
 NOFA2 = "No Flight Attendant yet."
->>>>>>> e66df3538c2251dff766facdbfdfd92fa19ddf9d
 ANYKEY = 'Press any key to continue.'
 
 class OutputHandler:
@@ -194,13 +186,9 @@ class OutputHandler:
         print('\n{:53}'.format(LICENSE))
         print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
         for key, valu in testDict.items():
-<<<<<<< HEAD
             print('{:<20} {:<11}'.format(key, ', '.join(valu)))
 
         input(ANYKEY)
 
 
-=======
-            print(key,valu)
->>>>>>> e66df3538c2251dff766facdbfdfd92fa19ddf9d
 

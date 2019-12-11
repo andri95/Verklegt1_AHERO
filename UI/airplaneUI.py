@@ -23,6 +23,7 @@ class AirplaneUI:
 #                   3. Add licensed pilot                  #
 #                   4. Pilot license                       #
 #                   5. Find airplane by ID                 #
+#                   6. Number of flights by Airplane       #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -36,7 +37,7 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI,'5': self.getAirplaneByIdUI ,'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI,'5': self.getAirplaneByIdUI, '6': self.MostpopularUI, 'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -51,6 +52,20 @@ class AirplaneUI:
     def getAirplanesUI(self):
         airplaneObject_list = self.mainObject.getAirplanesLL()
         return self.outputObject.allAirplanesOH(airplaneObject_list)
+
+    
+    def MostpopularUI(self):
+        voyageObject_list = self.mainObject.getVoyageLL()
+        Popular_dict = {}
+        for voyage in voyageObject_list:
+            if voyage.getAircraftId() not in Popular_dict:
+                Popular_dict[voyage.getAircraftId().upper()] = 1
+            else:
+                Popular_dict[voyage.getAircraftId().upper()] +=1
+        print("Number of flights flown by each airplane:")
+        for key,val in Popular_dict.items():
+            print("The airplane {} has flown {} times.".format(key,val))
+        input("Enter any key to continue: ")
 
     def getAirplaneByIdUI(self):
         airplaneId_list = self.mainObject.getAirplanesLL()
