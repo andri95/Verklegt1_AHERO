@@ -132,7 +132,6 @@ class StaffUI:
         return self.outputObject.allPilotsOH(pilotObject_list)
 
 
-
     def getAllCabinCrewUI(self):
         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
         self.outputObject.allCabinCrewOH(cabinCrewObject_list)

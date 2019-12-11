@@ -19,9 +19,6 @@ class MainIO:
     def addNewDestIO(self, newDestination):
         return self.createObject.addNewDest(newDestination)
 
-    #def addNewFlightIO(self, newFlight):
-        #return self.createObject.addNewFlight(newFlight)
-
     def addNewVoyageIO(self, newVoyage):
         return self.createObject.addNewVoyage(newVoyage)
 
@@ -30,7 +27,6 @@ class MainIO:
 
     def getVoyagesIO(self):
         return self.readObject.getVoyages()
-
 
     def getStaffIO(self):
         return self.readObject.getStaff()

@@ -19,7 +19,6 @@ class VoyageData:
     def getDepartingFrom(self):
         return self.departingFrom
 
-    
     def getArrivingAt(self):
         return self.arrivingAt
 

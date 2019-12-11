@@ -15,6 +15,7 @@ NOCOPILOT = "No Copilot yet."
 NOFA1 = "No Flight Service Manager yet."
 NOFA2 = "No Flight Attendant yet."
 ANYKEY = 'Press any key to continue.'
+LICENSE = 'Airplane License'
 
 class OutputHandler:
 
@@ -25,7 +26,6 @@ class OutputHandler:
             print('{:<20} {:<11} {:<9} {:<20} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
                                                     staffMember.getEmail(), staffMember.getRank()))
         input(ANYKEY)
-
 
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format(PILOTS))
@@ -65,6 +65,19 @@ class OutputHandler:
             print('{:<12} {:<7} {:<5} {:<8}'.format(airplane.getPlaneId(), airplane.getType(), airplane.getModel(), airplane.getCapacity()))
         input(ANYKEY)
 
+    def singleAirplanelistOH(self, airplane_list):
+        for airplane in airplane_list:
+            print('{}'.format(airplane))
+
+    def singleAirplaneIdOH(self, airplaneID):
+        print('____________')
+        print('\n{:<12} {:<9}'.format('Airplane', 'Pilots'))
+        for airLicense, pilot in airplaneID.items():
+            print('{:<12} {:<9}'.format(airLicense, ''.join(pilot)))
+
+        
+        input(ANYKEY)
+    
     def allDestinationsOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
         print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
@@ -151,6 +164,13 @@ class OutputHandler:
             print('No staff available on this date!')
 
         input(ANYKEY)
+
+    def allPilotsLicenseOH(self, pilotObject_list):
+         print('\n{:^30}'.format(PILOTS))
+         print('\n{:<20} {:<11} {:<12}\n'.format('Name', 'SSN', 'Current License'))
+         for staffMember in pilotObject_list:
+             print('{:<20} {:<11} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getLicense()))
+
 
     def workWeekOH(self, workList):
         counter = 1

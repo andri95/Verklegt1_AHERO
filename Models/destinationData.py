@@ -26,3 +26,6 @@ class DestinationData:
 
     def setEmergencyNumber(self, newNumber):
         self.emergencyNumber = newNumber
+
+    def setDestinationId(self, destinationId):
+        self.destId = destinationId

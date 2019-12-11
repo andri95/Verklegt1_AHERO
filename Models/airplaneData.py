@@ -6,7 +6,6 @@ class AirplaneData():
         self.Model = Model
         self.capacity = capacity
 
-
     def getPlaneId(self):
         return self.planeId
 
@@ -18,9 +17,6 @@ class AirplaneData():
 
     def getCapacity(self):
         return self.capacity
-    
-    def __str__(self):
-        return f"ID: {self.planeId} Type: {self.type} Model: {self.Model} Capacity: {self.capacity}"
 
 
 

@@ -14,7 +14,7 @@ class AirplaneUI:
 ############################################################
 #                           _|_	               quit(q)     #
 #                   --@--@--(_)--@--@--                    #
-#__________________________________________________________#				  					                   
+#__________________________________________________________#
 #                                                          #
 #                       Airplanes                          #
 #                                                          #
@@ -22,7 +22,9 @@ class AirplaneUI:
 #                   2. Add airplanes                       #
 #                   3. Airplane status                     #
 #                   4. Add licensed pilot                  #
-#                   5. Pilot license                       #
+#                   5. Licensed pilots                     #
+#                   6. Find airplane by ID                 #
+#                   7. Number of flights by Airplane       #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -36,7 +38,8 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI,'3': self.airplaneStatusUI, '4': self.addLicenseUI,'5': self.getLicenseDictUI ,'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI,'3': self.airplaneStatusUI, '4': self.addLicenseUI,'5': self.getLicenseDictUI,
+                                 '6': self.getAirplaneByIdUI, '7': self.MostpopularUI,'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -51,6 +54,27 @@ class AirplaneUI:
     def getAirplanesUI(self):
         airplaneObject_list = self.mainObject.getAirplanesLL()
         return self.outputObject.allAirplanesOH(airplaneObject_list)
+
+    
+    def MostpopularUI(self):
+        voyageObject_list = self.mainObject.getVoyageLL()
+        Popular_dict = {}
+        for voyage in voyageObject_list:
+            if voyage.getAircraftId() not in Popular_dict:
+                Popular_dict[voyage.getAircraftId().upper()] = 1
+            else:
+                Popular_dict[voyage.getAircraftId().upper()] +=1
+        print("Number of flights flown by each airplane:")
+        for key,val in Popular_dict.items():
+            print("The airplane {} has flown {} times.".format(key,val))
+        input("Enter any key to continue: ")
+
+    def getAirplaneByIdUI(self):
+        airplaneId_list = self.mainObject.getAirplanesLL()
+        self.outputObject.singleAirplanelistOH(airplaneId_list)  # held
+        input_airId = input("Enter Airplane ID number: ")
+        license_dict = self.mainObject.getAirplaneByIdLL(input_airId)
+        self.outputObject.singleAirplaneIdOH(license_dict)  # held
 
     def registerAirplaneUI(self):
         newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes
