@@ -29,14 +29,38 @@ class VoyageLL():
         return self.mainObject.updateVoyageIO(dataList, staffList)
 
     def generateFlightNumber(self, flight):
+        flightNumberList = []
         destination = flight.getArrivingAt()
+        voyageList = self.mainObject.getVoyagesIO()
         destinationList = self.mainObject.getDestinationsIO()
         for dest in destinationList:
             if dest.getCountry() == destination:
-                return dest.getDestId()
-            else:
-                result = False
-        return result
+                destId = dest.getDestId()
+        flightDate = flight.getDepartureTime().split("T")
+        currentDate = flightDate[0].split('-')
+        print(currentDate)
+        currentDateObject = datetime.datetime(int(currentDate[0]), int(currentDate[1]), int(currentDate[2]))
+        for voyage in voyageList:
+            bookedFlightNum = voyage.getDepartureTime().split("T")
+            #print("boyyy:", bookedFlightNum)
+            date_list = bookedFlightNum[0].split('-')
+            #print("dis", date_list)
+            dateObject = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
+            print("1",dateObject)
+            print("2",currentDateObject)
+            if dateObject == currentDateObject and voyage.getArrivingAt() == flight.getArrivingAt() or voyage.getDepartingFrom() == flight.getArrivingAt():
+                flightId = voyage.getFlightNumber()
+                flightIdLastNums = flightId[-2:]
+                flightNumberList.append(int(flightIdLastNums))
+        if flightNumberList == []:
+            return "NA" + destId + "00"
+        else:
+            findMostRecent = max(flightNumberList)
+            if findMostRecent >= 10:
+                newFlightNumber = "NA" + destId + str(findMostRecent + 1)
+            newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
+        return newFlightNumber
+
 
     def findArrivalTime(self, flight):
         allDest = self.mainObject.getDestinationsIO()

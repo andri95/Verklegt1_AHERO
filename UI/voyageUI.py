@@ -89,7 +89,7 @@ class VoyageUI:
         else:
             print("Sorry, there are no avalible airplanes at this Time :(")
             return None
-        firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "00"
+        firstFlightId = self.mainObject.generateFlightNumberLL(firstFlight)
         if firstFlightId != False:
             firstFlight.setFlightNumber(str(firstFlightId))
             print("The flight {} was assigned the airplane {} \n It will arrive at {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
@@ -102,15 +102,14 @@ class VoyageUI:
         print("_____Second Flight_____")
         departingFrom, arravingAt, DeparturTime, airplaneId = self.mainObject.voyageObject.generateSecondFlight(firstFlight)
         secondFlight = VoyageData("", departingFrom, arravingAt, DeparturTime, "", airplaneId)
-        secondFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "01"
+        secondFlightId = self.mainObject.generateFlightNumberLL(firstFlight)
         arrivalTimeSecondFlight = self.mainObject.voyageObject.findArrivalTime(secondFlight)
         secondFlight.setFlightNumber(str(secondFlightId))
 
         secondFlight.setArrivalTime(arrivalTimeSecondFlight)
         self.mainObject.addNewVoyageLL(secondFlight)
         print("The flight {} was assigned the airplane {} \n It will arrive at {}\n".format(secondFlight.getFlightNumber(),
-                                                                                          secondFlight.getAircraftId(),
-                                                                                          arrivalTimeSecondFlight))
+                                                                    secondFlight.getAircraftId(),arrivalTimeSecondFlight))
 
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
