@@ -8,6 +8,7 @@ AIRPLANES = '_______ Airplanes _______'
 DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
+LICENSE = '_______ Aircraft License _______'
 NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
@@ -63,6 +64,18 @@ class OutputHandler:
             print('{:<12} {:<7} {:<5} {:<8}'.format(airplane.getPlaneId(), airplane.getType(), airplane.getModel(), airplane.getCapacity()))
         input(ANYKEY)
 
+    def singleAirplanelistOH(self, airplane_list):
+        for airplane in airplane_list:
+            print('{}'.format(airplane))
+
+    def singleAirplaneIdOH(self, airplaneID):
+        print('____________')
+        print('\n{:<12} {:<9}'.format('Airplane', 'Pilots'))
+        for airLicense, pilot in airplaneID.items():
+            print('{:<12} {:<9}'.format(airLicense, ''.join(pilot)))
+
+        
+        input(ANYKEY)
     def allDestinationsOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
         print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
@@ -139,5 +152,12 @@ class OutputHandler:
         input(ANYKEY)
 
     def testPrint(self, testDict):
+        print('\n{:53}'.format(LICENSE))
+        print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
         for key, valu in testDict.items():
-            print(key,valu)
+            print('{:<20} {:<11}'.format(key, ', '.join(valu)))
+
+        input(ANYKEY)
+
+
+

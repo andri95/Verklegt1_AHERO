@@ -21,6 +21,15 @@ class AirplaneLL:
     def getAirplaneStatus(self):
         pass
 
+    def getAirplaneByID(self, ID):
+        license_dict = self.getLicenseDict()
+        return_dict = {}
+        for pilotLicense in license_dict:
+            if pilotLicense == ID:
+                return_dict[pilotLicense] = license_dict[pilotLicense]
+        return return_dict
+
+
     def addLicense(self, dataList):
         return self.mainObject.addLicenseIO(dataList)
 

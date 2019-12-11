@@ -21,6 +21,9 @@ class MainLL:
 
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
+        
+    def getAirplaneByIdLL(self,ID):  #Er eitthva ad ruglast
+        return self.airplaneObject.getAirplaneByID(ID)  # var ad breyta
 
     def getVoyageLL(self):
         return self.voyageObject.listVoyage()
@@ -28,7 +31,7 @@ class MainLL:
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()
     
-    def getLicenseDictLL(self):
+    def getLicenseDictLL(self):  # Er eitthvad ad ruglast
         return self.airplaneObject.getLicenseDict()
 
     def getAllCabinCrewLL(self):

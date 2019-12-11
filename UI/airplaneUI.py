@@ -22,7 +22,7 @@ class AirplaneUI:
 #                   2. Add airplanes                       #
 #                   3. Add licensed pilot                  #
 #                   4. Pilot license                       #
-#                                                          #
+#                   5. Find airplane by ID                 #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -36,7 +36,7 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI ,'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI,'5': self.getAirplaneByIdUI ,'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -51,6 +51,13 @@ class AirplaneUI:
     def getAirplanesUI(self):
         airplaneObject_list = self.mainObject.getAirplanesLL()
         return self.outputObject.allAirplanesOH(airplaneObject_list)
+
+    def getAirplaneByIdUI(self):
+        airplaneId_list = self.mainObject.getAirplanesLL()
+        self.outputObject.singleAirplanelistOH(airplaneId_list)  # held
+        input_airId = input("Enter Airplane ID number: ")
+        license_dict = self.mainObject.getAirplaneByIdLL(input_airId)
+        self.outputObject.singleAirplaneIdOH(license_dict)  # held
 
     def registerAirplaneUI(self):
         newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes
