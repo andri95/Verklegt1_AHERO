@@ -74,7 +74,6 @@ class VoyageLL():
                 availableDates_list.append(date[0])
         return availableDates_list
 
-<<<<<<< HEAD
     
     def getWorkWeek(self, dataList):
         workWeekObject_list = []
@@ -89,7 +88,7 @@ class VoyageLL():
                         workWeekObject_list.append(voyage)
         
         return workWeekObject_list
-=======
+        
     def findAvalibleAirplanes(self):
         allNanPlanes = self.mainObject.getAirplanesIO()
         allVoyages = self.mainObject.getVoyagesIO()
@@ -98,4 +97,3 @@ class VoyageLL():
             pass
         print(avalibleAirplanes)
 
->>>>>>> 050c7543bc4ca316d42a38e36007d9f108ba53c5

@@ -65,7 +65,6 @@ class VoyageUI:
             
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
-        print(voyageObject_list)
         self.outputObject.allVoyagesOH(voyageObject_list)
     
     def addNewVoyageUI(self):
