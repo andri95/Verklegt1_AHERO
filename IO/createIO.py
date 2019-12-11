@@ -38,7 +38,7 @@ class CreateIO():
             {field_list[0]: newEmployee.getSSN(), field_list[1]: newEmployee.getName(), field_list[2]: newEmployee.getAddress(),
              field_list[3]: newEmployee.getCellPhone(), field_list[4]: newEmployee.getPhoneNumber(),
              field_list[5]: newEmployee.getEmail(), field_list[6]: newEmployee.getRole(), field_list[7]: newEmployee.getRank(),
-             field_list[8]: newEmployee.getLicence()})
+             field_list[8]: newEmployee.getLicense()})
         crewFile.close()
 
     def addNewDest(self, newDestination):

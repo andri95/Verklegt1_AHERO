@@ -14,9 +14,7 @@ class DestinationUI():
 #                           _|_	               quit(q)     #
 #                   --@--@--(_)--@--@--                    #
 #__________________________________________________________#
-#                      Destinations                        #	   			   
-#                                                          #
-#                                                          #
+#                      Destinations                        #
 #                                                          #  
 #                  1. All destinations                     #
 #                  2. Add a new destination                #             
