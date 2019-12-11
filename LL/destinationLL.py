@@ -28,10 +28,8 @@ class DestinationLL():
         for destID in destinationObjectList:
            destinationID_list.append(destID.getDestId())
         lastID = destinationID_list[-1]
-        print(lastID)
         newId = int(lastID) + 1
         newId = '0' + str(newId)
-        print(newId)
         return newId
 
 
