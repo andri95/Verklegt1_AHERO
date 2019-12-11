@@ -76,19 +76,30 @@ class VoyageUI:
         #self.mainObject.voyageObject.findAvalibleAirplanes()
         firstFlight = self.inputObject.addNewFlightIH()
         arrivalTime = self.mainObject.voyageObject.findArrivalTime(firstFlight)
-        print("first",arrivalTime)
-        firstFlight.setArrivalTime(str(arrivalTime))
-        if self.mainObject.generateFlightNumberLL(firstFlight) != False:
-            firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+        if arrivalTime != False:
+            firstFlight.setArrivalTime(str(arrivalTime))
+        else:
+            print("Sorry we dont fly to ", firstFlight.getArrivingAt())
+            return None
+        assignedAirplane = self.mainObject.voyageObject.findAvalibleAirplanes(firstFlight)
+        if assignedAirplane != False:
+            firstFlight.setAircraftId(str(assignedAirplane))
+        else:
+            print("Sorry, there are no avalible airplanes at this Time :(")
+            return None
+        firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+        if firstFlightId != False:
             firstFlight.setFlightNumber(str(firstFlightId))
-            print("This flight has the Id: ", firstFlight.getFlightNumber())
-            print("The flight will arrive at ", arrivalTime)
+            print("The flight {} was assigned the airplane {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
+
         else:
             print(firstFlight.getArrivingAt(), "is not a valid destination")
             return None
-        #self.mainObject.voyageObject.findAvalibleAirplanes()
         self.mainObject.addNewVoyageLL(firstFlight)
+
         print("_____Second Flight_____")
+        #departingFrom = firstFlight.getArrivingAt()
+        #arravingAt = firstFlight.departingFrom()
         secondFlight = self.inputObject.addNewFlightIH()
         arrivalTime2 = self.mainObject.voyageObject.findArrivalTime(secondFlight)
         print("second", arrivalTime2)

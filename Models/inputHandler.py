@@ -28,8 +28,8 @@ class InputHandler:
         flightNumber = ""
         departingFrom = input("Where will you be flying from: ").lower()
         date = input("When will you be flying: YYYY-MM-DD : ").lower()
-        time = input("At what hour: HH:MM ")
-        departureTime = date + "T" + time
+        time = input("At what hour: HH:MM ") +":00"
+        departureTime = date + " " + time
         arrivalTime = ""
         aircraftId = ""
         newFlight = VoyageData(flightNumber, departingFrom, arrivingAt , departureTime, arrivalTime , aircraftId)

@@ -73,5 +73,11 @@ class VoyageData:
 
     def setArrivalTime(self, arrivalTime):
         self.arrivalTime = arrivalTime
+
+    def setDepartureTime(self, departureTime):
+        self.departureTime = departureTime
+
+    def setAircraftId(self, aircraftId):
+        self.aircraftId = aircraftId
     
 

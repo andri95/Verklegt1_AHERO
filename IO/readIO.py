@@ -11,7 +11,7 @@ class ReadIO:
         self.crewPath = "Data/Crew.csv"
         self.destinationPath = "Data/Destinations.csv"
         self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
-        self.upcomingVoyagesPath = "Data/UpcomingVoyages.csv"
+        self.upcomingVoyagesPath = "Data/Voyages.csv"
         self.PastFlightsPath = "Data/PastFlights.csv"
 
 

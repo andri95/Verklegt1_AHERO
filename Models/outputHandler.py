@@ -9,6 +9,7 @@ DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
 WORKSCHEDULE = '_______ Work Schedule _______'
+AIRPLANESTATUS = '_______ Airplane Status _______'
 NOPILOT = "No Captain yet."
 NOCOPILOT = "No Copilot yet."
 NOFA1 = "No Flight Service Manager yet."
@@ -168,6 +169,10 @@ class OutputHandler:
         else:
             print('Staffmember has no voyages in chosen week!')
         input(ANYKEY)
-    def testPrint(self, testDict):
-        for key, valu in testDict.items():
-            print(key,valu)
+        
+    def airplaneStatusOH(self, airplaneStatus_dict):
+        print('\n{:^32}'.format(AIRPLANESTATUS))
+        print('\n{:<13} {:<20}'.format('Airplane ID', 'Status'))
+        for airplane in sorted(airplaneStatus_dict):
+            print('{:<13} {:<20}'.format(airplane, airplaneStatus_dict[airplane]))
+        input(ANYKEY)

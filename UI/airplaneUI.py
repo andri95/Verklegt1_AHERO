@@ -18,11 +18,11 @@ class AirplaneUI:
 #                                                          #
 #                       Airplanes                          #
 #                                                          #
-#                   1. list Airplanes                      #
+#                   1. List Airplanes                      #
 #                   2. Add airplanes                       #
-#                   3. Add licensed pilot                  #
-#                   4. Pilot license                       #
-#                                                          #
+#                   3. Airplane status                     #
+#                   4. Add licensed pilot                  #
+#                   5. Pilot license                       #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -36,7 +36,7 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI ,'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI,'3': self.airplaneStatusUI, '4': self.addLicenseUI,'5': self.getLicenseDictUI ,'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -57,6 +57,12 @@ class AirplaneUI:
         self.mainObject.addAirplaneLL(newAirplane)
         print("New airplane saved!")
         input("Press any key to continue.")
+
+    def airplaneStatusUI(self):
+        date = input('Enter date "YYYY-MM-DD": ')
+        time = input('Enter time "HH:MM": ')
+        airplaneStatus_dict = self.mainObject.getAirplaneStatusLL(date, time)
+        self.outputObject.airplaneStatusOH(airplaneStatus_dict)
 
     def addLicenseUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
