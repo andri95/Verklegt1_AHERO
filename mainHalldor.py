@@ -5,7 +5,7 @@ from UI.mainUI import MainUI
 
 
 #Idtest = DestinationLL()
-#Idtest.setDestinationId()
+#Idtest.generadeDestinationId()
 
 MainUI()
 

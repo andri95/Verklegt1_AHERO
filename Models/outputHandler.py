@@ -164,8 +164,6 @@ class OutputHandler:
 
         input(ANYKEY)
 
-<<<<<<< HEAD
-=======
     def allPilotsLicenseOH(self, pilotObject_list):
          print('\n{:^30}'.format(PILOTS))
          print('\n{:<20} {:<11} {:<12}\n'.format('Name', 'SSN', 'Current License'))
@@ -173,7 +171,6 @@ class OutputHandler:
              print('{:<20} {:<11} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getLicense()))
 
 
->>>>>>> 8fb01adbea46939593482c02a8d75bab0cf8ac80
     def workWeekOH(self, workList):
         counter = 1
         if len(workList) != 0:
