@@ -50,14 +50,15 @@ class VoyageLL():
                         flightTime = dest.getFlightTime()
         except UnboundLocalError:
             return False
-
-        departureTimeTemp = flight.getDepartureTime().split()
+        departureTimeTemp = flight.getDepartureTime().split("T")
         departureTime = " ".join(departureTimeTemp)
         tdelta = datetime.timedelta(hours=int(flightTime))
 
         datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         totalTime = datetime_object + tdelta
-        return totalTime
+        newtime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
+
+        return newtime
 
 
     def availableDates(self):
@@ -87,13 +88,13 @@ class VoyageLL():
     def findAvalibleAirplanes(self, flight):
         allNanPlanes = self.mainObject.getAirplanesIO()
         allVoyages = self.mainObject.getVoyagesIO()
-        dateToFind = flight.getDepartureTime().split()
+        dateToFind = flight.getDepartureTime().split("T")
         allavalibleAirplanes = []
         for plane in allNanPlanes:
             allavalibleAirplanes.append(plane.getPlaneId())
 
         for voyage in allVoyages:
-            uppcomingVoyageDates = voyage.getDepartureTime().split()
+            uppcomingVoyageDates = voyage.getDepartureTime().split("T")
             if uppcomingVoyageDates[0] == dateToFind[0]:
                 busyAirplanes = voyage.getAircraftId()
                 try:
@@ -104,4 +105,19 @@ class VoyageLL():
             return False
         else:
             return allavalibleAirplanes[0]
+
+    def generateSecondFlight(self, firstFlight):
+        departingFrom = firstFlight.getArrivingAt()
+        arravingAt = firstFlight.getDepartingFrom()
+        airplane = firstFlight.getAircraftId()
+        departureTimeTemp = firstFlight.getArrivalTime().split("T")
+        departureTime = " ".join(departureTimeTemp)
+        tdelta = datetime.timedelta(hours=int(1))
+        datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
+        newDepartureTime = datetime_object + tdelta
+        newtime = datetime.datetime.strftime(newDepartureTime, '%Y-%m-%dT%H:%M:%S')
+
+        return departingFrom, arravingAt, newtime, airplane
+
+
 
