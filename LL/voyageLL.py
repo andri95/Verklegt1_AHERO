@@ -10,6 +10,7 @@ class VoyageLL():
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
 
+
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
 

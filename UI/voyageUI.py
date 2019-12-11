@@ -47,16 +47,21 @@ class VoyageUI:
                 return
 
     def PopularVoyageUI(self):
-        Popular_dict = {}
         voyageObject_list = self.mainObject.getVoyageLL()
-        for voyage  in voyageObject_list:
-            MyVoyage = voyage.getArrivingAt().upper()
-            Popular_dict[MyVoyage] = 1
-            if MyVoyage in Popular_dict:
-                Popular_dict[MyVoyage] +=1
+        flights_dict = {}
+        for voyage in voyageObject_list:
+            if voyage.getArrivingAt() not in flights_dict:
+                flights_dict[voyage.getArrivingAt().upper()] = 1
+            else:
+                flights_dict[voyage.getArrivingAt().upper()] +=1
+        del flights_dict["KEF"]
+        maximum = max(flights_dict, key=flights_dict.get)
+
+        print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
+        input("Press any key to continue: ")
 
     
-        print(Popular_dict)
+
     
      
 
