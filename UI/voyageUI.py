@@ -2,6 +2,7 @@ from UI.quitUI import QuitUI
 from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
 from LL.mainLL import MainLL
+from Models.voyageData import VoyageData
 NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
@@ -88,10 +89,10 @@ class VoyageUI:
         else:
             print("Sorry, there are no avalible airplanes at this Time :(")
             return None
-        firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
+        firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "00"
         if firstFlightId != False:
             firstFlight.setFlightNumber(str(firstFlightId))
-            print("The flight {} was assigned the airplane {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
+            print("The flight {} was assigned the airplane {} \n It will arrive at {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
 
         else:
             print(firstFlight.getArrivingAt(), "is not a valid destination")
@@ -99,17 +100,18 @@ class VoyageUI:
         self.mainObject.addNewVoyageLL(firstFlight)
 
         print("_____Second Flight_____")
-        #departingFrom = firstFlight.getArrivingAt()
-        #arravingAt = firstFlight.departingFrom()
-        secondFlight = self.inputObject.addNewFlightIH()
-        arrivalTime2 = self.mainObject.voyageObject.findArrivalTime(secondFlight)
-        print("second", arrivalTime2)
-        secondFlight.setArrivalTime(arrivalTime2)
-        secondflightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight) + "1"
-        secondFlight.setFlightNumber(str(secondflightId))
+        departingFrom, arravingAt, DeparturTime, airplaneId = self.mainObject.voyageObject.generateSecondFlight(firstFlight)
+        secondFlight = VoyageData("", departingFrom, arravingAt, DeparturTime, "", airplaneId)
+        secondFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "01"
+        arrivalTimeSecondFlight = self.mainObject.voyageObject.findArrivalTime(secondFlight)
+        secondFlight.setFlightNumber(str(secondFlightId))
+
+        secondFlight.setArrivalTime(arrivalTimeSecondFlight)
         self.mainObject.addNewVoyageLL(secondFlight)
-        print("This flight was given the number", secondflightId)
-        print("The flight will arrive at ", arrivalTime2)
+        print("The flight {} was assigned the airplane {} \n It will arrive at {}\n".format(secondFlight.getFlightNumber(),
+                                                                                          secondFlight.getAircraftId(),
+                                                                                          arrivalTimeSecondFlight))
+
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
