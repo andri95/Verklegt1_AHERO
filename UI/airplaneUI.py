@@ -21,12 +21,12 @@ class AirplaneUI:
 #                   1. list Airplanes                      #
 #                   2. Add airplanes                       #
 #                   3. Add licensed pilot                  #
+#                   4. Pilot license                       #
 #                                                          #
 #                                                          #
 #                                                          #
 #                                                          #
-#                                                          #
-# 0. Back                                                  #
+#  back(b)                                                 #
 ############################################################
 """
         self.start()
@@ -36,9 +36,9 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI ,'q': QuitUI}
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -63,3 +63,7 @@ class AirplaneUI:
         self.outputObject.allPilotsLicenseOH(pilotObject_list)
         dataList = self.inputObject.addLicenseIH()
         return self.mainObject.addLicenseLL(dataList)
+
+    def getLicenseDictUI(self):
+        licenseObject_dict = self.mainObject.getLicenseDictLL()
+        return self.outputObject.testPrint(licenseObject_dict)

@@ -24,13 +24,14 @@ class InputHandler:
 
 
     def addNewFlightIH(self):
-
-        arrivingAt = input("Where will you be arriving at: ")
+        arrivingAt = input("Where will you be arriving at: ").lower()
         flightNumber = ""
-        departingFrom = input("Where will you be flying from: ")
-        departureTime = input("When will you be flying: (Y/M/D, TT:TT:TT): ")
-        arrivalTime = input("When will you be arriving (Y/M/D, TT:TT:TT): ")
-        aircraftId = input("Put di aircarft inn: ")
+        departingFrom = input("Where will you be flying from: ").lower()
+        date = input("When will you be flying: YYYY-MM-DD : ").lower()
+        time = input("At what hour: HH:MM ")
+        departureTime = date + "T" + time
+        arrivalTime = ""
+        aircraftId = ""
         newFlight = VoyageData(flightNumber, departingFrom, arrivingAt , departureTime, arrivalTime , aircraftId)
         return newFlight
 

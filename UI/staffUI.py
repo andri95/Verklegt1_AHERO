@@ -9,6 +9,7 @@ class StaffUI:
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
         self.outputObject = OutputHandler()
+        
 
         self.MAINMENU = """
 ############################################################
@@ -27,7 +28,7 @@ class StaffUI:
 #                                                          #
 #                                                          #
 #                                                          #
-#  0.Back                                                  #
+#  back(b)                                                  #
 ############################################################
 """
         self.SUBMENU1 ="""
@@ -67,6 +68,7 @@ class StaffUI:
 #                                                          #
 #                                                          #
 #                                                          #
+#                                                          #
 #  back(b)                                                 #
 ############################################################"""
         self.start()
@@ -76,7 +78,7 @@ class StaffUI:
             mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -89,11 +91,11 @@ class StaffUI:
     def listStaff(self):
 
         while True: 
-            subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI,
+            subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI, 
                                  '4': self.getStaffByIdUI, 'q': QuitUI}
             print(self.SUBMENU1)
             user_input = input("Input a command: ")
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in subCommand_dict:
                     for key in subCommand_dict:
                         if user_input == key:
@@ -109,7 +111,7 @@ class StaffUI:
             subCommand_dict = {'1': self.availableStaffUI, '2': self.unavailableStaffUI, '3': self.singleStaffUI, 'q': QuitUI}
             print(self.SUBMENU2)
             user_input = input('Input a command: ')
-            if user_input != '0':
+            if user_input != 'b':
                 if user_input in subCommand_dict:
                     for key in subCommand_dict:
                         if user_input == key:
@@ -126,7 +128,10 @@ class StaffUI:
 
     def getAllPilotsUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
+        #sorted(pilotObject_list, key=methodcaller('StaffData.getLicense')
         return self.outputObject.allPilotsOH(pilotObject_list)
+
+
 
     def getAllCabinCrewUI(self):
         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()

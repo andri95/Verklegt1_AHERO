@@ -27,6 +27,9 @@ class MainLL:
 
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()
+    
+    def getLicenseDictLL(self):
+        return self.airplaneObject.getLicenseDict()
 
     def getAllCabinCrewLL(self):
         return self.staffObject.getAllCabinCrew()

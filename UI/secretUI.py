@@ -71,7 +71,7 @@ ____    ____  ______    __    __   ______    ____  _______     _______   ______ 
         print(self.CHUCKNORRIS)
         while True:
             user_input = input("Enter a command:")
-            if user_input == "0":
+            if user_input == "b":
                 return
             else:
                 print("The mighty Chuck Norris doesn't allow that")

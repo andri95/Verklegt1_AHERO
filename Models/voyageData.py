@@ -18,6 +18,7 @@ class VoyageData:
 
     def getDepartingFrom(self):
         return self.departingFrom
+
     
     def getArrivingAt(self):
         return self.arrivingAt
@@ -61,6 +62,16 @@ class VoyageData:
     def setFlightNumber(self, flightNumber):
         self.flightNumber = flightNumber
 
+    def setDepartingFrom(self, departingFrom):
+        self.departingFrom = departingFrom
 
+    def setDestination(self, arrivingAt):
+        self.arrivingAt = arrivingAt
+
+    def setArrivingAt(self, arrivingAt):
+        self.arrivingAt = arrivingAt
+
+    def setArrivalTime(self, arrivalTime):
+        self.arrivalTime = arrivalTime
     
 
