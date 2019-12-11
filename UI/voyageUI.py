@@ -99,24 +99,37 @@ class VoyageUI:
         input("Press any key to continue.")
 
 
-    
     def addNewVoyageUI(self):
         print("_____First Flight_____")
+        print("Pick a destination that Nan Air flys to:")
+        dest = self.mainObject.destinationObject.getDestination()
+        for d in dest:
+            print("{}\t".format(d.getCountry()))
+        #self.mainObject.voyageObject.findAvalibleAirplanes()
         firstFlight = self.inputObject.addNewFlightIH()
+        arrivalTime = self.mainObject.voyageObject.findArrivalTime(firstFlight)
+        print("first",arrivalTime)
+        firstFlight.setArrivalTime(str(arrivalTime))
         if self.mainObject.generateFlightNumberLL(firstFlight) != False:
             firstFlightId = "NA" + self.mainObject.generateFlightNumberLL(firstFlight) + "0"
             firstFlight.setFlightNumber(str(firstFlightId))
-            print("This fight has the Id: ", firstFlight.getFlightNumber())
+            print("This flight has the Id: ", firstFlight.getFlightNumber())
+            print("The flight will arrive at ", arrivalTime)
         else:
             print(firstFlight.getArrivingAt(), "is not a valid destination")
+            return None
+        #self.mainObject.voyageObject.findAvalibleAirplanes()
         self.mainObject.addNewVoyageLL(firstFlight)
-        #print("This flight was given the number", firstFlightId)
         print("_____Second Flight_____")
         secondFlight = self.inputObject.addNewFlightIH()
+        arrivalTime2 = self.mainObject.voyageObject.findArrivalTime(secondFlight)
+        print("second", arrivalTime2)
+        secondFlight.setArrivalTime(arrivalTime2)
         secondflightId = "NA"+self.mainObject.generateFlightNumberLL(firstFlight) + "1"
         secondFlight.setFlightNumber(str(secondflightId))
         self.mainObject.addNewVoyageLL(secondFlight)
         print("This flight was given the number", secondflightId)
+        print("The flight will arrive at ", arrivalTime2)
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")
@@ -129,9 +142,10 @@ class VoyageUI:
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
-                    counter += 1
-                    voyageDict[counter] = [flight1, flight2]
-                    print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
+                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":
+                        counter += 1
+                        voyageDict[counter] = [flight1, flight2]
+                        print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
         pickVoyage = int(input("Pick a voyage to complete: "))

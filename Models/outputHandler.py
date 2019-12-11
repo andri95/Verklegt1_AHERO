@@ -75,10 +75,10 @@ class OutputHandler:
         print('\n{:^32}'.format(VOYAGES))
         for voyage in voyageObject_list:
             departureDateTime = voyage.getDepartureTime()
-            parsedDateObject = dateutil.parser.parse(departureDateTime)
+            #parsedDateObject = dateutil.parser.parse(departureDateTime)
             print("Departing from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
             print('\n{:<5} {:<5}'.format('Date', 'Time'))
-            print('\n{:<9} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + str(parsedDateObject.year), str(parsedDateObject.hour)))
+            #print('\n{:<9} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + str(parsedDateObject.year), str(parsedDateObject.hour)))
             print("Staff:")
             if voyage.getCaptain() == "":
                 print(NOPILOT)
