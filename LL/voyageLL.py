@@ -24,7 +24,6 @@ class VoyageLL():
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
 
-
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
 
@@ -59,7 +58,6 @@ class VoyageLL():
         totalTime = datetime_object + tdelta
         return totalTime
 
-
     def availableDates(self):
         availableDates_list = []
         voyageObject_list = self.mainObject.getVoyagesIO()
@@ -69,7 +67,6 @@ class VoyageLL():
             if date[0] not in availableDates_list:
                 availableDates_list.append(date[0])
         return availableDates_list
-
 
     def getWorkWeek(self, dataList):
         workWeekObject_list = []

@@ -41,7 +41,6 @@ class CreateIO():
              field_list[8]: newEmployee.getLicence()})
         crewFile.close()
 
-
     def addNewDest(self, newDestination):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
@@ -53,7 +52,6 @@ class CreateIO():
                          field_list[2]: newDestination.getContact(),field_list[3]: newDestination.getEmergencyNumber(),
                          field_list[4]: newDestination.getDestId()})
         destinationFile.close()
-
 
     def addNewVoyage(self, newVoyage):
         #  FileHandler DTO instance created

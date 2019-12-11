@@ -25,7 +25,6 @@ class OutputHandler:
                                                     staffMember.getEmail(), staffMember.getRank()))
         input(ANYKEY)
 
-
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format(PILOTS))
         print('\n{:<20} {:<11} {:<9} {:<20} {:<9} {:<12}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank', 'License'))
@@ -76,6 +75,7 @@ class OutputHandler:
 
         
         input(ANYKEY)
+    
     def allDestinationsOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
         print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
@@ -162,7 +162,6 @@ class OutputHandler:
             print('No staff available on this date!')
 
         input(ANYKEY)
-
 
     def workWeekOH(self, workList):
         counter = 1

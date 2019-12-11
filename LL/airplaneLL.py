@@ -4,7 +4,6 @@ class AirplaneLL:
     def __init__(self):
         self.mainObject = MainIO()
 
-
     def validateAirPlaneData(self, new_airplane):
         print(type(new_airplane))
         flag = True
@@ -29,10 +28,8 @@ class AirplaneLL:
                 return_dict[pilotLicense] = license_dict[pilotLicense]
         return return_dict
 
-
     def addLicense(self, dataList):
         return self.mainObject.addLicenseIO(dataList)
-
 
     def getAllPilots(self):
         staffObject_list = self.mainObject.getStaffIO()
@@ -41,7 +38,6 @@ class AirplaneLL:
             if staffMember.getRole() == 'Pilot':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
-
 
     def getLicenseDict(self):
         staffObject_list = self.mainObject.getStaffIO()
@@ -56,14 +52,6 @@ class AirplaneLL:
             else:
                 license_Dict[staffMember.getLicense()].append(staffMember.getName())
         return license_Dict
-
-    def __str__(self):
-        return
-        #return"{}".format(self.AirplaneIO)
-
-
-
-#print(new_airplane)
 
 
 

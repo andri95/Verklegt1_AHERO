@@ -10,7 +10,6 @@ class DestinationLL():
     def addNewDestination(self, newDestination):
         return self.mainObject.addNewDestIO(newDestination)
         
-
     def getDestination(self):
         return self.mainObject.getDestinationsIO()
     

@@ -22,7 +22,6 @@ class InputHandler:
         newDestination = DestinationData(country, flighttime, contact, emergencynum)
         return newDestination
 
-
     def addNewFlightIH(self):
         arrivingAt = input("Where will you be arriving at: ").lower()
         flightNumber = ""
@@ -74,5 +73,3 @@ class InputHandler:
         dateSplit = date.split('-')
         dateObject = datetime.datetime(int(dateSplit[0]), int(dateSplit[1]), int(dateSplit[2]))
         return dateObject
-        
-

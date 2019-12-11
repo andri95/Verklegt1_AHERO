@@ -56,6 +56,7 @@ class UpdateIO:
             i+=2
 
         upcomingVoyageFile.close()
+    
     def updateDest(self, dataList):
 
         # FileHandler DTO instance created
