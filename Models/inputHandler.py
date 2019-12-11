@@ -16,10 +16,10 @@ class InputHandler:
 
     def addNewDestinationIH(self):
         country = input('Enter country: ')
-        flighttime = input('Enter flight time: ')
+        flighttime = input('Enter flight duration (hrs): ')
         contact = input('Enter contact: ')
         emergencynum = input('Enter emergency number: ')
-        newDestination = DestinationData(country, flighttime, contact, emergencynum)
+        newDestination = DestinationData(country, flighttime, contact, emergencynum,destId)
         return newDestination
 
 
