@@ -21,3 +21,16 @@ class DestinationLL():
         
     def updateDestination(self, dataList):
         return self.mainObject.updateDestIO(dataList)
+
+    def generadeDestinationId(self):
+        destinationObjectList = self.mainObject.getDestinationsIO()
+        destinationID_list = []
+        for destID in destinationObjectList:
+           destinationID_list.append(destID.getDestId())
+        lastID = destinationID_list[-1]
+        newId = int(lastID) + 1
+        newId = '0' + str(newId)
+        return newId
+
+
+

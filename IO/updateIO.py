@@ -62,7 +62,6 @@ class UpdateIO:
         # FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
 
- 
         # File opened with readFile()
         destinationsFile = fileObject.readFile()
         reader = csv.DictReader(destinationsFile)

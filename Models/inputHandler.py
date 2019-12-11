@@ -19,7 +19,8 @@ class InputHandler:
         flighttime = input('Enter flight time: ')
         contact = input('Enter contact: ')
         emergencynum = input('Enter emergency number: ')
-        newDestination = DestinationData(country, flighttime, contact, emergencynum)
+        destinationId = ''
+        newDestination = DestinationData(country, flighttime, contact, emergencynum, destinationId)
         return newDestination
 
     def addNewFlightIH(self):

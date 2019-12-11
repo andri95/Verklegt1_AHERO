@@ -55,7 +55,11 @@ class DestinationUI():
 
     def addNewDestinationUI(self):
         newDestination = self.inputObject.addNewDestinationIH()
+        destinationID = self.mainObject.destinationObject.generadeDestinationId()
+        newDestination.setDestinationId(destinationID)
         self.mainObject.addNewDestinationLL(newDestination)
+        
+        
 
     def updateDestinationUI(self):
         dataList = self.inputObject.updateDestinationIH()
