@@ -9,7 +9,7 @@ class UpdateIO:
     def __init__(self):
         self.destinationPath = 'Data/Destinations.csv'
         self.licensePath = 'Data/Crew.csv'
-        self.upcomingVoyagePath = 'Data/UpcomingVoyages.csv'
+        self.upcomingVoyagePath = 'Data/Voyages.csv'
 
     def updateVoyage(self, dataList, staffList):
         # FileHandler DTO instance created

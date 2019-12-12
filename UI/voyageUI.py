@@ -67,20 +67,27 @@ class VoyageUI:
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
         self.outputObject.allVoyagesOH(voyageObject_list)
+
     
     def addNewVoyageUI(self):
-        print("_____First Flight_____")
-        print("Pick a destination that Nan Air flys to:")
-        dest = self.mainObject.destinationObject.getDestination()
-        for d in dest:
-            print("{}\t".format(d.getCountry()))
-        #self.mainObject.voyageObject.findAvalibleAirplanes()
+        print('  ______Create a Voyage ______')
+        print(" Pick a destination that Nan Air flys to:")
+        destinationObject_list = self.mainObject.getAllDestinationsLL()
+        self.outputObject.voyageDestinationOH(destinationObject_list)
+        departingFromKef = "keflavik"
         firstFlight = self.inputObject.addNewFlightIH()
+        firstFlight.setDepartingFrom(departingFromKef)
+        if self.mainObject.voyageObject.errorCheckDate(firstFlight) == False:
+            return None
+        if self.mainObject.voyageObject.flightCollision(firstFlight) == True:
+            print("You will cause a collision, do you really want to do that?")
+            print("Every flight must have one hour between them")
+            return None
         arrivalTime = self.mainObject.voyageObject.findArrivalTime(firstFlight)
         if arrivalTime != False:
             firstFlight.setArrivalTime(str(arrivalTime))
         else:
-            print("Sorry we dont fly to ", firstFlight.getArrivingAt())
+            print("Sorry you entered a invalid destination")
             return None
         assignedAirplane = self.mainObject.voyageObject.findAvalibleAirplanes(firstFlight)
         if assignedAirplane != False:
@@ -91,14 +98,12 @@ class VoyageUI:
         firstFlightId = self.mainObject.generateFlightNumberLL(firstFlight)
         if firstFlightId != False:
             firstFlight.setFlightNumber(str(firstFlightId))
-            print("The flight {} was assigned the airplane {} \n It will arrive at {}".format(firstFlight.getFlightNumber(), firstFlight.getAircraftId(), arrivalTime))
 
         else:
             print(firstFlight.getArrivingAt(), "is not a valid destination")
             return None
         self.mainObject.addNewVoyageLL(firstFlight)
 
-        print("_____Second Flight_____")
         departingFrom, arravingAt, DeparturTime, airplaneId = self.mainObject.voyageObject.generateSecondFlight(firstFlight)
         secondFlight = VoyageData("", departingFrom, arravingAt, DeparturTime, "", airplaneId)
         secondFlightId = self.mainObject.generateFlightNumberLL(firstFlight)
@@ -107,9 +112,7 @@ class VoyageUI:
 
         secondFlight.setArrivalTime(arrivalTimeSecondFlight)
         self.mainObject.addNewVoyageLL(secondFlight)
-        print("The flight {} was assigned the airplane {} \n It will arrive at {}\n".format(secondFlight.getFlightNumber(),
-                                                                    secondFlight.getAircraftId(),arrivalTimeSecondFlight))
-
+        print()
         print("New Voyage saved! You can complete it now in 'complete voyage'")
         print("----------------")
         input("Press any key to continue.")

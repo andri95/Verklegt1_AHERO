@@ -24,6 +24,7 @@ class VoyageLL():
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
 
+
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
 
@@ -37,27 +38,34 @@ class VoyageLL():
                 destId = dest.getDestId()
         flightDate = flight.getDepartureTime().split("T")
         currentDate = flightDate[0].split('-')
-        print(currentDate)
         currentDateObject = datetime.datetime(int(currentDate[0]), int(currentDate[1]), int(currentDate[2]))
-        for voyage in voyageList:
+
+
+        # if conditions are met for the iteration then
+        for i, voyage in enumerate(voyageList):
             bookedFlightNum = voyage.getDepartureTime().split("T")
-            #print("boyyy:", bookedFlightNum)
             date_list = bookedFlightNum[0].split('-')
-            #print("dis", date_list)
             dateObject = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
-            print("1",dateObject)
-            print("2",currentDateObject)
-            if dateObject == currentDateObject and voyage.getArrivingAt() == flight.getArrivingAt() or voyage.getDepartingFrom() == flight.getArrivingAt():
-                flightId = voyage.getFlightNumber()
-                flightIdLastNums = flightId[-2:]
-                flightNumberList.append(int(flightIdLastNums))
+            if dateObject == currentDateObject and voyage.getArrivingAt() == flight.getArrivingAt():
+
+                flightIdFirst = voyage.getFlightNumber()
+                flightNumberList.append(int(flightIdFirst[-2:]))
+                try:
+                    flightIdSecond = voyageList[i + 1].getFlightNumber()
+                    flightNumberList.append(int(flightIdSecond[-2:]))
+                except IndexError:
+                    pass
+                except Exception as e:
+                    print(e)
+
         if flightNumberList == []:
             return "NA" + destId + "00"
         else:
             findMostRecent = max(flightNumberList)
             if findMostRecent >= 10:
                 newFlightNumber = "NA" + destId + str(findMostRecent + 1)
-            newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
+            else:
+                newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
         return newFlightNumber
 
 
@@ -79,9 +87,38 @@ class VoyageLL():
 
         datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         totalTime = datetime_object + tdelta
-        newtime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
+        updatedTime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
 
-        return newtime
+        return updatedTime
+
+
+    def errorCheckDate(self, flight):
+        errorMessage = "Date was not entered correctly (YYYY-MM-DD), please try again "
+        flightTime = flight.getDepartureTime()
+        date = flightTime.split("T")
+        try:
+            year, month, day = date[0].split("-")
+            dateTimeObject = datetime.date(int(year), int(month), int(day))
+            if len(year) != 4:
+                print(errorMessage)
+                return False
+        except ValueError:
+            print(errorMessage)
+            return False
+        try:
+            dateTimeObject = datetime.date(int(year), int(month), int(day))
+        except TypeError:
+            print(errorMessage)
+            return False
+        return True
+
+    def flightCollision(self, flight):
+        voyageList = self.mainObject.getVoyagesIO()
+        for voyage in voyageList:
+            if voyage.getDepartureTime() == flight.getDepartureTime():
+                return True
+            else:
+                pass
 
     def availableDates(self):
         availableDates_list = []
@@ -92,6 +129,7 @@ class VoyageLL():
             if date[0] not in availableDates_list:
                 availableDates_list.append(date[0])
         return availableDates_list
+
 
     def getWorkWeek(self, dataList):
         workWeekObject_list = []
@@ -127,6 +165,8 @@ class VoyageLL():
         else:
             return allavalibleAirplanes[0]
 
+
+
     def generateSecondFlight(self, firstFlight):
         departingFrom = firstFlight.getArrivingAt()
         arravingAt = firstFlight.getDepartingFrom()
@@ -136,9 +176,6 @@ class VoyageLL():
         tdelta = datetime.timedelta(hours=int(1))
         datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         newDepartureTime = datetime_object + tdelta
-        newtime = datetime.datetime.strftime(newDepartureTime, '%Y-%m-%dT%H:%M:%S')
+        updatedTime = datetime.datetime.strftime(newDepartureTime, '%Y-%m-%dT%H:%M:%S')
 
-        return departingFrom, arravingAt, newtime, airplane
-
-
-
+        return departingFrom, arravingAt, updatedTime, airplane

@@ -26,8 +26,9 @@ class InputHandler:
     def addNewFlightIH(self):
         arrivingAt = input("Where will you be arriving at: ").lower()
         flightNumber = ""
-        departingFrom = input("Where will you be flying from: ").lower()
+        departingFrom = ""
         date = input("When will you be flying: YYYY-MM-DD : ").lower()
+        print("Note, NanAir only flies only by the hour (13:00, 02:00)")
         time = input("At what hour: HH:MM ") +":00"
         departureTime = date + "T" + time
         arrivalTime = ""

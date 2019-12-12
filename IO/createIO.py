@@ -12,7 +12,7 @@ class CreateIO():
         self.crewPath = "Data/Crew.csv"
         self.destinationPath = "Data/Destinations.csv"
         self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
-        self.upcomingVoyagesPath = "Data/UpcomingVoyages.csv"
+        self.upcomingVoyagesPath = "Data/Voyages.csv"
 
     def addNewAirplane(self, newAirplane):
         #  FileHandler DTO instance created

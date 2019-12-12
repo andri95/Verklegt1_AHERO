@@ -78,5 +78,4 @@ class VoyageData:
 
     def setAircraftId(self, aircraftId):
         self.aircraftId = aircraftId
-    
 

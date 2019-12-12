@@ -85,6 +85,16 @@ class OutputHandler:
             print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber()))
         input(ANYKEY)
 
+    def voyageDestinationOH(self, destinationObject_list):
+        print('\n{:^32}'.format(DESTINATIONS))
+        print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
+        for destination in destinationObject_list:
+            print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(),
+                                               destination.getEmergencyNumber()))
+        print()
+
+
+
     def allVoyagesOH(self, voyageObject_dict):
         counter = 1
         print('\n{:^32}'.format(VOYAGES))
@@ -128,7 +138,8 @@ class OutputHandler:
                 print('__________________________')
             counter += 1
         input(ANYKEY)
-    
+
+
     def availableDatesOH(self, availableDates_list):
         print('\n_______ Avaliable Dates _______\n')
         for date in availableDates_list:
