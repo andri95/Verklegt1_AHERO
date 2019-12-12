@@ -14,16 +14,17 @@ class AirplaneUI:
 ############################################################
 #                           _|_	               quit(q)     #
 #                   --@--@--(_)--@--@--                    #
-#__________________________________________________________#				  					                   
+#__________________________________________________________#
 #                                                          #
 #                       Airplanes                          #
 #                                                          #
-#                   1. list Airplanes                      #
+#                   1. List Airplanes                      #
 #                   2. Add airplanes                       #
-#                   3. Add licensed pilot                  #
-#                   4. Pilot license                       #
-#                   5. Find airplane by ID                 #
-#                   6. Number of flights by Airplane       #
+#                   3. Airplane status                     #
+#                   4. Add licensed pilot                  #
+#                   5. Licensed pilots                     #
+#                   6. Find airplane by ID                 #
+#                   7. Number of flights by Airplane       #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -37,7 +38,8 @@ class AirplaneUI:
         while True:
             print(self.MAINMENU)
             #  A dictionary that handles users input.
-            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI, '3': self.addLicenseUI,'4': self.getLicenseDictUI,'5': self.getAirplaneByIdUI, '6': self.MostpopularUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.getAirplanesUI, '2': self.registerAirplaneUI,'3': self.airplaneStatusUI, '4': self.addLicenseUI,'5': self.getLicenseDictUI,
+                                 '6': self.getAirplaneByIdUI, '7': self.MostpopularUI,'q': QuitUI}
             user_input = input("Input a command: ")
             if user_input != 'b':
                 if user_input in mainCommand_dict:  #  Checks if the users input is correct.
@@ -80,6 +82,12 @@ class AirplaneUI:
         print("New airplane saved!")
         input("Press any key to continue.")
 
+    def airplaneStatusUI(self):
+        date = input('Enter date "YYYY-MM-DD": ')
+        time = input('Enter time "HH:MM": ')
+        airplaneStatus_dict = self.mainObject.getAirplaneStatusLL(date, time)
+        self.outputObject.airplaneStatusOH(airplaneStatus_dict)
+
     def addLicenseUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
         self.outputObject.allPilotsLicenseOH(pilotObject_list)
@@ -88,4 +96,6 @@ class AirplaneUI:
 
     def getLicenseDictUI(self):
         licenseObject_dict = self.mainObject.getLicenseDictLL()
-        return self.outputObject.testPrint(licenseObject_dict)
+        return self.outputObject.airplaneLicensedOH(licenseObject_dict)
+
+    

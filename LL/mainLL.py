@@ -40,6 +40,9 @@ class MainLL:
     def addAirplaneLL(self, newAirplane):
         return self.airplaneObject.addAirplane(newAirplane)
 
+    def getAirplaneStatusLL(self, date, time):
+        return self.airplaneObject.getAirplaneStatus(date, time)
+
     def getStaffDataLL(self, dataList):
         return self.staffObject.getStaffData(dataList)
 

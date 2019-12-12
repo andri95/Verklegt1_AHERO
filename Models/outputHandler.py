@@ -9,6 +9,8 @@ DESTINATIONS = '_______ Destinations _______'
 VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
 WORKSCHEDULE = '_______ Work Schedule _______'
+AIRPLANESTATUS = '_______ Airplane Status _______'
+LICENSEDPILOTS = '_______ Licensed Pilots _______'
 NOPILOT = "No Captain yet."
 NOCOPILOT = "No Copilot yet."
 NOFA1 = "No Flight Service Manager yet."
@@ -24,7 +26,6 @@ class OutputHandler:
             print('{:<20} {:<11} {:<9} {:<20} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getCellPhone(),
                                                     staffMember.getEmail(), staffMember.getRank()))
         input(ANYKEY)
-
 
     def allPilotsOH(self, pilotObject_list):
         print('\n{:^81}'.format(PILOTS))
@@ -66,16 +67,17 @@ class OutputHandler:
 
     def singleAirplanelistOH(self, airplane_list):
         for airplane in airplane_list:
-            print('{}'.format(airplane))
+            print('{}'.format(airplane.getPlaneId()))
 
     def singleAirplaneIdOH(self, airplaneID):
-        print('____________')
+        print('\n' + LICENSEDPILOTS)
         print('\n{:<12} {:<9}'.format('Airplane', 'Pilots'))
         for airLicense, pilot in airplaneID.items():
-            print('{:<12} {:<9}'.format(airLicense, ''.join(pilot)))
+            print('{:<12} {:<9}'.format(airLicense, ', '.join(pilot)))
 
         
         input(ANYKEY)
+    
     def allDestinationsOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
         print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
@@ -163,6 +165,12 @@ class OutputHandler:
 
         input(ANYKEY)
 
+    def allPilotsLicenseOH(self, pilotObject_list):
+         print('\n{:^30}'.format(PILOTS))
+         print('\n{:<20} {:<11} {:<12}\n'.format('Name', 'SSN', 'Current License'))
+         for staffMember in pilotObject_list:
+             print('{:<20} {:<11} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getLicense()))
+
 
     def workWeekOH(self, workList):
         counter = 1
@@ -181,14 +189,18 @@ class OutputHandler:
         else:
             print('Staffmember has no voyages in chosen week!')
         input(ANYKEY)
+        
+    def airplaneStatusOH(self, airplaneStatus_dict):
+        print('\n{:^32}'.format(AIRPLANESTATUS))
+        print('\n{:<13} {:<20}'.format('Airplane ID', 'Status'))
+        for airplane in sorted(airplaneStatus_dict):
+            print('{:<13} {:<20}'.format(airplane, airplaneStatus_dict[airplane]))
+        input(ANYKEY)
 
-    def testPrint(self, testDict):
-        print('\n{:53}'.format(LICENSE))
+    def airplaneLicensedOH(self, testDict):
+        print('\n{:53}'.format(LICENSEDPILOTS))
         print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
-        for key, valu in testDict.items():
+        for key, valu in sorted(testDict.items()):
             print('{:<20} {:<11}'.format(key, ', '.join(valu)))
 
         input(ANYKEY)
-
-
-

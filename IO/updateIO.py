@@ -56,12 +56,12 @@ class UpdateIO:
             i+=2
 
         upcomingVoyageFile.close()
+    
     def updateDest(self, dataList):
 
         # FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
 
- 
         # File opened with readFile()
         destinationsFile = fileObject.readFile()
         reader = csv.DictReader(destinationsFile)

@@ -11,9 +11,8 @@ class ReadIO:
         self.crewPath = "Data/Crew.csv"
         self.destinationPath = "Data/Destinations.csv"
         self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
-        self.upcomingVoyagesPath = "Data/UpcomingVoyages.csv"
+        self.upcomingVoyagesPath = "Data/Voyages.csv"
         self.PastFlightsPath = "Data/PastFlights.csv"
-
 
     def getDestinations(self):
         fileObject = FileHandler(self.destinationPath)
@@ -40,9 +39,6 @@ class ReadIO:
 
         return voyages_list
 
-
-
-
     def getStaff(self):
         fileObject = FileHandler(self.crewPath)
         fileForRead = fileObject.readFile()
@@ -65,5 +61,3 @@ class ReadIO:
             airplane_list.append(AirplaneData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
 
         return airplane_list
-
-
