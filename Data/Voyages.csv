@@ -1,5 +1,1 @@
 flightNumber,departingFrom,arrivingAt,departureTime,arrivalTime,aircraftID,captain,coPilot,fa1,fa2
-NA0200,keflavik,nuuk,2019-12-30T09:00:00,2019-12-30T12:00:00,NABAE146,,,,
-NA0201,nuuk,keflavik,2019-12-30T13:00:00,2019-12-30T16:00:00,NABAE146,,,,
-NA0202,keflavik,nuuk,2019-12-30T12:00:00,2019-12-30T15:00:00,NAFOKKER42,,,,
-NA0203,nuuk,keflavik,2019-12-30T16:00:00,2019-12-30T19:00:00,NAFOKKER42,,,,

@@ -55,10 +55,10 @@ class VoyageUI:
         flights_dict = {}
         for voyage in voyageObject_list:
             if voyage.getArrivingAt() not in flights_dict:
-                flights_dict[voyage.getArrivingAt().upper()] = 1
+                flights_dict[voyage.getArrivingAt().lower()] = 1
             else:
-                flights_dict[voyage.getArrivingAt().upper()] +=1
-        del flights_dict["KEF"]
+                flights_dict[voyage.getArrivingAt().lower()] +=1
+        del flights_dict["keflavik"]
         maximum = max(flights_dict, key=flights_dict.get)
 
         print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
@@ -132,6 +132,7 @@ class VoyageUI:
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
         pickVoyage = int(input("Pick a voyage to complete: "))
+        print("Press 0 if your want to cancel")
         if pickVoyage != 0:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():
