@@ -11,7 +11,6 @@ class ReadIO:
         self.crewPath = "Data/Crew.csv"
         self.destinationPath = "Data/Destinations.csv"
         self.upcomingVoyagesPath = "Data/Voyages.csv"
-        self.PastFlightsPath = "Data/PastFlights.csv"
 
     def getDestinations(self):
         fileObject = FileHandler(self.destinationPath)
