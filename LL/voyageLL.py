@@ -1,13 +1,11 @@
 from IO.mainIO import MainIO
-from LL.staffLL import StaffLL
 import datetime
 import dateutil.parser
-
 
 class VoyageLL():
     def __init__(self):
         self.mainObject = MainIO()
-
+  
     def listVoyage(self):
         voyageObject_list = self.mainObject.getVoyagesIO()
         staffObject_list = self.mainObject.getStaffIO()
@@ -20,11 +18,12 @@ class VoyageLL():
                     if voyage in voyage_dict:
                         voyage_dict[voyage].append(staffMember)
                     else:
-                        voyage_dict[voyage] = [staffMember]
+                        voyage_dict[voyage] = [staffMember]           
         return voyage_dict
 
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
+
 
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
@@ -40,6 +39,7 @@ class VoyageLL():
         flightDate = flight.getDepartureTime().split("T")
         currentDate = flightDate[0].split('-')
         currentDateObject = datetime.datetime(int(currentDate[0]), int(currentDate[1]), int(currentDate[2]))
+
 
         # if conditions are met for the iteration then
         for i, voyage in enumerate(voyageList):
@@ -68,6 +68,7 @@ class VoyageLL():
                 newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
         return newFlightNumber
 
+
     def findArrivalTime(self, flight):
         allDest = self.mainObject.getDestinationsIO()
         for dest in allDest:
@@ -86,9 +87,10 @@ class VoyageLL():
 
         datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         totalTime = datetime_object + tdelta
-        updatedTime = datetime.datetime.strftime(totalTime, '%Y-%m-%dT%H:%M:%S')
+        updatedTime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
 
         return updatedTime
+
 
     def errorCheckDate(self, flight):
         errorMessage = "Date was not entered correctly (YYYY-MM-DD), please try again "
@@ -128,6 +130,7 @@ class VoyageLL():
                 availableDates_list.append(date[0])
         return availableDates_list
 
+
     def getWorkWeek(self, dataList):
         workWeekObject_list = []
         voyabeObject_list = self.mainObject.getVoyagesIO()
@@ -162,126 +165,7 @@ class VoyageLL():
         else:
             return allavalibleAirplanes[0]
 
-    def findAvailableFlightAttendants(self, flight):
-        allFlightAttendants = StaffLL().getAllFlightAttendants()
-        allVoyages = self.mainObject.getVoyagesIO()
-        dateToFind = flight.getDepartureTime().split("T")
-        allAvalibleFlightAttendants = []
-        for flightAttendant in allFlightAttendants:
-            allAvalibleFlightAttendants.append(flightAttendant.getName())  ##############################
 
-        busyflightAttendants = []
-        for voyage in allVoyages:
-            uppcomingVoyageDates = voyage.getDepartureTime().split("T")
-            if uppcomingVoyageDates[0] == dateToFind[0]:
-                if voyage.getFa2() not in busyflightAttendants:
-                    busyflightAttendants.append(voyage.getFa2())
-                    try:
-                        for flightAttendant in busyflightAttendants:
-                            if flightAttendant in allAvalibleFlightAttendants:
-                                allAvalibleFlightAttendants.remove(flightAttendant)
-                            else:
-                                pass
-                    except ValueError:
-                        pass
-        if allAvalibleFlightAttendants == []:
-            return False
-        else:
-            return allAvalibleFlightAttendants
-
-
-    def findAvailableFlightServiceManagers(self, flight):
-        allFlightServiceManagers = StaffLL().getAllFlightServiceManagers()
-        allVoyages = self.mainObject.getVoyagesIO()
-        dateToFind = flight.getDepartureTime().split("T")
-        allAvalibleFlightServiceManagers = []
-        for FlightServiceManager in allFlightServiceManagers:
-            allAvalibleFlightServiceManagers.append(FlightServiceManager.getName())  ##############################
-
-        busyFlightServiceManagers = []
-        for voyage in allVoyages:
-            uppcomingVoyageDates = voyage.getDepartureTime().split("T")
-            if uppcomingVoyageDates[0] == dateToFind[0]:
-                if voyage.getFa1() not in busyFlightServiceManagers:
-                    busyFlightServiceManagers.append(voyage.getFa1())
-                    try:
-                        for FlightServiceManager in busyFlightServiceManagers:
-                            if FlightServiceManager in allAvalibleFlightServiceManagers:
-                                allAvalibleFlightServiceManagers.remove(FlightServiceManager)
-                            else:
-                                pass
-                    except ValueError:
-                        pass
-        if allAvalibleFlightServiceManagers == []:
-            return False
-        else:
-            return allAvalibleFlightServiceManagers
-
-    def findAvailableCoPilots(self, flight):
-        allCoPilots = StaffLL().getAllCoPilots()
-        allVoyages = self.mainObject.getVoyagesIO()
-        dateToFind = flight.getDepartureTime().split("T")
-        idToFind = flight.getAircraftId()
-        allAvalibleCoPilots = []
-        for coPilot in allCoPilots:
-            allAvalibleCoPilots.append(coPilot.getName())  ##############################
-
-        busyCoPilots = []
-        for voyage in allVoyages:
-            uppcomingVoyageDates = voyage.getDepartureTime().split("T")
-            if uppcomingVoyageDates[0] == dateToFind[0]:
-                if voyage.getCoPilot() not in busyCoPilots:
-                    busyCoPilots.append(voyage.getCoPilot())
-                    try:
-                        for coPilot in busyCoPilots:
-                            if coPilot in allAvalibleCoPilots:
-                                allAvalibleCoPilots.remove(coPilot)
-                            else:
-                                pass
-                    except ValueError:
-                        pass
-        if allAvalibleCoPilots == []:
-            return False
-        else:
-            qualifiedCoPilots = []
-            for coPilot in allCoPilots:
-                if coPilot.getLicense() == idToFind and coPilot.getName() in allAvalibleCoPilots:
-                    qualifiedCoPilots.append(coPilot)
-
-            return qualifiedCoPilots
-
-    def findAvailableCaptains(self, flight):
-        allCaptains = StaffLL().getAllCaptains()
-        allVoyages = self.mainObject.getVoyagesIO()
-        dateToFind = flight.getDepartureTime().split("T")
-        idToFind = flight.getAircraftId()
-        allAvalibleCaptains = []
-        for captain in allCaptains:
-            allAvalibleCaptains.append(captain.getName())  ##############################
-
-        busyCaptains = []
-        for voyage in allVoyages:
-            uppcomingVoyageDates = voyage.getDepartureTime().split("T")
-            if uppcomingVoyageDates[0] == dateToFind[0]:
-                if voyage.getCaptain() not in busyCaptains:
-                    busyCaptains.append(voyage.getCaptain())
-                    try:
-                        for captain in busyCaptains:
-                            if captain in allAvalibleCaptains:
-                                allAvalibleCaptains.remove(captain)
-                            else:
-                                pass
-                    except ValueError:
-                        pass
-                if allAvalibleCaptains == []:
-                    return False
-                else:
-                    qualifiedCaptains = []
-                    for captain in allCaptains:
-                        if captain.getLicense() == idToFind and captain.getName() in allAvalibleCaptains:
-                            qualifiedCaptains.append(captain)
-
-                    return qualifiedCaptains
 
     def generateSecondFlight(self, firstFlight):
         departingFrom = firstFlight.getArrivingAt()
@@ -295,15 +179,3 @@ class VoyageLL():
         updatedTime = datetime.datetime.strftime(newDepartureTime, '%Y-%m-%dT%H:%M:%S')
 
         return departingFrom, arravingAt, updatedTime, airplane
-
-    def voyageStaffErrorCheck(self, stafflist):
-        updatedStaffSSN = []
-        allStaff = self.mainObject.getStaffIO()
-        for emp in allStaff:
-            if emp.getName() in stafflist:
-                updatedStaffSSN.append(emp.getSSN())
-            if len(updatedStaffSSN) != 4:
-               return False
-        return updatedStaffSSN
-
-

@@ -132,6 +132,7 @@ class VoyageUI:
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
 
         pickVoyage = int(input("Pick a voyage to complete: "))
+        print("Press 0 if your want to cancel")
         if pickVoyage != 0:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():

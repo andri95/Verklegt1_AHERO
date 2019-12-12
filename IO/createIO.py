@@ -11,7 +11,6 @@ class CreateIO():
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
         self.destinationPath = "Data/Destinations.csv"
-        self.upcomingFlightsPath = "Data/UpcomingFlights.csv"
         self.upcomingVoyagesPath = "Data/Voyages.csv"
 
     def addNewAirplane(self, newAirplane):
