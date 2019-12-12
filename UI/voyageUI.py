@@ -37,7 +37,7 @@ class VoyageUI:
     def start(self):
 
         while True:
-            mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.PopularVoyageUI,'q': QuitUI}
+            mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.popularVoyageUI,'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != 'b':
@@ -50,15 +50,15 @@ class VoyageUI:
             else:
                 return
 
-    def PopularVoyageUI(self):
+    def popularVoyageUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()
         flights_dict = {}
         for voyage in voyageObject_list:
             if voyage.getArrivingAt() not in flights_dict:
-                flights_dict[voyage.getArrivingAt().upper()] = 1
+                flights_dict[voyage.getArrivingAt().lower()] = 1
             else:
-                flights_dict[voyage.getArrivingAt().upper()] +=1
-        del flights_dict["KEF"]
+                flights_dict[voyage.getArrivingAt().lower()] +=1
+        del flights_dict["keflavik"]
         maximum = max(flights_dict, key=flights_dict.get)
 
         print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
@@ -136,7 +136,9 @@ class VoyageUI:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():
                     if pickVoyage == key:
-                        staffList = self.inputObject.updateVoyageIH()
+                        pilotObject_list = self.mainObject.getAllPilotsLL()
+                        cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
+                        staffList = self.inputObject.updateVoyageIH(pilotObject_list, cabinCrewObject_list)
                         self.mainObject.updateVoyageLL(val, staffList)
             else:
                 print("Invalid Voyage")

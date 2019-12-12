@@ -2,9 +2,13 @@ from Models.airplaneData import AirplaneData
 from Models.destinationData import DestinationData
 from Models.staffData import StaffData
 from Models.voyageData import VoyageData
+from Models.errorHandler import ErrorHandler
 import datetime
 
 class InputHandler:
+
+    def __init__(self):
+        self.errorObject = ErrorHandler()
 
     def addNewAirplaneIH(self):
         planeID = input("Enter airplane ID: ")
@@ -47,7 +51,9 @@ class InputHandler:
         rank = input('Enter rank: ')
         license_str = input('Enter license: ')
         newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
-        return newEmployee
+        errorChecked = self.errorObject.addNewStaffEH(newEmployee)
+        print('New staff member registered!')
+        return errorChecked
 
     def updateDestinationIH(self):
         destToChange = input('Enter country you want to change: ')
@@ -56,12 +62,13 @@ class InputHandler:
         dataList = [destToChange, newContact, newEmergencyNumber]
         return dataList
         
-    def updateVoyageIH(self):
+    def updateVoyageIH(self, pilotObject_list, cabinCrewObject_list):
         staff_list = []
-        staff_list.append(input("Enter a Captain"))
-        staff_list.append(input("Enter a Co-Pilot"))
+        staff_list.append(input("Enter a Captain: "))
+        staff_list.append(input("Enter a Co-Pilot: "))
         staff_list.append(input("Enter a flight attendant: "))
         staff_list.append(input("Enter a flight attendant: "))
+        errorChecked = self.errorObject.addStaffToVoyageEH(staff_list, pilotObject_list, cabinCrewObject_list)
         return staff_list
 
     def addLicenseIH(self):

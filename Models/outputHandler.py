@@ -208,10 +208,10 @@ class OutputHandler:
             print('{:<13} {:<20}'.format(airplane, airplaneStatus_dict[airplane]))
         input(ANYKEY)
 
-    def airplaneLicensedOH(self, testDict):
+    def airplaneLicensedOH(self, licensecDict):
         print('\n{:53}'.format(LICENSEDPILOTS))
         print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
-        for key, valu in sorted(testDict.items()):
+        for key, valu in sorted(licensecDict.items()):
             print('{:<20} {:<11}'.format(key, ', '.join(valu)))
 
         input(ANYKEY)

@@ -6,13 +6,6 @@ class AirplaneLL:
     def __init__(self):
         self.mainObject = MainIO()
 
-    def validateAirPlaneData(self, new_airplane):
-        print(type(new_airplane))
-        flag = True
-        if flag == True:
-            #self.AirplaneIO.addNewAirplane(new_airplane)
-            return True
-
     def addAirplane(self, newAirplane):
         return self.mainObject.addNewAirplaneIO(newAirplane)
 
@@ -50,9 +43,6 @@ class AirplaneLL:
             dateTwoArriving = datetime.datetime(voyageTwoArriving.year, voyageTwoArriving.month, voyageTwoArriving.day, 
                                                     voyageTwoArriving.hour, voyageTwoArriving.minute)
             
-            #print(dateObject.date())
-            #print(dateOneDeparting.date())
-            #print(dateOneArriving.date())
             if dateObject.date() != dateOneDeparting.date():
                 if dateObject.date() != dateTwoDeparting.date():
                     airplaneStatus_dict[voyage[0].getAircraftId()] = 'Available'

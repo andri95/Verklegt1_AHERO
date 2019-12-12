@@ -68,7 +68,7 @@ class UpdateIO:
         field_list = fileObject.findFieldNames()
         destinations_list = []
         for row in reader:
-            destinations_list.append(DestinationData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]]))
+            destinations_list.append(DestinationData(row[field_list[0]], row[field_list[1]], row[field_list[2]], row[field_list[3]], row[field_list[4]]))
  
         # File closed
         destinationsFile.close()

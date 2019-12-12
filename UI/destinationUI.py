@@ -19,7 +19,7 @@ class DestinationUI():
 #                  1. All destinations                     #
 #                  2. Add a new destination                #             
 #                  3. Update destination                   #
-#                  4. Most popular destination             #
+#                                                          #
 #                                                          #
 #                                                          #
 #                                                          #
@@ -58,7 +58,6 @@ class DestinationUI():
         self.mainObject.addNewDestinationLL(newDestination)
         
         
-
     def updateDestinationUI(self):
         dataList = self.inputObject.updateDestinationIH()
         self.mainObject.updateDestinationLL(dataList)

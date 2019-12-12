@@ -39,5 +39,29 @@ class StaffData():
     def getEmail(self):
         return self.email
 
+    def setSSN(self, newSSN):
+        self.SSN = newSSN
+
+    def setName(self, newName):
+        self.name = newName
+
+    def setRole(self, newRole):
+        self.role = newRole
+
+    def setRank(self, newRank):
+        self.rank = newRank
+
     def setLicense(self, newLicense):
         self.pilot_license = newLicense
+
+    def setAddress(self, newAddress):
+        self.address = newAddress
+
+    def setCellPhone(self, newCellPhone):
+        self.cellPhone = newCellPhone
+
+    def setPhoneNumber(self, newPhoneNumber):
+        self.phoneNumber = newPhoneNumber
+
+    def setEmail(self, newEmail):
+        self.email = newEmail

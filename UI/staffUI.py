@@ -75,7 +75,7 @@ class StaffUI:
 
     def start(self):
         while True:
-            mainCommand_dict = {'1': self.listStaff, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
+            mainCommand_dict = {'1': self.listStaffUI, '2': self.addNewStaffUI, '3': self.workScheduleUI, 'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
             if user_input != 'b':
@@ -88,7 +88,7 @@ class StaffUI:
             else:
                 return
 
-    def listStaff(self):
+    def listStaffUI(self):
 
         while True: 
             subCommand_dict = {'1': self.getAllStaffUI, '2': self.getAllPilotsUI, '3': self.getAllCabinCrewUI, 
