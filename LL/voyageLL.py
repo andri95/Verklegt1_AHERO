@@ -24,49 +24,60 @@ class VoyageLL():
     def addVoyages(self, newFlight):
         return self.mainObject.addNewVoyageIO(newFlight)
 
-
     def updateVoyage(self, dataList, staffList):
         return self.mainObject.updateVoyageIO(dataList, staffList)
 
     def generateFlightNumber(self, flight):
+        ''' Generates a flight number for the flight to the destination and back. If there are no flights to the target destination
+            at the target date then we simply add 2 zeros to "NA" and the destination Id then returns the correct flight number'''
         flightNumberList = []
         destination = flight.getArrivingAt()
         voyageList = self.mainObject.getVoyagesIO()
         destinationList = self.mainObject.getDestinationsIO()
         for dest in destinationList:
             if dest.getCountry() == destination:
-                destId = dest.getDestId()
+                destId = dest.getDestId()                       # Finds the destination Id for the flight
         flightDate = flight.getDepartureTime().split("T")
-        currentDate = flightDate[0].split('-')
+        currentDate = flightDate[0].split('-')                  # index 0 should be the date
+        currentDateObject = datetime.datetime(int(currentDate[0]), int(currentDate[1]), int(currentDate[2])) # Create a dateTimeobject from the flight
 
-        currentDateObject = datetime.datetime(int(currentDate[0]), int(currentDate[1]), int(currentDate[2]))
-        for voyage in voyageList:
+
+        for i, voyage in enumerate(voyageList): # we use enumerate because one voyage is 2 flights in 2 lines.
             bookedFlightNum = voyage.getDepartureTime().split("T")
-
             date_list = bookedFlightNum[0].split('-')
             dateObject = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2]))
-            if dateObject == currentDateObject and voyage.getArrivingAt() == flight.getArrivingAt() or voyage.getDepartingFrom() == flight.getArrivingAt():
-                flightId = voyage.getFlightNumber()
-                flightIdLastNums = flightId[-2:]
-                flightNumberList.append(int(flightIdLastNums))
+            if dateObject == currentDateObject and voyage.getArrivingAt() == flight.getArrivingAt(): # If it finds a flight to the same destination
+                                                                                                     # And with the same date then generate a flight number
+                flightIdFirst = voyage.getFlightNumber()                                             # for this flight and the one after (2flights=1voyage)
+                flightNumberList.append(int(flightIdFirst[-2:]))
+                try:
+                    flightIdSecond = voyageList[i + 1].getFlightNumber()
+                    flightNumberList.append(int(flightIdSecond[-2:]))
+                except IndexError:
+                    pass
+                except Exception as e:
+                    print(e)
+
         if flightNumberList == []:
-            return "NA" + destId + "00"
+            return "NA" + destId + "00"         # If there there are no flight that day to that destination then give it NAXX00
         else:
             findMostRecent = max(flightNumberList)
-            if findMostRecent >= 10:
+            if findMostRecent >= 10:            # If the flight number has not reached 10 then we add "0" to it
                 newFlightNumber = "NA" + destId + str(findMostRecent + 1)
-            newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
+            else:
+                newFlightNumber = "NA" + destId + "0" + str(findMostRecent + 1)
         return newFlightNumber
 
 
     def findArrivalTime(self, flight):
+        '''Creates the arrival time, calculated by the flight time to the destination '''
         allDest = self.mainObject.getDestinationsIO()
         for dest in allDest:
             if dest.getCountry() == flight.getArrivingAt():
                 flightTime = dest.getFlightTime()
         try:
-            if flightTime == "0":
-                for dest in allDest:
+            if flightTime == "0":           # keflavik has the flighttime of 0 so if the flight is arriving to keflavik
+                for dest in allDest:        # then we calculate with the flight time of departing destination
                     if dest.getCountry() == flight.getDepartingFrom():
                         flightTime = dest.getFlightTime()
         except UnboundLocalError:
@@ -77,11 +88,12 @@ class VoyageLL():
 
         datetime_object = datetime.datetime.strptime(departureTime, '%Y-%m-%d %H:%M:%S')
         totalTime = datetime_object + tdelta
-        newtime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
+        updatedTime = datetime.datetime.strftime(totalTime,'%Y-%m-%dT%H:%M:%S')
 
-        return newtime
+        return updatedTime
 
     def availableDates(self):
+        '''Finds the dates where there booked voyages to show  '''
         availableDates_list = []
         voyageObject_list = self.mainObject.getVoyagesIO()
         for voyage in voyageObject_list:
