@@ -100,6 +100,7 @@ class AirplaneLL:
 
     def getLicenseDict(self):
         staffObject_list = self.mainObject.getStaffIO()
+        aiprlaneObject_list = self.mainObject.getAirplanesIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
             if staffMember.getRole() == 'Pilot':
@@ -110,6 +111,9 @@ class AirplaneLL:
                 license_Dict[staffMember.getLicense()] = [staffMember.getName()]
             else:
                 license_Dict[staffMember.getLicense()].append(staffMember.getName())
+        for airplane in aiprlaneObject_list:
+            if airplane.getPlaneId() not in license_Dict:
+                license_Dict[airplane.getPlaneId()] = ['No licensed pilot']
         return license_Dict
 
 

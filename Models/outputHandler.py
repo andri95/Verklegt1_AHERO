@@ -10,12 +10,12 @@ VOYAGES = '_______ Voyages _______'
 AVAILABLE = "_______ Available Staff _______"
 WORKSCHEDULE = '_______ Work Schedule _______'
 AIRPLANESTATUS = '_______ Airplane Status _______'
+LICENSEDPILOTS = '_______ Licensed Pilots _______'
 NOPILOT = "No Captain yet."
 NOCOPILOT = "No Copilot yet."
 NOFA1 = "No Flight Service Manager yet."
 NOFA2 = "No Flight Attendant yet."
 ANYKEY = 'Press any key to continue.'
-LICENSE = 'Airplane License'
 
 class OutputHandler:
 
@@ -67,13 +67,13 @@ class OutputHandler:
 
     def singleAirplanelistOH(self, airplane_list):
         for airplane in airplane_list:
-            print('{}'.format(airplane))
+            print('{}'.format(airplane.getPlaneId()))
 
     def singleAirplaneIdOH(self, airplaneID):
-        print('____________')
+        print('\n' + LICENSEDPILOTS)
         print('\n{:<12} {:<9}'.format('Airplane', 'Pilots'))
         for airLicense, pilot in airplaneID.items():
-            print('{:<12} {:<9}'.format(airLicense, ''.join(pilot)))
+            print('{:<12} {:<9}'.format(airLicense, ', '.join(pilot)))
 
         
         input(ANYKEY)
@@ -195,4 +195,12 @@ class OutputHandler:
         print('\n{:<13} {:<20}'.format('Airplane ID', 'Status'))
         for airplane in sorted(airplaneStatus_dict):
             print('{:<13} {:<20}'.format(airplane, airplaneStatus_dict[airplane]))
+        input(ANYKEY)
+
+    def airplaneLicensedOH(self, testDict):
+        print('\n{:53}'.format(LICENSEDPILOTS))
+        print('\n{:<20} {:<11}'.format('Aircraft ID', 'Pilot'))
+        for key, valu in sorted(testDict.items()):
+            print('{:<20} {:<11}'.format(key, ', '.join(valu)))
+
         input(ANYKEY)

@@ -96,4 +96,6 @@ class AirplaneUI:
 
     def getLicenseDictUI(self):
         licenseObject_dict = self.mainObject.getLicenseDictLL()
-        return self.outputObject.testPrint(licenseObject_dict)
+        return self.outputObject.airplaneLicensedOH(licenseObject_dict)
+
+    
