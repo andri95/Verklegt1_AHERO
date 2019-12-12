@@ -128,11 +128,11 @@ class VoyageUI:
                     if flight1.getCaptain() == "" and flight2.getCaptain() == "":
                         counter += 1
                         voyageDict[counter] = [flight1, flight2]
-                        print("{}: {} --> {}, {} --> {}\n".format(counter, flight1.getDepartingFrom(),
-                        flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt()))
-
-        pickVoyage = int(input("Pick a voyage to complete: "))
+                        flightTime = flight1.getDepartureTime().split("T")
+                        print("{}.{:<4} ---> {:<9}  {:<10}---> {:<14} {} {} {}\n".format(counter, flight1.getDepartingFrom(),
+                        flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt(), "Departing at", flightTime[0], flightTime[1]))
         print("Press 0 if your want to cancel")
+        pickVoyage = int(input("Pick a voyage to complete: "))
         if pickVoyage != 0:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():

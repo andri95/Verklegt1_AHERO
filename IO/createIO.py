@@ -1,12 +1,9 @@
 import csv
-from Models.staffData import StaffData
-from Models.voyageData import VoyageData
-from Models.airplaneData import AirplaneData
-from Models.destinationData import DestinationData
 from Models.fileHandler import FileHandler
 
 
 class CreateIO():
+    ''''''
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
