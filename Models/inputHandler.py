@@ -6,17 +6,20 @@ from Models.errorHandler import ErrorHandler
 import datetime
 
 class InputHandler:
+    def __init__(self):
+        self.errorObject = ErrorHandler()
 
     def __init__(self):
         self.errorObject = ErrorHandler()
 
     def addNewAirplaneIH(self):
-        planeID = input("Enter airplane ID: ")
+        planeID = input("\nEnter airplane ID: ")
         types = input("Enter Airplane type: ")
         model = input("Enter Model name: ")
         capacity = input("Enter Airplane Capacity")
         newAirplane = AirplaneData(planeID, types, model, capacity)
-        return newAirplane
+        errorChecked = self.errorObject.addNewAirplaneEH(newAirplane)  # Hér byrjar error handler
+        return errorChecked
 
     def addNewDestinationIH(self):
         country = input('Enter country: ')
@@ -25,7 +28,8 @@ class InputHandler:
         emergencynum = input('Enter emergency number: ')
         destinationId = ''
         newDestination = DestinationData(country, flighttime, contact, emergencynum, destinationId)
-        return newDestination
+        errorChecked = self.errorObject.addNewDestinationEH(newDestination)  # Hér byrjar error handler
+        return errorChecked
 
     def addNewFlightIH(self):
         arrivingAt = input("Where will you be arriving at: ").lower()
@@ -62,14 +66,9 @@ class InputHandler:
         dataList = [destToChange, newContact, newEmergencyNumber]
         return dataList
         
-    def updateVoyageIH(self, pilotObject_list, cabinCrewObject_list):
-        staff_list = []
-        staff_list.append(input("Enter a Captain: "))
-        staff_list.append(input("Enter a Co-Pilot: "))
-        staff_list.append(input("Enter a flight attendant: "))
-        staff_list.append(input("Enter a flight attendant: "))
-        errorChecked = self.errorObject.addStaffToVoyageEH(staff_list, pilotObject_list, cabinCrewObject_list)
-        return staff_list
+    def updateVoyageIH(self, staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list):
+        errorChecked = self.errorObject.addStaffToVoyageEH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
+        return errorChecked
 
     def addLicenseIH(self):
         ssn = input('Enter social security number: ')

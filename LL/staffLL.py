@@ -7,6 +7,7 @@ class StaffLL:
     def __init__(self):
         self.mainObject = MainIO()
              
+
     def getAllStaff(self):
         return self.mainObject.getStaffIO()
 
@@ -26,11 +27,11 @@ class StaffLL:
 
     def getAllCabinCrew(self):
         staffObject_list = self.mainObject.getStaffIO()
-        cabinCrewObject_list = []
+        pilotObject_list = []
         for staffMember in staffObject_list:
             if staffMember.getRole() == 'Cabincrew':
-                cabinCrewObject_list.append(staffMember)
-        return cabinCrewObject_list
+                pilotObject_list.append(staffMember)
+        return pilotObject_list
 
     def getStaffData(self, dataList):
         staffObject_list = self.mainObject.getStaffIO()

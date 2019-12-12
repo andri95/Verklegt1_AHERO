@@ -9,90 +9,91 @@ class ErrorHandler:
     def addNewAirplaneEH(self, other):
         planeID = other.getPlaneId()
         planeIDValid = ErrorHandler().isOnlyNumbersOrLetters(planeID)
-        if planeIDValid:
-            type = other.getType()
-            if type.isalpha():
-                model = other.getModel()
+        if planeIDValid == False:
+            print("\nInvalid plane ID, please try again.")
+            flag = True
+            while flag:
+                planeID = input('Enter new plane ID: ')
+                planeIDValid = ErrorHandler().isOnlyNumbersOrLetters(planeID)
+                if planeIDValid:
+                    other.setSSN(planeID)
+                    flag = False
+
+        type = other.getType()
+        if type.isalpha() == False:
+            print("\nInvalid airplane type, please try again.")
+            flag = True
+            while flag:
+                type = input('Enter new airlpane type: ')
+                if type.isalpha():
+                    other.setType(type)
+                    flag = False
+
+        model = other.getModel()
+        if model.isalnum() == False:
+            print("\nInvalid model, please try again.")
+            flag = True
+            while flag:
+                model = input('Enter new model name: ')
                 if model.isalnum():
-                    capacity = other.getCapacity()
-                    if capacity.isdigit():
-                        return True
-                    else:
-                        print("Invalid capacity, please try again.")
-                        return False
-                else:
-                    print("Invalid model, please try again.")
-                    return False
-            else:
-                print("Invalid type, please try again.")
-                return False
-        else:
-            print("Invalid planeID, please try again.")
-            return False
+                    other.setModel(model)
+                    flag = False
+
+        capacity = other.getCapacity()
+        if capacity.isdigit() == False:
+            print("\nInvalid capacity, please try again.")
+            flag = True
+            while flag:
+                capacity = input('Enter new capacity: ')
+                if capacity.isdigit():
+                    other.setCapacity(capacity)
+                    flag = False
+        return other
+
 
     def addNewDestinationEH(self, other):
         country = other.getCountry()
-        if country.isalpha():
-            flighttime = other.getFlightTime()
-            if flighttime.isdigit():
-                contact = other.getContact()
+        if country.isalpha() == False:
+            print("\nInvalid country, please try again.")
+            flag = True
+            while flag:
+                country = input('Enter new country: ')
+                if country.isalpha():
+                    other.setCountry(country)
+                    flag = False
+
+        flightTime = other.getFlightTime()
+        if flightTime.isdigit() == False:
+            print("\nInvalid flight time, please try again.")
+            flag = True
+            while flag:
+                flightTime = input('Enter new flight time: ')
+                if flightTime.isdigit():
+                    other.setFlightTime(flightTime)
+                    flag = False
+
+        contact = other.getContact()
+        contactValid = ErrorHandler().isNameValid(contact)
+        if contactValid == False:
+            print("\nInvalid contact, please try again.")
+            flag = True
+            while flag:
+                contact = input('Enter new contact: ')
                 contactValid = ErrorHandler().isNameValid(contact)
                 if contactValid:
-                    emergencynum = other.getEmergencyNumber()
-                    if emergencynum.isdigit():
-                        return True
-                    else:
-                        print("Invalid emergency number, please try again.")
-                        return False
-                else:
-                    print("Invalid contact, please try again.")
-                    return False
-            else:
-                print("Invalid contact, please try again.")
-                return False
-        else:
-            print("emergencynum valid")
-            return False
+                    other.setContact(contact)
+                    flag = False
 
-    def addNewFlightEH(self, other):
-        print(type(other))
-        flightNumber = other.getFlightNumber()
-        flightNumberValid = ErrorHandler().isOnlyAscii(flightNumber)
-        if flightNumberValid:
-            print("flightNumber valid")
-            departingFrom = other.getDepartingFrom()
-            departingFromValid = ErrorHandler().isOnlyLetters(departingFrom)
-            if departingFromValid:
-                print("departingFrom valid")
-                arrivingAt = other.getArrivingAt()
-                arrivingAtValid = ErrorHandler().isOnlyLetters(arrivingAt)
-                if arrivingAtValid:
-                    print("arrivingAt valid")
-                    departureTime = other.getDepartureTime()
-                    departureTimeValid = ErrorHandler().isOnlyNumbers(departureTime)
-                    if departureTimeValid:
-                        print("departureTime valid")
-                        arrivalTime = other.getArrivalTime()
-                        arrivalTimeValid = ErrorHandler().isOnlyNumbers(arrivalTime)
-                        if arrivalTimeValid:
-                            print("arrivalTime valid")
-                            aircraftId = other.getAircraftId()
-                            aircraftIdValid = ErrorHandler().isOnlyNumbersOrLetters(aircraftId)
-                            if aircraftIdValid:
-                                print("aircraftId valid")
-                                return True
-                            else:
-                                return False
-                        else:
-                            return False
-                    else:
-                        return False
-                else:
-                    return False
-            else:
-                return False
-        else:
-            return False
+        emergencynum = other.getEmergencyNumber()
+        if emergencynum.isdigit() == False or len(emergencynum) != 7:
+            print("\nInvalid emergency number, please try again.")
+            flag = True
+            while flag:
+                emergencynum = input('Enter new emergency number: ')
+                if emergencynum.isdigit() and len(emergencynum) == 7:
+                    other.setEmergencyNumber(emergencynum)
+                    flag = False
+        return True
 
     def addNewStaffEH(self, other):
         SSN = other.getSSN()
@@ -203,38 +204,39 @@ class ErrorHandler:
                     continue
         return other
 
-    def addStaffToVoyageEH(self, staff_list, pilotObject_list, cabinCrewObject_list):
-        
+    def addStaffToVoyageEH(self, staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list):
         captain_list = []
         copilot_list = []
         fsm_list = []
         fa_list = []
+        updatedStaffSSN = []
         for pilot in pilotObject_list:
             if pilot.getRank() == 'Captain':
-                captain_list.append(pilot.getSSN())
-            elif pilot.getName == 'Copilot':
-                copilot_list.append(pilot.getSSN())
+                captain_list.append(pilot.getName())
+            elif pilot.getRank() == 'Copilot':
+                copilot_list.append(pilot.getName())
         for flightAttendant in cabinCrewObject_list:
             if flightAttendant.getRank() == 'Flight Service Manager':
-                fsm_list.append(flightAttendant.getSSN())
-            elif flightAttendant.getName() == 'Flight Attendant':
-                fa_list.append(flightAttendant.getSSN())
+                fsm_list.append(flightAttendant.getName())
+            elif flightAttendant.getRank() == 'Flight Attendant':
+                fa_list.append(flightAttendant.getName())
 
         if staff_list[0] not in captain_list:
             flag = True
             while flag:
                 print(staff_list[0] + ' is not a captain!')
-                newCaptain = input('Enter new captain ssn: ')
+                newCaptain = input('Enter new captain: ')
                 if newCaptain in captain_list:
                     staff_list[0] = newCaptain
                 else:
                     continue
 
         if staff_list[1] not in copilot_list:
+            print(copilot_list)
             flag = True
             while flag:
                 print(staff_list[1] + ' is not a copilot!')
-                newCopilot = input('Enter new copilot ssn: ')
+                newCopilot = input('Enter new copilot: ')
                 if newCopilot in copilot_list:
                     staff_list[1] = newCopilot
                 else:
@@ -244,9 +246,28 @@ class ErrorHandler:
             flag = True
             while flag:
                 print(staff_list[2] + ' is not a flight service manager!')
-                newFsm = input()
+                newFsm = input('Enter new flight service manager: ')
+                if newFsm in fsm_list:
+                    staff_list[3] = newFsm
+                    flag = False
+                else:
+                    continue
 
+        if staff_list[3] not in fa_list:
+            flag = True
+            while flag:
+                print(staff_list[3] + ' is not a flight attendant!')
+                newFa = input('Enter new flight attendant: ')
+                if newFa in fa_list:
+                    staff_list[3] = newFa
+                    flag = False
+                else:
+                    continue
 
+        for staffMember in staffObject_list:
+            if staffMember.getName() in staff_list:
+                updatedStaffSSN.append(staffMember.getSSN())
+        return updatedStaffSSN
 
 
     def isOnlyNumbersOrLetters(self, other):

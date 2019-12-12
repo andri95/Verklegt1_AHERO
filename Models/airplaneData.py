@@ -18,6 +18,18 @@ class AirplaneData():
     def getCapacity(self):
         return self.capacity
 
+    def setSSN(self, newPlaneId):
+        self.planeId = newPlaneId
+
+    def setType(self, newType):
+        self.type = newType
+
+    def setModel(self, newModel):
+        self.Model = newModel
+
+    def setCapacity(self, newCapacity):
+        self.capacity = newCapacity
+
 
 
 

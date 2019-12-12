@@ -21,6 +21,12 @@ class DestinationData:
     def getDestId(self):
         return self.destId
 
+    def setCountry(self, newCountry):
+        self.country = newCountry
+
+    def setFlightTime(self, newFlightTime):
+        self.flightTime = newFlightTime
+
     def setContact(self, newContact):
         self.contact = newContact
 

@@ -79,7 +79,7 @@ class AirplaneUI:
     def registerAirplaneUI(self):
         newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes
         self.mainObject.addAirplaneLL(newAirplane)
-        print("New airplane saved!")
+        print("\nNew airplane saved!")
         input("Press any key to continue.")
 
     def airplaneStatusUI(self):

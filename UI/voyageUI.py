@@ -139,12 +139,41 @@ class VoyageUI:
                     if pickVoyage == key:
                         pilotObject_list = self.mainObject.getAllPilotsLL()
                         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
-                        staffList = self.inputObject.updateVoyageIH(pilotObject_list, cabinCrewObject_list)
-                        self.mainObject.updateVoyageLL(val, staffList)
+                        staffObject_list = self.mainObject.getAllStaffLL()
+                        #staffList = self.inputObject.updateVoyageIH()  # COMMENTAÐI UT INPUT HANDLER::
+                        staff_list = []
+                        print("\n______ Available Captains ______")
+                        availableCaptains = self.mainObject.getAvailableCaptains(val[0])  ####HEHEH
+                        for captain in availableCaptains:
+                            print(captain.getName())
+                        staff_list.append(input("\nEnter a Captain: "))
+
+                        print("\n______ Available Co-Pilots ______")
+                        availableCoPilots = self.mainObject.getAvailableCoPilots(val[0])  ####HEHEH
+                        for coPilot in availableCoPilots:
+                            print(coPilot.getName())
+                        staff_list.append(input("\nEnter a Co-Pilot: "))
+
+                        print("\n ______ Available flight service managers ______")
+                        availableFlightServicerManagers = self.mainObject.getAvailableFlightServiceManagers(val[0])
+                        for flightServiceManager in availableFlightServicerManagers:
+                            print(flightServiceManager)
+                        staff_list.append(input("\nEnter a flight service manager: "))
+
+                        print("\n ______ Available flight attendants ______")
+                        availableFlightAttendants = self.mainObject.getAvailableFlightAttendants(val[0])
+                        for flightAttendant in availableFlightAttendants:
+                            print(flightAttendant)
+                        staff_list.append(input("Enter a flight attendant: "))
+
+                        errorChecked = self.inputObject.updateVoyageIH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
+                        self.mainObject.updateVoyageLL(val, errorChecked)
             else:
                 print("Invalid Voyage")
         else:
             return
+
+
 
 
 
