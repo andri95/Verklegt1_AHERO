@@ -55,10 +55,10 @@ class VoyageUI:
         flights_dict = {}
         for voyage in voyageObject_list:
             if voyage.getArrivingAt() not in flights_dict:
-                flights_dict[voyage.getArrivingAt().upper()] = 1
+                flights_dict[voyage.getArrivingAt().lower()] = 1
             else:
-                flights_dict[voyage.getArrivingAt().upper()] +=1
-        del flights_dict["KEF"]
+                flights_dict[voyage.getArrivingAt().lower()] +=1
+        del flights_dict["keflavik"]
         maximum = max(flights_dict, key=flights_dict.get)
 
         print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
@@ -136,12 +136,39 @@ class VoyageUI:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():
                     if pickVoyage == key:
-                        staffList = self.inputObject.updateVoyageIH()
-                        self.mainObject.updateVoyageLL(val, staffList)
+                        #staffList = self.inputObject.updateVoyageIH()  # COMMENTAÐI UT INPUT HANDLER::
+                        staff_list = []
+                        print("\n______ Available Captains ______")
+                        availableCaptains = self.mainObject.getAvailableCaptains(val[0])  ####HEHEH
+                        for captain in availableCaptains:
+                            print(captain.getName())
+                        staff_list.append(input("\nEnter a Captain: "))
+
+                        print("\n______ Available Co-Pilots ______")
+                        availableCoPilots = self.mainObject.getAvailableCoPilots(val[0])  ####HEHEH
+                        for coPilot in availableCoPilots:
+                            print(coPilot.getName())
+                        staff_list.append(input("\nEnter a Co-Pilot: "))
+
+                        print("\n ______ Available flight service managers ______")
+                        availableFlightServicerManagers = self.mainObject.getAvailableFlightServiceManagers(val[0])
+                        for flightServiceManager in availableFlightServicerManagers:
+                            print(flightServiceManager)
+                        staff_list.append(input("\nEnter a flight service manager: "))
+
+                        print("\n ______ Available flight attendants ______")
+                        availableFlightAttendants = self.mainObject.getAvailableFlightAttendants(val[0])
+                        for flightAttendant in availableFlightAttendants:
+                            print(flightAttendant)
+                        staff_list.append(input("Enter a flight attendant: "))
+
+                        self.mainObject.updateVoyageLL(val, staff_list)
             else:
                 print("Invalid Voyage")
         else:
             return
+
+
 
 
 

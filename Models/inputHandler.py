@@ -2,17 +2,21 @@ from Models.airplaneData import AirplaneData
 from Models.destinationData import DestinationData
 from Models.staffData import StaffData
 from Models.voyageData import VoyageData
+from Models.errorHandler import ErrorHandler
 import datetime
 
 class InputHandler:
+    def __init__(self):
+        self.errorObject = ErrorHandler()
 
     def addNewAirplaneIH(self):
-        planeID = input("Enter airplane ID: ")
+        planeID = input("\nEnter airplane ID: ")
         types = input("Enter Airplane type: ")
         model = input("Enter Model name: ")
         capacity = input("Enter Airplane Capacity")
         newAirplane = AirplaneData(planeID, types, model, capacity)
-        return newAirplane
+        errorChecked = self.errorObject.addNewAirplaneEH(newAirplane)  # Hér byrjar error handler
+        return errorChecked
 
     def addNewDestinationIH(self):
         country = input('Enter country: ')
@@ -21,7 +25,8 @@ class InputHandler:
         emergencynum = input('Enter emergency number: ')
         destinationId = ''
         newDestination = DestinationData(country, flighttime, contact, emergencynum, destinationId)
-        return newDestination
+        errorChecked = self.errorObject.addNewDestinationEH(newDestination)  # Hér byrjar error handler
+        return errorChecked
 
     def addNewFlightIH(self):
         arrivingAt = input("Where will you be arriving at: ").lower()
@@ -47,7 +52,8 @@ class InputHandler:
         rank = input('Enter rank: ')
         license_str = input('Enter license: ')
         newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
-        return newEmployee
+        errorChecked = self.errorObject.addNewStaffEH(newEmployee)  # Hér byrjar error handler
+        return errorChecked
 
     def updateDestinationIH(self):
         destToChange = input('Enter country you want to change: ')

@@ -9,154 +9,200 @@ class ErrorHandler:
     def addNewAirplaneEH(self, other):
         planeID = other.getPlaneId()
         planeIDValid = ErrorHandler().isOnlyNumbersOrLetters(planeID)
-        if planeIDValid:
-            print("planeID valid")
-            type = other.getType()
-            #typesValid = ErrorHandler().isOnlyLetters(type)
-            if type.isalpha():
-                print("type valid")
-                model = other.getModel()
-                #modelValid = ErrorHandler().isOnlyAscii(model)
+        if planeIDValid == False:
+            print("\nInvalid plane ID, please try again.")
+            flag = True
+            while flag:
+                planeID = input('Enter new plane ID: ')
+                planeIDValid = ErrorHandler().isOnlyNumbersOrLetters(planeID)
+                if planeIDValid:
+                    other.setSSN(planeID)
+                    flag = False
+
+        type = other.getType()
+        if type.isalpha() == False:
+            print("\nInvalid airplane type, please try again.")
+            flag = True
+            while flag:
+                type = input('Enter new airlpane type: ')
+                if type.isalpha():
+                    other.setType(type)
+                    flag = False
+
+        model = other.getModel()
+        if model.isalnum() == False:
+            print("\nInvalid model, please try again.")
+            flag = True
+            while flag:
+                model = input('Enter new model name: ')
                 if model.isalnum():
-                    print("model valid")
-                    capacity = other.getCapacity()
-                    #capacityValid = ErrorHandler().isOnlyNumbers(capacity)
-                    if capacity.isdigit():
-                        print("capacity valid")
-                        return True
-                    else:
-                        print("capacity invalid")
-                        return False
-                else:
-                    print("model invalid")
-                    return False
-            else:
-                print("type invalid")
-                return False
-        else:
-            print("planeID invalid")
-            return False
+                    other.setModel(model)
+                    flag = False
+
+        capacity = other.getCapacity()
+        if capacity.isdigit() == False:
+            print("\nInvalid capacity, please try again.")
+            flag = True
+            while flag:
+                capacity = input('Enter new capacity: ')
+                if capacity.isdigit():
+                    other.setCapacity(capacity)
+                    flag = False
+        return other
+
 
     def addNewDestinationEH(self, other):
-        # Pæling hvernig á að error check-a "flightTime"??
         country = other.getCountry()
-        if country.isalpha():
-            print("country valid")
-            flighttime = other.getFlightTime()
-            if flighttime.isdigit():
-                print("flighttime valid")
-                contact = other.getContact()
+        if country.isalpha() == False:
+            print("\nInvalid country, please try again.")
+            flag = True
+            while flag:
+                country = input('Enter new country: ')
+                if country.isalpha():
+                    other.setCountry(country)
+                    flag = False
+
+        flightTime = other.getFlightTime()
+        if flightTime.isdigit() == False:
+            print("\nInvalid flight time, please try again.")
+            flag = True
+            while flag:
+                flightTime = input('Enter new flight time: ')
+                if flightTime.isdigit():
+                    other.setFlightTime(flightTime)
+                    flag = False
+
+        contact = other.getContact()
+        contactValid = ErrorHandler().isNameValid(contact)
+        if contactValid == False:
+            print("\nInvalid contact, please try again.")
+            flag = True
+            while flag:
+                contact = input('Enter new contact: ')
                 contactValid = ErrorHandler().isNameValid(contact)
                 if contactValid:
-                    print("contact valid")
-                    emergencynum = other.getEmergencyNumber()
-                    if emergencynum.isdigit():
-                        print("emergencynum valid")
-                        return True
-                    else:
-                        print("Invalid emergency number, please try again.")
-                        return False
-                else:
-                    print("Invalid contact, please try again.")
-                    return False
-            else:
-                print("Invalid contact, please try again.")
-                return False
-        else:
-            print("emergencynum valid")
-            return False
+                    other.setContact(contact)
+                    flag = False
 
-    def addNewFlightEH(self, other):
-        # Pæling hvernig á að error check-a "flightTime"??
-        # Og líka pæling hvernig er best að error check-a "aircraftID".
-        print(type(other))
-        flightNumber = other.getFlightNumber()
-        flightNumberValid = ErrorHandler().isOnlyAscii(flightNumber)
-        if flightNumberValid:
-            print("flightNumber valid")
-            departingFrom = other.getDepartingFrom()
-            departingFromValid = ErrorHandler().isOnlyLetters(departingFrom)
-            if departingFromValid:
-                print("departingFrom valid")
-                arrivingAt = other.getArrivingAt()
-                arrivingAtValid = ErrorHandler().isOnlyLetters(arrivingAt)
-                if arrivingAtValid:
-                    print("arrivingAt valid")
-                    departureTime = other.getDepartureTime()
-                    departureTimeValid = ErrorHandler().isOnlyNumbers(departureTime)
-                    if departureTimeValid:
-                        print("departureTime valid")
-                        arrivalTime = other.getArrivalTime()
-                        arrivalTimeValid = ErrorHandler().isOnlyNumbers(arrivalTime)
-                        if arrivalTimeValid:
-                            print("arrivalTime valid")
-                            aircraftId = other.getAircraftId()
-                            aircraftIdValid = ErrorHandler().isOnlyNumbersOrLetters(aircraftId)
-                            if aircraftIdValid:
-                                print("aircraftId valid")
-                                return True
-                            else:
-                                return False
-                        else:
-                            return False
-                    else:
-                        return False
-                else:
-                    return False
-            else:
-                return False
-        else:
-            return False
+        emergencynum = other.getEmergencyNumber()
+        if emergencynum.isdigit() == False or len(emergencynum) != 7:
+            print("\nInvalid emergency number, please try again.")
+            flag = True
+            while flag:
+                emergencynum = input('Enter new emergency number: ')
+                if emergencynum.isdigit() and len(emergencynum) == 7:
+                    other.setEmergencyNumber(emergencynum)
+                    flag = False
+        return True
 
     def addNewStaffEH(self, other):
         SSN = other.getSSN()
-        if SSN.isdigit():
-            name = other.getName()
-            nameValid = ErrorHandler().isNameValid(name)
-            if nameValid:
-                address = other.getAddress()
-                if address.isalnum():
-                    cellPhone = other.getCellPhone()
-                    if cellPhone.isdigit():
-                        phoneNumber = other.getPhoneNumber()
-                        if phoneNumber.isdigit():
-                            email = other.getEmail()
-                            emailValid = ErrorHandler().isEmailValid(email)
-                            if emailValid:
-                                role = other.getRole()
-                                if role.isalpha():
-                                    rank = other.getRank()
-                                    if rank.isalpha():
-                                        license = other.getLicence()
-                                        if license.isalnum():
-                                            return True
-                                        else:
-                                            print("Invalid license, please try again.")
-                                            return False
-                                    else:
-                                        print("Invalid rank, please try again.")
-                                        return False
-                                else:
-                                    print("Invalid role, please try again.")
-                                    return False
-                            else:
-                                print("Invalid email, please try again.")
-                                return False
-                        else:
-                            print("Invalid phone number, please try again.")
-                            return False
-                    else:
-                        print("Invalid cellphone, please try again.")
-                        return False
+        if SSN.isdigit() == False or len(SSN) != 10:
+            flag = True
+            while flag:
+                print("\nInvalid social security number, please try again.")
+                newSSN = input('Enter new SSN: ')
+                if SSN.isdigit() and len(SSN) == 10:
+                    other.setSSN(newSSN)
+                    flag = False
                 else:
-                    print("Invalid address, please try again.")
-                    return False
-            else:
-                print("Invalid name, please try again.")
-                return False
-        else:
-            print("Invalid SSN, please try again.")
-            return False
+                    continue
+
+        name = other.getName()
+        nameValid = self.isNameValid(name)
+        if nameValid == False:
+            flag = True
+            while flag:
+                print("\nInvalid name, please try again.")
+                newName = input('Enter new name: ')
+                nameValid = self.isNameValid(name)
+                if nameValid:
+                    other.setName(newName)
+                    flag = False
+                else:
+                    continue
+
+        address = other.getAddress()
+        if address.isalnum() == False:
+            flag = True
+            while flag:
+                print("\nInvalid address, please try again.")
+                newAddress = input('Enter new address: ')
+                if address.isalnum():
+                    other.setAddress(newAddress)
+                    flag = False
+                else:
+                    continue
+        cellPhone = other.getCellPhone()
+        if cellPhone.isdigit() == False or len(cellPhone) != 7:
+            flag = True
+            while flag:
+                print("\nInvalid cellphone, please try again.")
+                newCellPhone = input('Enter new cellphone number: ')
+                if newCellPhone.isdigit() and len(newCellPhone) == 7:
+                    other.setCellPhone(newCellPhone)
+                    flag = False
+                else:
+                    continue
+        phoneNumber = other.getPhoneNumber()
+        if phoneNumber.isdigit() == False or len(cellPhone) != 7:
+            flag = True
+            while flag:
+                print("\nInvalid phone number, please try again.")
+                newPhone = input('Enter new phone number: ')
+                if newPhone.isdigit() and len(newPhone) == 7:
+                    other.setPhoneNumber(newPhone)
+                    flag = False
+                else:
+                    continue
+        email = other.getEmail()
+        emailValid = ErrorHandler().isEmailValid(email)
+        if emailValid == False:
+            flag = True
+            while flag:
+                print("\nInvalid email, please try again.")
+                newEmail = input('Enter new email: ')
+                emailValid = ErrorHandler().isEmailValid(newEmail)
+                if emailValid:
+                    other.setEmail(newEmail)
+                    flag = False
+                else:
+                    continue
+        role = other.getRole()
+        if role not in ["Pilot", "Cabincrew"]:
+            flag = True
+            while flag:
+                print("\nInvalid role, please try again.")
+                newRole = input('Enter new role: ')
+                if role in ["Pilot", "Cabincrew"]:
+                    other.setRole(newRole)
+                    flag = False
+                else:
+                    continue
+        rank = other.getRank()
+        if rank not in ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]:
+            flag = True
+            while flag:
+                print("\nInvalid rank, please try again.")
+                newRank = ('Enter new rank: ')
+                if rank in ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]:
+                    other.setRank(newRank)
+                    flag = False
+                else:
+                    continue
+
+        staff_license = other.getLicense()
+        if staff_license.isalnum() == False:
+            flag = True
+            while flag:
+                print("\nInvalid license, please try again.")
+                newLicense = input('Enter new plane ID: ')
+                if staff_license.isalnum():
+                    other.setLicense(newLicense)
+                    flag = False
+                else:
+                    continue
+        return other
 
     def isOnlyNumbersOrLetters(self, other):
         """ Returns False if the string contains only letters or only numbers."""
@@ -168,28 +214,6 @@ class ErrorHandler:
         else:
             return True
 
-    def isOnlyLetters(self, other):
-        """ Returns false if the string does not only contain letters. """
-        #print("in isOnlyLetters")
-        if other.isalpha():
-            return True
-        else:
-            return False
-
-    def isOnlyNumbers(self, other):
-        """ Returns false if the string does not only contain numbers. """
-        # print("in isOnlyNumbers")
-        if other.isdigit():
-            return True
-        else:
-            return False
-
-    def isOnlyAscii(self, other):
-        if other.isalnum():
-            return True
-        else:
-            return False
-
     def isNameValid(self, other):
         """ Returns false if any letter in the name is not from the alphabet. """
         for word in other.split():
@@ -198,7 +222,7 @@ class ErrorHandler:
         return True
 
     def isEmailValid(self, other):
-        if other[:-10] == "@nanair.com":
+        if other[-11:] == "@nanair.com":
             return True
         else:
             return False

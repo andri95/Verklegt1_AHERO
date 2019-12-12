@@ -7,6 +7,7 @@ class StaffLL:
     def __init__(self):
         self.mainObject = MainIO()
              
+
     def getAllStaff(self):
         return self.mainObject.getStaffIO()
 
@@ -24,13 +25,37 @@ class StaffLL:
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 
-    def getAllCabinCrew(self):
+    def getAllCaptains(self):  #########################
         staffObject_list = self.mainObject.getStaffIO()
-        cabinCrewObject_list = []
+        captainObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Cabincrew':
-                cabinCrewObject_list.append(staffMember)
-        return cabinCrewObject_list
+            if staffMember.getRank() == 'Captain':
+                captainObject_list.append(staffMember)
+        return captainObject_list
+
+    def getAllCoPilots(self):  #########################
+        staffObject_list = self.mainObject.getStaffIO()
+        coPilotObject_list = []
+        for staffMember in staffObject_list:
+            if staffMember.getRank() == 'Copilot':
+                coPilotObject_list.append(staffMember)
+        return coPilotObject_list
+
+    def getAllFlightAttendants(self):
+        staffObject_list = self.mainObject.getStaffIO()
+        flightAttendantObject_list = []
+        for staffMember in staffObject_list:
+            if staffMember.getRank() == 'Flight Attendant':
+                flightAttendantObject_list.append(staffMember)
+        return flightAttendantObject_list
+
+    def getAllFlightServiceManagers(self):
+        staffObject_list = self.mainObject.getStaffIO()
+        flightServiceManagerObject_list = []
+        for staffMember in staffObject_list:
+            if staffMember.getRank() == 'Flight Service Manager':
+                flightServiceManagerObject_list.append(staffMember)
+        return flightServiceManagerObject_list
 
     def getStaffData(self, dataList):
         staffObject_list = self.mainObject.getStaffIO()
