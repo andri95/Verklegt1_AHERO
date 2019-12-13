@@ -68,10 +68,17 @@ class InputHandler:
         errorChecked = self.errorObject.addStaffToVoyageEH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
         return errorChecked
 
-    def addLicenseIH(self):
-        ssn = input('Enter social security number: ')
-        newLicense = input('Enter new airplane type: ')
-        dataList = [ssn, newLicense]
+    def addLicenseIH(self, pilotObject_dict):
+        flag = True
+        while flag:
+            user_input = input('Choose a pilot: ')
+            if user_input in pilotObject_dict:
+                newLicense = input('Enter new airplane type: ')
+                dataList = [pilotObject_dict[user_input].getSSN(), newLicense]
+                flag = False
+            else:
+                print('Invalid input!')
+                continue
         return dataList
 
     def workWeekIH(self):

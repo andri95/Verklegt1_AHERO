@@ -168,11 +168,12 @@ class OutputHandler:
 
         input(ANYKEY)
 
-    def allPilotsLicenseOH(self, pilotObject_list):
+    def allPilotsLicenseOH(self, pilotObject_dict):
          print('\n{:^30}'.format(PILOTS))
-         print('\n{:<20} {:<11} {:<12}\n'.format('Name', 'SSN', 'Current License'))
-         for staffMember in pilotObject_list:
-             print('{:<20} {:<11} {:<12}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getLicense()))
+         print('\n{:>2}. {:<20} {:<11} {:<12}'.format('Nr','Name', 'SSN', 'Current License'))
+         for staffMember in pilotObject_dict:
+             print('{:>2}. {:<20} {:<11} {:<12}'.format(staffMember, pilotObject_dict[staffMember].getName(), pilotObject_dict[staffMember].getSSN(),
+                                                 pilotObject_dict[staffMember].getLicense()))
 
 
     def workWeekOH(self, workList):

@@ -109,9 +109,12 @@ class AirplaneUI:
         self.outputObject.airplaneStatusOH(airplaneStatus_dict)
 
     def addLicenseUI(self):
+        pilotObject_dict = {}
         pilotObject_list = self.mainObject.getAllPilotsLL()
-        self.outputObject.allPilotsLicenseOH(pilotObject_list)
-        dataList = self.inputObject.addLicenseIH()
+        for counter, pilot in enumerate(pilotObject_list):
+            pilotObject_dict[str(counter)] = pilot
+        self.outputObject.allPilotsLicenseOH(pilotObject_dict)
+        dataList = self.inputObject.addLicenseIH(pilotObject_dict)
         return self.mainObject.addLicenseLL(dataList)
 
     def getLicenseDictUI(self):
