@@ -77,7 +77,7 @@ class AirplaneUI:
         self.outputObject.singleAirplaneIdOH(license_dict)  # held
 
     def registerAirplaneUI(self):
-        newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes
+        newAirplane = self.inputObject.addNewAirplaneIH()   # calls the input-handler for registering airplanes
         self.mainObject.addAirplaneLL(newAirplane)
         print("\nNew airplane saved!")
         input("Press any key to continue.")

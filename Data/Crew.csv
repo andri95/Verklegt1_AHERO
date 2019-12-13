@@ -1,52 +1,58 @@
 ssn,name,address,cellPhone,phoneNumber,email,role,rank,licence
-2209955782,Allen Ley,Marylane85,86940129,2358266,Allenley@nanair.com,Pilot,Captain,NABAE146
-2907675667,Felecia Moye,Marylane86,86940129,2358266,Felecia@nanair.com,Pilot,Captain,NABAE146
-1309797899,Tyler Anderson,Marylane87,86940129,2358266,Tyler@nanair.com,Pilot,Captain,NAFOKKER42
+2209955782,Allen Ley,Marylane85,86940129,2358266,Allenley@nanair.com,pilot,Captain,NABAE146
+2907675667,Felecia Moye,Marylane86,86940129,2358266,Felecia@nanair.com,pilot,Captain,NABAE146
+1309797899,Tyler Anderson,Marylane87,86940129,2358266,Tyler@nanair.com,pilot,Captain,NAFOKKER42
 0405983169,Oli Birgir,Bjarkavellir 5C,7830405,4622508,Olib@Nanair.is,pilot,captain,NAFOKKER42
-2001851854,Antonia Wright,Marylane20,86940121,2358265,Antonia@nanair.com,Pilot,Captain,NAAIRBUSA11
-0605918591,Timothy Burdine,Marylane21,86940122,2358267,Wilma@nanair.com,Pilot,Captain,NAAIRBUSA11
-0601918591,James Martinez,Marylane21,81940122,3358267,James@nanair.com,Pilot,Captain,NAFOKKER43
-0602918591,Robert Hayes,Marylane31,82940122,3358267,Robert@nanair.com,Pilot,Captain,NAFOKKER43
-0603918591,Renee Rich,Marylane41,82940122,3358267,Renee@nanair.com,Pilot,Captain,NABOEING737
-1605918591,Latisha Hayes,Marylane51,83940122,2358267,Latisha@nanair.com,Pilot,Captain,NABOEING737
-2706838569,Gerard Nelson,Fellsmúli4,8912803,2358211,Gerard@nanair.com,Pilot,Captain,NAFOKKER99
-2806838569,Percy J. Snyder,Fellsmúli5,8998543,2358211,Percy@nanair.com,Pilot,Captain,NAFOKKER99
-2906838569,Wanda E. Chung,Fellsmúli6,2398803,2358211,Wanda@nanair.com,Pilot,Captain,NAFOKKER14
-3006838569,Patrick Gutier,Fellsmúli7,5498803,2358211,Patrick@nanair.com,Pilot,Captain,NAFOKKER14
-0106838569,Genevieve Asseur,Fellsmúli8,6598803,2358211,Genevieve@nanair.com,Pilot,Captain,NAFOKKER45
-0206838569,James R. Young,Fellsmúli9,8869803,2358211,James@nanair.com,Pilot,Captain,NAFOKKER45
-0306838569,Booker D. Rose,Fellsmúli10,9898803,2358211,Booker@nanair.com,Pilot,Captain,NABOEING737
-0406838569,Yvonne J. Lugo,Fellsmúli11,8954803,2358211,Yvonne@nanair.com,Pilot,Captain,NABOEING737
-0506838569,Carmen D. Geer,Fellsmúli12,8158803,2358211,Carmen@nanair.com,Pilot,Captain,NAAIRBUSA6
-0606838569,Judith T. Gray,Fellsmúli12,89988088,2358211,Judith@nanair.com,Pilot,Captain,NAAIRBUSA6
-2410876598,Nan Gage,Marylane51,8639540129,135826,Nan@nanair.com,Pilot,Copilot,NABAE146
-2211658134,Charla Johnson,Marylane52,864940129,2358266,Charla@nanair.com,Pilot,Copilot,NABAE146
-2504939263,Sam Preciado,Marylane53,826940129,2358266,Sam@nanair.com,Pilot,Copilot,NAFOKKER42
-0105841581,David Anderson,Marylane64,836940123,3358268,David@nanair.com,Pilot,Copilot,NAFOKKER42
-2801694123,Jared Greene,Marylane54,8569401294,2358269,Jared@nanair.com,Pilot,Copilot,NAAIRBUSA6
-2410876597,Leesa D. Johnson,Marylane55,866940129,3358266,Leesa@nanair.com,Pilot,Copilot,NAAIRBUSA6
-2410876591,Ray E. Andrews,Marylane56,876940129,4358266,Ray@nanair.com,Pilot,Copilot,NAAIRBUSA11
-2410876528,Betsy J. Wright,Marylane57,886940129,5358266,Betsy@nanair.com,Pilot,Copilot,NAAIRBUSA11
-2410876498,Phillip M. Simmons,Marylane58,896940129,6358266,Phillip@nanair.com,Pilot,Copilot,NAFOKKER43
-2410878598,George G. Prange,Marylane59,811940129,7358266,George@nanair.com,Pilot,Copilot,NAFOKKER43
-2410879598,Scott K. Big,Marylane61,812940129,11358266,Scott@nanair.com,Pilot,Copilot,NABOEING737
-2410816598,Charles C. Benoit,Marylane62,86130129,12358266,Charles@nanair.com,Pilot,Copilot,NABOEING737
-2410826598,Deshawn R. Gomez,Marylane63,869140129,13358266,Deshawn@nanair.com,Pilot,Copilot,NAFOKKER45
-2410836598,Judith K. Fink,Marylane64,869150129,14358266,Judith@nanair.com,Pilot,Copilot,NAFOKKER45
-2410846598,Victor E. Smith,Marylane65,869160129,15358266,Victor@nanair.com,Pilot,Copilot,NAFOKKER14
-2410856598,Terry T. Wilson,Marylane66,817940129,16358266,Terry@nanair.com,Pilot,Copilot,NAFOKKER14
-2411876598,Barry E. Roberts,Marylane67,869401189,17358266,Barry@nanair.com,Pilot,Copilot,NAFOKKER99
-2412876598,Mabel G. Johnston,Marylane68,916940129,19358266,Mabel@nanair.com,Pilot,Copilot,NAFOKKER99
-2413876598,Timothy L. Gray,Marylane69,516940129,20358266,Timothy@nanair.com,Cabincrew,Flight Service Manager,N/A
-1404853585,Lula Stefani,Marylane91,86940129,2358266,Lula@nanair.com,Cabincrew,Flight Service Manager,N/A
-0905862878,Richard Sanders,Marylane92,86940129,2358266,Richard@nanair.com,Cabincrew,Flight Service Manager,N/A
-1816931544,John Kline,Marylane93,86940129,2358266,John@nanair.com,Cabincrew,Flight Service Manager,N/A
-0407858797,Evelyn Pickhardt,Marylane94,86940129,2358266,Evelyn@nanair.com,Cabincrew,Flight Service Manager,N/A
-3008688722,Stacey Henrickson,Marylane95,86940129,2358266,Stacey@nanair.com,Cabincrew,Flight Attendant,N/A
-3009962187,Delores Whitfield,Marylane96,86940129,2358266,Delores@nanair.com,Cabincrew,Flight Attendant,N/A
-1301772221,Maribel Lucero,Marylan975,86940129,2358266,Maribel@nanair.com,Cabincrew,Flight Attendant,N/A
-2509913418,Katherine Wernimont,Marylane98,86940129,2358266,Katherine@nanair.com,Cabincrew,Flight Attendant,N/A
-0401821122,Andres Ceasar,Marylane01,5136414,3865468,Andres@nanair.com,Cabincrew,Flight Attendant,N/A
-1111824819,Heather Carson,Marylane02,1461246,4568458,Heather@nanair.com,Cabincrew,Flight Attendant,N/A
-1905751412,Melissa Weaver,Marylane03,8643843,2458248,Melissa@nanair.com,Cabincrew,Flight Attendant,N/A
-0702886012,Kenneth Day,Marylane04,896786568,5484758,Kenneth@nanair.com,Cabincrew,Flight Attendant,N/A
+2001851854,Antonia Wright,Marylane20,86940121,2358265,Antonia@nanair.com,pilot,Captain,NAAIRBUSA11
+0605918591,Timothy Burdine,Marylane21,86940122,2358267,Wilma@nanair.com,pilot,Captain,NAAIRBUSA11
+0601918591,James Martinez,Marylane21,81940122,3358267,James@nanair.com,pilot,Captain,NAFOKKER43
+0602918591,Robert Hayes,Marylane31,82940122,3358267,Robert@nanair.com,pilot,Captain,NAFOKKER43
+0603918591,Renee Rich,Marylane41,82940122,3358267,Renee@nanair.com,pilot,Captain,NABOEING737
+1605918591,Latisha Hayes,Marylane51,83940122,2358267,Latisha@nanair.com,pilot,Captain,NABOEING737
+2706838569,Gerard Nelson,Fellsmúli4,8912803,2358211,Gerard@nanair.com,pilot,Captain,NAFOKKER99
+2806838569,Percy J Snyder,Fellsmúli5,8998543,2358211,Percy@nanair.com,pilot,Captain,NAFOKKER99
+2906838569,Wanda E Chung,Fellsmúli6,2398803,2358211,Wanda@nanair.com,pilot,Captain,NAFOKKER14
+3006838569,Patrick Gutier,Fellsmúli7,5498803,2358211,Patrick@nanair.com,pilot,Captain,NAFOKKER14
+0106838569,Genevieve Asseur,Fellsmúli8,6598803,2358211,Genevieve@nanair.com,pilot,Captain,NAFOKKER45
+0206838569,James R Young,Fellsmúli9,8869803,2358211,James@nanair.com,pilot,Captain,NAFOKKER45
+0306838569,Booker D Rose,Fellsmúli10,9898803,2358211,Booker@nanair.com,pilot,Captain,NABOEING737
+0406838569,Yvonne J Lugo,Fellsmúli11,8954803,2358211,Yvonne@nanair.com,pilot,Captain,NABOEING737
+0506838569,Carmen D Geer,Fellsmúli12,8158803,2358211,Carmen@nanair.com,pilot,Captain,NAAIRBUSA6
+0606838569,Judith T Gray,Fellsmúli12,89988088,2358211,Judith@nanair.com,pilot,Captain,NAAIRBUSA6
+2410876598,Nan Gage,Marylane51,8639540129,135826,Nan@nanair.com,pilot,copilot,NABAE146
+2211658134,Charla Johnson,Marylane52,864940129,2358266,Charla@nanair.com,pilot,copilot,NABAE146
+2504939263,Sam Preciado,Marylane53,826940129,2358266,Sam@nanair.com,pilot,copilot,NAFOKKER42
+0105841581,David Anderson,Marylane64,836940123,3358268,David@nanair.com,pilot,copilot,NAFOKKER42
+2801694123,Jared Greene,Marylane54,8569401294,2358269,Jared@nanair.com,pilot,copilot,NAAIRBUSA6
+2410876597,Leesa D Johnson,Marylane55,866940129,3358266,Leesa@nanair.com,pilot,copilot,NAAIRBUSA6
+2410876591,Ray E Andrews,Marylane56,876940129,4358266,Ray@nanair.com,pilot,copilot,NAAIRBUSA11
+2410876528,Betsy J Wright,Marylane57,886940129,5358266,Betsy@nanair.com,pilot,copilot,NAAIRBUSA11
+2410876498,Phillip M Simmons,Marylane58,896940129,6358266,Phillip@nanair.com,pilot,copilot,NAFOKKER43
+2410878598,George G Prange,Marylane59,811940129,7358266,George@nanair.com,pilot,copilot,NAFOKKER43
+2410879598,Scott K Big,Marylane61,812940129,11358266,Scott@nanair.com,pilot,copilot,NABOEING737
+2410816598,Charles C Benoit,Marylane62,86130129,12358266,Charles@nanair.com,pilot,copilot,NABOEING737
+2410826598,Deshawn R Gomez,Marylane63,869140129,13358266,Deshawn@nanair.com,pilot,copilot,NAFOKKER45
+2410836598,Judith K Fink,Marylane64,869150129,14358266,Judith@nanair.com,pilot,copilot,NAFOKKER45
+2410846598,Victor E Smith,Marylane65,869160129,15358266,Victor@nanair.com,pilot,copilot,NAFOKKER14
+2410856598,Terry T Wilson,Marylane66,817940129,16358266,Terry@nanair.com,pilot,copilot,NAFOKKER14
+2411876598,Barry E Roberts,Marylane67,869401189,17358266,Barry@nanair.com,pilot,copilot,NAFOKKER99
+2412876598,Mabel G Johnston,Marylane68,916940129,19358266,Mabel@nanair.com,pilot,copilot,NAFOKKER99
+2413876598,Timothy L Gray,Marylane69,516940129,20358266,Timothy@nanair.com,cabincrew,flight service manager,N/A
+1404853585,Lula Stefani,Marylane91,86940129,2358266,Lula@nanair.com,cabincrew,flight service manager,N/A
+0905862878,Richard Sanders,Marylane92,86940129,2358266,Richard@nanair.com,cabincrew,flight service manager,N/A
+1816931544,John Kline,Marylane93,86940129,2358266,John@nanair.com,cabincrew,flight service manager,N/A
+0407858797,Evelyn Pickhardt,Marylane94,86940129,2358266,Evelyn@nanair.com,cabincrew,flight service manager,N/A
+3008688722,Stacey Henrickson,Marylane95,86940129,2358266,Stacey@nanair.com,cabincrew,flight Attendant,N/A
+3009962187,Delores Whitfield,Marylane96,86940129,2358266,Delores@nanair.com,cabincrew,flight Attendant,N/A
+1301772221,Maribel Lucero,Marylan975,86940129,2358266,Maribel@nanair.com,cabincrew,flight Attendant,N/A
+2509913418,Katherine Wernimont,Marylane98,86940129,2358266,Katherine@nanair.com,cabincrew,flight Attendant,N/A
+0401821122,Andres Ceasar,Marylane01,5136414,3865468,Andres@nanair.com,cabincrew,flight Attendant,N/A
+1111824819,Heather Carson,Marylane02,1461246,4568458,Heather@nanair.com,cabincrew,flight Attendant,N/A
+1905751412,Melissa Weaver,Marylane03,8643843,2458248,Melissa@nanair.com,cabincrew,flight Attendant,N/A
+0702886012,Kenneth Day,Marylane04,896786568,5484758,Kenneth@nanair.com,cabincrew,flight Attendant,N/A
+1611983239,Rúnar Leví,Grænuvellir5,4454545,4454545,@nanair.com,pilot,captain,ga
+0906983389,john,hmss 12,8501122,9812233,jon@nanair.com,cabincrew,flight attendant,N/A
+0503881122,bill,billstreet 2,9821234,9211234,bill@nanair.com,cabincrew,flight attendant,N/A
+9681127755,steve,stevestreet 2,8571234,8776432,steve@nanair.com,pilot,captain,NABAE146
+9999991111,kkk,asdf 1,1112222,3332222,kk@nanair.com,pilot,captain,NABAE146
+0101052233,Hilary Clinton,bigcitystreet 12,2129922,8312233,hilary@nanair.com,pilot,copilot,NAFOKKER42

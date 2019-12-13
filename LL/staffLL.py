@@ -21,7 +21,7 @@ class StaffLL:
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Pilot':
+            if staffMember.getRole() == 'pilot':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 
@@ -29,7 +29,7 @@ class StaffLL:
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Cabincrew':
+            if staffMember.getRole() == 'cabincrew':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 
@@ -59,7 +59,7 @@ class StaffLL:
                 staffData.append(self.getStaffByID(voyage.getFa1()))
                 staffData.append(self.getStaffByID(voyage.getFa2()))
             if voyage.getArrivingAt() not in voyageThisdayDict.items():
-                if voyage.getArrivingAt() != 'KEF':
+                if voyage.getArrivingAt() != 'keflavik':
                     voyageThisdayDict[voyage.getArrivingAt()] = staffData
                     staffData.clear()
 

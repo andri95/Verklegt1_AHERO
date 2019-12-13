@@ -7,6 +7,7 @@ NOPILOT = "No Pilot yet."
 NOCOPILOT = "No Co-pilot yet."
 NOFA1 = "No flight attendant nr 1 yet."
 NOFA2 = "No flight attendant nr 2 yet."
+ERRORMESSAGESTAFF = "You did not enter a valid Employee, please try again."
 
 class VoyageUI:
     def __init__(self):
@@ -35,12 +36,12 @@ class VoyageUI:
         self.start()
 
     def start(self):
-
+        '''We create a command dictonary to avoid conditional statements. The function will run the corrosponding submenu '''
         while True:
             mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.popularVoyageUI,'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
-            if user_input != 'b':
+            if user_input != 'b':               # we choice b as a back button
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -51,6 +52,7 @@ class VoyageUI:
                 return
 
     def popularVoyageUI(self):
+        '''Goes trough our voyages and creates a dictionary. Prints out the m'''
         voyageObject_list = self.mainObject.getVoyageLL()
         flights_dict = {}
         for voyage in voyageObject_list:
@@ -68,11 +70,7 @@ class VoyageUI:
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
         self.outputObject.allVoyagesOH(voyageObject_list)
 
-    def createOptionDestDict(self, options):
-        dictonary = {}
 
-
-    
     def addNewVoyageUI(self):
         print()
         print(' ____________________ Create a Voyage_______________________ ')
@@ -93,19 +91,19 @@ class VoyageUI:
         firstFlight = self.inputObject.addNewFlightIH()
         firstFlight.setDepartingFrom(departingFromKef)
         firstFlight.setArrivingAt(destDict[pickDest])
-        if self.mainObject.voyageObject.errorCheckDate(firstFlight) == False:
+        if self.mainObject.errorCheckDateLL(firstFlight) == False:
             return None
-        if self.mainObject.voyageObject.flightCollision(firstFlight) == True:
+        if self.mainObject.flightCollisionLL(firstFlight) == True:
             print("You will cause a collision, do you really want to do that?")
-            print("Every flight must have one hour between them")
+            print("Every flight must have at least one minute between them")
             return None
-        arrivalTime = self.mainObject.voyageObject.findArrivalTime(firstFlight)
+        arrivalTime = self.mainObject.findArrivalTimeLL(firstFlight)
         if arrivalTime != False:
             firstFlight.setArrivalTime(str(arrivalTime))
         else:
             print("Sorry you entered a invalid destination")
             return None
-        assignedAirplane = self.mainObject.voyageObject.findAvalibleAirplanes(firstFlight)
+        assignedAirplane = self.mainObject.findAvalibleAirplanesLL(firstFlight)
         if assignedAirplane != False:
             firstFlight.setAircraftId(str(assignedAirplane))
         else:
@@ -120,10 +118,10 @@ class VoyageUI:
             return None
         self.mainObject.addNewVoyageLL(firstFlight)
 
-        departingFrom, arravingAt, DeparturTime, airplaneId = self.mainObject.voyageObject.generateSecondFlight(firstFlight)
+        departingFrom, arravingAt, DeparturTime, airplaneId = self.mainObject.generateSecondFlightLL(firstFlight)
         secondFlight = VoyageData("", departingFrom, arravingAt, DeparturTime, "", airplaneId)
         secondFlightId = self.mainObject.generateFlightNumberLL(firstFlight)
-        arrivalTimeSecondFlight = self.mainObject.voyageObject.findArrivalTime(secondFlight)
+        arrivalTimeSecondFlight = self.mainObject.findArrivalTimeLL(secondFlight)
         secondFlight.setFlightNumber(str(secondFlightId))
 
         secondFlight.setArrivalTime(arrivalTimeSecondFlight)
@@ -168,7 +166,7 @@ class VoyageUI:
                             print(str(i) + ".",captain.getName())
                         captainOfChoice = input("\nEnter a Captain: ").strip()
                         while captainOfChoice not in captainDict:
-                            print("fuck off")
+                            print(ERRORMESSAGESTAFF)
                             captainOfChoice = input("\nEnter a Captain: ").strip()
                         staff_list.append(captainDict[captainOfChoice])
 
@@ -180,7 +178,7 @@ class VoyageUI:
                             print(str(k) + ".",coPilot.getName())
                         coPilotOfChoice = input("\nEnter a Co-Pilots: ").strip()
                         while coPilotOfChoice not in coPilotDict:
-                            print("fuck off")
+                            print(ERRORMESSAGESTAFF)
                             coPilotOfChoice = input("\nEnter a Co-Pilots: ").strip()
                         staff_list.append(coPilotDict[coPilotOfChoice])
 
@@ -193,7 +191,7 @@ class VoyageUI:
 
                         fsmOfChoice = input("\nEnter a flight service manager: ").strip()
                         while fsmOfChoice not in fsmDict:
-                            print("fuck off")
+                            print(ERRORMESSAGESTAFF)
                             fsmOfChoice = input("\nEnter a flight service manager: ").strip()
                         staff_list.append(fsmDict[fsmOfChoice])
 
@@ -205,7 +203,7 @@ class VoyageUI:
                             print(str(l) + ".", flightAttendant)
                         attendatOfChoice = input("\nEnter a flight attendant:  ")
                         while attendatOfChoice not in cabinCrewDict:
-                            print("fuck off")
+                            print(ERRORMESSAGESTAFF)
                             attendatOfChoice = input("\nEnter a flight attendant:  ")
                         staff_list.append(cabinCrewDict[attendatOfChoice])
                         print("Voyage has been completed")

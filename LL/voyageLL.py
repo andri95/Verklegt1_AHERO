@@ -1,6 +1,7 @@
 from IO.mainIO import MainIO
 import datetime
 import dateutil.parser
+import random
 
 class VoyageLL():
     def __init__(self):
@@ -23,10 +24,11 @@ class VoyageLL():
         return voyage_dict
 
     def addVoyages(self, newFlight):
+        ''' Takes a voyage model and returns it the MainIO '''
         return self.mainObject.addNewVoyageIO(newFlight)
 
-
     def updateVoyage(self, dataList, staffList):
+        '''Takes a '''
         return self.mainObject.updateVoyageIO(dataList, staffList)
 
     def generateFlightNumber(self, flight):
@@ -96,15 +98,19 @@ class VoyageLL():
 
 
     def flightCollision(self, flight):
+        ''' Checks if the new flight is departing at the same time as another flight.
+            We only check by the minute, a airplane can take off at 16:00 and another at 16:01'''
         voyageList = self.mainObject.getVoyagesIO()
+        flightTime = flight.getDepartureTime()[:-2] # Takes the seconds of the time
         for voyage in voyageList:
-            if voyage.getDepartureTime() == flight.getDepartureTime():
+            voyageTime = voyage.getDepartureTime()[:-2]
+            if voyageTime == flightTime:
                 return True
             else:
                 pass
 
     def availableDates(self):
-        '''Finds the dates where there booked voyages to show  '''
+        '''Finds the dates where there are booked voyages and returns a list of those dates '''
         availableDates_list = []
         voyageObject_list = self.mainObject.getVoyagesIO()
         for voyage in voyageObject_list:
@@ -149,14 +155,13 @@ class VoyageLL():
         if allavalibleAirplanes == []:                          # the list is empty if there are no available airplanes
             return False
         else:
-
-            return allavalibleAirplanes[0]                      # Returns the first airplane in the list (no reason)
+            return random.choice(allavalibleAirplanes)          # Returns the a random airplane
 
     def getAllCaptains(self):  #########################
         staffObject_list = self.mainObject.getStaffIO()
         captainObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRank() == 'Captain':
+            if staffMember.getRank() == 'captain':
                 captainObject_list.append(staffMember)
         return captainObject_list
 
@@ -164,7 +169,7 @@ class VoyageLL():
         staffObject_list = self.mainObject.getStaffIO()
         coPilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRank() == 'Copilot':
+            if staffMember.getRank() == 'copilot':
                 coPilotObject_list.append(staffMember)
         return coPilotObject_list
 
@@ -172,7 +177,7 @@ class VoyageLL():
         staffObject_list = self.mainObject.getStaffIO()
         flightAttendantObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRank() == 'Flight Attendant':
+            if staffMember.getRank() == 'flight attendant':
                 flightAttendantObject_list.append(staffMember)
         return flightAttendantObject_list
 
@@ -180,7 +185,7 @@ class VoyageLL():
         staffObject_list = self.mainObject.getStaffIO()
         flightServiceManagerObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRank() == 'Flight Service Manager':
+            if staffMember.getRank() == 'flight service manager':
                 flightServiceManagerObject_list.append(staffMember)
         return flightServiceManagerObject_list
 
