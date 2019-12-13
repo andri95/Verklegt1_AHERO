@@ -41,7 +41,7 @@ class VoyageUI:
             mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.popularVoyageUI,'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
-            if user_input != 'b':               # we choice b as a back button
+            if user_input != 'b':               # we chose b as a back button.
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -52,18 +52,18 @@ class VoyageUI:
                 return
 
     def popularVoyageUI(self):
-        '''Goes trough our voyages and creates a dictionary. Prints out the m'''
+        '''Goes through our voyages and creates a dictionary. Prints out the most popular voyage.'''
         voyageObject_list = self.mainObject.getVoyageLL()
         flights_dict = {}
         for voyage in voyageObject_list:
             if voyage.getArrivingAt() not in flights_dict:
                 flights_dict[voyage.getArrivingAt().lower()] = 1
             else:
-                flights_dict[voyage.getArrivingAt().lower()] +=1
+                flights_dict[voyage.getArrivingAt().lower()] += 1
         del flights_dict["keflavik"]
         maximum = max(flights_dict, key=flights_dict.get)
 
-        print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
+        print("The most popular destination is {}, with {} flights!".format(maximum,flights_dict[maximum]))
         input("Press any key to continue: ")   
             
     def getVoyagesUI(self):
@@ -71,36 +71,39 @@ class VoyageUI:
         self.outputObject.allVoyagesOH(voyageObject_list)
     
     def addNewVoyageUI(self):
+        """ This method adds a voyage. The user only inputs the destination and when he wants to fly, the rest is generated
+          for him trough out the method. After creating the first flight the returning flight also generates for him.
+          We call various error checkers trought out the process. The method returns 2 flights """
         print()
         print(' ____________________ Create a Voyage_______________________ ')
         print("           Pick a destination that Nan Air flys to:")
         destinationObject_list = self.mainObject.getAllDestinationsLL()
         self.outputObject.voyageDestinationOH(destinationObject_list)
         destDict = {}
-        for i, dest in enumerate(destinationObject_list):
-            if dest.getCountry() == "keflavik":
+        for i, dest in enumerate(destinationObject_list):   # makes a dictionary containing destinations for the user
+            if dest.getCountry() == "keflavik":             # we cant fly from kef to kef
                 pass
             else:
                 destDict[i] = dest.getCountry()
         departingFromKef = "keflavik"
         pickDest = int(input("Where will you be arriving at: "))
-        if pickDest not in destDict.keys():
-            print("Sorry you entered a invalid destination")
+        if pickDest not in destDict.keys():                 #
+            print("Sorry you entered an invalid destination.")
             return None
         firstFlight = self.inputObject.addNewFlightIH()
-        firstFlight.setDepartingFrom(departingFromKef)
+        firstFlight.setDepartingFrom(departingFromKef)      # First flight always departs from kef
         firstFlight.setArrivingAt(destDict[pickDest])
         if self.mainObject.errorCheckDateLL(firstFlight) == False:
             return None
         if self.mainObject.flightCollisionLL(firstFlight) == True:
             print("You will cause a collision, do you really want to do that?")
-            print("Every flight must have at least one minute between them")
+            print("Every flight must have at least one minute between them.")
             return None
         arrivalTime = self.mainObject.findArrivalTimeLL(firstFlight)
         if arrivalTime != False:
             firstFlight.setArrivalTime(str(arrivalTime))
         else:
-            print("Sorry you entered a invalid destination")
+            print("Sorry you entered an invalid destination.")
             return None
         assignedAirplane = self.mainObject.findAvalibleAirplanesLL(firstFlight)
         if assignedAirplane != False:
@@ -113,7 +116,7 @@ class VoyageUI:
             firstFlight.setFlightNumber(str(firstFlightId))
 
         else:
-            print(firstFlight.getArrivingAt(), "is not a valid destination")
+            print(firstFlight.getArrivingAt(), "is not a valid destination.")
             return None
         self.mainObject.addNewVoyageLL(firstFlight)
 
@@ -126,24 +129,28 @@ class VoyageUI:
         secondFlight.setArrivalTime(arrivalTimeSecondFlight)
         self.mainObject.addNewVoyageLL(secondFlight)
         print()
-        print("New Voyage saved! You can complete it now in 'complete voyage'")
+        print("New Voyage saved! You can complete it now in 'complete voyage'.")
         input("Press any key to continue.")
 
 
     def completeVoyageUI(self):
+        ''' User picks a voyage to complete. The method completeVoyageUI lets user pick pilots with license to the
+        voyges airplane and also available staff. For each position to be filled we create a dictionary so the user
+        can simply choose a employee by putting in a number'''
         counter = 0
         voyageDict = {}
         flightObject_list = self.mainObject.getVoyageLL()
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
-                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":
+                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":   # if there is no captain then the voyage has not been staffed
                         counter += 1
                         voyageDict[str(counter)] = [flight1, flight2]
                         flightTime = flight1.getDepartureTime().split("T")
+                        # When printing each voyage we make sure with the for loops we only print 2 lines(1 voyage) at a time
                         print("{}. {} ---> {} | {} ---> {}\n   {} {} {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt(), "Departing at", flightTime[0], flightTime[1]))
-        print("Press 0 if your want to cancel")
+        print("Press 0 if your want to cancel.")
         if voyageDict == {}:
             print("There are no voyages to complete!")
             return None
@@ -158,7 +165,7 @@ class VoyageUI:
 
                         staff_list = []
                         print("\n______ Available Captains ______")
-                        availableCaptains = self.mainObject.getAvailableCaptainsLL(val[0])  ####HEHEH
+                        availableCaptains = self.mainObject.getAvailableCaptainsLL(val[0])
                         captainDict = {}
                         for i, captain in enumerate(availableCaptains, 1):
                             captainDict[str(i)] = captain.getName()
@@ -171,7 +178,7 @@ class VoyageUI:
 
                         print("\n______ Available Co-Pilots ______")
                         coPilotDict = {}
-                        availableCoPilots = self.mainObject.getAvailableCoPilotsLL(val[0])  ####HEHEH
+                        availableCoPilots = self.mainObject.getAvailableCoPilotsLL(val[0])
                         for k, coPilot in enumerate(availableCoPilots, 1):
                             coPilotDict[str(k)] = coPilot.getName()
                             print(str(k) + ".",coPilot.getName())
@@ -205,12 +212,12 @@ class VoyageUI:
                             print(ERRORMESSAGESTAFF)
                             attendatOfChoice = input("\nEnter a flight attendant:  ")
                         staff_list.append(cabinCrewDict[attendatOfChoice])
-                        print("Voyage has been completed")
+                        print("Voyage has been completed!")
                         errorChecked = self.inputObject.updateVoyageIH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
                         self.mainObject.updateVoyageLL(val, errorChecked)
 
             else:
-                print("Invalid Voyage")
+                print("Invalid Voyage.")
         else:
             return
 

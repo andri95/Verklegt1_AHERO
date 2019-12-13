@@ -4,7 +4,11 @@ from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
 
 class DestinationUI():
+    ''' Destination UI has method to get, add and update destinations'''
     def __init__(self):
+        '''Instances of appropriate classes created in constructor so the class
+               has access to their functions. MainLL connects the class to the logic layer
+               and the other classes handle inputs, outputs and errors'''
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
         self.outputObject = OutputHandler()
@@ -59,7 +63,7 @@ class DestinationUI():
         
         
     def updateDestinationUI(self):
-        destinationObject_dict = {}
+        destinationObject_dict = {} # Option dictionary for user
         destinationObject_list = self.mainObject.getAllDestinationsLL()
         for counter, destination in enumerate(destinationObject_list, 1):
             destinationObject_dict[str(counter)] = destination

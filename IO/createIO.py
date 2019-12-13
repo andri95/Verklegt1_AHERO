@@ -3,7 +3,8 @@ from Models.fileHandler import FileHandler
 
 
 class CreateIO():
-    ''''''
+    '''All the functions in the class Create IO take a instance of a model as a parameter. We use the filehandler class to open, write, and
+    find the field list (first row)'''
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
@@ -14,9 +15,9 @@ class CreateIO():
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.aircraftPath)
 
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         airplaneFile = fileObject.appendFile()
-        field_list = fileObject.findFieldNames()
+        field_list = fileObject.findFieldNames()            # findFieldNames creates a list where each row is a element from the first line
         writer = csv.DictWriter(airplaneFile, fieldnames=field_list)
         writer.writerow({field_list[0]: newAirplane.getPlaneId(), field_list[1]: newAirplane.getType(),
                          field_list[2]: newAirplane.getModel(), field_list[3]: newAirplane.getCapacity()})
@@ -26,7 +27,7 @@ class CreateIO():
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.crewPath)
 
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         crewFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(crewFile, fieldnames=field_list)
@@ -40,7 +41,7 @@ class CreateIO():
     def addNewDest(self, newDestination):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         destinationFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(destinationFile, fieldnames=field_list)
@@ -52,7 +53,7 @@ class CreateIO():
     def addNewVoyage(self, newVoyage):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.upcomingVoyagesPath)
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         voyageFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(voyageFile, fieldnames=field_list)

@@ -1,6 +1,7 @@
 import csv
 class FileHandler:
-
+    '''The reason for the FileHandler class is to take some load of from the IO classes. It returns the
+    a file for read, write and append.'''
     def __init__(self, path):
         self.path = path
 
@@ -20,7 +21,7 @@ class FileHandler:
         fileStream = open(self.path, 'r')
         reader = csv.reader(fileStream)
         self.fieldnames = next(reader)
-        return self.fieldnames
+        return self.fieldnames              # returns the header in a list (fieldnames)
 
 
 

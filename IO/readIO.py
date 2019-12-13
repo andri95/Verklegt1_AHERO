@@ -6,6 +6,8 @@ from Models.voyageData import VoyageData
 from Models.fileHandler import FileHandler
 
 class ReadIO:
+    '''Read IO returns a list with instances. When asking for a list of all airplanes for example, it opens the file as read and finds the field names
+    for that file. It appends every line as a airplane model and returns that list '''
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
