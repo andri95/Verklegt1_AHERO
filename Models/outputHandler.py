@@ -88,9 +88,11 @@ class OutputHandler:
     def voyageDestinationOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
         print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
-        for destination in destinationObject_list:
-            print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(),
-                                               destination.getEmergencyNumber()))
+        for i, destination in enumerate(destinationObject_list):
+            if destination.getCountry() == "keflavik":
+                pass
+            else:
+                print('{}.{:<12} '.format(i,destination.getCountry()))
         print()
 
 

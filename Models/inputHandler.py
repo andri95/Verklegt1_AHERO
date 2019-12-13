@@ -9,8 +9,6 @@ class InputHandler:
     def __init__(self):
         self.errorObject = ErrorHandler()
 
-    def __init__(self):
-        self.errorObject = ErrorHandler()
 
     def addNewAirplaneIH(self):
         planeID = input("\nEnter airplane ID: ")
@@ -32,12 +30,11 @@ class InputHandler:
         return errorChecked
 
     def addNewFlightIH(self):
-        arrivingAt = input("Where will you be arriving at: ").lower()
+        arrivingAt = ""
         flightNumber = ""
         departingFrom = ""
-        date = input("When will you be flying: YYYY-MM-DD : ").lower()
-        print("Note, NanAir only flies only by the hour (13:00, 02:00)")
-        time = input("At what hour: HH:MM ") +":00"
+        date = input("When will you be flying (YYYY-MM-DD): ").lower()
+        time = input("At what hour (HH:MM): ") +":00"
         departureTime = date + "T" + time
         arrivalTime = ""
         aircraftId = ""
@@ -81,3 +78,7 @@ class InputHandler:
         dateSplit = date.split('-')
         dateObject = datetime.datetime(int(dateSplit[0]), int(dateSplit[1]), int(dateSplit[2]))
         return dateObject
+
+    def createOptionDestDict(self, options):
+        dictonary = {}
+
