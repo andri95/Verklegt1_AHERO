@@ -18,7 +18,9 @@ NOFA2 = "No Flight Attendant yet."
 ANYKEY = 'Press any key to continue.'
 
 class OutputHandler:
-
+    '''The class OutputHandler has method that are called in multiple different methods. The methods in the class
+     have parameters that are usually lists of instances (fx.list of airplanes). Then we use our get method to
+       extract the info we choose '''
     def allStaffOH(self, staffObject_list):
         print('\n{:^75}'.format(EMPLOYEES))
         print('\n{:<20} {:<11} {:<9} {:<20} {:<21}'.format('Name', 'SSN', 'Phone', 'Email', 'Rank'))
@@ -108,14 +110,14 @@ class OutputHandler:
             departureDateTime = voyage.getDepartureTime()
             parsedDateObject = dateutil.parser.parse(departureDateTime)
             if len(str(parsedDateObject.minute)) == 1:
-                minute = str(parsedDateObject.minute) + '0'
+                minute = str(parsedDateObject.minute) + '0' # add one because when using the dateutil method it changes 00 to 0
             else:
                 minute = str(parsedDateObject.minute)
             print("\nDeparting from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
             print('\n{:<11} {:<9} {:<14}'.format('Date', 'Time', 'Flight number'))
             print('{:<11} {:<9} {:<14}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + '-' + str(parsedDateObject.year),
                                          str(parsedDateObject.hour) + ':' + minute, voyage.getFlightNumber()))
-
+            # The reason for the counter is because we dont want to print the staff twice
             if counter % 2 == 0:
                 print("\nStaff:")
                 if voyage.getCaptain() == "":

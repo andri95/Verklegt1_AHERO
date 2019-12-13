@@ -71,25 +71,27 @@ class VoyageUI:
         self.outputObject.allVoyagesOH(voyageObject_list)
     
     def addNewVoyageUI(self):
-        """ This method adds a voyage. The user  """
+        """ This method adds a voyage. The user only inputs the destination and when he wants to fly, the rest is generated
+          for him trough out the method. After creating the first flight the returning flight also generates for him.
+          We call various error checkers trought out the process. The method returns 2 flights """
         print()
         print(' ____________________ Create a Voyage_______________________ ')
         print("           Pick a destination that Nan Air flys to:")
         destinationObject_list = self.mainObject.getAllDestinationsLL()
         self.outputObject.voyageDestinationOH(destinationObject_list)
         destDict = {}
-        for i, dest in enumerate(destinationObject_list):
-            if dest.getCountry() == "keflavik":
+        for i, dest in enumerate(destinationObject_list):   # makes a dictionary containing destinations for the user
+            if dest.getCountry() == "keflavik":             # we cant fly from kef to kef
                 pass
             else:
                 destDict[i] = dest.getCountry()
         departingFromKef = "keflavik"
         pickDest = int(input("Where will you be arriving at: "))
-        if pickDest not in destDict.keys():
+        if pickDest not in destDict.keys():                 #
             print("Sorry you entered an invalid destination.")
             return None
         firstFlight = self.inputObject.addNewFlightIH()
-        firstFlight.setDepartingFrom(departingFromKef)
+        firstFlight.setDepartingFrom(departingFromKef)      # First flight always departs from kef
         firstFlight.setArrivingAt(destDict[pickDest])
         if self.mainObject.errorCheckDateLL(firstFlight) == False:
             return None
@@ -132,16 +134,20 @@ class VoyageUI:
 
 
     def completeVoyageUI(self):
+        ''' User picks a voyage to complete. The method completeVoyageUI lets user pick pilots with license to the
+        voyges airplane and also available staff. For each position to be filled we create a dictionary so the user
+        can simply choose a employee by putting in a number'''
         counter = 0
         voyageDict = {}
         flightObject_list = self.mainObject.getVoyageLL()
         for number1, flight1 in enumerate(flightObject_list):
             for number2, flight2 in enumerate(flightObject_list):
                 if number2 - number1 == 1 and number1 % 2 == 0:
-                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":
+                    if flight1.getCaptain() == "" and flight2.getCaptain() == "":   # if there is no captain then the voyage has not been staffed
                         counter += 1
                         voyageDict[str(counter)] = [flight1, flight2]
                         flightTime = flight1.getDepartureTime().split("T")
+                        # When printing each voyage we make sure with the for loops we only print 2 lines(1 voyage) at a time
                         print("{}. {} ---> {} | {} ---> {}\n   {} {} {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt(), "Departing at", flightTime[0], flightTime[1]))
         print("Press 0 if your want to cancel.")
@@ -159,7 +165,7 @@ class VoyageUI:
 
                         staff_list = []
                         print("\n______ Available Captains ______")
-                        availableCaptains = self.mainObject.getAvailableCaptainsLL(val[0])  ####HEHEH
+                        availableCaptains = self.mainObject.getAvailableCaptainsLL(val[0])
                         captainDict = {}
                         for i, captain in enumerate(availableCaptains, 1):
                             captainDict[str(i)] = captain.getName()
@@ -172,7 +178,7 @@ class VoyageUI:
 
                         print("\n______ Available Co-Pilots ______")
                         coPilotDict = {}
-                        availableCoPilots = self.mainObject.getAvailableCoPilotsLL(val[0])  ####HEHEH
+                        availableCoPilots = self.mainObject.getAvailableCoPilotsLL(val[0])
                         for k, coPilot in enumerate(availableCoPilots, 1):
                             coPilotDict[str(k)] = coPilot.getName()
                             print(str(k) + ".",coPilot.getName())

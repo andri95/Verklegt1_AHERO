@@ -6,9 +6,11 @@ from Models.errorHandler import ErrorHandler
 import datetime
 
 class InputHandler:
+    '''The reason for the InputHandler class is to take the load of from the UI classes. The methods that are called
+     in multiple different methods. When the user inputs the information then we call the error handler to validate the information.
+     When the information has been validated then we return the information as a instance of the correct model'''
     def __init__(self):
         self.errorObject = ErrorHandler()
-
 
     def addNewAirplaneIH(self):
         planeID = input("\nEnter airplane ID: ")
@@ -16,7 +18,7 @@ class InputHandler:
         model = input("Enter Model name: ")
         capacity = input("Enter Airplane Capacity: ")
         newAirplane = AirplaneData(planeID, types, model, capacity)
-        errorChecked = self.errorObject.addNewAirplaneEH(newAirplane)  # Hér byrjar error handler
+        errorChecked = self.errorObject.addNewAirplaneEH(newAirplane)
         return errorChecked
 
     def addNewDestinationIH(self):
@@ -26,7 +28,7 @@ class InputHandler:
         emergencynum = input('Enter emergency number: ')
         destinationId = ''
         newDestination = DestinationData(country, flighttime, contact, emergencynum, destinationId)
-        errorChecked = self.errorObject.addNewDestinationEH(newDestination)  # Hér byrjar error handler
+        errorChecked = self.errorObject.addNewDestinationEH(newDestination)
         return errorChecked
 
     def addNewFlightIH(self):

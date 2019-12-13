@@ -1,9 +1,7 @@
 from IO.mainIO import MainIO
 
-
-
-
 class DestinationLL():
+    ''' DestinationLL class has methods that performs methods offered in the destination user interface'''
     def __init__(self):
         self.mainObject = MainIO()
 
@@ -23,6 +21,7 @@ class DestinationLL():
         return self.mainObject.updateDestIO(dataList)
 
     def generadeDestinationId(self):
+        ''' When creating a destination we call this method to generate the id'''
         destinationObjectList = self.mainObject.getDestinationsIO()
         destinationID_list = []
         for destID in destinationObjectList:

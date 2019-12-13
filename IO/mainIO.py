@@ -4,9 +4,9 @@ from IO.updateIO import UpdateIO
 
 
 class MainIO:
-    '''The class contains functions that call the correct IO class depending on if it has to read, create or update. If it needs to
-    read, then there are no parameters necessary. If it needs to create Then a instance is necessary. '''
     def __init__(self):
+        '''The class contains functions that call the correct IO class depending on if it has to read, create or update. If it needs to
+            read, then there are no parameters necessary. If it needs to create Then a instance is necessary. '''
         self.createObject = CreateIO()
         self.readObject = ReadIO()
         self.updateObject = UpdateIO()

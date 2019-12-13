@@ -4,7 +4,9 @@ import dateutil.parser
 import random
 
 class VoyageLL():
-
+    '''Instances of appropriate classes created in constructor so the class
+       has access to their functions. MainLL connects the class to the logic layer
+       and the other classes handle inputs, outputs and errors'''
     def __init__(self):
         self.mainObject = MainIO()
   
