@@ -14,7 +14,7 @@ class InputHandler:
         planeID = input("\nEnter airplane ID: ")
         types = input("Enter Airplane type: ")
         model = input("Enter Model name: ")
-        capacity = input("Enter Airplane Capacity")
+        capacity = input("Enter Airplane Capacity: ")
         newAirplane = AirplaneData(planeID, types, model, capacity)
         errorChecked = self.errorObject.addNewAirplaneEH(newAirplane)  # Hér byrjar error handler
         return errorChecked
@@ -48,12 +48,11 @@ class InputHandler:
         cellPhone = input('Enter cell phone: ')
         phoneNumber = input('Enter phone number: ')
         email = input('Enter email: ')
-        role = input('Enter role: ')
-        rank = input('Enter rank: ')
-        license_str = input('Enter license: ')
+        role = input('Enter role: ').lower()
+        rank = input('Enter rank: ').lower()
+        license_str = ""
         newEmployee = StaffData(ssn, name, address, cellPhone, phoneNumber, email, role, rank, license_str)
         errorChecked = self.errorObject.addNewStaffEH(newEmployee)
-        print('New staff member registered!')
         return errorChecked
 
     def updateDestinationIH(self, destinationObject_dict):

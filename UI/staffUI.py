@@ -130,7 +130,7 @@ class StaffUI:
 
     def getAllPilotsUI(self):
         pilotObject_list = self.mainObject.getAllPilotsLL()
-        #sorted(pilotObject_list, key=methodcaller('StaffData.getLicense')
+
         return self.outputObject.allPilotsOH(pilotObject_list)
 
 
@@ -140,7 +140,27 @@ class StaffUI:
 
     def addNewStaffUI(self):
         newEmployee = self.inputObject.addNewStaffIH()
-        self.mainObject.addNewStaffLL(newEmployee)
+        role = newEmployee.getRole()
+        if role == "cabincrew":
+            newEmployee.setLicense("N/A")
+            self.mainObject.addNewStaffLL(newEmployee)
+            print('New staff member registered!')
+        else:
+            airplaneList = self.mainObject.airplaneObject.getAirplanes()
+            airplaneIdList = []
+            for airplane in airplaneList:
+                airplaneIdList.append(airplane.getPlaneId())
+            print("What license does", newEmployee.getName(), "have: ")
+            print("{}\n".format(" ".join(i for i in airplaneIdList)))
+            staff_license = input("Enter license: ")
+            while staff_license not in airplaneIdList:
+                print("\nInvalid license, can only include alphanumerical characters.")
+                staff_license = input("Enter license: ")
+            newEmployee.setLicense(staff_license)
+            self.mainObject.addNewStaffLL(newEmployee)
+            print('New staff member registered!')
+
+
 
     def getStaffByIdUI(self):
         staffObject_dict = {}

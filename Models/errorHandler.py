@@ -94,16 +94,16 @@ class ErrorHandler:
                 if emergencynum.isdigit() and len(emergencynum) == 7:
                     other.setEmergencyNumber(emergencynum)
                     flag = False
-        return True
+        return other
 
     def addNewStaffEH(self, other):
         SSN = other.getSSN()
         if SSN.isdigit() == False or len(SSN) != 10:
             flag = True
             while flag:
-                print("\nInvalid social security number, please try again.")
+                print("\nInvalid social security number, must be 10 digits.")
                 newSSN = input('Enter new SSN: ')
-                if SSN.isdigit() and len(SSN) == 10:
+                if newSSN.isdigit() and len(newSSN) == 10:
                     other.setSSN(newSSN)
                     flag = False
                 else:
@@ -114,9 +114,9 @@ class ErrorHandler:
         if nameValid == False:
             flag = True
             while flag:
-                print("\nInvalid name, please try again.")
+                print("\nInvalid name, can not include non alphabetical letters.")
                 newName = input('Enter new name: ')
-                nameValid = self.isNameValid(name)
+                nameValid = self.isNameValid(newName)
                 if nameValid:
                     other.setName(newName)
                     flag = False
@@ -124,21 +124,24 @@ class ErrorHandler:
                     continue
 
         address = other.getAddress()
-        if address.isalnum() == False:
+        addressValid = self.isAddressValid(address)
+        if addressValid == False:
             flag = True
             while flag:
-                print("\nInvalid address, please try again.")
+                print("\nInvalid address, example address: 'Marylane 85.'")
                 newAddress = input('Enter new address: ')
-                if address.isalnum():
+                addressValid = self.isAddressValid(newAddress)
+                if addressValid:
                     other.setAddress(newAddress)
                     flag = False
                 else:
                     continue
+
         cellPhone = other.getCellPhone()
         if cellPhone.isdigit() == False or len(cellPhone) != 7:
             flag = True
             while flag:
-                print("\nInvalid cellphone, please try again.")
+                print("\nInvalid cellphone, must be 7 digits.")
                 newCellPhone = input('Enter new cellphone number: ')
                 if newCellPhone.isdigit() and len(newCellPhone) == 7:
                     other.setCellPhone(newCellPhone)
@@ -149,7 +152,7 @@ class ErrorHandler:
         if phoneNumber.isdigit() == False or len(cellPhone) != 7:
             flag = True
             while flag:
-                print("\nInvalid phone number, please try again.")
+                print("\nInvalid phone number, must be 7 digits.")
                 newPhone = input('Enter new phone number: ')
                 if newPhone.isdigit() and len(newPhone) == 7:
                     other.setPhoneNumber(newPhone)
@@ -161,7 +164,7 @@ class ErrorHandler:
         if emailValid == False:
             flag = True
             while flag:
-                print("\nInvalid email, please try again.")
+                print("\nInvalid email, must end with: '@nanair.com'.")
                 newEmail = input('Enter new email: ')
                 emailValid = ErrorHandler().isEmailValid(newEmail)
                 if emailValid:
@@ -169,37 +172,26 @@ class ErrorHandler:
                     flag = False
                 else:
                     continue
-        role = other.getRole()
-        if role not in ["Pilot", "Cabincrew"]:
+        role = other.getRole().lower()
+        if role not in ["pilot", "cabincrew"]:
             flag = True
             while flag:
-                print("\nInvalid role, please try again.")
-                newRole = input('Enter new role: ')
-                if role in ["Pilot", "Cabincrew"]:
+                print("\nInvalid role, role can be 'pilot' or 'cabincrew'.")
+                newRole = input('Enter new role: ').lower()
+                if newRole in ["pilot", "cabincrew"]:
                     other.setRole(newRole)
                     flag = False
                 else:
                     continue
-        rank = other.getRank()
-        if rank not in ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]:
-            flag = True
-            while flag:
-                print("\nInvalid rank, please try again.")
-                newRank = ('Enter new rank: ')
-                if rank in ["Captain", "Copilot", "Flight Service Manager", "Flight Attendant"]:
-                    other.setRank(newRank)
-                    flag = False
-                else:
-                    continue
 
-        staff_license = other.getLicense()
-        if staff_license.isalnum() == False:
+        rank = other.getRank().lower()
+        if rank not in ["captain", "copilot", "flight service manager", "flight attendant"]:
             flag = True
             while flag:
-                print("\nInvalid license, please try again.")
-                newLicense = input('Enter new plane ID: ')
-                if staff_license.isalnum():
-                    other.setLicense(newLicense)
+                print("\nInvalid rank, rank can be 'captain', 'copilot', 'flight service manager' or 'flight attendant'.")
+                newRank = input('Enter new rank: ').lower()
+                if newRank in ["captain", "copilot", "flight service manager", "flight attendant"]:
+                    other.setRank(newRank)
                     flag = False
                 else:
                     continue
@@ -212,14 +204,14 @@ class ErrorHandler:
         fa_list = []
         updatedStaffSSN = []
         for pilot in pilotObject_list:
-            if pilot.getRank() == 'Captain':
+            if pilot.getRank() == 'captain':
                 captain_list.append(pilot.getName())
-            elif pilot.getRank() == 'Copilot':
+            elif pilot.getRank() == 'copilot':
                 copilot_list.append(pilot.getName())
         for flightAttendant in cabinCrewObject_list:
-            if flightAttendant.getRank() == 'Flight Service Manager':
+            if flightAttendant.getRank() == 'flight service manager':
                 fsm_list.append(flightAttendant.getName())
-            elif flightAttendant.getRank() == 'Flight Attendant':
+            elif flightAttendant.getRank() == 'flight attendant':
                 fa_list.append(flightAttendant.getName())
 
         if staff_list[0] not in captain_list:
@@ -385,6 +377,13 @@ class ErrorHandler:
         """ Returns false if any letter in the name is not from the alphabet. """
         for word in other.split():
             if word.isalpha() == False:
+                return False
+        return True
+
+    def isAddressValid(self, other):
+        address = other.split()
+        if len(address) == 2:
+            if address[0].isalpha() == False or address[1].isdigit() == False:
                 return False
         return True
 

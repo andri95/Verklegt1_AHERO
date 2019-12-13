@@ -1,5 +1,5 @@
 class DestinationData:
-    def __init__(self, country, flightTime, contact, emergencyNumber, destId):
+    def __init__(self, country, flightTime, contact, emergencyNumber, destId=''):
         self.country = country
         self.flightTime = flightTime
         self.contact = contact
@@ -35,3 +35,5 @@ class DestinationData:
 
     def setDestinationId(self, destinationId):
         self.destId = destinationId
+
+        

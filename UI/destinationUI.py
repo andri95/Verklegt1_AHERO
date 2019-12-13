@@ -53,7 +53,7 @@ class DestinationUI():
 
     def addNewDestinationUI(self):
         newDestination = self.inputObject.addNewDestinationIH()
-        destinationID = self.mainObject.destinationObject.generadeDestinationId()
+        destinationID = self.mainObject.generadeDestinationIdLL()
         newDestination.setDestinationId(destinationID)
         self.mainObject.addNewDestinationLL(newDestination)
         

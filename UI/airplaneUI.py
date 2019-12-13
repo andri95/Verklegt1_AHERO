@@ -72,14 +72,20 @@ class AirplaneUI:
         input("Enter any key to continue: ")
 
     def getAirplaneByIdUI(self):
-        airplaneId_list = self.mainObject.getAirplanesLL()
-        self.outputObject.singleAirplanelistOH(airplaneId_list)  # held
+        airplaneIdList = self.mainObject.getAirplanesLL()
+        airplaneIdDict = {}
+        for i, airplane in enumerate(airplaneIdList, 1):
+            airplaneIdDict[str(i)] = airplane.getPlaneId()
+        self.outputObject.singleAirplanelistOH(airplaneIdList)
         input_airId = input("Enter Airplane ID number: ")
-        license_dict = self.mainObject.getAirplaneByIdLL(input_airId)
+        while input_airId not in airplaneIdDict:
+            print("Sorry that was not a valid airplane")
+            input_airId = input("Enter Airplane ID number: ")
+        license_dict = self.mainObject.getAirplaneByIdLL(airplaneIdDict[input_airId])
         self.outputObject.singleAirplaneIdOH(license_dict)  # held
 
     def registerAirplaneUI(self):
-        newAirplane = self.inputObject.addNewAirplaneIH()   # calls the item-handler for registering airplanes
+        newAirplane = self.inputObject.addNewAirplaneIH()   # calls the input-handler for registering airplanes
         self.mainObject.addAirplaneLL(newAirplane)
         print("\nNew airplane saved!")
         input("Press any key to continue.")

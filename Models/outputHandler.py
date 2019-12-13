@@ -66,8 +66,8 @@ class OutputHandler:
         input(ANYKEY)
 
     def singleAirplanelistOH(self, airplane_list):
-        for airplane in airplane_list:
-            print('{}'.format(airplane.getPlaneId()))
+        for i, airplane in enumerate(airplane_list, 1):
+            print('{}. {}'.format(i, airplane.getPlaneId()))
 
     def singleAirplaneIdOH(self, airplaneID):
         print('\n' + LICENSEDPILOTS)
@@ -80,9 +80,9 @@ class OutputHandler:
     
     def allDestinationsOH(self, destinationObject_list):
         print('\n{:^32}'.format(DESTINATIONS))
-        print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
+        print('\n{:<12} {:<9} {:<17} {:<7}'.format('Country', 'Contact', 'Emergency Number', 'DestID'))
         for destination in destinationObject_list:
-            print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber()))
+            print('{:<12} {:<9} {:<17} {:<7}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber(), destination.getDestId()))
         input(ANYKEY)
 
     def availableDestinationsOH(self, destinationObject_dict):

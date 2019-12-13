@@ -21,7 +21,7 @@ class StaffLL:
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Pilot':
+            if staffMember.getRole() == 'pilot':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 
@@ -29,7 +29,7 @@ class StaffLL:
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Cabincrew':
+            if staffMember.getRole() == 'cabincrew':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 

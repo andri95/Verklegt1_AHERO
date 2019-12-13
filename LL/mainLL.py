@@ -93,3 +93,22 @@ class MainLL:
 
     def getAvailableCaptainsLL(self, flight):
         return self.voyageObject.findAvailableCaptains(flight)
+
+    def errorCheckDateLL(self, flight):
+        return self.voyageObject.errorCheckDate(flight)
+
+    def flightCollisionLL(self, flight):
+        return self.voyageObject.flightCollision(flight)
+
+    def findArrivalTimeLL(self, flight):
+        return self.voyageObject.findArrivalTime(flight)
+
+    def findAvalibleAirplanesLL(self, flight):
+        return self.voyageObject.findAvalibleAirplanes(flight)
+
+    def generateSecondFlightLL(self, flight):
+        return self.voyageObject.generateSecondFlight(flight)
+
+    def generadeDestinationIdLL(self):
+        return self.destinationObject.generadeDestinationId()
+
