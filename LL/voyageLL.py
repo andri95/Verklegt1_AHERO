@@ -368,3 +368,4 @@ class VoyageLL():
         newtime = datetime.datetime.strftime(newDepartureTime, '%Y-%m-%dT%H:%M:%S')
 
         return departingFrom, arravingAt, newtime, airplane
+
