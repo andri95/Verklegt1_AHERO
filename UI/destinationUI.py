@@ -59,5 +59,10 @@ class DestinationUI():
         
         
     def updateDestinationUI(self):
-        dataList = self.inputObject.updateDestinationIH()
+        destinationObject_dict = {}
+        destinationObject_list = self.mainObject.getAllDestinationsLL()
+        for counter, destination in enumerate(destinationObject_list, 1):
+            destinationObject_dict[str(counter)] = destination
+        self.outputObject.availableDestinationsOH(destinationObject_dict)
+        dataList = self.inputObject.updateDestinationIH(destinationObject_dict)
         self.mainObject.updateDestinationLL(dataList)

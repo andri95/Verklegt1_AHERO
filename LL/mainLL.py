@@ -82,14 +82,14 @@ class MainLL:
     def workWeekLL(self, dataList):
         return self.voyageObject.getWorkWeek(dataList)
 
-    def getAvailableFlightAttendants(self, flight):
+    def getAvailableFlightAttendantsLL(self, flight):
         return self.voyageObject.findAvailableFlightAttendants(flight)
 
-    def getAvailableFlightServiceManagers(self, flight):
+    def getAvailableFlightServiceManagersLL(self, flight):
         return self.voyageObject.findAvailableFlightServiceManagers(flight)
 
-    def getAvailableCoPilots(self, flight):
+    def getAvailableCoPilotsLL(self, flight):
         return self.voyageObject.findAvailableCoPilots(flight)
 
-    def getAvailableCaptains(self, flight):
+    def getAvailableCaptainsLL(self, flight):
         return self.voyageObject.findAvailableCaptains(flight)

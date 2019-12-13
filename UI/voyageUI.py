@@ -67,11 +67,6 @@ class VoyageUI:
     def getVoyagesUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()   #  Gets information needed from getvoyage logic layer.
         self.outputObject.allVoyagesOH(voyageObject_list)
-
-    def createOptionDestDict(self, options):
-        dictonary = {}
-
-
     
     def addNewVoyageUI(self):
         print()

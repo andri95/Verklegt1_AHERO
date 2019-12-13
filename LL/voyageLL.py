@@ -312,7 +312,7 @@ class VoyageLL():
          else True. we mostly use try and except and changing the string to int '''
 
         errorMessageDate = "Date was not entered correctly (YYYY-MM-DD), please try again "
-        errorMessageTime = "Time was not entered correctly (HH:MM:SS), please try again"
+        errorMessageTime = "Time was not entered correctly (HH:MM), please try again"
         flightTime = flight.getDepartureTime()
         date = flightTime.split("T") # date[0] is the date, date[1] is the time
         try:

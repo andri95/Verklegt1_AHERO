@@ -1,4 +1,4 @@
-
+import datetime
 from IO.mainIO import MainIO
 
 
@@ -58,11 +58,13 @@ class StaffLL:
                 staffData.append(self.getStaffByID(voyage.getCoPilot()))
                 staffData.append(self.getStaffByID(voyage.getFa1()))
                 staffData.append(self.getStaffByID(voyage.getFa2()))
-            if voyage.getArrivingAt() not in voyageThisdayDict.items():
-                if voyage.getArrivingAt() != 'KEF':
-                    voyageThisdayDict[voyage.getArrivingAt()] = staffData
-                    staffData.clear()
-
+            else:
+                staffData = voyage.getStaff()
+            if voyage not in voyageThisdayDict:
+                voyageThisdayDict[voyage] = staffData
+                staffData = []
+            else:
+                staffData = []
         return voyageThisdayDict
 
     def getWorkSchedlueAvailable(self, workDay):
@@ -72,9 +74,10 @@ class StaffLL:
         staffObject_list = self.getAllStaff()
         for voyage in voyageThisdayDict:
             for workingStaff in voyageThisdayDict[voyage]:
-                unavailableStaff.append(workingStaff.getSSN())
+                unavailableStaff.append(workingStaff)
         for staffMember in staffObject_list:
             if staffMember.getSSN() not in unavailableStaff:
                 availableStaff.append(staffMember)
 
         return availableStaff
+

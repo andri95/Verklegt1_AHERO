@@ -2,6 +2,7 @@ from UI.quitUI import QuitUI
 from LL.mainLL import MainLL
 from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
+from Models.errorHandler import ErrorHandler
 import datetime
 
 class StaffUI:
@@ -9,6 +10,7 @@ class StaffUI:
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
         self.outputObject = OutputHandler()
+        self.errorObject = ErrorHandler()
         
 
         self.MAINMENU = """
@@ -141,24 +143,39 @@ class StaffUI:
         self.mainObject.addNewStaffLL(newEmployee)
 
     def getStaffByIdUI(self):
+        staffObject_dict = {}
         staffObject_list = self.mainObject.getAllStaffLL()
-        self.outputObject.singleStaffListOH(staffObject_list)
-        input_ssn = input("Enter social security number: ")
-        staffMember = self.mainObject.getStaffByIDLL(input_ssn)
+        for counter, staffMember in enumerate(staffObject_list, 1):
+            staffObject_dict[str(counter)] = staffMember
+        self.outputObject.singleStaffListOH(staffObject_dict)
+        user_input = input("Choose an employee: ")
+        errorChecked = self.errorObject.getStaffByIdEH(user_input, staffObject_dict)
+        staffMember = self.mainObject.getStaffByIDLL(errorChecked.getSSN())
         self.outputObject.singleStaffHeaderOH()
         self.outputObject.singleStaffOH(staffMember)
 
     def availableStaffUI(self):
-        input_date = input("Enter a date 'YYYY-MM-DD' : ")
+        flag = True
+        while flag:
+            input_date = input("Enter a date 'YYYY-MM-DD' : ")
+            if self.errorObject.errorCheckDateEH(input_date):
+                flag = False
+            else:
+                continue
         availableStaff = self.mainObject.workScheduleAvailableLL(input_date)
         self.outputObject.workScheduleAvailableOH(availableStaff)
 
     def unavailableStaffUI(self):
+        availableDates_dict = {}
         availableDates_list = self.mainObject.availableDatesLL()
-        self.outputObject.availableDatesOH(availableDates_list)
-        input_date = input("Enter a date 'YYYY-MM-DD' : ")
-        workSchedule_dict = self.mainObject.workScheduleLL(input_date)
-        self.outputObject.workScheduleOH(workSchedule_dict)
+        for counter, date in enumerate(availableDates_list, 1):
+            availableDates_dict[str(counter)] = date
+        self.outputObject.availableDatesOH(availableDates_dict)
+
+        user_input = input("Choose date: ")
+        errorChecked = self.errorObject.availableDatesEH(user_input, availableDates_dict)
+        workSchedule_dict = self.mainObject.workScheduleLL(errorChecked)
+        self.outputObject.allVoyagesOH(workSchedule_dict)
 
     def singleStaffUI(self):
         print('Start of work week')
@@ -170,9 +187,13 @@ class StaffUI:
         if dateEnd != compareDate:
             print('That is not a work week!')
         else:
+            staffObject_dict = {}
             staffObject_list = self.mainObject.getAllStaffLL()
-            self.outputObject.singleStaffListOH(staffObject_list)
-            input_ssn = input("Enter social security number: ")
-            dataList = [dateStart, dateEnd, input_ssn]
+            for counter, staffMember in enumerate(staffObject_list, 1):
+                staffObject_dict[str(counter)] = staffMember
+            self.outputObject.singleStaffListOH(staffObject_dict)
+            user_input = input("Choose an employee: ")
+            errorChecked = self.errorObject.getStaffByIdEH(user_input, staffObject_dict)
+            dataList = [dateStart, dateEnd, errorChecked.getSSN()]
             workWeekObject_list = self.mainObject.workWeekLL(dataList)
             self.outputObject.workWeekOH(workWeekObject_list)

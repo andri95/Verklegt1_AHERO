@@ -43,11 +43,11 @@ class OutputHandler:
                                                     staffMember.getEmail(), staffMember.getRank()))
         input(ANYKEY)
 
-    def singleStaffListOH(self, staffObject_list):
+    def singleStaffListOH(self, staffObject_dict):
         print('\n{:^30}'.format(EMPLOYEES))
-        print('\n{:<20} {:<11}'.format('Name', 'SSN'))
-        for staffMember in staffObject_list:
-            print('{:<20} {:<11}'.format(staffMember.getName(), staffMember.getSSN()))
+        print('\n{:>2}  {:<20} {:<11}'.format('Nr', 'Name', 'SSN'))
+        for staffMember in staffObject_dict:
+            print('{:>2}. {:<20} {:<11}'.format(staffMember, staffObject_dict[staffMember].getName(), staffObject_dict[staffMember].getSSN()))
 
     def singleStaffHeaderOH(self):
         print('\n{:^75}'.format(EMPLOYEE))
@@ -85,6 +85,12 @@ class OutputHandler:
             print('{:<12} {:<9} {:<17}'.format(destination.getCountry(), destination.getContact(), destination.getEmergencyNumber()))
         input(ANYKEY)
 
+    def availableDestinationsOH(self, destinationObject_dict):
+        print('\n{:^32}'.format(DESTINATIONS))
+        print('{:>2}. {:<15}'.format('Nr', 'Destination'))
+        for destination in destinationObject_dict:
+            print('{:>2}. {:<15}'.format(destination, destinationObject_dict[destination].getCountry()))
+
     def voyageDestinationOH(self, destinationObject_list):
         for i, destination in enumerate(destinationObject_list):
             if destination.getCountry() == "keflavik":
@@ -101,10 +107,14 @@ class OutputHandler:
         for voyage in voyageObject_dict:
             departureDateTime = voyage.getDepartureTime()
             parsedDateObject = dateutil.parser.parse(departureDateTime)
+            if len(str(parsedDateObject.minute)) == 1:
+                minute = str(parsedDateObject.minute) + '0'
+            else:
+                minute = str(parsedDateObject.minute)
             print("\nDeparting from: {} - Arriving at: {}".format(voyage.getDepartingFrom(),voyage.getArrivingAt()))
-            print('\n{:<11} {:<9}'.format('Date', 'Time'))
-            print('{:<11} {:<9}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + '-' + str(parsedDateObject.year),
-                                         str(parsedDateObject.hour) + ':' + str(parsedDateObject.minute)))
+            print('\n{:<11} {:<9} {:<14}'.format('Date', 'Time', 'Flight number'))
+            print('{:<11} {:<9} {:<14}'.format(str(parsedDateObject.day) + '-' + str(parsedDateObject.month) + '-' + str(parsedDateObject.year),
+                                         str(parsedDateObject.hour) + ':' + minute, voyage.getFlightNumber()))
 
             if counter % 2 == 0:
                 print("\nStaff:")
@@ -140,30 +150,12 @@ class OutputHandler:
         input(ANYKEY)
 
 
-    def availableDatesOH(self, availableDates_list):
+    def availableDatesOH(self, availableDates_dict):
         print('\n_______ Avaliable Dates _______\n')
-        for date in availableDates_list:
-            print(date)
+        print('{:>2}. {:<13}'.format('Nr', 'Date'))
+        for date in availableDates_dict:
+            print('{:>2}. {:<13}'.format(date, availableDates_dict[date]))
         print()
-
-    def workScheduleOH(self, workDict):
-        counter = 0
-        if len(workDict) != 0:
-            for voyage in workDict:
-                if len(workDict[voyage]) != 0:
-                    print("\n\t_______ Voyage arriving at {} _______".format(voyage))
-                    print('\n{:<20} {:<11} {:<21}'.format('Name', 'SSN', 'Rank'))
-                    for staffMember in workDict[voyage]:
-                        print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
-                else:
-                    counter += 1
-        else:
-            print('\nNo staff working on this date!')
-
-        if counter == len(workDict):
-            print('\nNo staff working on this date!')
-
-        input(ANYKEY)
 
     def workScheduleAvailableOH(self, availableStaff):
         print('\n{:^53}'.format(AVAILABLE))

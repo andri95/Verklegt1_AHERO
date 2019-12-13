@@ -2,6 +2,7 @@ from Models.airplaneData import AirplaneData
 from Models.destinationData import DestinationData
 from Models.voyageData import VoyageData
 from Models.staffData import StaffData
+import datetime
 
 
 class ErrorHandler:
@@ -270,6 +271,105 @@ class ErrorHandler:
                 updatedStaffSSN.append(staffMember.getSSN())
         return updatedStaffSSN
 
+    def getStaffByIdEH(self, user_input, staffObject_dict):
+        if user_input in staffObject_dict:
+            flag = False
+            return staffObject_dict[user_input]
+        else:
+            flag = True
+            while flag:
+                print('Invalid input!')
+                newUser_input = input('Choose an employee: ')
+                if newUser_input in staffObject_dict:
+                    flag = False
+                    return staffObject_dict[newUser_input]
+                else:
+                    continue
+
+    def availableDatesEH(self, user_input, availableDates_dict):
+        if user_input in availableDates_dict:
+            flag = False
+            return availableDates_dict[user_input]
+        else:
+            flag = True
+            while flag:
+                print('Invalid input!')
+                newUser_input = input('Choose date: ')
+                if newUser_input in availableDates_dict:
+                    flag = False
+                    return availableDates_dict[newUser_input]
+                else:
+                    continue
+
+    def availebleDestinationsEH(self, user_input, destinationObject_dict):
+        if user_input in destinationObject_dict:
+            flag = False
+            return destinationObject_dict[user_input]
+        else:
+            flag = True
+            while flag:
+                print('Invalid input!')
+                newUser_input = input('Choose date: ')
+                if newUser_input in destinationObject_dict:
+                    flag = False
+                    return destinationObject_dict[newUser_input]
+                else:
+                    continue
+
+    def errorCheckDestinationEH(self, contact, emergencynum):
+        contactValid = self.isNameValid(contact)
+        if contactValid == False:
+            print("\nInvalid contact, please try again.")
+            flag = True
+            while flag:
+                contact = input('Enter new contact: ')
+                contactValid = self.isNameValid(contact)
+                if contactValid:
+                    flag = False
+
+        if emergencynum.isdigit() == False or len(emergencynum) != 7:
+            print("\nInvalid emergency number, please try again.")
+            flag = True
+            while flag:
+                emergencynum = input('Enter new emergency number: ')
+                if emergencynum.isdigit() and len(emergencynum) == 7:
+                    flag = False
+
+        return contact, emergencynum
+
+    def errorCheckDateEH(self, date):
+        errorMessageDate = "Date was not entered correctly (YYYY-MM-DD), please try again "
+        try:
+            year, month, day = date.split("-")
+            temp = datetime.date(int(year), int(month), int(day))
+            if len(year) != 4:
+                print(errorMessageDate)
+                return False
+        except ValueError:
+            print(errorMessageDate)
+            return False
+        try:
+            temp = datetime.date(int(year), int(month), int(day))
+        except TypeError:
+            print(errorMessageDate)
+            return False
+        return True
+
+
+    def errorCheckTimeEH(self, time):
+        errorMessageTime = "Time was not entered correctly (HH:MM), please try again"
+        try:
+            hour, minute = time.split(":")
+            temp = datetime.time(int(hour), int(minute))
+        except ValueError:
+            print(errorMessageTime)
+            return False
+        try:
+            temp = datetime.time(int(hour), int(minute))
+        except TypeError:
+            print(errorMessageTime)
+            return False
+        return True
 
     def isOnlyNumbersOrLetters(self, other):
         """ Returns False if the string contains only letters or only numbers."""

@@ -1,6 +1,7 @@
 from UI.quitUI import QuitUI
 from Models.inputHandler import InputHandler
 from Models.outputHandler import OutputHandler
+from Models.errorHandler import ErrorHandler
 from LL.mainLL import MainLL
 
 
@@ -10,6 +11,7 @@ class AirplaneUI:
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
         self.outputObject = OutputHandler()
+        self.errorObject = ErrorHandler()
         self.MAINMENU = """
 ############################################################
 #                           _|_	               quit(q)     #
@@ -83,8 +85,20 @@ class AirplaneUI:
         input("Press any key to continue.")
 
     def airplaneStatusUI(self):
-        date = input('Enter date "YYYY-MM-DD": ')
-        time = input('Enter time "HH:MM": ')
+        flagDate = True
+        flagTime = True
+        while flagDate:
+            date = input('Enter date "YYYY-MM-DD": ')
+            if self.errorObject.errorCheckDateEH(date):
+                flagDate = False
+            else:
+                continue
+        while flagTime:
+            time = input('Enter time "HH:MM": ')
+            if self.errorObject.errorCheckTimeEH(time):
+                flagTime = False
+            else:
+                continue
         airplaneStatus_dict = self.mainObject.getAirplaneStatusLL(date, time)
         self.outputObject.airplaneStatusOH(airplaneStatus_dict)
 

@@ -56,11 +56,13 @@ class InputHandler:
         print('New staff member registered!')
         return errorChecked
 
-    def updateDestinationIH(self):
-        destToChange = input('Enter country you want to change: ')
+    def updateDestinationIH(self, destinationObject_dict):
+        user_input = input('Choose destination: ')
+        destToChange = self.errorObject.availebleDestinationsEH(user_input, destinationObject_dict)
         newContact = input('New contact name: ')
         newEmergencyNumber = input('New emergency number: ')
-        dataList = [destToChange, newContact, newEmergencyNumber]
+        errorCheckedContact, errorCheckedEmergency = self.errorObject.errorCheckDestinationEH(newContact, newEmergencyNumber)
+        dataList = [destToChange.getCountry(), errorCheckedContact, errorCheckedEmergency]
         return dataList
         
     def updateVoyageIH(self, staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list):
@@ -74,11 +76,15 @@ class InputHandler:
         return dataList
 
     def workWeekIH(self):
-        date = input("Enter desired date 'YYYY-MM-DD: ")
-        dateSplit = date.split('-')
+        flag = True
+        while flag:
+            input_date = input("Enter desired date 'YYYY-MM-DD': ")
+            if self.errorObject.errorCheckDateEH(input_date):
+                flag = False
+            else:
+                continue
+        dateSplit = input_date.split('-')
         dateObject = datetime.datetime(int(dateSplit[0]), int(dateSplit[1]), int(dateSplit[2]))
         return dateObject
 
-    def createOptionDestDict(self, options):
-        dictonary = {}
 
