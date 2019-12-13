@@ -149,6 +149,7 @@ class VoyageLL():
         if allavalibleAirplanes == []:                          # the list is empty if there are no available airplanes
             return False
         else:
+
             return allavalibleAirplanes[0]                      # Returns the first airplane in the list (no reason)
 
     def getAllCaptains(self):  #########################

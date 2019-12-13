@@ -74,8 +74,9 @@ class VoyageUI:
 
     
     def addNewVoyageUI(self):
-        print('  ______Create a Voyage ______')
-        print(" Pick a destination that Nan Air flys to:")
+        print()
+        print(' ____________________ Create a Voyage_______________________ ')
+        print("           Pick a destination that Nan Air flys to:")
         destinationObject_list = self.mainObject.getAllDestinationsLL()
         self.outputObject.voyageDestinationOH(destinationObject_list)
         destDict = {}
@@ -86,6 +87,9 @@ class VoyageUI:
                 destDict[i] = dest.getCountry()
         departingFromKef = "keflavik"
         pickDest = int(input("Where will you be arriving at: "))
+        if pickDest not in destDict.keys():
+            print("Sorry you entered a invalid destination")
+            return None
         firstFlight = self.inputObject.addNewFlightIH()
         firstFlight.setDepartingFrom(departingFromKef)
         firstFlight.setArrivingAt(destDict[pickDest])
@@ -126,7 +130,6 @@ class VoyageUI:
         self.mainObject.addNewVoyageLL(secondFlight)
         print()
         print("New Voyage saved! You can complete it now in 'complete voyage'")
-        print("----------------")
         input("Press any key to continue.")
 
 
@@ -139,15 +142,15 @@ class VoyageUI:
                 if number2 - number1 == 1 and number1 % 2 == 0:
                     if flight1.getCaptain() == "" and flight2.getCaptain() == "":
                         counter += 1
-                        voyageDict[counter] = [flight1, flight2]
+                        voyageDict[str(counter)] = [flight1, flight2]
                         flightTime = flight1.getDepartureTime().split("T")
-                        print("{}.{:<4} ---> {:<9}  {:<10}---> {:<14}\n {} {} {}\n".format(counter, flight1.getDepartingFrom(),
+                        print("{}. {} ---> {} | {} ---> {}\n   {} {} {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt(), "Departing at", flightTime[0], flightTime[1]))
         print("Press 0 if your want to cancel")
         if voyageDict == {}:
             print("There are no voyages to complete!")
             return None
-        pickVoyage = int(input("Pick a voyage to complete: "))
+        pickVoyage = input("Pick a voyage to complete: ").strip()
         if pickVoyage != 0:
             if pickVoyage in voyageDict:
                 for key, val in voyageDict.items():
@@ -161,41 +164,54 @@ class VoyageUI:
                         availableCaptains = self.mainObject.getAvailableCaptains(val[0])  ####HEHEH
                         captainDict = {}
                         for i, captain in enumerate(availableCaptains, 1):
-                            captainDict[i] = captain.getName()
+                            captainDict[str(i)] = captain.getName()
                             print(str(i) + ".",captain.getName())
-                        captainOfChoice = int(input("\nEnter a Captain: "))
+                        captainOfChoice = input("\nEnter a Captain: ").strip()
+                        while captainOfChoice not in captainDict:
+                            print("fuck off")
+                            captainOfChoice = input("\nEnter a Captain: ").strip()
                         staff_list.append(captainDict[captainOfChoice])
 
                         print("\n______ Available Co-Pilots ______")
                         coPilotDict = {}
                         availableCoPilots = self.mainObject.getAvailableCoPilots(val[0])  ####HEHEH
                         for k, coPilot in enumerate(availableCoPilots, 1):
-                            coPilotDict[k] = coPilot.getName()
+                            coPilotDict[str(k)] = coPilot.getName()
                             print(str(k) + ".",coPilot.getName())
-                        coPilotOfChoice = int(input("\nEnter a Co-Pilots: "))
+                        coPilotOfChoice = input("\nEnter a Co-Pilots: ").strip()
+                        while coPilotOfChoice not in coPilotDict:
+                            print("fuck off")
+                            coPilotOfChoice = input("\nEnter a Co-Pilots: ").strip()
                         staff_list.append(coPilotDict[coPilotOfChoice])
 
                         print("\n ______ Available flight service managers ______")
                         fsmDict = {}
                         availableFlightServicerManagers = self.mainObject.getAvailableFlightServiceManagers(val[0])
                         for x, flightServiceManager in enumerate(availableFlightServicerManagers, 1):
-                            fsmDict[x] = flightServiceManager
+                            fsmDict[str(x)] = flightServiceManager
                             print(str(x) + ".", flightServiceManager)
-                        fsmOfChoice = int(input("\nEnter a flight service manager: "))
+
+                        fsmOfChoice = input("\nEnter a flight service manager: ").strip()
+                        while fsmOfChoice not in fsmDict:
+                            print("fuck off")
+                            fsmOfChoice = input("\nEnter a flight service manager: ").strip()
                         staff_list.append(fsmDict[fsmOfChoice])
 
                         print("\n ______ Available flight attendants ______")
                         cabinCrewDict = {}
                         availableFlightAttendants = self.mainObject.getAvailableFlightAttendants(val[0])
                         for l, flightAttendant in enumerate(availableFlightAttendants, 1):
-                            cabinCrewDict[l] = flightAttendant
+                            cabinCrewDict[str(l)] = flightAttendant
                             print(str(l) + ".", flightAttendant)
-                        attendatOfChoice = int(input("\nEnter a flight attendant:  "))
+                        attendatOfChoice = input("\nEnter a flight attendant:  ")
+                        while attendatOfChoice not in cabinCrewDict:
+                            print("fuck off")
+                            attendatOfChoice = input("\nEnter a flight attendant:  ")
                         staff_list.append(cabinCrewDict[attendatOfChoice])
-                        print(staff_list)
-
+                        print("Voyage has been completed")
                         errorChecked = self.inputObject.updateVoyageIH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
                         self.mainObject.updateVoyageLL(val, errorChecked)
+
             else:
                 print("Invalid Voyage")
         else:

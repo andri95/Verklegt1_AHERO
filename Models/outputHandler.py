@@ -86,8 +86,6 @@ class OutputHandler:
         input(ANYKEY)
 
     def voyageDestinationOH(self, destinationObject_list):
-        print('\n{:^32}'.format(DESTINATIONS))
-        print('\n{:<12} {:<9} {:<17}'.format('Country', 'Contact', 'Emergency Number'))
         for i, destination in enumerate(destinationObject_list):
             if destination.getCountry() == "keflavik":
                 pass
@@ -137,7 +135,7 @@ class OutputHandler:
                     for staffMember in voyageObject_dict[voyage]:
                         if staffMember.getSSN() == voyage.getFa2():
                             print('{:<20} {:<11} {:<21}'.format(staffMember.getName(), staffMember.getSSN(), staffMember.getRank()))
-                print('__________________________')
+                print('_______________________________________________________')
             counter += 1
         input(ANYKEY)
 
