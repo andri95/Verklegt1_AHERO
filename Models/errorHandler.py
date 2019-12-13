@@ -228,17 +228,18 @@ class ErrorHandler:
                 newCaptain = input('Enter new captain: ')
                 if newCaptain in captain_list:
                     staff_list[0] = newCaptain
+                    flag = False
                 else:
                     continue
 
         if staff_list[1] not in copilot_list:
-            print(copilot_list)
             flag = True
             while flag:
                 print(staff_list[1] + ' is not a copilot!')
                 newCopilot = input('Enter new copilot: ')
                 if newCopilot in copilot_list:
                     staff_list[1] = newCopilot
+                    flag = False
                 else:
                     continue
 
