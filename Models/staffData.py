@@ -1,5 +1,5 @@
-
-
+'''Model class used solely as data transfer object when passing
+   information between layers. Class only contains getters and setters'''
 class StaffData():
     def __init__(self, SSN, name, address, cellPhone, phoneNumber, email, role, rank, pilot_license="N/A"):
         self.SSN = SSN

@@ -6,6 +6,10 @@ from LL.voyageLL import VoyageLL
 
 class MainLL:
 
+    '''Instances of all sub LL classes created so that MainLL has access to all
+       functions within them. The MainLL class functionality is only to be the link 
+       between the UI layer and appropriate LL classes. Therefore the MainLL class
+       is only function calls'''
     def __init__(self):
         self.staffObject = StaffLL()
         self.airplaneObject = AirplaneLL()
@@ -22,8 +26,8 @@ class MainLL:
     def getAirplanesLL(self):
         return self.airplaneObject.getAirplanes()
         
-    def getAirplaneByIdLL(self,ID):  #Er eitthva ad ruglast
-        return self.airplaneObject.getAirplaneByID(ID)  # var ad breyta
+    def getAirplaneByIdLL(self,ID):
+        return self.airplaneObject.getAirplaneByID(ID)
 
     def getVoyageLL(self):
         return self.voyageObject.listVoyage()
@@ -31,7 +35,7 @@ class MainLL:
     def getAllPilotsLL(self):
         return self.staffObject.getAllPilots()
     
-    def getLicenseDictLL(self):  # Er eitthvad ad ruglast
+    def getLicenseDictLL(self):
         return self.airplaneObject.getLicenseDict()
 
     def getAllCabinCrewLL(self):

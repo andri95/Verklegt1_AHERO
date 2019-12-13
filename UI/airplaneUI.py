@@ -7,6 +7,8 @@ from LL.mainLL import MainLL
 
 class AirplaneUI:
     def __init__(self):
+        ''' Appropriate classes initiated in constructor so the airplaneUI has access to 
+            them. mainObject connects it to the MainLL class and so on.'''
 
         self.mainObject = MainLL()
         self.inputObject = InputHandler()
@@ -32,7 +34,8 @@ class AirplaneUI:
 #                                                          #
 #  back(b)                                                 #
 ############################################################
-"""
+"""     
+        # start called in constructor so that start runs as son as AirplaneUI instance is initiated.
         self.start()
 
     def start(self):
@@ -53,11 +56,14 @@ class AirplaneUI:
             else:
                 return  #  If user input is 0, returns to main menu.
 
+    '''Calls getAirplanesLL (list of airplane objects) function in mainObject into variable,
+     returns function in outputObject'''
     def getAirplanesUI(self):
         airplaneObject_list = self.mainObject.getAirplanesLL()
         return self.outputObject.allAirplanesOH(airplaneObject_list)
 
-    
+    '''Creates list of all voyages (objects), counts how many times each airplane occurrs. Results are put
+       into dictionary and contents of dictionary are printed'''
     def MostpopularUI(self):
         voyageObject_list = self.mainObject.getVoyageLL()
         Popular_dict = {}
@@ -71,6 +77,9 @@ class AirplaneUI:
             print("The airplane {} has flown {} times.".format(key,val))
         input("Enter any key to continue: ")
 
+    '''Creates dictionary of all airplane objects with numbers as value. User selects desired airplane
+       and the selected airplanes id is passed down into the logic layer where the airplane object is found.
+       The airplane object is then passed into outputObject where detailed information is printed'''
     def getAirplaneByIdUI(self):
         airplaneIdList = self.mainObject.getAirplanesLL()
         airplaneIdDict = {}
@@ -84,12 +93,16 @@ class AirplaneUI:
         license_dict = self.mainObject.getAirplaneByIdLL(airplaneIdDict[input_airId])
         self.outputObject.singleAirplaneIdOH(license_dict)  # held
 
+    '''inputObject.addNewAirplaneIH is called into newAirplane variable. (airplane object) is then passed
+    down into logic layer through MainLL'''
     def registerAirplaneUI(self):
         newAirplane = self.inputObject.addNewAirplaneIH()   # calls the input-handler for registering airplanes
         self.mainObject.addAirplaneLL(newAirplane)
         print("\nNew airplane saved!")
         input("Press any key to continue.")
 
+    '''User inputs date and time which is then passed into getAirplaneStatusLL. Return value is dictionary with
+       airplane ID as key and status as value. Dictionary then passed into outputObject where the information is printed'''
     def airplaneStatusUI(self):
         flagDate = True
         flagTime = True
@@ -108,6 +121,9 @@ class AirplaneUI:
         airplaneStatus_dict = self.mainObject.getAirplaneStatusLL(date, time)
         self.outputObject.airplaneStatusOH(airplaneStatus_dict)
 
+    '''List of all pilots (objects) called into variable. Dictionary created with number as key and staff object as value.
+       All pilots are printed onto screen with outputhandler. Inputhandler function called into dataList and datalist is then
+       passed down into logic layer.'''
     def addLicenseUI(self):
         pilotObject_dict = {}
         pilotObject_list = self.mainObject.getAllPilotsLL()
@@ -117,6 +133,7 @@ class AirplaneUI:
         dataList = self.inputObject.addLicenseIH(pilotObject_dict)
         return self.mainObject.addLicenseLL(dataList)
 
+    '''getLicenseDictLL called into variable, passes variable into outputObject where information is printed'''
     def getLicenseDictUI(self):
         licenseObject_dict = self.mainObject.getLicenseDictLL()
         return self.outputObject.airplaneLicensedOH(licenseObject_dict)

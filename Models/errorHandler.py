@@ -4,7 +4,7 @@ from Models.voyageData import VoyageData
 from Models.staffData import StaffData
 import datetime
 
-
+'''The ErrorHandler class is solely used for error handling the various user inputs in the software'''
 class ErrorHandler:
 
     def addNewAirplaneEH(self, other):

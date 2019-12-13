@@ -1,3 +1,5 @@
+'''Model class used solely as data transfer object when passing
+   information between layers. Class only contains getters and setters'''
 class DestinationData:
     def __init__(self, country, flightTime, contact, emergencyNumber, destId=''):
         self.country = country
