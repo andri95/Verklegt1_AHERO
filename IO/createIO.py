@@ -15,7 +15,7 @@ class CreateIO():
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.aircraftPath)
 
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         airplaneFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()            # findFieldNames creates a list where each row is a element from the first line
         writer = csv.DictWriter(airplaneFile, fieldnames=field_list)
@@ -27,7 +27,7 @@ class CreateIO():
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.crewPath)
 
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         crewFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(crewFile, fieldnames=field_list)
@@ -41,7 +41,7 @@ class CreateIO():
     def addNewDest(self, newDestination):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.destinationPath)
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         destinationFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(destinationFile, fieldnames=field_list)
@@ -53,7 +53,7 @@ class CreateIO():
     def addNewVoyage(self, newVoyage):
         #  FileHandler DTO instance created
         fileObject = FileHandler(self.upcomingVoyagesPath)
-        #  File opend with appendFile()
+        #  File opened with appendFile()
         voyageFile = fileObject.appendFile()
         field_list = fileObject.findFieldNames()
         writer = csv.DictWriter(voyageFile, fieldnames=field_list)

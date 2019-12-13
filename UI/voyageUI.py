@@ -41,7 +41,7 @@ class VoyageUI:
             mainCommand_dict = {'1': self.getVoyagesUI, '2': self.addNewVoyageUI, '3': self.completeVoyageUI, '4':self.popularVoyageUI,'q': QuitUI}
             print(self.MAINMENU)
             user_input = input("Input a command: ")
-            if user_input != 'b':               # we choice b as a back button
+            if user_input != 'b':               # we chose b as a back button.
                 if user_input in mainCommand_dict:
                     for key in mainCommand_dict:
                         if user_input == key:
@@ -52,18 +52,18 @@ class VoyageUI:
                 return
 
     def popularVoyageUI(self):
-        '''Goes trough our voyages and creates a dictionary. Prints out the m'''
+        '''Goes through our voyages and creates a dictionary. Prints out the most popular voyage.'''
         voyageObject_list = self.mainObject.getVoyageLL()
         flights_dict = {}
         for voyage in voyageObject_list:
             if voyage.getArrivingAt() not in flights_dict:
                 flights_dict[voyage.getArrivingAt().lower()] = 1
             else:
-                flights_dict[voyage.getArrivingAt().lower()] +=1
+                flights_dict[voyage.getArrivingAt().lower()] += 1
         del flights_dict["keflavik"]
         maximum = max(flights_dict, key=flights_dict.get)
 
-        print("The most popular destination is {}, With {} flights!".format(maximum,flights_dict[maximum]))
+        print("The most popular destination is {}, with {} flights!".format(maximum,flights_dict[maximum]))
         input("Press any key to continue: ")   
             
     def getVoyagesUI(self):
@@ -71,6 +71,7 @@ class VoyageUI:
         self.outputObject.allVoyagesOH(voyageObject_list)
     
     def addNewVoyageUI(self):
+        """ This method adds a voyage. The user  """
         print()
         print(' ____________________ Create a Voyage_______________________ ')
         print("           Pick a destination that Nan Air flys to:")
@@ -85,7 +86,7 @@ class VoyageUI:
         departingFromKef = "keflavik"
         pickDest = int(input("Where will you be arriving at: "))
         if pickDest not in destDict.keys():
-            print("Sorry you entered a invalid destination")
+            print("Sorry you entered an invalid destination.")
             return None
         firstFlight = self.inputObject.addNewFlightIH()
         firstFlight.setDepartingFrom(departingFromKef)
@@ -94,13 +95,13 @@ class VoyageUI:
             return None
         if self.mainObject.flightCollisionLL(firstFlight) == True:
             print("You will cause a collision, do you really want to do that?")
-            print("Every flight must have at least one minute between them")
+            print("Every flight must have at least one minute between them.")
             return None
         arrivalTime = self.mainObject.findArrivalTimeLL(firstFlight)
         if arrivalTime != False:
             firstFlight.setArrivalTime(str(arrivalTime))
         else:
-            print("Sorry you entered a invalid destination")
+            print("Sorry you entered an invalid destination.")
             return None
         assignedAirplane = self.mainObject.findAvalibleAirplanesLL(firstFlight)
         if assignedAirplane != False:
@@ -113,7 +114,7 @@ class VoyageUI:
             firstFlight.setFlightNumber(str(firstFlightId))
 
         else:
-            print(firstFlight.getArrivingAt(), "is not a valid destination")
+            print(firstFlight.getArrivingAt(), "is not a valid destination.")
             return None
         self.mainObject.addNewVoyageLL(firstFlight)
 
@@ -126,7 +127,7 @@ class VoyageUI:
         secondFlight.setArrivalTime(arrivalTimeSecondFlight)
         self.mainObject.addNewVoyageLL(secondFlight)
         print()
-        print("New Voyage saved! You can complete it now in 'complete voyage'")
+        print("New Voyage saved! You can complete it now in 'complete voyage'.")
         input("Press any key to continue.")
 
 
@@ -143,7 +144,7 @@ class VoyageUI:
                         flightTime = flight1.getDepartureTime().split("T")
                         print("{}. {} ---> {} | {} ---> {}\n   {} {} {}\n".format(counter, flight1.getDepartingFrom(),
                         flight1.getArrivingAt(),flight2.getDepartingFrom(), flight2.getArrivingAt(), "Departing at", flightTime[0], flightTime[1]))
-        print("Press 0 if your want to cancel")
+        print("Press 0 if your want to cancel.")
         if voyageDict == {}:
             print("There are no voyages to complete!")
             return None
@@ -205,12 +206,12 @@ class VoyageUI:
                             print(ERRORMESSAGESTAFF)
                             attendatOfChoice = input("\nEnter a flight attendant:  ")
                         staff_list.append(cabinCrewDict[attendatOfChoice])
-                        print("Voyage has been completed")
+                        print("Voyage has been completed!")
                         errorChecked = self.inputObject.updateVoyageIH(staff_list, pilotObject_list, cabinCrewObject_list, staffObject_list)
                         self.mainObject.updateVoyageLL(val, errorChecked)
 
             else:
-                print("Invalid Voyage")
+                print("Invalid Voyage.")
         else:
             return
 
