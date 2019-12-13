@@ -4,7 +4,8 @@ from IO.updateIO import UpdateIO
 
 
 class MainIO:
-
+    '''The class contains functions that call the correct IO class depending on if it has to read, create or update. If it needs to
+    read, then there are no parameters necessary. If it needs to create Then a instance is necessary. '''
     def __init__(self):
         self.createObject = CreateIO()
         self.readObject = ReadIO()
@@ -35,6 +36,7 @@ class MainIO:
         return self.readObject.getAirplanes()
 
     def updateVoyageIO(self, dataList, staffList):
+        '''When updating a voyage, we need the voyage and the staff that was assigned to the voyage'''
         return self.updateObject.updateVoyage(dataList, staffList)
 
     def updateDestIO(self, dataList):

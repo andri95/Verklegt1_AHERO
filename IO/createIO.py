@@ -3,7 +3,8 @@ from Models.fileHandler import FileHandler
 
 
 class CreateIO():
-    ''''''
+    '''All the functions in the class Create IO take a instance of a model as a parameter. We use the filehandler class to open, write, and
+    find the field list (first row)'''
     def __init__(self):
         self.aircraftPath = "Data/AircraftType.csv"
         self.crewPath = "Data/Crew.csv"
@@ -16,7 +17,7 @@ class CreateIO():
 
         #  File opend with appendFile()
         airplaneFile = fileObject.appendFile()
-        field_list = fileObject.findFieldNames()
+        field_list = fileObject.findFieldNames()            # findFieldNames creates a list where each row is a element from the first line
         writer = csv.DictWriter(airplaneFile, fieldnames=field_list)
         writer.writerow({field_list[0]: newAirplane.getPlaneId(), field_list[1]: newAirplane.getType(),
                          field_list[2]: newAirplane.getModel(), field_list[3]: newAirplane.getCapacity()})
