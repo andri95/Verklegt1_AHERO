@@ -66,8 +66,8 @@ class OutputHandler:
         input(ANYKEY)
 
     def singleAirplanelistOH(self, airplane_list):
-        for airplane in airplane_list:
-            print('{}'.format(airplane.getPlaneId()))
+        for i, airplane in enumerate(airplane_list, 1):
+            print('{}. {}'.format(i, airplane.getPlaneId()))
 
     def singleAirplaneIdOH(self, airplaneID):
         print('\n' + LICENSEDPILOTS)

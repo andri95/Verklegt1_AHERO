@@ -203,14 +203,14 @@ class ErrorHandler:
         fa_list = []
         updatedStaffSSN = []
         for pilot in pilotObject_list:
-            if pilot.getRank() == 'Captain':
+            if pilot.getRank() == 'captain':
                 captain_list.append(pilot.getName())
-            elif pilot.getRank() == 'Copilot':
+            elif pilot.getRank() == 'copilot':
                 copilot_list.append(pilot.getName())
         for flightAttendant in cabinCrewObject_list:
-            if flightAttendant.getRank() == 'Flight Service Manager':
+            if flightAttendant.getRank() == 'flight service manager':
                 fsm_list.append(flightAttendant.getName())
-            elif flightAttendant.getRank() == 'Flight Attendant':
+            elif flightAttendant.getRank() == 'flight attendant':
                 fa_list.append(flightAttendant.getName())
 
         if staff_list[0] not in captain_list:

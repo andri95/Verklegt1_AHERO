@@ -156,7 +156,7 @@ class VoyageUI:
                         pilotObject_list = self.mainObject.getAllPilotsLL()
                         cabinCrewObject_list = self.mainObject.getAllCabinCrewLL()
                         staffObject_list = self.mainObject.getAllStaffLL()
-                        #staffList = self.inputObject.updateVoyageIH()  # COMMENTAÐI UT INPUT HANDLER::
+
                         staff_list = []
                         print("\n______ Available Captains ______")
                         availableCaptains = self.mainObject.getAvailableCaptains(val[0])  ####HEHEH

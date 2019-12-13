@@ -33,7 +33,7 @@ class UpdateIO:
 
         i = 0
         while i < len(voyage_list):
-            if dataList[0].getFlightNumber() == voyage_list[i].getFlightNumber():
+            if dataList[0].getDepartureTime() == voyage_list[i].getDepartureTime():
                 voyage_list[i].setCaptain(staffList[0])
                 voyage_list[i].setCoPilot(staffList[1])
                 voyage_list[i].setFa1(staffList[2])

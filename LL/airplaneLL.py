@@ -84,7 +84,7 @@ class AirplaneLL:
         staffObject_list = self.mainObject.getStaffIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Pilot':
+            if staffMember.getRole() == 'pilot':
                 pilotObject_list.append(staffMember)
         return pilotObject_list
 
@@ -93,7 +93,7 @@ class AirplaneLL:
         aiprlaneObject_list = self.mainObject.getAirplanesIO()
         pilotObject_list = []
         for staffMember in staffObject_list:
-            if staffMember.getRole() == 'Pilot':
+            if staffMember.getRole() == 'pilot':
                 pilotObject_list.append(staffMember)
         license_Dict = {}
         for staffMember in pilotObject_list:
